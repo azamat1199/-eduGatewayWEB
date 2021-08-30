@@ -43,6 +43,7 @@ const Navbar = () => {
 
     return (
 
+        <Router>
             <div className="eduGateMain">
                 <button id="burgerMenu"
                     className={
@@ -131,8 +132,10 @@ const Navbar = () => {
 
                 {/* main */}
                 <main onClick={handleout}>
-                        <Route exact path="/" component={MainEduGate} />
-                           
+                    <Switch>
+                        <Route exact path="/">
+                            <MainEduGate/>
+                        </Route>
                         <Route path="/university">
                             <SinglePage/>
                         </Route>
@@ -148,8 +151,10 @@ const Navbar = () => {
                         <Route path="/cabinet">
                             555555555555555
                         </Route>
+                    </Switch>
                 </main>
                 {/* end main */} </div>
+        </Router>
     );
 }
 
