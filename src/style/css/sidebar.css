@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.dashboardBlock .sidebarFixed {
+  height: 100vh;
+  width: 300px;
+  background: #0D5372;
+  position: fixed;
+  z-index: 100;
+  overflow-y: scroll;
+}
+.dashboardBlock .sidebarFixed::-webkit-scrollbar {
+  width: 5px;
+  background: #0D5372;
+}
+.dashboardBlock .sidebar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.dashboardBlock .sidebar .logoSidebar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 63px;
+}
+.dashboardBlock .sidebar .logoSidebar svg {
+  width: 34.7px;
+  height: 34.7px;
+}
+.dashboardBlock .sidebar .logoSidebar svg path {
+  fill: #fff;
+}
+.dashboardBlock .sidebar .logoSidebar h6 {
+  margin-left: 12px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  color: #ffffff;
+}
+.dashboardBlock .sidebar a {
+  text-decoration: none;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 30px;
+}
+.dashboardBlock .sidebar a:hover {
+  background: rgba(250, 253, 255, 0.05);
+}
+.dashboardBlock .sidebar .active {
+  background: rgba(250, 253, 255, 0.05);
+  border-left: 6px solid #DDE2FF;
+  padding-left: 18px;
+}
+.dashboardBlock .sidebar .vector {
+  height: 1px;
+  background: #5C7C8A;
+  width: 70%;
+  margin-left: 30px;
+  margin-top: 11px;
+  margin-bottom: 11px;
+}
+
+.switch_asos {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  padding: 0 15px 0 0;
+}
+
+.burger_menu {
+  display: none;
+}
+
+@media (max-width: 1440px) {
+  .sidebarFixed {
+    width: 250px !important;
+  }
+}
+@media (max-width: 1080px) {
+  .dashboardBlock .sidebarFixed {
+    top: 0;
+    width: 230px !important;
+  }
+  .dashboardBlock > div:nth-child(2) {
+    width: 230px !important;
+  }
+}
+@media (max-width: 768px) {
+  .switch_asos {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebarFixed {
+    left: -100%;
+    transition: 0.8s;
+  }
+
+  .burger_menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 53px;
+    height: 52px;
+    position: absolute;
+    top: 20px;
+    left: 10px;
+  }
+  .burger_menu span {
+    background: #0D5372;
+    border-radius: 100px;
+    width: 30px;
+    height: 4px;
+    display: block;
+    margin: 3px 0;
+  }
+
+  .Up_navbar {
+    margin-left: 50px;
+  }
+
+  .toggle_burger .sidebarFixed {
+    left: 0 !important;
+    z-index: 102;
+  }
+  .toggle_burger .dashboardBlock .toggle_close {
+    position: fixed;
+    width: 100% !important;
+    height: 100%;
+  }
+}
+@media (max-width: 425px) {
+  .Up_navbar div img {
+    margin-left: 10px;
+  }
+
+  .analitika_h4 img {
+    margin: 0;
+  }
+
+  .dagavor_select {
+    font-size: 18px;
+  }
+  .dagavor_select select {
+    font-size: 18px;
+  }
+}
+
+/*# sourceMappingURL=Sidebar.css.map */
