@@ -107,7 +107,7 @@ const MainEduGate = () => {
             .slice(0, 8)*/}
             {
                 serach === true ?
-                    <div className="resultBlock">
+                    <div  className="resultBlock">
                         <h5>Результаты поиска</h5>
                         <div className="result">
                             {/* card */}
@@ -186,7 +186,7 @@ const MainEduGate = () => {
             {/* end about block */}
 
             {/* resultBlock */}
-            <div className="resultBlock" id="topUniver">
+            <div className="resultBlock" id="university">
                 <h5>Самые популярные Университетыа</h5>
                 <div className="result">
                     {/* card */}

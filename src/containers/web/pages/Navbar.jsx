@@ -42,7 +42,7 @@ const Navbar = () => {
 
 
     return (
-
+<>
             <div className="eduGateMain">
                 <button id="burgerMenu"
                     className={
@@ -114,7 +114,7 @@ const Navbar = () => {
                                 exact
                                 to="/">Главная страница</NavLink>
                             <NavLink onClick={handleout}
-                                to="/university">Университеты</NavLink>
+                                to="/#university">Университеты</NavLink>
                             <NavLink onClick={handleout}
                                 to="/howItWork">Как это работает</NavLink>
                             <NavLink onClick={handleout}
@@ -150,7 +150,30 @@ const Navbar = () => {
                            </Route>
                      </Switch>
                 </main> */}
+                {/* <main onClick={handleout}>
+                    <Switch>
+                        <Route exact path="/">
+                            <MainEduGate/>
+                        </Route>
+                        <Route path="/university">
+                            <SinglePage/>
+                        </Route>
+                        <Route path="/howItWork">
+                            3333333333333333
+                        </Route>
+                        <Route path="/partnyors">
+                            <Partnyors/>
+                        </Route>
+                        <Route path="/register">
+                            <Registratsiya/>
+                        </Route>
+                        <Route path="/cabinet">
+                            555555555555555
+                        </Route>
+                    </Switch>
+                </main> */}
                 {/* end main */} </div>
+                </>
     );
 }
 

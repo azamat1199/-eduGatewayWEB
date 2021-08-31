@@ -6,6 +6,7 @@ import facebook from   "../../../../assets/icon/facebookreg.svg"
 import view from   "../../../../assets/icon/view.svg"  
 import check from   "../../../../assets/icon/check.svg"  
 import "../../../../style/css/singup.css"
+import Navbar from '../Navbar';
 
 
 class SingUp extends Component {
@@ -20,6 +21,9 @@ class SingUp extends Component {
 	render() { 
 		return ( 
 			<React.Fragment>
+				<div>
+				  <Navbar/>
+				</div>
 				<div className="singup_asos container">
 					<div className="nav_name">
 						<h1>Процесс поступления</h1>

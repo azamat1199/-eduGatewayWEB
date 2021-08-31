@@ -21,6 +21,7 @@ class Sidebar extends Component {
 	 }
 	render() { 
 		return ( 
+			<>
 			<div className="dashboardBlock">
 				 <div className="sidebarFixed">
 					  <div className="sidebar">
@@ -79,6 +80,7 @@ class Sidebar extends Component {
 				 {/* end => sidebar */}
 				 <div className="toggle_close" onClick={this.props.handleburger}></div>
 			</div>
+			</>
 	  );
 	}
 }

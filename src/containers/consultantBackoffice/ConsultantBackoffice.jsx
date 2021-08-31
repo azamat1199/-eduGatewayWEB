@@ -28,17 +28,8 @@ class ConsultantBackoffice extends Component {
 	render() { 
 		return ( 
 			<React.Fragment>
-			  <BrowserRouter>
 				 <div className="switchs">
-					<Switch>
-					  <Route exact path="/login">
-						 <Login />
-					  </Route>
-					  <Route path="/loginStaff">
-						 <LoginStaff />
-					  </Route>
 					  <Route path="/home">
-						  <BrowserRouter>
 						  <div className={this.state.burger ? "switch_asos toggle_burger" :"switch_asos"}>
 							  <Sidebar handleburger={this.handleburger} burger={this.state.burger}/>
 							  <div onClick={this.handleburger} className="burger_menu">
@@ -46,7 +37,9 @@ class ConsultantBackoffice extends Component {
 								  <span></span>
 								  <span></span>
 							  </div>
-							  <Switch>
+							  </div>
+					  </Route>
+							  {/* <Switch>
 								  <Route path="/home/glavny">
 									  <SideGlavny/>
 								  </Route>
@@ -80,13 +73,8 @@ class ConsultantBackoffice extends Component {
 								  <Route path="/home/analitika">
 									  <SideOtdel />
 								  </Route>
-							  </Switch>
-						  </div>
-						 </BrowserRouter>
-					  </Route>
-					</Switch>
-				 </div>
-			  </BrowserRouter>
+							  </Switch> */}
+</div>
 			</React.Fragment>
 		  );
 	}
