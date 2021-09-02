@@ -110,15 +110,15 @@ const routes = {
             component:Oplata3,
             exact:true,
         },
+        // {
+        //     key:'file',
+        //     path:'/kabinetstudent',
+        //     component:StudentCabinet,
+        //     exact:true,
+        // },
         {
             key:'file',
-            path:'/kabinetstudent',
-            component:StudentCabinet,
-            exact:true,
-        },
-        {
-            key:'file',
-            path:'/home/glavny',
+            path:'/home/main',
             component:SideGlavny,
             exact:true,
         },
@@ -143,9 +143,45 @@ const routes = {
         {
             key:'file',
             path:"/my-account",
-            component:StudentCabinet,
+            component:Kabinet,
             exact:true,
         },
+        // {
+        //     key:'file',
+        //     path:"/universities",
+        //     component:Universitet,
+        //     exact:true,
+        // },
+        // {
+        //     key:'file',
+        //     path:"/personal",
+        //     component:Personal,
+        //     exact:true,
+        // },
+        // {
+        //     key:'file',
+        //     path:"/agreement",
+        //     component:Dogovor,
+        //     exact:true,
+        // },
+        // {
+        //     key:'file',
+        //     path:"/status",
+        //     component:Status,
+        //     exact:true,
+        // },
+        // {
+        //     key:'file',
+        //     path:"/bonus",
+        //     component:()=><h1>Bonus page</h1>,
+        //     exact:true,
+        // },
+        // {
+        //     key:'file',
+        //     path:"/settings",
+        //     component:()=><h1>Settings page</h1>,
+        //     exact:true,
+        // },
        
       
       

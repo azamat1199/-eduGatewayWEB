@@ -3,7 +3,7 @@ import { BrowserRouter, Route ,  Switch } from 'react-router-dom';
 
 import Login from "./pages/Login"
 import LoginStaff from "./pages/LoginStaff"
-import Sidebar from "./pages/Sidebar"
+import Sidebar from "./pages/SidebarConsult"
 import SideGlavny from "./pages/SideGlavny"
 import SideUniverstitet from "./pages/SidebarUniverstitet"
 import Fakultet from "./pages/Fakultet"
@@ -39,7 +39,7 @@ class ConsultantBackoffice extends Component {
 							  </div>
 							  </div>
 					  </Route>
-				</div>
+</div>
 			</React.Fragment>
 		  );
 	}

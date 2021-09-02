@@ -5,9 +5,12 @@ import  "../../../style/css/kabinet.css"
 
 // import icon
 import download_icon from  "../../../assets/icon/download.svg" 
+import StudentCabinet from '../studentCabinet';
 const Kabinet = () => {
     let progress = 25
     return ( 
+        <>
+        <StudentCabinet/>
         <div className="lichKabinet">
             <div className="top">
                 <div className="settings p-lr-30">
@@ -86,6 +89,7 @@ const Kabinet = () => {
                 </div>
             </div>
         </div> 
+        </>
     );
 }
  

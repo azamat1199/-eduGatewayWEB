@@ -53,7 +53,7 @@ const Login = () => {
                             </label>
                         </div>
                         {/* kirish */}
-                        <Link to="/home/glavny">Войти</Link>
+                        <Link to="/home/main">Войти</Link>
                         {/* parolni unutdim */}
                         <div className="forgetPass">
                             <p>Забыли пароль? <Link to="/loginStaff">Восстановить</Link></p>

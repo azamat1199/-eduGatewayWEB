@@ -111,8 +111,8 @@ const Navbar = () => {
                             to="university"
                             spy={true}
                             smooth={true}
-                            offset={0}
-                            duration={500}
+                            offset={-60}
+                            duration={800}
                             style={{cursor:"pointer"}}
                             >
                                 
@@ -123,8 +123,8 @@ const Navbar = () => {
                             to="howItWork"
                             spy={true}
                             smooth={true}
-                            offset={0}
-                            duration={500}
+                            offset={-60}
+                            duration={800}
                             style={{cursor:"pointer"}}
                             >
                                 

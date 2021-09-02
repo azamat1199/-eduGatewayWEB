@@ -19,8 +19,9 @@ import { schemeCategory10 } from "d3-scale-chromatic";
 
 // import css
 import "../../../style/css/SideOtdel.css"
-import Sidebar from '../../StudentCabinet/pages/sidebar';
+import Sidebar from '../../StudentCabinet/pages/SidebarStudent';
 import SidebarUniverstitet from './SidebarAgentlar';
+import SidebarConsult from './SidebarConsult';
 
 // import icon 
 
@@ -41,7 +42,7 @@ const  SideGlavny = () => {
     
     return ( 
         <>
-        <SidebarUniverstitet/>
+        <SidebarConsult/>
         <div className="asos">
             <div className="Up_navbar">
                 <h4>Главное</h4>
