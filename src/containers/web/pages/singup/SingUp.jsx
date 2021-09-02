@@ -71,7 +71,7 @@ class SingUp extends Component {
 								<img src={check} alt="" />
 							</div>
 						</div>
-						<NavLink className="reg_btn" to="/zayavka">Зарегистрироваться</NavLink>
+						<NavLink className="reg_btn" to="/requisition">Зарегистрироваться</NavLink>
 						<h2>или</h2>
 						<h2>Войдите через</h2>
 						<a className="reg_link" href="#"><img src={google} alt="" /> Google</a>

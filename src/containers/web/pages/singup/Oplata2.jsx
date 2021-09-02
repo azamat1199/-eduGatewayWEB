@@ -70,9 +70,9 @@ class Oplata2 extends Component {
 							<div className="oplata_tip">
 								<p>Выберите тип оплаты</p>
 								<div className="tolov_turlari">
-									<NavLink activeClassName="oplata_active" to="/oplata"><img src={click} alt="" /></NavLink>
-									<NavLink activeClassName="oplata_active" to="/oplata2"><img src={payme} alt="" /></NavLink>
-									<NavLink activeClassName="oplata_active" className="bank_tolov" to="/oplata3"><img src={bank} alt="" /> Банковский перевод</NavLink>
+									<NavLink activeClassName="oplata_active" to="/payment-click"><img src={click} alt="" /></NavLink>
+									<NavLink activeClassName="oplata_active" to="/payment-payme"><img src={payme} alt="" /></NavLink>
+									<NavLink activeClassName="oplata_active" className="bank_tolov" to="/payment-transaction"><img src={bank} alt="" /> Банковский перевод</NavLink>
 								</div>
 								<div className="oplata_switch">
 									<div className="oplata_card">
@@ -100,7 +100,7 @@ class Oplata2 extends Component {
 						</div>
 						<div className="oplata_btn">
 							<button onClick={this.handleopen1}><img src={lock} alt="" /> Оплатить $1,350</button>
-							<Link to="/register"><img src={arrowleft} alt="" />Вернуться</Link>
+							<Link to="/registration"><img src={arrowleft} alt="" />Вернуться</Link>
 						</div>
 					</div>
 					<Modal

@@ -65,8 +65,8 @@ class Profayl2 extends Component {
 							<input type="text" />
 						</div>
 						<div className="btn_div">
-							<NavLink to="/fayli" className="save_btn">Сохранить</NavLink>
-							<NavLink to="/profayl3" className="next_btn">Следующее <img src={arrowright} alt="" /></NavLink>
+							<NavLink to="/files" className="save_btn">Сохранить</NavLink>
+							<NavLink to="/profile3" className="next_btn">Следующее <img src={arrowright} alt="" /></NavLink>
 						</div>
 					</div>
 				</div>

@@ -39,42 +39,7 @@ class ConsultantBackoffice extends Component {
 							  </div>
 							  </div>
 					  </Route>
-							  {/* <Switch>
-								  <Route path="/home/glavny">
-									  <SideGlavny/>
-								  </Route>
-								  <Route path="/home/strana">
-									  <SideStrana/>
-								  </Route>
-								  <Route path="/home/universitet">
-									  <SideUniverstitet/>
-								  </Route>
-								  <Route path="/home/fakultet">
-									  <Fakultet/>
-								  </Route>
-								  <Route path="/home/filial">
-									  <SidebarFilial/>
-								  </Route>
-								  <Route pathhhhhhoiuhoiiiiiiuhoiu="/home/talabalar">
-									  <Talabalar/>
-								  </Route>
-								  <Route path="/home/bugalter">
-									  <Analitika/>
-								  </Route>
-								  <Route path="/home/platej">
-									  <Plateji/>
-								  </Route>
-								  <Route path="/home/dagavor">
-									  <Dagavori/>
-								  </Route>
-								  <Route path="/home/agent">
-									  <SidebarAgentlar />
-								  </Route>
-								  <Route path="/home/analitika">
-									  <SideOtdel />
-								  </Route>
-							  </Switch> */}
-</div>
+				</div>
 			</React.Fragment>
 		  );
 	}

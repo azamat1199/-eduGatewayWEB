@@ -79,9 +79,9 @@ class Oplata3 extends Component {
 							<div className="oplata_tip">
 								<p>Выберите тип оплаты</p>
 								<div className="tolov_turlari">
-									<NavLink activeClassName="oplata_active" to="/oplata"><img src={click} alt="" /></NavLink>
-									<NavLink activeClassName="oplata_active" to="/oplata2"><img src={payme} alt="" /></NavLink>
-									<NavLink activeClassName="oplata_active" className="bank_tolov" to="/oplata3"><img src={bank} alt="" /> Банковский перевод</NavLink>
+									<NavLink activeClassName="oplata_active" to="/payment-click"><img src={click} alt="" /></NavLink>
+									<NavLink activeClassName="oplata_active" to="/payment-payme"><img src={payme} alt="" /></NavLink>
+									<NavLink activeClassName="oplata_active" className="bank_tolov" to="/payment-transaction"><img src={bank} alt="" /> Банковский перевод</NavLink>
 								</div>
 								<div className="oplata_switch">
 									<div className="bank_card">

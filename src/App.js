@@ -46,12 +46,9 @@ function App() {
               {/* <Route path="/kabinetstudent" component={StudentCabinet} /> */}
              {/* <Route path="/login" component={ConsultantBackoffice} /> */}
              {/* <Route path="/univerBackofficePage" component={UniversitetBackoffice} /> */}
-             <Route  path="/university">
-                               <SinglePage/>
-                           </Route>
+            
                           
-                           <Route  path="/partnyors" component={Partnyors}>
-                           </Route>
+                          
                           
                            <Route  path="/cabinet">
                                555555555555555

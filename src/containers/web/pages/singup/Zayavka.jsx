@@ -129,7 +129,7 @@ const Zayavka = () =>  {
 						/>
 					</div>
 					<p className="zayavka_alert">*Пожалуйста укажите ваш реальный бюджет</p>
-					<NavLink className="reg_btn" to="/profayl">Следующее <img src={arrowright} alt="" /></NavLink>
+					<NavLink className="reg_btn" to="/profile">Следующее <img src={arrowright} alt="" /></NavLink>
 				</div>
 			</div>
 		</React.Fragment>

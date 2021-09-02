@@ -1,15 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {BrowserRouter as Router, Switch, Route, NavLink} from "react-router-dom";
-
+import {  NavLink} from "react-router-dom";
+import {Link,animateScroll as scroll} from 'react-scroll'
 // import css
 import "../../../style/css/Navbar.css"
-
-// import components
-import MainEduGate from "./MainEduGate"
-import Registratsiya from './registratsiya';
-import Partnyors from './Partnyors';
-import SinglePage from "./SinglePage"
-
 // import Icon
 import search_icon from "../../../assets/icon/searchIcon.svg" 
 
@@ -111,69 +104,50 @@ const Navbar = () => {
                         {/* navRight */}
                         <div className="navRight">
                             <NavLink onClick={handleout}
-                                exact
-                                to="/">Главная страница</NavLink>
+                                to="/">Главная страница
+                            </NavLink>
+                            <Link
+                            activeClass={handleout}
+                            to="university"
+                            spy={true}
+                            smooth={true}
+                            offset={0}
+                            duration={500}
+                            style={{cursor:"pointer"}}
+                            >
+                                
+                            Университеты
+                            </Link>
+                            <Link
+                            activeClass={handleout}
+                            to="howItWork"
+                            spy={true}
+                            smooth={true}
+                            offset={0}
+                            duration={500}
+                            style={{cursor:"pointer"}}
+                            >
+                                
+                                Как это работает
+                            </Link>
                             <NavLink onClick={handleout}
-                                to="/#university">Университеты</NavLink>
-                            <NavLink onClick={handleout}
-                                to="/howItWork">Как это работает</NavLink>
-                            <NavLink onClick={handleout}
-                                to="/partnyors">Стать партнером</NavLink>
+                                to="/partners">Стать партнером
+                            </NavLink>
                             <NavLink onClick={handlein}
-                                to="/register">Регистрация</NavLink>
-                            <a href="http://studentasia.backoffice.uz/">Личный кабинет</a>
+                                to="/registration">Регистрация
+                            </NavLink>
+                            <NavLink
+                            to='/my-account'>
+                                Личный кабинет
+
+                            </NavLink>
                             <img src={search_icon}
                                 alt=""/>
                         </div>
                         {/* end navRight */} </div>
                 </div>
-                {/* end NavbarFix */}
-
-                {/* main */}
-                {/* <main onClick={handleout}>
-                     <Switch>
-                           
-                           <Route  path="/university">
-                               <SinglePage/>
-                           </Route>
-                           <Route  path="/howItWork">
-                               3333333333333333
-                           </Route>
-                           <Route  path="/partnyors">
-                               <Partnyors/>
-                           </Route>
-                           <Route  path="/register">
-                               <Registratsiya/>
-                           </Route>
-                           <Route  path="/cabinet">
-                               555555555555555
-                           </Route>
-                     </Switch>
-                </main> */}
-                {/* <main onClick={handleout}>
-                    <Switch>
-                        <Route exact path="/">
-                            <MainEduGate/>
-                        </Route>
-                        <Route path="/university">
-                            <SinglePage/>
-                        </Route>
-                        <Route path="/howItWork">
-                            3333333333333333
-                        </Route>
-                        <Route path="/partnyors">
-                            <Partnyors/>
-                        </Route>
-                        <Route path="/register">
-                            <Registratsiya/>
-                        </Route>
-                        <Route path="/cabinet">
-                            555555555555555
-                        </Route>
-                    </Switch>
-                </main> */}
-                {/* end main */} </div>
-                </>
+              </div>
+       </>
     );
 }
 

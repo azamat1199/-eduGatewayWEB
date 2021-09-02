@@ -65,7 +65,7 @@ class Profayl3 extends Component {
 							<input type="text" />
 						</div>
 						<div className="btn_div">
-							<NavLink to="/fayli" className="reg_btn">Завершить</NavLink>
+							<NavLink to="/files" className="reg_btn">Завершить</NavLink>
 						</div>
 						
 					</div>

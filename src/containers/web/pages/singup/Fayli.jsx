@@ -90,7 +90,7 @@ class Fayli extends Component {
 							</div>
 						</div>
 						<div className="btn_div">
-							<NavLink to="/oplata" className="reg_btn">Завершить</NavLink>
+							<NavLink to="/payment-click" className="reg_btn">Завершить</NavLink>
 						</div>
 					</div>
 				</div>

@@ -21,6 +21,7 @@ import icon6 from   "../../../assets/icon/icon6.svg"
 import SwiperCore, {
     Pagination,Navigation
   } from 'swiper/core';
+import Navbar from './Navbar';
   
   // install Swiper modules
   SwiperCore.use([Pagination,Navigation]);
@@ -46,6 +47,8 @@ const MainEduGate = () => {
         setSearch(true)
     }
     return ( 
+        <>
+        <Navbar/>
         <div className="mainEduGate">
             <div className="header">
                 <h2>Выберите свой университет вместе с Education Gateway</h2>
@@ -234,7 +237,7 @@ const MainEduGate = () => {
             {/* end top fakultet */}
 
             {/* workBlock */}
-            <div className="workBlock">
+            <div id="howItWork" className="workBlock">
                 <h4>Как мы работаем</h4>
                 <div className="weareWork">
                     {/* card */}
@@ -359,6 +362,7 @@ const MainEduGate = () => {
             <Footer />
             {/* footer */}
         </div>
+     </>
      );
 }
  

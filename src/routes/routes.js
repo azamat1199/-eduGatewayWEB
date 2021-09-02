@@ -4,7 +4,13 @@ import LoginStaff from "../containers/consultantBackoffice/pages/LoginStaff"
 import SidebarUniverstitet from "../containers/consultantBackoffice/pages/SidebarAgentlar"
 import SideGlavny from "../containers/consultantBackoffice/pages/SideGlavny"
 import SideStrana from "../containers/consultantBackoffice/pages/SideStrana"
+import Dogovor from "../containers/StudentCabinet/pages/dogovor"
+import Kabinet from "../containers/StudentCabinet/pages/kabinet"
+import Personal from "../containers/StudentCabinet/pages/personal"
+import Status from "../containers/StudentCabinet/pages/status"
+import Universitet from "../containers/StudentCabinet/pages/universitet"
 import StudentCabinet from "../containers/StudentCabinet/studentCabinet"
+import Partnyors from "../containers/web/pages/Partnyors"
 import SinglePage from "../containers/web/pages/SinglePage"
 import Fayli from "../containers/web/pages/singup/Fayli"
 import Oplata from "../containers/web/pages/singup/Oplata"
@@ -28,13 +34,19 @@ const routes = {
         },
         {
             key:'university',
+            path:'/partners',
+            component:Partnyors,
+            exact:true,
+        },
+        {
+            key:'university',
             path:'/university',
             component:SinglePage,
             exact:true,
         },
         {
             key:'clientAdd',
-            path:'/register',
+            path:'/registration',
             component:SingUp,
             exact:true,
         },
@@ -52,55 +64,49 @@ const routes = {
         },
         {
             key:'balance',
-            path:'/zayavka',
+            path:'/requisition',
             component:Zayavka,
             exact:true,
         },
         {
             key:'balance',
-            path:'/profayl',
+            path:'/profile',
             component:Profayl,
             exact:true,
         },
         {
             key:'balance',
-            path:'/profayl2',
+            path:'/profile2',
             component:Profayl2,
             exact:true,
         },
         {
             key:'balance',
-            path:'/profayl3',
+            path:'/profile3',
             component:Profayl3,
             exact:true,
         },
         {
             key:'file',
-            path:'/fayli',
+            path:'/files',
             component:Fayli,
             exact:true,
         },
         {
             key:'file',
-            path:'/fayli',
-            component:Fayli,
-            exact:true,
-        },
-        {
-            key:'file',
-            path:'/oplata',
+            path:'/payment-click',
             component:Oplata,
             exact:true,
         },
         {
             key:'file',
-            path:'/oplata2',
+            path:'/payment-payme',
             component:Oplata2,
             exact:true,
         },
         {
             key:'file',
-            path:'/oplata3',
+            path:'/payment-transaction',
             component:Oplata3,
             exact:true,
         },
@@ -134,12 +140,13 @@ const routes = {
             component:Fakultet,
             exact:true,
         },
-        // {
-        //     key:'file',
-        //     path:"/home/filial",
-        //     component:Side,
-        //     exact:true,
-        // },
+        {
+            key:'file',
+            path:"/my-account",
+            component:StudentCabinet,
+            exact:true,
+        },
+       
       
       
     ],
