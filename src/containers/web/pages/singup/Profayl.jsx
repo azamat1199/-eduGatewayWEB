@@ -41,7 +41,7 @@ class Profayl extends Component {
 						<h1>Профайл</h1>
 						<div className="pagination">
 							<div className="page page_a"></div>
-							<NavLink to="/profayl2" className="page"></NavLink>
+							<a className="page"></a>
 							<div className="page"></div>
 						</div>
 						<div className="form_div">
@@ -58,7 +58,7 @@ class Profayl extends Component {
 							id="profayl_input"
 							options={data}
 							getOptionLabel={(option) => option.shahar}
-							style={{ width: 600 }}
+							style={{ width: 575 }}
 							renderInput={(params) => <TextField {...params} label="" variant="outlined"/>}
 							/>
 						</div>

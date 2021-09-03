@@ -1,10 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 .kabinet {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  -ms-grid-columns: 1fr 4fr;
+      grid-template-columns: 1fr 4fr;
   max-width: 1920px;
   margin: 0 auto;
 }
+
 .kabinet #none768 {
   outline: none;
   border: none;
@@ -12,26 +15,36 @@
   padding: 0;
   margin: 0;
 }
+
 .kabinet #Xnone768 {
   display: none;
 }
+
 .kabinet .sidebarFix {
-  box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.1);
   position: fixed;
   height: 100vh;
   width: 20%;
   top: 0;
   background: #0D5372;
 }
+
 .kabinet .sidebarFix .sidebar .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 30px 0 60px 30px;
 }
+
 .kabinet .sidebarFix .sidebar .top img {
   width: 35px;
   height: 35px;
 }
+
 .kabinet .sidebarFix .sidebar .top h1 {
   font-family: Raleway;
   font-style: normal;
@@ -48,20 +61,28 @@
   font-weight: 600;
   margin-left: 12px;
 }
+
 .kabinet .sidebarFix .sidebar .bottom a {
+  -webkit-transition: 0.4s;
   transition: 0.4s;
   position: relative;
   padding-left: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding-top: 12px;
   padding-bottom: 12px;
 }
+
 .kabinet .sidebarFix .sidebar .bottom a img {
   width: 30px;
   height: 30px;
   margin-right: 20px;
 }
+
 .kabinet .sidebarFix .sidebar .bottom a h5 {
   font-family: Raleway;
   font-style: normal;
@@ -75,14 +96,19 @@
   margin: 0;
   padding: 0;
 }
+
 .kabinet .sidebarFix .sidebar .bottom a:hover {
+  -webkit-transition: 0.3s;
   transition: 0.3s;
   background: rgba(250, 253, 255, 0.05);
 }
+
 .kabinet .sidebarFix .sidebar .bottom .active {
+  -webkit-transition: 0.4s;
   transition: 0.4s;
   background: rgba(250, 253, 255, 0.05);
 }
+
 .kabinet .sidebarFix .sidebar .bottom .active::after {
   content: "";
   position: absolute;
@@ -92,6 +118,7 @@
   top: 0;
   left: 0;
 }
+
 .kabinet .sidebarFix .sidebar .bottom .logoutbtn {
   margin-top: 50px;
   cursor: pointer;
@@ -99,12 +126,14 @@
 
 @media (max-width: 1024px) {
   .kabinet {
-    grid-template-columns: 2fr 5fr;
+    -ms-grid-columns: 2fr 5fr;
+        grid-template-columns: 2fr 5fr;
   }
   .kabinet .sidebarFix {
     width: 28%;
   }
 }
+
 @media (max-width: 768px) {
   #none768 {
     position: absolute;
@@ -121,7 +150,6 @@
   #none768 div:nth-child(2) {
     margin: 8px 0;
   }
-
   .kabinet #Xnone768 {
     display: block;
     position: absolute;
@@ -129,25 +157,27 @@
     top: 5px;
     width: 30px;
   }
-
   .kabinet {
-    grid-template-columns: 1fr;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
   }
   .kabinet .sideAct {
     left: 0;
+    -webkit-transition: 0.7s;
     transition: 0.7s;
   }
   .kabinet .sidePass {
     left: -100%;
+    -webkit-transition: 0.7s;
     transition: 0.7s;
   }
   .kabinet .sidebarFix {
     width: 240px;
+    -webkit-transition: 0.7s;
     transition: 0.7s;
     z-index: 2;
     overflow-y: scroll;
   }
-
   .kabinet .sidebarFix .sidebar {
     position: relative;
   }
@@ -155,11 +185,9 @@
     padding-bottom: 30px;
     padding-top: 60px;
   }
-
   .kabinet .sidebarFix .sidebar .bottom a h5 {
     font-size: 16px;
   }
-
   .kabinet .sidebarFix .sidebar .bottom a {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -172,10 +200,9 @@
     margin-top: 20px;
   }
 }
+
 @media (min-width: 1980px) {
   .sidebarFix {
     width: 400px !important;
   }
 }
-
-/*# sourceMappingURL=sidebarCabinet.css.map */
