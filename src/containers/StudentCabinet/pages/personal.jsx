@@ -6,9 +6,12 @@ import  "../../../style/css/personal.css"
 // imort icon
 import message_icon from    "../../../assets/icon/message.svg" 
 import call_icon from "../../../assets/icon/call.svg"
+import StudentSidebar from './SidebarStudent';
 
 const Personal = () => {
     return ( 
+        <>
+        <StudentSidebar/>
         <div className="Personal">
             <div className="top">
                 <h1>Персональный менеджер</h1>
@@ -33,6 +36,7 @@ const Personal = () => {
                 <h6>Email адрес:<span>educationgateway@gmail.com</span></h6>
             </div>
         </div>
+        </>
      );
 }
  

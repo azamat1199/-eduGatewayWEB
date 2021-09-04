@@ -28,18 +28,16 @@ class ConsultantBackoffice extends Component {
 	render() { 
 		return ( 
 			<React.Fragment>
-				 <div className="switchs">
-					  <Route path="/home">
+				<Sidebar/>
+				 {/* <div className="switchs">
 						  <div className={this.state.burger ? "switch_asos toggle_burger" :"switch_asos"}>
-							  <Sidebar handleburger={this.handleburger} burger={this.state.burger}/>
 							  <div onClick={this.handleburger} className="burger_menu">
 								  <span></span>
 								  <span></span>
 								  <span></span>
 							  </div>
 							  </div>
-					  </Route>
-</div>
+</div> */}
 			</React.Fragment>
 		  );
 	}

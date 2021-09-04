@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router,Switch,Route,Link,} from "react-router-dom";
 
 import ConsultantBackoffice from './containers/consultantBackoffice/ConsultantBackoffice'
+import StudentSidebar from './containers/StudentCabinet/pages/SidebarStudent';
+import StudentCabinet from './containers/StudentCabinet/studentCabinet';
 import Partnyors from './containers/web/pages/Partnyors';
 import Registratsiya from './containers/web/pages/registratsiya';
 import SinglePage from './containers/web/pages/SinglePage';
@@ -13,52 +15,32 @@ import Zayavka from './containers/web/pages/singup/Zayavka';
 
 import Web from "./containers/web/web"
 import routes from './routes/routes';
-// import StudentCabinet from "./components/StudentCabinet/studentCabinet"
-// import ConsultantBackoffice from './components/consultantBackoffice/consultantBackoffice';
-// import UniversitetBackoffice from './components/univerBackoffice/universitetBackoffice';
-// import Kabinet from './components/StudentCabinet/pages/kabinet';
-// import Web from "./components/web/web"
-// import StudentCabinet from "./components/StudentCabinet/studentCabinet"
-// import ConsultantBackoffice from './components/consultantBackoffice/consultantBackoffice';
-// import UniversitetBackoffice from './components/univerBackoffice/universitetBackoffice';
-// import Kabinet from './components/StudentCabinet/pages/kabinet';
 
-
+import  "./style/css/sidebarCabinet.css" 
 function App() {
   return (
+    <>
           <Switch>
             {routes.public.map(item=>{
               return(
                 <Route {...item}/>
               )
             })}
-            {/* <Route exact  path="/" component={Web} />
-            <Route exact path="/register" component={SingUp}></Route>
-            <Route path="/login" component={ConsultantBackoffice} />
-							<Route  path="/zayavka"><Zayavka/></Route>
-							<Route  path="/profayl"><Profayl/></Route>
-							<Route  path="/profayl2"><Profayl2/></Route> */}
-							{/* <Route  path="/profayl3"><Profayl3/></Route> */}
-							{/* <Route  path="/fayli"><Fayli/></Route> */}
-							{/* <Route  path="/oplata"><Oplata/></Route> */}
-							{/* <Route  path="/oplata2"><Oplata2/></Route> */}
-							{/* <Route  path="/oplata3"><Oplata3/></Route>  */}
-              {/* <Route path="/kabinetstudent" component={StudentCabinet} /> */}
-             {/* <Route path="/login" component={ConsultantBackoffice} /> */}
-             {/* <Route path="/univerBackofficePage" component={UniversitetBackoffice} /> */}
-            
-                          
-                          
-                          
-                           <Route  path="/cabinet">
-                               555555555555555
-                           </Route>
-            {/* <Route exact path="/" component={Web} />
-            <Route path="/kabinetstudent" component={StudentCabinet} />
-            <Route path="/login" component={ConsultantBackoffice} />
-            <Route path="/univerBackofficePage" component={UniversitetBackoffice} /> */}
-            
-        </Switch>
+          </Switch>
+
+            <div className="kabinet">
+              <Switch>
+                {
+                 routes.student.map(item=>{
+                   return(
+                     <Route {...item}/>
+                   )
+                 })
+                }
+              </Switch>
+            </div>
+
+        </>
   );
 }
 

@@ -1,28 +1,38 @@
 import React, { Component } from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, Route, Switch } from "react-router-dom";
+import routes from '../../../routes/routes';
 
 
 // import css
 import "../../../style/css/sidebar.css"
 class Sidebar extends Component {
 	state = { 
-		menu:false
+		menu:false,
+		burger:false
 	 }
 	 handlemenu = () =>{
 		 this.setState({
 			 menu: !this.state.menu
 		 })
 	 }
+	 handleburger = () =>{
+		this.setState({
+			burger : !this.state.burger
+		})
+	}
 	 handleclose = () =>{
 		this.setState({
 			menu: false
 		})
-		this.props.handleburger()
+		this.handleburger()
 	 }
+	 
 	render() { 
 		return ( 
-			<>
-			<div className="dashboardBlock">
+			<>	
+			<div className="switchs">
+			  <div className={this.state.burger ? "switch_asos toggle_burger" :"switch_asos"}>
+		  	    <div className="dashboardBlock">
 				 <div className="sidebarFixed">
 					  <div className="sidebar">
 							<div className="logoSidebar">
@@ -55,7 +65,7 @@ class Sidebar extends Component {
 								 <h6>Education Gateway</h6>
 							</div>
  
-							<NavLink onClick={this.handleclose} to="/home/glavny">Главное</NavLink>
+							<NavLink onClick={this.handleclose} to="/home/main">Главное</NavLink>
 							<NavLink onClick={this.handleclose} to="/home/strana">Cтраны</NavLink>
 							<NavLink onClick={this.handleclose} to="/home/universitet">Университеты</NavLink>
 							<NavLink onClick={this.handleclose} to="/home/fakultet">Факультеты</NavLink>
@@ -78,7 +88,22 @@ class Sidebar extends Component {
 					  </div>
 				 </div>
 				 {/* end => sidebar */}
-				 <div className="toggle_close" onClick={this.props.handleburger}></div>
+				
+				 <div className="toggle_close" onClick={this.handleburger}></div>
+			</div>
+		      	<div onClick={this.handleburger} className="burger_menu">
+							 <span></span>
+							 <span></span>
+							 <span></span>
+				</div>
+				<Switch>
+				{routes.consult.map(item=>{
+					return(
+						<Route {...item}/>
+					)
+				})}
+				</Switch>
+			</div>
 			</div>
 			</>
 	  );

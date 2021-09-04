@@ -9,12 +9,14 @@ import Fayli from './singup/Fayli';
 import Oplata from './singup/Oplata';
 import Oplata2 from './singup/Oplata2';
 import Oplata3 from './singup/Oplata3';
+import Navbar from './Navbar';
 
 class Registratsiya extends Component {
 	state = {  }
 	render() { 
 		return ( 
 			<React.Fragment>
+				<Navbar/>
 					<div className="switchs">
 						<h2>SAlom registraion</h2>
 						{/* <Switch> */}

@@ -111,12 +111,53 @@ const routes = {
             component:Oplata3,
             exact:true,
         },
-        // {
-        //     key:'file',
-        //     path:'/kabinetstudent',
-        //     component:StudentCabinet,
-        //     exact:true,
-        // },
+      
+    ],
+    student:[
+        {
+            key:'file',
+            path:"/my-account",
+            component:Kabinet,
+            exact:true,
+        },
+        {
+            key:'file',
+            path:"/universities",
+            component:Universitet,
+            exact:true,
+        },
+        {
+            key:'file',
+            path:"/personal",
+            component:Personal,
+            exact:true,
+        },
+        {
+            key:'file',
+            path:"/agreement",
+            component:Dogovor,
+            exact:true,
+        },
+        {
+            key:'file',
+            path:"/status",
+            component:Status,
+            exact:true,
+        },
+        {
+            key:'file',
+            path:"/bonus",
+            component:()=><h1>Bonus page</h1>,
+            exact:true,
+        },
+        {
+            key:'file',
+            path:"/settings",
+            component:()=><h1>settings page</h1>,
+            exact:true,
+        },
+    ],
+       consult:[
         {
             key:'file',
             path:'/home/main',
@@ -141,52 +182,7 @@ const routes = {
             component:Fakultet,
             exact:true,
         },
-        {
-            key:'file',
-            path:"/my-account",
-            component:Kabinet,
-            exact:true,
-        },
-        // {
-        //     key:'file',
-        //     path:"/universities",
-        //     component:Universitet,
-        //     exact:true,
-        // },
-        // {
-        //     key:'file',
-        //     path:"/personal",
-        //     component:Personal,
-        //     exact:true,
-        // },
-        // {
-        //     key:'file',
-        //     path:"/agreement",
-        //     component:Dogovor,
-        //     exact:true,
-        // },
-        // {
-        //     key:'file',
-        //     path:"/status",
-        //     component:Status,
-        //     exact:true,
-        // },
-        // {
-        //     key:'file',
-        //     path:"/bonus",
-        //     component:()=><h1>Bonus page</h1>,
-        //     exact:true,
-        // },
-        // {
-        //     key:'file',
-        //     path:"/settings",
-        //     component:()=><h1>Settings page</h1>,
-        //     exact:true,
-        // },
-       
-      
-      
-    ],
+       ],
     authonticated:[
        
     ]

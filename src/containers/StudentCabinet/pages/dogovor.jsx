@@ -6,10 +6,13 @@ import "../../../style/css/dogovor.css"
 
 import download_icon from "../../../assets/icon/skachat.svg"
 import print_icon from "../../../assets/icon/pechat.svg"
+import StudentSidebar from './SidebarStudent';
 
 
 const Dogovor = () => {
     return (
+        <>
+        <StudentSidebar/>
         <div className="dogovor">
             <div className="top">
                 <h1>Ваши университеты</h1>
@@ -76,6 +79,7 @@ const Dogovor = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 }
 

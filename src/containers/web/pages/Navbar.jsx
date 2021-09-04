@@ -8,7 +8,8 @@ import search_icon from "../../../assets/icon/searchIcon.svg"
 
 
 const Navbar = () => {
-
+    const currentPath = window.location.pathname
+    
     const [burger, setBurger] = useState(false);
 
     const [scrollTop, setScrollTop] = useState(0);
@@ -32,7 +33,24 @@ const Navbar = () => {
         setnavActive(true)
         setBurger(false)
     }
-
+ let button;
+  if(currentPath === '/'){
+     button =   <Link
+     activeClass={handleout}
+     to="main"
+     spy={true}
+     smooth={true}
+     offset={0}
+     duration={800}
+     style={{cursor:"pointer"}}
+     >
+           Главная страница
+                            </Link>
+ }else{
+   button = <NavLink onClick={handleout}
+    to="/">Главная страница
+</NavLink>
+ }
 
     return (
 <>
@@ -100,9 +118,8 @@ const Navbar = () => {
 
                         {/* navRight */}
                         <div className="navRight">
-                            <NavLink onClick={handleout}
-                                to="/">Главная страница
-                            </NavLink>
+                          
+                            {button}
                             <Link
                             activeClass={handleout}
                             to="university"

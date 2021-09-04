@@ -1,9 +1,12 @@
 import React from 'react';
-
+import StudentSidebar from './SidebarStudent'
 import "../../../style/css/status.css"  
-
+import StudentCabinet from '../studentCabinet';
 const Status = () => {
     return ( 
+        <>
+        <StudentSidebar/>
+        <div className='main'>
         <div className="status">
             <div className="top">
                 <h1>Ваши университеты</h1>
@@ -34,6 +37,9 @@ const Status = () => {
 
             </div>
         </div>
+
+        </div>
+        </>
      );
 }
  
