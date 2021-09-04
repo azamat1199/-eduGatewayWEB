@@ -40,7 +40,7 @@ const MainEduGate = () => {
     
     const [dataFilter, setdataFilter] = useState([])
 
-    
+
     const fun1 = () => {
         let letFilter = cardData.filter( (filter) => (filter.country === change1) && (filter.stepen === change2) && (filter.facultet === change3) );
         setdataFilter(letFilter);
@@ -50,7 +50,7 @@ const MainEduGate = () => {
         <>
         <Navbar/>
         <div className="mainEduGate">
-            <div className="header">
+            <div className="header" id="header">
                 <h2>Выберите свой университет вместе с Education Gateway</h2>
                 <h3>Education Gateway помогает абитуриентам найти свое направление в выборе профессии и поступить в престижные ВУЗы на территории СНГ</h3>
                 <div className="listLvl">

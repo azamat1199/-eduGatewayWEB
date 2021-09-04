@@ -24,7 +24,7 @@ const Navbar = () => {
     }, [scrollTop]);
 
     const handleout = () => {
-        setnavActive(true)
+        setnavActive(false)
         setBurger(false)
     }
 
