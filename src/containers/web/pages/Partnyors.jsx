@@ -12,7 +12,9 @@ class Partnyors extends Component {
 	render() { 
 		return ( 
 			<React.Fragment>
-				<Navbar/>
+				<div className="navPart">
+					<Navbar />
+				</div>
 				<div className="partnyor">
 					<h1>Стать партнёром</h1>
 					<div className="partnyor_main ">

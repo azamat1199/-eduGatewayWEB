@@ -1,7 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 .asos {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 30px 10px 0 30px;
   overflow: hidden;
 }
@@ -19,27 +24,42 @@
   border: none;
   cursor: pointer;
 }
+
 .SidebarUniverstitet .settSearch {
   margin-top: 23px;
   height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
+
 .SidebarUniverstitet .settSearch > button {
   outline: none;
   border: none;
 }
+
 .SidebarUniverstitet .settSearch .searchUniv {
   background: #FFFFFF;
-  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
   border-radius: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 100%;
   width: 100%;
   padding: 0 20px;
 }
+
 .SidebarUniverstitet .settSearch .searchUniv input {
   font-family: Raleway;
   font-style: normal;
@@ -52,42 +72,57 @@
   border: none;
   width: 100%;
 }
+
 .SidebarUniverstitet .settSearch .searchUniv img {
   padding: 15px;
   margin-right: 10px;
   cursor: pointer;
 }
+
 .SidebarUniverstitet .settSearch .settingsUniver {
   height: 100%;
   width: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   background: #FFFFFF;
-  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   margin-left: 20px;
   cursor: pointer;
 }
+
 .SidebarUniverstitet .univerList {
   margin-top: 24px;
-  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
   border-radius: 14px;
   background: #fff;
   padding: 22px 0px;
 }
+
 .SidebarUniverstitet .univerList .infoTd {
   text-align: center;
 }
+
 .SidebarUniverstitet .univerList .infoTd img {
   width: 28px;
   height: 28px;
 }
+
 .SidebarUniverstitet .univerList table {
   border-spacing: 0;
   position: relative;
   width: 100%;
 }
+
 .SidebarUniverstitet .univerList table thead::before {
   content: "";
   background: #00587F;
@@ -96,10 +131,12 @@
   height: 1.5px;
   top: 37px;
 }
+
 .SidebarUniverstitet .univerList table tr {
   padding-bottom: 16px;
   border-bottom: 1.5px solid #00587F;
 }
+
 .SidebarUniverstitet .univerList table tr th {
   text-align: inherit;
   font-family: Raleway;
@@ -109,6 +146,7 @@
   letter-spacing: 0.02em;
   color: #00121A;
 }
+
 .SidebarUniverstitet .univerList table tr td {
   padding-top: 27px;
   padding-bottom: 27px;
@@ -119,26 +157,33 @@
   letter-spacing: 0.02em;
   color: #00121A;
 }
+
 .SidebarUniverstitet .univerList table tr .priDoc {
   color: #219653;
   font-weight: 500;
 }
+
 .SidebarUniverstitet .univerList table tr .priZak {
   color: #E96464;
   font-weight: 500;
 }
+
 .SidebarUniverstitet .univerList table tr .firstTD {
   margin-left: 10px;
 }
+
 .SidebarUniverstitet .univerList table .firstTD {
   padding-left: 32px;
 }
+
 .SidebarUniverstitet .univerList table tbody tr:nth-child(even) {
   background: #F0FAFF;
 }
+
 .SidebarUniverstitet .univerList table thead th {
   padding-bottom: 12px;
 }
+
 .SidebarUniverstitet .FilterFix {
   position: fixed;
   right: 0;
@@ -146,18 +191,23 @@
   z-index: 102;
   height: 100vh;
   width: 100%;
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  -ms-grid-columns: 3fr 1fr;
+      grid-template-columns: 3fr 1fr;
 }
+
 .SidebarUniverstitet .FilterFix .fixLeft {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.35);
 }
+
 .SidebarUniverstitet .FilterFix .FilterUniver {
   background: #fff;
   padding: 30px 46px 0 32px;
 }
+
 .SidebarUniverstitet .FilterFix .FilterUniver > h4 {
   text-align: center;
   font-family: Raleway;
@@ -167,6 +217,7 @@
   color: #000000;
   margin: 0 0 4px 0;
 }
+
 .SidebarUniverstitet .FilterFix .FilterUniver > p {
   margin: 24px 0 10px 0;
   font-family: Raleway;
@@ -176,14 +227,23 @@
   letter-spacing: 0.02em;
   color: #000000;
 }
+
 .SidebarUniverstitet .FilterFix .FilterUniver .datapickBlock {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
+
 .SidebarUniverstitet .FilterFix .FilterUniver .datapickBlock > div {
   position: relative;
 }
+
 .SidebarUniverstitet .FilterFix .FilterUniver .datapickBlock > div::before {
   content: "";
   width: 24px;
@@ -194,9 +254,11 @@
   left: 10px;
   top: 9px;
 }
+
 .SidebarUniverstitet .FilterFix .FilterUniver .datapickBlock img {
   margin-right: 10px;
 }
+
 .SidebarUniverstitet .FilterFix .FilterUniver .datapickBlock input {
   font-family: Raleway;
   font-style: normal;
@@ -213,11 +275,13 @@
   text-align: right;
   position: relative;
 }
+
 .SidebarUniverstitet .FilterFix .FilterUniver .selectCountry {
   padding: 0 16px;
   border: 1px solid #00587F;
   border-radius: 8px;
 }
+
 .SidebarUniverstitet .FilterFix .FilterUniver .selectCountry select {
   padding: 12px 0;
   width: 100%;
@@ -230,6 +294,7 @@
   border: none;
   outline: none;
 }
+
 .SidebarUniverstitet .FilterFix .FilterUniver > button {
   padding: 18px 0;
   width: 100%;
@@ -252,10 +317,15 @@
   height: 100%;
   border-radius: 16px;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 30px 0 0 0;
 }
+
 .addNewUniverModalUniver > img {
   position: absolute;
   top: 18px;
@@ -263,12 +333,21 @@
   cursor: pointer;
   width: 32px;
 }
+
 .addNewUniverModalUniver .modalContainer {
   width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .addNewUniverModalUniver .modalContainer h5 {
   font-family: Raleway;
   font-style: normal;
@@ -278,12 +357,21 @@
   color: #00121A;
   margin: 0 0 30px 0;
 }
+
 .addNewUniverModalUniver .modalContainer > div {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
+
 .addNewUniverModalUniver .modalContainer > div label {
   font-family: Raleway;
   font-style: normal;
@@ -292,11 +380,13 @@
   letter-spacing: 0.02em;
   color: #000000;
 }
+
 .addNewUniverModalUniver .modalContainer > div input, .addNewUniverModalUniver .modalContainer > div select, .addNewUniverModalUniver .modalContainer > div textarea {
   margin-top: 10px;
   margin-bottom: 20px;
   width: 100%;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   border: 1.5px solid #47606B;
   border-radius: 10px;
   outline: none;
@@ -308,16 +398,20 @@
   letter-spacing: 0.02em;
   color: #5C7C8A;
 }
+
 .addNewUniverModalUniver .modalContainer .modalDataPick {
   position: relative;
 }
+
 .addNewUniverModalUniver .modalContainer .modalDataPick > div {
   width: 100%;
 }
+
 .addNewUniverModalUniver .modalContainer .modalDataPick input {
   padding-left: 44px;
   width: 100%;
 }
+
 .addNewUniverModalUniver .modalContainer .modalDataPick::before {
   content: "";
   width: 24px;
@@ -328,17 +422,25 @@
   left: 14px;
   bottom: 34px;
 }
+
 .addNewUniverModalUniver .modalContainer .importFile {
   background: #EAF5FA;
   border: 1px dashed #009FE5;
   border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 16px 0;
   width: 100%;
   margin: 10px 0 0 0;
 }
+
 .addNewUniverModalUniver .modalContainer .importFile p {
   margin: 0 0 0 16px;
   font-family: Raleway;
@@ -348,14 +450,17 @@
   letter-spacing: 0.02em;
   color: #5C7C8A;
 }
+
 .addNewUniverModalUniver .modalContainer .importFile p label {
   text-decoration: underline;
   margin-left: 5px;
   cursor: pointer;
 }
+
 .addNewUniverModalUniver .modalContainer .importFile p #chFile {
   display: none;
 }
+
 .addNewUniverModalUniver .modalContainer > button {
   width: 100%;
   margin-top: 40px;
@@ -372,14 +477,21 @@
   border: none;
   cursor: pointer;
 }
+
 .addNewUniverModalUniver .modalContainer .back_btn {
   background: none;
   outline: none;
   border: none;
   color: #00587F;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-top: 20px;
   padding: 0;
 }
@@ -431,7 +543,8 @@
     padding-bottom: 12px;
   }
   .SidebarUniverstitet .FilterFix {
-    grid-template-columns: 7fr 3fr;
+    -ms-grid-columns: 7fr 3fr;
+        grid-template-columns: 7fr 3fr;
   }
   .SidebarUniverstitet .FilterFix .FilterUniver {
     padding: 15px 15px 0 15px;
@@ -447,7 +560,7 @@
   }
   .SidebarUniverstitet .FilterFix .FilterUniver .datapickBlock input {
     font-size: 14px;
-    padding: 10px 10px 10px 18px;
+    padding: 10px 10px  10px 18px;
   }
   .SidebarUniverstitet .FilterFix .FilterUniver .selectCountry {
     padding: 0 14px;
@@ -459,7 +572,6 @@
   .SidebarUniverstitet .FilterFix .FilterUniver > button {
     padding: 10px 0;
   }
-
   .addNewUniverModalUniver {
     width: 90%;
   }
@@ -473,9 +585,16 @@
   }
   .addNewUniverModalUniver .modalContainer > div {
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
   .addNewUniverModalUniver .modalContainer > div input, .addNewUniverModalUniver .modalContainer > div select, .addNewUniverModalUniver .modalContainer > div textarea {
     padding: 10px 23px;
@@ -499,21 +618,19 @@
     padding-bottom: 10px;
     padding-top: 12px;
   }
-
   .addNewUniverModalUniver {
     height: 78%;
     padding-bottom: 30px !important;
   }
-
   .ReactModal__Content {
     margin-left: 320px !important;
   }
-
   .modal_2 {
     height: 100% !important;
     padding-bottom: 125px !important;
   }
 }
+
 .ReactModal__Overlay {
   overflow-y: scroll;
 }
@@ -526,11 +643,9 @@
   .switch_asos {
     padding: 0;
   }
-
   .asos {
     padding: 40px 15px 0 15px;
   }
-
   .univerList {
     overflow-x: scroll;
   }
@@ -538,5 +653,3 @@
     width: 190% !important;
   }
 }
-
-/*# sourceMappingURL=SidebarUniverstitet.css.map */

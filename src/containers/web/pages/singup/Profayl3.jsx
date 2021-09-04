@@ -38,8 +38,8 @@ class Profayl3 extends Component {
 					<div className="main_singup">
 						<h1>Профайл</h1>
 						<div className="pagination">
-							<NavLink to="/profile" className="page page_a"></NavLink>
-							<NavLink to="/profile2" className="page page_a"></NavLink>
+							<a className="page page_a"></a>
+							<a className="page page_a"></a>
 							<div className="page page_a"></div>
 						</div>
 						<div className="form_div">
@@ -52,7 +52,7 @@ class Profayl3 extends Component {
 							id="profayl_input"
 							options={data}
 							getOptionLabel={(option) => option.hobbi}
-							style={{ width: 600 }}
+							style={{ width: 575 }}
 							renderInput={(params) => <TextField {...params} label="" variant="outlined"/>}
 							/>
 						</div>

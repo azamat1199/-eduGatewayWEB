@@ -6,6 +6,7 @@
   padding-top: 170px;
   padding: 170px 40px 140px 40px;
 }
+
 .mainEduGate .header h2 {
   font-family: Raleway;
   font-style: normal;
@@ -20,6 +21,7 @@
   width: 45%;
   margin-bottom: 32px;
 }
+
 .mainEduGate .header h3 {
   font-family: Raleway;
   font-style: normal;
@@ -33,11 +35,15 @@
   width: 700px;
   margin-bottom: 28px;
 }
+
 .mainEduGate .header .listLvl {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
   width: 360px;
 }
+
 .mainEduGate .header .listLvl p {
   font-family: Raleway;
   font-style: normal;
@@ -48,9 +54,14 @@
   text-decoration: none;
   margin: 0;
   list-style: inside;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .mainEduGate .header .listLvl p .circleList {
   margin-right: 13px;
   width: 4px;
@@ -58,12 +69,15 @@
   background: #fff;
   border-radius: 50%;
 }
+
 .mainEduGate .header .listLvl p:nth-child(1) {
   margin-bottom: 16px;
 }
+
 .mainEduGate .header .listLvl p:nth-child(2) {
   margin-bottom: 16px;
 }
+
 .mainEduGate .header .freeConsult {
   font-family: Raleway;
   font-style: normal;
@@ -81,12 +95,20 @@
   border: none;
   cursor: pointer;
 }
+
 .mainEduGate .header .chat {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-top: 73px;
 }
+
 .mainEduGate .header .chat h4 {
   font-family: Raleway;
   font-style: normal;
@@ -98,31 +120,48 @@
   margin: 0;
   font-size: 25px;
 }
+
 .mainEduGate .header .chat img {
   width: 78px;
   height: 78px;
   cursor: pointer;
 }
+
 .mainEduGate .header .filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 30px 36px;
   background: rgba(166, 201, 217, 0.5);
-  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
   border-radius: 17px;
 }
+
 .mainEduGate .header .filter .dropDwn {
   background: #F3F6F7;
   border-radius: 12px;
   width: 335px;
   height: 73px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding-right: 20px;
   padding-left: 20px;
 }
+
 .mainEduGate .header .filter .dropDwn select {
   width: 100%;
   height: 100%;
@@ -135,20 +174,25 @@
   border: none;
   outline: none;
 }
+
 .mainEduGate .header .filter .dropDwn svg {
   z-index: 11;
 }
+
 .mainEduGate .header .filter .dropSearch {
   cursor: pointer;
   padding: 20px 37px;
   background: #F3F6F7;
-  box-shadow: 0px 4px 8px rgba(92, 124, 138, 0.12);
+  -webkit-box-shadow: 0px 4px 8px rgba(92, 124, 138, 0.12);
+          box-shadow: 0px 4px 8px rgba(92, 124, 138, 0.12);
   border-radius: 12px;
   margin-left: 15px;
 }
+
 .mainEduGate .resultBlock {
   padding: 70px 40px 28px 40px;
 }
+
 .mainEduGate .resultBlock h5 {
   font-family: Raleway;
   font-style: normal;
@@ -162,12 +206,21 @@
   color: #000;
   margin-bottom: 32px;
 }
+
 .mainEduGate .resultBlock .result {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
+
 .mainEduGate .resultBlock .result .card {
   padding-bottom: 36px;
   width: 426px;
@@ -176,17 +229,20 @@
   border-radius: 12px;
   margin-bottom: 40px;
 }
+
 .mainEduGate .resultBlock .result .card img {
   width: 426px;
   height: 286px;
   border-radius: 12px 12px 0 0;
 }
+
 .mainEduGate .resultBlock .result .card svg {
   position: absolute;
   top: 17px;
   right: 17px;
   cursor: pointer;
 }
+
 .mainEduGate .resultBlock .result .card h1 {
   font-family: Raleway;
   font-style: normal;
@@ -203,6 +259,7 @@
   margin-bottom: 12px;
   padding: 0 20px;
 }
+
 .mainEduGate .resultBlock .result .card p {
   font-family: Raleway;
   font-style: normal;
@@ -218,6 +275,7 @@
   margin: 0;
   padding: 0 20px;
 }
+
 .mainEduGate .resultBlock .result .card h2 {
   font-family: Raleway;
   font-style: normal;
@@ -232,10 +290,12 @@
   font-weight: 500;
   padding: 0 20px;
 }
+
 .mainEduGate .resultBlock .result .card span {
   color: #00121A;
   font-weight: bold;
 }
+
 .mainEduGate .resultBlock .result .card h3 {
   font-family: Raleway;
   font-style: normal;
@@ -250,6 +310,7 @@
   font-weight: 500;
   padding: 0 20px;
 }
+
 .mainEduGate .resultBlock .result .card h4 {
   font-family: Raleway;
   font-style: normal;
@@ -263,9 +324,11 @@
   font-weight: 500;
   padding: 0 20px;
 }
+
 .mainEduGate .aboutBlock {
   padding: 70px 40px 20px 40px;
 }
+
 .mainEduGate .aboutBlock h5 {
   font-family: Raleway;
   font-style: normal;
@@ -279,29 +342,51 @@
   color: #000;
   margin-bottom: 32px;
 }
+
 .mainEduGate .aboutBlock .aboutUs {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
+
 .mainEduGate .aboutBlock .aboutUs > div > .cardAbout:nth-child(1) {
   margin-bottom: 72px;
 }
+
 .mainEduGate .aboutBlock .aboutUs .cardAbout {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .mainEduGate .aboutBlock .aboutUs .cardAbout .icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 120px;
   height: 120px;
   background: #D1DCE0;
   border-radius: 50%;
   margin-right: 28px;
 }
+
 .mainEduGate .aboutBlock .aboutUs .cardAbout h4 {
   font-family: Raleway;
   font-style: normal;
@@ -316,6 +401,7 @@
   color: #00587F;
   line-height: 42px;
 }
+
 .mainEduGate .aboutBlock .aboutUs .cardAbout h4 span {
   font-family: Raleway;
   font-style: normal;
@@ -328,9 +414,11 @@
   font-size: 28px;
   color: #5C7C8A;
 }
+
 .mainEduGate .topFacultetBlock {
   padding: 0 40px;
 }
+
 .mainEduGate .topFacultetBlock h4 {
   font-family: Raleway;
   font-style: normal;
@@ -344,12 +432,21 @@
   color: #000;
   margin-bottom: 32px;
 }
+
 .mainEduGate .topFacultetBlock .topFacultet {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
+
 .mainEduGate .topFacultetBlock .topFacultet .card {
   position: relative;
   width: 426px;
@@ -357,11 +454,13 @@
   border-radius: 10px;
   margin-bottom: 40px;
 }
+
 .mainEduGate .topFacultetBlock .topFacultet .card img {
   width: 100%;
   height: 100%;
   border-radius: 10px;
 }
+
 .mainEduGate .topFacultetBlock .topFacultet .card p {
   font-family: Raleway;
   font-style: normal;
@@ -371,10 +470,18 @@
   color: #FFFFFF;
   text-decoration: none;
   margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   position: absolute;
   font-weight: bold;
   font-size: 24px;
@@ -383,6 +490,7 @@
   height: 100%;
   z-index: 3;
 }
+
 .mainEduGate .topFacultetBlock .topFacultet .card span {
   content: "";
   top: 0;
@@ -390,13 +498,16 @@
   width: 100%;
   height: 100%;
   position: absolute;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 88, 127, 0.4)), to(rgba(0, 88, 127, 0.4)));
   background: linear-gradient(0deg, rgba(0, 88, 127, 0.4), rgba(0, 88, 127, 0.4));
   border-radius: 12px;
   z-index: 2;
 }
+
 .mainEduGate .workBlock {
   padding: 58px 40px 0 40px;
 }
+
 .mainEduGate .workBlock h4 {
   font-family: Raleway;
   font-style: normal;
@@ -411,32 +522,58 @@
   color: #000;
   margin-bottom: 32px;
 }
+
 .mainEduGate .workBlock .weareWork {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
   row-gap: 250px;
 }
+
 .mainEduGate .workBlock .weareWork .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   position: relative;
 }
+
 .mainEduGate .workBlock .weareWork .card div {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 180px;
   height: 180px;
   background: #D1DCE0;
   border-radius: 10px;
 }
+
 .mainEduGate .workBlock .weareWork .card div img {
   width: 99px;
 }
+
 .mainEduGate .workBlock .weareWork .card p {
   font-family: Raleway;
   font-style: normal;
@@ -452,6 +589,7 @@
   width: 360px;
   text-align: center;
 }
+
 .mainEduGate .workBlock .weareWork .card:nth-child(1)::after {
   content: "";
   position: absolute;
@@ -461,6 +599,7 @@
   right: -90px;
   top: 78px;
 }
+
 .mainEduGate .workBlock .weareWork .card:nth-child(2)::after {
   content: "";
   position: absolute;
@@ -470,6 +609,7 @@
   right: -90px;
   top: 78px;
 }
+
 .mainEduGate .workBlock .weareWork .card:nth-child(3)::after {
   content: "";
   position: absolute;
@@ -479,6 +619,7 @@
   left: 292px;
   bottom: -200px;
 }
+
 .mainEduGate .workBlock .weareWork .card:nth-child(4)::after {
   content: "";
   position: absolute;
@@ -487,8 +628,10 @@
   background-image: url("../../assets/icon/Line1.svg");
   right: -90px;
   top: 78px;
-  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
+
 .mainEduGate .workBlock .weareWork .card:nth-child(5)::after {
   content: "";
   position: absolute;
@@ -497,11 +640,14 @@
   background-image: url("../../assets/icon/Line1.svg");
   right: -90px;
   top: 78px;
-  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
+
 .mainEduGate .swipperBlock {
   padding: 98px 40px;
 }
+
 .mainEduGate .swipperBlock h4 {
   font-family: Raleway;
   font-style: normal;
@@ -516,22 +662,30 @@
   color: #000;
   margin-bottom: 32px;
 }
+
 .mainEduGate .swipperBlock .card {
   padding: 42px 22px 34px 22px;
   background: #E2F1F8;
   border-radius: 10px;
   height: 600px;
 }
+
 .mainEduGate .swipperBlock .card .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .mainEduGate .swipperBlock .card .top img {
   width: 140px;
   height: 140px;
   border-radius: 50%;
   margin-right: 22px;
 }
+
 .mainEduGate .swipperBlock .card .top h1 {
   font-family: Raleway;
   font-style: normal;
@@ -545,6 +699,7 @@
   font-size: 26px;
   color: #000;
 }
+
 .mainEduGate .swipperBlock .card .top h2 {
   font-family: Raleway;
   font-style: normal;
@@ -559,6 +714,7 @@
   color: #000;
   margin: 11px 0;
 }
+
 .mainEduGate .swipperBlock .card .top h3 {
   font-family: Raleway;
   font-style: normal;
@@ -572,6 +728,7 @@
   font-size: 22px;
   color: #000;
 }
+
 .mainEduGate .swipperBlock .card p {
   font-family: Raleway;
   font-style: normal;
@@ -587,26 +744,33 @@
   margin-top: 25px;
   line-height: 35px;
 }
+
 .mainEduGate .swipperBlock .swiper-wrapper {
   padding-bottom: 40px !important;
 }
+
 .mainEduGate .swipperBlock .swiper-container {
   padding-bottom: 30px;
 }
+
 .mainEduGate .swipperBlock .swiper-button-next, .mainEduGate .swipperBlock .swiper-button-prev {
   top: 338px;
 }
+
 .mainEduGate .swipperBlock .swiper-button-disabled {
   display: none;
 }
+
 .mainEduGate .swipperBlock .swiper-pagination-bullet {
   --swiper-theme-color:black;
 }
+
 @media (max-width: 1440px) {
   .mainEduGate .workBlock .weareWork .card:nth-child(3)::after {
     left: 215px;
   }
 }
+
 @media (max-width: 1280px) {
   .mainEduGate .header .filter .dropDwn {
     width: 265px;
@@ -616,7 +780,9 @@
     padding-bottom: 0;
   }
   .mainEduGate .resultBlock .result {
-    justify-content: space-evenly;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
   }
   .mainEduGate .resultBlock .result .card {
     width: 370px;
@@ -673,7 +839,8 @@
   .mainEduGate .workBlock .weareWork .card:nth-child(1)::after {
     background-image: url("../../assets/icon/vector1024_2.svg");
     height: 100px;
-    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
     width: 24px;
     right: -10px;
     top: 30px;
@@ -681,7 +848,8 @@
   .mainEduGate .workBlock .weareWork .card:nth-child(2)::after {
     background-image: url("../../assets/icon/vector1024_2.svg");
     height: 100px;
-    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
     width: 24px;
     right: -10px;
     top: 30px;
@@ -695,7 +863,8 @@
   .mainEduGate .workBlock .weareWork .card:nth-child(4)::after {
     background-image: url("../../assets/icon/vector1024_2.svg");
     height: 100px;
-    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
     width: 24px;
     right: -10px;
     top: 30px;
@@ -703,7 +872,8 @@
   .mainEduGate .workBlock .weareWork .card:nth-child(5)::after {
     background-image: url("../../assets/icon/vector1024_2.svg");
     height: 100px;
-    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
     width: 24px;
     right: -10px;
     top: 30px;
@@ -730,6 +900,7 @@
     font-size: 18px;
   }
 }
+
 @media (max-width: 1024px) {
   .mainEduGate .header {
     padding-top: 120px;
@@ -864,11 +1035,11 @@
     font-size: 15px;
     line-height: 28px;
   }
-
   .mainEduGate .swipperBlock .swiper-button-next, .mainEduGate .swipperBlock .swiper-button-prev {
     top: 237px;
   }
 }
+
 @media (max-width: 768px) {
   .mainEduGate .header {
     padding-bottom: 70px;
@@ -909,7 +1080,7 @@
     height: 24px;
   }
   .mainEduGate .resultBlock {
-    padding: 40px 20px 0 20px;
+    padding: 40px 20px  0 20px;
   }
   .mainEduGate .resultBlock .result .card {
     width: 220px;
@@ -998,16 +1169,25 @@
     padding: 50px 20px;
   }
 }
+
 @media (max-width: 425px) {
   .mainEduGate .header .filter .dropSearch {
     margin-left: 0;
   }
-
   .mainEduGate .header {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     padding: 40px 15px 20px 15px;
   }
   .mainEduGate .header h2 {
@@ -1024,9 +1204,15 @@
     text-align: center;
   }
   .mainEduGate .header .listLvl p {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .mainEduGate .header .listLvl p .circleList {
     margin-right: 8px;
@@ -1037,7 +1223,10 @@
     display: block;
   }
   .mainEduGate .header .filter {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
   .mainEduGate .header .filter .dropDwn {
     margin-bottom: 20px;
@@ -1057,7 +1246,10 @@
     text-align: center;
   }
   .mainEduGate .aboutBlock .aboutUs {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
   .mainEduGate .aboutBlock .aboutUs div > .cardAbout:nth-child(1) {
     margin-bottom: 20px;
@@ -1100,7 +1292,8 @@
     height: 12px;
     top: 23px;
     left: 115px;
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
   .mainEduGate .workBlock .weareWork .card:nth-child(2)::after {
     background-image: url("../../assets/icon/vector1024_2.svg");
@@ -1108,7 +1301,8 @@
     height: 12px;
     top: 23px;
     left: 115px;
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
   .mainEduGate .workBlock .weareWork .card:nth-child(3)::after {
     background-image: url("../../assets/icon/vector1024_2.svg");
@@ -1116,7 +1310,8 @@
     height: 12px;
     top: 135px;
     left: 55px;
-    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
   }
   .mainEduGate .workBlock .weareWork .card:nth-child(4)::after {
     background-image: url("../../assets/icon/vector1024_2.svg");
@@ -1124,7 +1319,8 @@
     height: 12px;
     top: 23px;
     left: 115px;
-    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
   }
   .mainEduGate .workBlock .weareWork .card:nth-child(5)::after {
     background-image: url("../../assets/icon/vector1024_2.svg");
@@ -1132,17 +1328,20 @@
     height: 12px;
     top: 23px;
     left: 115px;
-    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
   }
 }
+
 @media (max-width: 400px) {
   .mainEduGate .topFacultetBlock .topFacultet .card {
     width: 160px;
   }
   .mainEduGate .topFacultetBlock .topFacultet .card p {
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
-
   .mainEduGate .workBlock .weareWork .card:nth-child(1)::after {
     left: 106px;
   }
@@ -1163,6 +1362,7 @@
     font-size: 10px;
   }
 }
+
 @media (max-width: 375px) {
   .mainEduGate .header {
     padding: 40px 15px 20px 15px;
@@ -1202,11 +1402,13 @@
     left: 101px;
   }
 }
+
 @media (max-width: 365px) {
   .mainEduGate .topFacultetBlock .topFacultet .card {
     width: 135px;
   }
 }
+
 @media (max-width: 320px) {
   .mainEduGate .header .listLvl {
     width: 300px;
@@ -1264,5 +1466,3 @@
     text-align: center;
   }
 }
-
-/*# sourceMappingURL=MainEduGate.css.map */
