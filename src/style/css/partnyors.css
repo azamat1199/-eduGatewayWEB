@@ -14,12 +14,17 @@
 }
 
 .partnyor h1 {
+  padding-left: 40px;
   font-style: normal;
   font-weight: bold;
   font-size: 28px;
   line-height: 33px;
   color: #FFFFFF;
   margin-bottom: 30px;
+}
+
+.navPart .eduGateMain .NavbarFix .navAct {
+  background: #00587F;
 }
 
 .partnyor_main {

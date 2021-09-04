@@ -26,6 +26,11 @@
 // 
 // 
 .navRegist{
+	#burgerMenu{
+		span{
+			background: #000 !important;
+		}
+	}
 	.navPass {
 		background: #fff !important;
 	  }
@@ -143,6 +148,19 @@
 
 
 @media (max-width:768px) {
+	.navRegist .navbar .navLeft{
+		h1{
+			color:#fff !important;
+		}
+	}
+	.eduGateMain .NavbarFix .navbar .navLeft svg{
+		path{
+			fill: #fff;
+		}
+	}
+	.eduGateMain .NavbarFix .navbar .navRight a{
+		color: #fff !important;
+	}
 	#right100{
 		 left:-100%;
 		 transition: 0.7s;

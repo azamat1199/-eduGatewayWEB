@@ -827,7 +827,7 @@
 		}
 	}
 	.singup_asos {
-		padding: 0 10px;
+		padding: 60px 10px 0 10px;
 	}
 	.main_singup{
 		width: 700px;
@@ -836,6 +836,9 @@
 		margin-top: 70px;
 	}
 }
+
+
+
 @media (max-width:425px) {
 	.up_nav{
 		
@@ -862,7 +865,7 @@
 		margin-top: 60px;
 	}
 	.main_singup{
-		width: 400px;
+		width: 382px;
 		.line_dash{
 			width: 364px;
 		}
@@ -881,7 +884,7 @@
 			}
 		}
 		.importFile {
-			width: 364px;
+			width: 335px;
 		}
 		.form_div{
 			width: 390px;
@@ -889,16 +892,16 @@
 				padding-right: 20px;
 			}
 			input{
-				width: 364px;
+				width: 335px;
 			}
 			textarea{
-				width: 364px;
+				width: 335px;
 			}
 			select{
-				width: 364px;
+				width: 335px;
 			}
 			.MuiAutocomplete-root{
-				width: 364px !important;
+				width: 335px !important;
 			}
 		}
 		.reg_btn{
@@ -963,16 +966,16 @@
 				padding-right: 10px;
 			}
 			input {
-				width: 324px;
+				width: 290px;
 		  	}
 			textarea {
-				width: 324px;
+				width: 290px;
 		  	}
 			select {
-				width: 324px;
+				width: 290px;
 		  	}
 			  .MuiAutocomplete-root{
-				width: 324px !important;
+				width: 290px !important;
 			}
 	  	}
 		  .line_dash{
@@ -1026,16 +1029,16 @@
 		.form_div {
 			width: 290px;
 			input {
-				width: 265px;
+				width: 235px;
 		  	}
 			textarea {
-				width: 265px;
+				width: 235px;
 		  	}
 			select {
-				width: 265px;
+				width: 235px;
 		  	}
 			.MuiAutocomplete-root{
-				width: 265px !important;
+				width: 235px !important;
 			}
 	  	}
 		.input_range{

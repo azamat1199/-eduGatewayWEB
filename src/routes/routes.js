@@ -22,6 +22,7 @@ import Profayl3 from "../containers/web/pages/singup/Profayl3"
 import SingUp from "../containers/web/pages/singup/SingUp"
 import Zayavka from "../containers/web/pages/singup/Zayavka"
 import Web from "../containers/web/web"
+import MainEduGate from "../containers/web/pages/MainEduGate"
 
 
 const routes = {
@@ -29,7 +30,7 @@ const routes = {
         {
             key:'university',
             path:'/',
-            component:Web,
+            component:MainEduGate,
             exact:true,
         },
         {
