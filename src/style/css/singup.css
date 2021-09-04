@@ -11,6 +11,10 @@
   margin: 0 auto;
 }
 
+.App {
+  background: red;
+}
+
 .singup_active1 {
   color: #00121A !important;
 }
@@ -72,7 +76,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 0 20px;
+  padding: 100px 20px 0 20px;
 }
 
 .nav_name {

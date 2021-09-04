@@ -51,10 +51,7 @@ const Navbar = () => {
                     <span></span>
                 </button>
                 {/* NavbarFix */}
-                <div className={
-                        navActive ? "NavbarFix App" : "NavbarFix"
-                    }
-                    id={
+                <div className="NavbarFix" id={
                         burger ? "right0" : "right100"
                 }>
                     <div className={

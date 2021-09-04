@@ -8,7 +8,9 @@
           flex-direction: column;
   padding-top: 120px;
   padding-bottom: 50px;
-  background: #294069;
+  background: url("../../assets/images/part.svg");
+  background-position: center;
+  background-size: cover;
 }
 
 .partnyor h1 {

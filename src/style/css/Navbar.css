@@ -7,27 +7,27 @@
   display: none;
 }
 
-.eduGateMain .App .navPass {
+.navRegist .navPass {
   background: #fff !important;
 }
 
-.eduGateMain .App .navLeft svg path {
+.navRegist .navLeft svg path {
   fill: #00587F;
 }
 
-.eduGateMain .App .navbar .navLeft h1 {
+.navRegist .navbar .navLeft h1 {
   color: #000 !important;
 }
 
-.eduGateMain .App .navbar .navRight .active {
+.navRegist .navbar .navRight .active {
   color: #000 !important;
 }
 
-.eduGateMain .App .navbar .navRight a {
+.navRegist .navbar .navRight a {
   color: #5C7C8A !important;
 }
 
-.eduGateMain .App .navAct {
+.navRegist .navAct {
   background: #fff !important;
 }
 

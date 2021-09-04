@@ -8,11 +8,10 @@ import check from   "../../../../assets/icon/check.svg"
 import "../../../../style/css/singup.css"
 import Navbar from '../Navbar';
 
-
 class SingUp extends Component {
 	state = { 
 		type:true
-	 }
+	}
 	handletype = () => {
 		this.setState({
 			type: !this.state.type
@@ -21,8 +20,8 @@ class SingUp extends Component {
 	render() { 
 		return ( 
 			<React.Fragment>
-				<div>
-				  <Navbar/>
+				<div className="navRegist">
+					<Navbar/>
 				</div>
 				<div className="singup_asos container">
 					<div className="nav_name">

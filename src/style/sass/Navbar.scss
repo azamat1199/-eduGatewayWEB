@@ -23,39 +23,43 @@
 #burgerclose{
 	display: none;
 }
-
-
-.eduGateMain{
-	.App{
-		.navPass {
-			background: #fff !important;
-	  	}
-		.navLeft{
-			svg{
-				path{
-					fill: #00587F;
-				}
+// 
+// 
+.navRegist{
+	.navPass {
+		background: #fff !important;
+	  }
+	.navLeft{
+		svg{
+			path{
+				fill: #00587F;
 			}
-		}
-		.navbar{
-			.navLeft{
-				h1{
-					color: #000 !important;
-				}
-			}
-			.navRight{
-				.active{
-					color: #000 !important;
-				}
-				a{
-					color: #5C7C8A !important;
-				}
-			}
-		}
-		.navAct{
-			background: #fff !important;
 		}
 	}
+	.navbar{
+		.navLeft{
+			h1{
+				color: #000 !important;
+			}
+		}
+		.navRight{
+			.active{
+				color: #000 !important;
+			}
+			a{
+				color: #5C7C8A !important;
+			}
+		}
+	}
+	.navAct{
+		background: #fff !important;
+	}
+}
+// 
+// 
+
+.eduGateMain{
+	
     .NavbarFix{
         position: fixed;
         width: 100%;

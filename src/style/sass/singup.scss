@@ -12,6 +12,9 @@
 .switchs{
 	// margin-top: 120px;
 }
+.App{
+	background: red;
+}
 .singup_active1{
 	color: #00121A !important;
 	&::before{
@@ -59,7 +62,8 @@
 .singup_asos{
 	display: flex;
 	flex-direction: column;
-	padding: 0 20px;
+	padding: 100px 20px 0 20px;
+
 }
 .nav_name{
 	display: flex;

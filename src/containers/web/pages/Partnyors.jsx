@@ -5,12 +5,16 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import "../../../style/css/partnyors.css" 
 import normal from "../../../assets/icon/normal.svg"
+import Navbar from './Navbar';
 
 class Partnyors extends Component {
 	state = {  }
 	render() { 
 		return ( 
 			<React.Fragment>
+				<div className="navPart">
+					<Navbar />
+				</div>
 				<div className="partnyor">
 					<h1>Стать партнёром</h1>
 					<div className="partnyor_main ">
