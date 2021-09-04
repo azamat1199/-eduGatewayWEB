@@ -1,5 +1,5 @@
 import React from 'react';
-
+import StudentSidebar from './SidebarStudent.jsx'
 // import css
 import  "../../../style/css/kabinet.css" 
 
@@ -10,7 +10,8 @@ const Kabinet = () => {
     let progress = 25
     return ( 
         <>
-        <StudentCabinet/>
+               <StudentSidebar/> 
+               <div className="main">
         <div className="lichKabinet">
             <div className="top">
                 <div className="settings p-lr-30">
@@ -89,6 +90,7 @@ const Kabinet = () => {
                 </div>
             </div>
         </div> 
+        </div>
         </>
     );
 }

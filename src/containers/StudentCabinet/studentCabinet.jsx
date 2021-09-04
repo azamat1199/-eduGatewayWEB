@@ -1,13 +1,13 @@
-import React from 'react';
-import SidebarStudent from './pages/SidebarStudent';
-import Sidebar from "./pages/SidebarStudent"
+// import React from 'react';
+// import StudentSidebar from './pages/SidebarStudent';
+// import Sidebar from "./pages/SidebarStudent"
 
-const StudentCabinet = () => {
-  return ( 
-    <>
-      <SidebarStudent />
-    </>
-   );
-}
+// const StudentCabinet = () => {
+//   return ( 
+//     <>
+//       <StudentSidebar />
+//     </>
+//    );
+// }
  
-export default StudentCabinet;
+// export default StudentCabinet;

@@ -41,7 +41,7 @@ class Profayl extends Component {
 						<h1>Профайл</h1>
 						<div className="pagination">
 							<div className="page page_a"></div>
-							<NavLink to="/profayl2" className="page"></NavLink>
+							<NavLink to="/profile2" className="page"></NavLink>
 							<div className="page"></div>
 						</div>
 						<div className="form_div">

@@ -9,6 +9,7 @@ import SwiperCore, {
 
 // import css
 import "../../../style/css/universitet.css"  
+import StudentSidebar from './SidebarStudent';
 
 SwiperCore.use([Pagination]);
 
@@ -16,6 +17,8 @@ const dataCard = require("../json/card.json")
 
 const Universitet = () => {
     return ( 
+        <>
+        <StudentSidebar/>
         <div className="unniversitetBlock ">
             <div className="top">
                 <h1>Ваши университеты</h1>
@@ -131,6 +134,7 @@ const Universitet = () => {
                 </div>
             </div>
         </div>
+        </>
      );
 }
  

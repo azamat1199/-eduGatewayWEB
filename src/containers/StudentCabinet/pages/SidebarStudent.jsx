@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {BrowserRouter as Router, Switch, Route, NavLink} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route, NavLink,useRouteMatch} from "react-router-dom";
 
 // import component
 import Kabinet from "./kabinet"
@@ -22,11 +22,11 @@ import Personal from './personal';
 import Status from './status';
 import Dogovor from './dogovor';
 
-const Sidebar = () => {
+const StudentSidebar = () => {
     const [sideFix, setSideFix] = useState(false)
+    
     return (
-        <Router>
-            <div className="kabinet">
+        <>
                 <button id="none768" onClick={()=>setSideFix(true)}>
                     <div></div>
                     <div></div>
@@ -44,12 +44,12 @@ const Sidebar = () => {
                             <h1>Education Gateway</h1>
                         </div>
                         <div className="bottom">
-                            <NavLink exact to="/kabinetstudent"  onClick={()=> setSideFix(false)}>
+                            <NavLink exact to="/my-account"  onClick={()=> setSideFix(false)}>
                                 <img src={Profile_icon}
                                     alt=""/>
                                 <h5>Профиль</h5>
                             </NavLink>
-                            <NavLink to="/universitet"  onClick={()=> setSideFix(false)}>
+                            <NavLink to="/universities"  onClick={()=> setSideFix(false)}>
                                 <img src={univer_icon}
                                     alt=""/>
                                 <h5>Университеты</h5>
@@ -59,7 +59,7 @@ const Sidebar = () => {
                                     alt=""/>
                                 <h5>Персональный менеджер</h5>
                             </NavLink>
-                            <NavLink to="/dogovor"  onClick={()=> setSideFix(false)}>
+                            <NavLink to="/agreement"  onClick={()=> setSideFix(false)}>
                                 <img src={dogovor_icon}
                                     alt=""/>
                                 <h5>E-Договор</h5>
@@ -74,7 +74,7 @@ const Sidebar = () => {
                                     alt=""/>
                                 <h5>Бонусы</h5>
                             </NavLink >
-                            <NavLink to="/nastroyka" onClick={()=> setSideFix(false)}>
+                            <NavLink to="/settings" onClick={()=> setSideFix(false)}>
                                 <img src={settings_icon}
                                     alt=""/>
                                 <h5>Настройки</h5>
@@ -87,34 +87,8 @@ const Sidebar = () => {
                         </div>
                     </div>
                 </div>
-                <div className="main">
-                    <Switch>
-                        <Route exact path="/kabinetstudent">
-                            <Kabinet/>
-                        </Route>
-                        <Route path="/universitet">
-                            <Universitet/>
-                        </Route>
-                        <Route path="/personal">
-                            <Personal/>
-                        </Route>
-                        <Route path="/dogovor">
-                            <Dogovor />
-                        </Route>
-                        <Route path="/status">
-                            <Status/>
-                        </Route>
-                        <Route path="/bonus">
-                            bonus
-                        </Route>
-                        <Route path="/nastroyka">
-                            nastroyka
-                        </Route>
-                    </Switch>
-                </div>
-            </div>
-        </Router>
+        </>
     );
 }
 
-export default Sidebar;
+export default StudentSidebar;

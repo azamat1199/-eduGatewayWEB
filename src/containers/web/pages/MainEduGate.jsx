@@ -49,7 +49,7 @@ const MainEduGate = () => {
     return ( 
         <>
         <Navbar/>
-        <div className="mainEduGate">
+        <div className="mainEduGate" id="main">
             <div className="header">
                 <h2>Выберите свой университет вместе с Education Gateway</h2>
                 <h3>Education Gateway помогает абитуриентам найти свое направление в выборе профессии и поступить в престижные ВУЗы на территории СНГ</h3>

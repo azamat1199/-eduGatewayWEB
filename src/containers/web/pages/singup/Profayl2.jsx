@@ -37,9 +37,9 @@ class Profayl2 extends Component {
 					<div className="main_singup">
 						<h1>Профайл</h1>
 						<div className="pagination">
-							<NavLink to="/profayl" className="page page_a"></NavLink>
+							<NavLink to="/profile" className="page page_a"></NavLink>
 							<div className="page page_a"></div>
-							<NavLink to="/profayl3" className="page"></NavLink>
+							<NavLink to="/profile3" className="page"></NavLink>
 						</div>
 						<div className="form_div">
 							<p>Где вы учитесь/учились?</p>
