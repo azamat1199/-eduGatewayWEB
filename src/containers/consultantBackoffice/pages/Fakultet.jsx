@@ -17,6 +17,7 @@ import folder_icon from "../../../assets/icon/folder_icon.svg"
 // import css 
 import "../../../style/css/SidebarUniverstitet.css" 
 import  "../../../style/css/fakultet.css"
+import Sidebar from './SidebarConsult';
 
 
 
@@ -39,6 +40,7 @@ const Fakultet = () => {
 	};
 
 	return ( 
+		<Sidebar>
 		<div className="asos">
 			<div className="Up_navbar">
 					<h4>Факультеты</h4>
@@ -227,6 +229,7 @@ const Fakultet = () => {
 					{/* end Filter */}
 			</div>
 		</div>
+		</Sidebar>
 		// end SidebarUniverstitet
 	);
 }

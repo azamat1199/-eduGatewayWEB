@@ -24,6 +24,7 @@ import "../../../style/css/SideGlavny.css"
 // import icon 
 import search_icon from "../../../assets/icon/search.svg" 
 import settings from    "../../../assets/icon/settings.svg"  
+import Sidebar from './SidebarConsult';
 
 
 
@@ -47,6 +48,7 @@ const SideOtdel = () => {
     const [startDate2, setStartDate2] = useState(null);
    
     return ( 
+        <Sidebar>
         <div className="asos">
             <div className="Up_navbar">
                 <h4>Отдел аналитики</h4>
@@ -1005,6 +1007,7 @@ const SideOtdel = () => {
             {/* end block - 5 */}
         </div>
     </div>
+    </Sidebar>
     );
 }
 

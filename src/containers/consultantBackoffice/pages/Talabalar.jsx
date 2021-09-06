@@ -18,6 +18,7 @@ import arrow1 from      "../../../assets/icon/arrow1.svg"
 import "../../../style/css/SidebarUniverstitet.css"
 import "../../../style/css/fakultet.css"
 import "react-datepicker/dist/react-datepicker.css";
+import Sidebar from './SidebarConsult';
 
 const Talabalar = () => {
 	const [startDate, setStartDate] = useState(null);
@@ -45,6 +46,7 @@ const Talabalar = () => {
 	};
 	// modal
 	return ( 
+		<Sidebar>
 		<div className="asos">
 			<div className="Up_navbar">
 					<h4>Студенты</h4>
@@ -331,6 +333,7 @@ const Talabalar = () => {
 					{/* end Filter */}
 			</div>
 		</div>
+		</Sidebar>
 		// end SidebarUniverstitet
 	);
 }

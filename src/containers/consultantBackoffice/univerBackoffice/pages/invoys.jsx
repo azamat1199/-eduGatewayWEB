@@ -17,6 +17,7 @@ import search from "../../../../assets/icon/Search2.svg"
 import Message from "../../../../assets/icon/Message2.svg"
 import userpic from "../../../../assets/icon/userpic.svg"  
 import close from "../../../../assets/icon/close.svg"  
+import UniversitetBackoffice from '../universitetBackoffice';
 
 
 const data_table = require("../json/data_table.json")
@@ -33,7 +34,7 @@ const Invoys =() => {
 		setkey(event.target.value);
   	}
 	return ( 
-		<React.Fragment>
+		<UniversitetBackoffice>
 			<div className="up_nav">
 				<div>
 					<h1 className="link_h1">Инвойсы</h1>
@@ -188,7 +189,7 @@ const Invoys =() => {
 
 				</div>
 			</div>
-		</React.Fragment>
+		</UniversitetBackoffice>
 		);
 }
  

@@ -1098,9 +1098,7 @@
   .main_singup {
     width: 700px;
   }
-  .switchs {
-    margin-top: 70px;
-  }
+  
 }
 
 @media (max-width: 425px) {
@@ -1121,9 +1119,6 @@
   .up_nav .singup_active3 {
     display: block;
     margin: 0 0 30px 0;
-  }
-  .switchs {
-    margin-top: 60px;
   }
   .main_singup {
     width: 400px;

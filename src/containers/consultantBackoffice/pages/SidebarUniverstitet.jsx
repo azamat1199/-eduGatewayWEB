@@ -15,6 +15,7 @@ import folder_icon from "../../../assets/icon/folder_icon.svg"
 // import css 
 import "../../../style/css/SidebarUniverstitet.css"
 import "react-datepicker/dist/react-datepicker.css";
+import Sidebar from './SidebarConsult';
 
 
 
@@ -35,6 +36,7 @@ const SidebarUniverstitet = () => {
 	};
     // modal
     return ( 
+        <Sidebar>
         <div className="asos">
             <div className="Up_navbar">
                 <h4>Университеты</h4>
@@ -216,6 +218,7 @@ const SidebarUniverstitet = () => {
                 {/* end Filter */}
             </div>
         </div>
+        </Sidebar>
         // end SidebarUniverstitet
     );
 }

@@ -30,7 +30,7 @@ class Sidebar extends Component {
 	render() { 
 		return ( 
 		<>	
-			<div className="switchs">
+			
 				<div className={this.state.burger ? "switch_asos toggle_burger" :"switch_asos"}>
 					<div className="dashboardBlock">
 					<div className="sidebarFixed">
@@ -96,8 +96,8 @@ class Sidebar extends Component {
 					<span></span>
 					<span></span>
 				</div>
-			{this.props.children}
-			</div>
+				{this.props.children}
+			
 			</div>
 			</>
 	  );

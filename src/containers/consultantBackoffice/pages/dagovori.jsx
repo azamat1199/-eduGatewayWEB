@@ -12,6 +12,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import "../../../style/css/dagavor.css"
 import Calendar from "../../../assets/icon/Calendar.svg"
+import Sidebar from './SidebarConsult';
 
 // import json
 const data_doxod = require("../json/data_doxod.json")
@@ -25,7 +26,8 @@ const colors = scaleOrdinal(schemeCategory10).range();
 const Dagavori = () => {
 	const [startDate, setStartDate] = useState(null);
 	const [startDate2, setStartDate2] = useState(null);
-	return ( 
+	return (
+		<Sidebar>
 		<div className="asos">
 			<div className="Up_navbar">
 					<h4>Договоры</h4>
@@ -217,6 +219,7 @@ const Dagavori = () => {
 				</div>
 			</div>
 		</div>
+		</Sidebar> 
 	);
 }
 

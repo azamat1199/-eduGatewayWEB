@@ -6,9 +6,11 @@ import usaFlag from     "../../../assets/icon/usaFlag.png"
 
 // import css
 import "../../../style/css/SideStrana.css"
+import Sidebar from './SidebarConsult';
 
 const SideStrana = () => {
     return ( 
+        <Sidebar>
         <div className="asos">
             <div className="Up_navbar">
                 <h4>Cтраны</h4>
@@ -132,6 +134,7 @@ const SideStrana = () => {
             </div>
         </div>
         </div>
+        </Sidebar>
     );
 }
 

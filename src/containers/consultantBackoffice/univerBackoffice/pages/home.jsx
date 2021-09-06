@@ -16,6 +16,7 @@ import "../../../../style/css/home.css"
 
 //import img
 import userpic from  "../../../../assets/icon/userpic.svg"
+import UniversitetBackoffice from '../universitetBackoffice';
 
 
 const colors = scaleOrdinal(schemeCategory10).range();
@@ -29,7 +30,7 @@ const dataComposed = require("../json/dataComposed.json")
 const Home = () => {
 	const [startDate, setStartDate] = useState(null);
 	return ( 
-		<React.Fragment>
+			<UniversitetBackoffice>
 			<div className="up_nav">
 				<div>
 					<h1 className="link_h1">Главное</h1>
@@ -874,7 +875,7 @@ const Home = () => {
                 <h6>180 стран</h6>
 				</div>
 			</div>
-		</React.Fragment>
+			</UniversitetBackoffice>
 		);
 }
  

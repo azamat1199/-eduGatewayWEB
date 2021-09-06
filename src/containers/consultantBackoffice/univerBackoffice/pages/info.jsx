@@ -15,7 +15,7 @@ import plus from  "../../../../assets/icon/plus.svg"
 
 //import css
 import "../../../../style/css/info.css"
-
+import UniversitetBackoffice from '../universitetBackoffice';
 ///
 
 const foiz = "75"
@@ -93,7 +93,7 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 const Info = () => {
 	return ( 
-		<React.Fragment>
+		<UniversitetBackoffice>
 			<div className="info_h1 up_nav">
 				<div>
 					<h1 className="link_h1 ">Данные</h1>
@@ -238,7 +238,7 @@ const Info = () => {
 					</div>
 				</div>
 			</div>
-		</React.Fragment>
+		</UniversitetBackoffice>
 	);
 }
  

@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Arrowright from  "../../../assets/icon/Arrowright1.svg"
 import search_icon from "../../../assets/icon/search.svg" 
 import Calendar from    "../../../assets/icon/Calendar.svg"  
+import Sidebar from './SidebarConsult';
 
 
 const data_filial = require("../json/data_filial.json")
@@ -17,6 +18,7 @@ const colors = scaleOrdinal(schemeCategory10).range();
 const Analitika = () => {
 	const [startDate, setStartDate] = useState(null);
 	return(
+		<Sidebar>
 		<div className="asos">
 			{/* up navbar */}
 			<div className="Up_navbar">
@@ -115,6 +117,7 @@ const Analitika = () => {
             </div>
 			</div>
 		</div>
+		</Sidebar>
 	)
 }
 export default Analitika;

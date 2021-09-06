@@ -19,7 +19,8 @@ import { schemeCategory10 } from "d3-scale-chromatic";
 
 // import css
 import "../../../style/css/SideOtdel.css"
-import Sidebar from '../../StudentCabinet/pages/SidebarStudent';
+
+import Sidebar from './SidebarConsult';
 import SidebarUniverstitet from './SidebarAgentlar';
 import SidebarConsult from './SidebarConsult';
 
@@ -41,7 +42,7 @@ const colors = scaleOrdinal(schemeCategory10).range();
 const  SideGlavny = () => {
     
     return ( 
-        <>
+        <Sidebar>
         <div className="asos">
             <div className="Up_navbar">
                 <h4>Главное</h4>
@@ -799,7 +800,7 @@ const  SideGlavny = () => {
 
         </div>
     </div>
-    </>
+    </Sidebar>
     );
 }
 

@@ -24,6 +24,7 @@ import userpic from  "../../../../assets/icon/userpic.svg"
 //import css
 import "react-datepicker/dist/react-datepicker.css";
 import "../../../../style/css/abiturient.css"
+import UniversitetBackoffice from '../universitetBackoffice';
 
 
 const data_table = require("../json/data_table.json")
@@ -57,7 +58,7 @@ const Abiturient = () => {
 
 
 	return ( 
-		<React.Fragment>
+		<UniversitetBackoffice>
 			<div className="abiturient">
 				<div className="up_nav">
 					<div>
@@ -294,7 +295,7 @@ const Abiturient = () => {
 							
 				</div>
 			</div>
-		</React.Fragment>
+		</UniversitetBackoffice>
 		);
 }
  

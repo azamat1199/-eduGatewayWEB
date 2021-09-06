@@ -19,6 +19,7 @@ import Web from "./containers/web/web"
 import routes from './routes/routes';
 
 import  "./style/css/sidebarCabinet.css" 
+import "./style/css/sidebar.css"
 function App() {
   return (
     <>
@@ -41,8 +42,7 @@ function App() {
                 }
               </Switch>
             </div>
-
-            <Sidebar >
+            <div className="switchs">
                   <Switch>
                   {routes.consult.map(item=>{
                   return(
@@ -50,6 +50,10 @@ function App() {
                   )
               })}
             </Switch>
+           </div>
+        
+           
+           <div className="asos_u">
             <Switch>
               {routes.univerOffice.map(item=>{
                 return(
@@ -57,12 +61,7 @@ function App() {
                 )
               })}
 						</Switch>
-            </Sidebar>
-
-            {/* <UniversitetBackoffice>
-        
-            </UniversitetBackoffice> */}
-
+            </div>
 
         </>
   );

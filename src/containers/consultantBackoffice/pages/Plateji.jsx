@@ -14,6 +14,7 @@ import Arrowright from  "../../../assets/icon/Arrowright1.svg"
 import search_icon from  "../../../assets/icon/search.svg"
 
 import "react-datepicker/dist/react-datepicker.css";
+import Sidebar from './SidebarConsult';
 
 const data_filial = require("../json/data_filial.json")
 const data = require("../json/data.json")
@@ -23,7 +24,9 @@ const colors = scaleOrdinal(schemeCategory10).range();
 const Plateji = () => {
 	const [startDate, setStartDate] = useState(null);
 	return(
+		<Sidebar>
 		<div className="asos">
+			
 			<div className="Up_navbar">
 					<h4 className="analitika_h4">Бухгалтер <img src={Arrowright} alt="" width="18" /><h5>Платежи</h5></h4>
 					<div>
@@ -137,6 +140,7 @@ const Plateji = () => {
             </div>
 			</div>
 		</div>
+		</Sidebar>
 	)
 }
 export default Plateji;

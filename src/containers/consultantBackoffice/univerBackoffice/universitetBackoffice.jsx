@@ -32,8 +32,7 @@ class UniversitetBackoffice extends Component {
 	}
 	render() { 
 		return ( 
-			<div className="univerBackoffice">
-					<div className="asos_u">
+			<>
 						<div className="asos_1">
 							<div className="navfixed" id={this.state.menu ? "left0" : ""}>
 								<div className="logo">
@@ -55,8 +54,7 @@ class UniversitetBackoffice extends Component {
 							    {this.props.children}
 							</div>
 						</div>
-					</div>
-			</div>
+		   </>
 		 );
 	}
 }

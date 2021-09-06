@@ -30,6 +30,10 @@ import SingUp from "../containers/web/pages/singup/SingUp"
 import Zayavka from "../containers/web/pages/singup/Zayavka"
 import Web from "../containers/web/web"
 import MainEduGate from "../containers/web/pages/MainEduGate"
+import Home from "../containers/consultantBackoffice/univerBackoffice/pages/home"
+import Abiturient from "../containers/consultantBackoffice/univerBackoffice/pages/abiturients"
+import Invoys from "../containers/consultantBackoffice/univerBackoffice/pages/invoys"
+import Info from "../containers/consultantBackoffice/univerBackoffice/pages/info"
 
 
 const routes = {

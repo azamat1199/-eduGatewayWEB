@@ -21,6 +21,7 @@ import folder_icon from   "../../../assets/icon/folder_icon.svg"
 
 // import css 
 import "../../../style/css/SidebarAgentlar.css"
+import Sidebar from './SidebarConsult';
 
 const data_agent = require("../json/data_agent.json")
 const colors = scaleOrdinal(schemeCategory10).range();
@@ -45,6 +46,8 @@ const SidebarAgentlar = () => {
 	};
 
     return ( 
+        <Sidebar>
+    
         <div className="asos">
             <div className="Up_navbar">
                 <h4>Агенты</h4>
@@ -266,7 +269,9 @@ const SidebarAgentlar = () => {
                 {/* end Filter */}
             </div>
         </div>
+        </Sidebar>
         // end SidebarUniverstitet
+    
     );
 }
 
