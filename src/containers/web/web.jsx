@@ -1,15 +1,15 @@
-import React from 'react';
-import MainEduGate from './pages/MainEduGate';
+// import React from 'react';
+// import MainEduGate from './pages/MainEduGate';
 
-// import Navbar from "./pages/Navbar"
+// // import Navbar from "./pages/Navbar"
 
-function Web() {
+// function Web() {
 
-  return (
-    <div>
-      <MainEduGate/>
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       <MainEduGate/>
+//     </div>
+//   );
+// }
 
-export default Web;
+// export default Web;
