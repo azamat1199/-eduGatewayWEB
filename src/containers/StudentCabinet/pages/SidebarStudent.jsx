@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {BrowserRouter as Router, Switch, Route, NavLink,useRouteMatch} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Link, NavLink,useRouteMatch} from "react-router-dom";
 
 // import component
 import Kabinet from "./kabinet"
@@ -11,7 +11,8 @@ import dogovor_icon from "../../../assets/icon/dogovor.svg"
 import personal_icon from "../../../assets/icon/personal.svg" 
 import Profile_icon from "../../../assets/icon/Profile.svg" 
 import settings_icon from "../../../assets/icon/settings.svg"
-import univer_icon from "../../../assets/icon/univer.svg"
+// import univer_icon from "../../../assets/icon/univer.svg"
+import univer_icon from "../../../assets/icon/universitetLogo.svg"
 import status_icon from "../../../assets/icon/status.svg" 
 import logout_icon from "../../../assets/icon/logout.svg" 
 
@@ -37,12 +38,12 @@ const StudentSidebar = () => {
                         <svg onClick={()=> setSideFix(false)} id="Xnone768" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M44 44L4 4M44 4L4 44" stroke="white" stroke-width="7" stroke-linecap="round"/>
                         </svg>
-                        <div className="top">
+                        <Link to="/" className="top">
 
                             <img src={LogoEdu}
                                 alt=""/>
                             <h1>Education Gateway</h1>
-                        </div>
+                        </Link>
                         <div className="bottom">
                             <NavLink exact to="/my-account"  onClick={()=> setSideFix(false)}>
                                 <img src={Profile_icon}

@@ -34,11 +34,11 @@ function App() {
             <div className="kabinet">
               <Switch>
                 {
-                 routes.student.map(item=>{
-                   return(
-                     <Route {...item}/>
-                   )
-                 })
+                  routes.student.map(item=>{
+                    return(
+                      <Route {...item}/>
+                    )
+                  })
                 }
               </Switch>
             </div>

@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Slider from "@material-ui/core/Slider";
 import NumberFormat from 'react-number-format';
+import Navbar from '../Navbar';
 
 const data = require("../../json/data.json")
 const marks = [
@@ -75,6 +76,9 @@ const SSlider = withStyles({
 const Zayavka = () =>  {
 	return ( 
 		<React.Fragment>
+				<div className="navRegist">
+					<Navbar/>
+				</div>
 			<div className="singup_asos container">
 				<div className="nav_name">
 					<h1>Процесс поступления</h1>

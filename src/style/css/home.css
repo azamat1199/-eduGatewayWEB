@@ -747,6 +747,12 @@
 }
 
 @media (max-width: 425px) {
+  .switchs {
+    margin-right: 0;
+  }
+  .switch_asos {
+    padding: 0;
+  }
   .asos_2 {
     max-width: 405px;
   }

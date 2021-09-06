@@ -11,6 +11,7 @@ import error from  "../../../../assets/icon/error.svg"
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import Navbar from '../Navbar';
 
 class Oplata3 extends Component {
 	 state = { 
@@ -50,6 +51,9 @@ class Oplata3 extends Component {
 	render() {
 		return ( 
 			<React.Fragment>
+				<div className="navRegist">
+					<Navbar/>
+				</div>
 				<div className="singup_asos container">
 					<div className="nav_name">
 						<h1>Процесс поступления</h1>

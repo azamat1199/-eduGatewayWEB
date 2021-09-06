@@ -53,7 +53,7 @@ const routes = {
         {
             key:'university',
             path:'/university',
-            component:SinglePage,
+            component:SinglePage,  
             exact:true,
         },
         {

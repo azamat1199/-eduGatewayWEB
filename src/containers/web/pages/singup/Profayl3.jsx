@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import Navbar from '../Navbar';
 
 const data = require("../../json/data.json")
 
@@ -12,6 +13,9 @@ class Profayl3 extends Component {
 	render() { 
 		return ( 
 			<React.Fragment>
+				<div className="navRegist">
+					<Navbar/>
+				</div>
 				<div className="singup_asos container">
 					<div className="nav_name">
 						<h1>Процесс поступления</h1>

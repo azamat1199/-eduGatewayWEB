@@ -53,7 +53,7 @@ const Fakultet = () => {
 					</div>
 				</div>
 				<div className="SidebarUniverstitet">
-					<button onClick={handleOpen}>Добавить университет</button>
+					<button onClick={handleOpen}>Добавить факультет</button>
 					<div className="settSearch">
 						<div className="searchUniv">
 							<img src={search_icon} alt="" />
