@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router,Switch,Route,Link,} from "react-router-dom";
 
 import ConsultantBackoffice from './containers/consultantBackoffice/ConsultantBackoffice'
+import Sidebar from './containers/consultantBackoffice/pages/SidebarConsult';
+import UniversitetBackoffice from './containers/consultantBackoffice/univerBackoffice/universitetBackoffice';
 import StudentSidebar from './containers/StudentCabinet/pages/SidebarStudent';
 import StudentCabinet from './containers/StudentCabinet/studentCabinet';
 import Partnyors from './containers/web/pages/Partnyors';
@@ -24,7 +26,7 @@ function App() {
             {routes.public.map(item=>{
               return(
                 <Route {...item}/>
-              )
+              ) 
             })}
           </Switch>
 
@@ -39,6 +41,28 @@ function App() {
                 }
               </Switch>
             </div>
+
+            <Sidebar >
+                  <Switch>
+                  {routes.consult.map(item=>{
+                  return(
+                  <Route {...item}/>
+                  )
+              })}
+            </Switch>
+            <Switch>
+              {routes.univerOffice.map(item=>{
+                return(
+                  <Route {...item}/>
+                )
+              })}
+						</Switch>
+            </Sidebar>
+
+            {/* <UniversitetBackoffice>
+        
+            </UniversitetBackoffice> */}
+
 
         </>
   );

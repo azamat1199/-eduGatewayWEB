@@ -26,7 +26,7 @@ const data_agent = require("../json/data_agent.json")
 const colors = scaleOrdinal(schemeCategory10).range();
 
 
-const SidebarUniverstitet = () => {
+const SidebarAgentlar = () => {
     const [viewConsul, setConsul] = useState(false);
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
@@ -270,4 +270,4 @@ const SidebarUniverstitet = () => {
     );
 }
 
-export default SidebarUniverstitet;
+export default SidebarAgentlar;

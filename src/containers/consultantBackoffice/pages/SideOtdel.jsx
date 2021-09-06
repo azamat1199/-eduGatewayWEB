@@ -41,7 +41,7 @@ const COLORSPie = ["#4897D1", "#EF476F", "#C6E4FB"];
 
 const colors1 = scaleOrdinal(schemeCategory10).range();
 
-const SideGlavny = () => {
+const SideOtdel = () => {
     const [startDate, setStartDate] = useState(null);
     const [startDate1, setStartDate1] = useState(null);
     const [startDate2, setStartDate2] = useState(null);
@@ -1008,4 +1008,4 @@ const SideGlavny = () => {
     );
 }
 
-export default SideGlavny;
+export default SideOtdel;

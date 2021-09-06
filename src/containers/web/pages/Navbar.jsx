@@ -25,31 +25,63 @@ const Navbar = () => {
     }, [scrollTop]);
 
     const handleout = () => {
-        setnavActive(false)
-        setBurger(false)
-    }
-
-    const handlein = () => {
         setnavActive(true)
         setBurger(false)
     }
+
  let button;
   if(currentPath === '/'){
      button =   <Link
-     activeClass={handleout}
      to="main"
      spy={true}
      smooth={true}
      offset={0}
-     duration={800}
+     duration={700}
      style={{cursor:"pointer"}}
      >
            Главная страница
                             </Link>
- }else{
-   button = <NavLink onClick={handleout}
+ } else{
+   button = <NavLink 
+   onClick={handleout}
+   activeClass={navActive?"active": null}
     to="/">Главная страница
 </NavLink>
+ }
+
+ let howItWork;
+ if(currentPath === '/'){
+    howItWork =  <Link
+    onClick={handleout}
+    to="howItWork"
+    spy={true}
+    smooth={true}
+    offset={-60}
+    duration={700}
+    style={{cursor:"pointer"}}
+    >
+        
+        Как это работает
+    </Link>
+ }else{
+    howItWork = null
+ }
+ let universitet;
+ if(currentPath === '/'){
+     universitet =   <Link
+     onClick={handleout}
+     to="university"
+     spy={true}
+     smooth={true}
+     offset={-60}
+     duration={700}
+     style={{cursor:"pointer"}}
+     >
+         
+     Университеты
+     </Link>
+ }else{
+     universitet = null
  }
 
     return (
@@ -120,34 +152,12 @@ const Navbar = () => {
                         <div className="navRight">
                           
                             {button}
-                            <Link
-                            activeClass={handleout}
-                            to="university"
-                            spy={true}
-                            smooth={true}
-                            offset={-60}
-                            duration={800}
-                            style={{cursor:"pointer"}}
-                            >
-                                
-                            Университеты
-                            </Link>
-                            <Link
-                            activeClass={handleout}
-                            to="howItWork"
-                            spy={true}
-                            smooth={true}
-                            offset={-60}
-                            duration={800}
-                            style={{cursor:"pointer"}}
-                            >
-                                
-                                Как это работает
-                            </Link>
+                            {universitet}
+                            {howItWork}
                             <NavLink onClick={handleout}
                                 to="/partners">Стать партнером
                             </NavLink>
-                            <NavLink onClick={handlein}
+                            <NavLink onClick={handleout}
                                 to="/registration">Регистрация
                             </NavLink>
                             <NavLink

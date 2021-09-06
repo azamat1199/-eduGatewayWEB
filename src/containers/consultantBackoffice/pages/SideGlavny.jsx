@@ -42,7 +42,6 @@ const  SideGlavny = () => {
     
     return ( 
         <>
-        <SidebarConsult/>
         <div className="asos">
             <div className="Up_navbar">
                 <h4>Главное</h4>

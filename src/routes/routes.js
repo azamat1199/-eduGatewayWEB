@@ -1,9 +1,16 @@
+import Analitika from "../containers/consultantBackoffice/pages/Analitika"
+import Dagavori from "../containers/consultantBackoffice/pages/dagovori"
 import Fakultet from "../containers/consultantBackoffice/pages/Fakultet"
 import Login from "../containers/consultantBackoffice/pages/Login"
 import LoginStaff from "../containers/consultantBackoffice/pages/LoginStaff"
-import SidebarUniverstitet from "../containers/consultantBackoffice/pages/SidebarAgentlar"
+import Plateji from "../containers/consultantBackoffice/pages/Plateji"
+import SidebarAgentlar from "../containers/consultantBackoffice/pages/SidebarAgentlar"
+import SidebarUniverstitet from "../containers/consultantBackoffice/pages/SidebarUniverstitet"
+import SidebarFilial from "../containers/consultantBackoffice/pages/SidebarFilial"
 import SideGlavny from "../containers/consultantBackoffice/pages/SideGlavny"
+import SideOtdel from "../containers/consultantBackoffice/pages/SideOtdel"
 import SideStrana from "../containers/consultantBackoffice/pages/SideStrana"
+import Talabalar from "../containers/consultantBackoffice/pages/Talabalar"
 import Dogovor from "../containers/StudentCabinet/pages/dogovor"
 import Kabinet from "../containers/StudentCabinet/pages/kabinet"
 import Personal from "../containers/StudentCabinet/pages/personal"
@@ -22,6 +29,10 @@ import Profayl3 from "../containers/web/pages/singup/Profayl3"
 import SingUp from "../containers/web/pages/singup/SingUp"
 import Zayavka from "../containers/web/pages/singup/Zayavka"
 import Web from "../containers/web/web"
+import Home from "../containers/consultantBackoffice/univerBackoffice/pages/home"
+import Abiturient from "../containers/consultantBackoffice/univerBackoffice/pages/abiturients"
+import Invoys from "../containers/consultantBackoffice/univerBackoffice/pages/invoys"
+import Info from "../containers/consultantBackoffice/univerBackoffice/pages/info"
 
 
 const routes = {
@@ -165,7 +176,7 @@ const routes = {
         },
         {
             key:'file',
-            path:"/home/strana",
+            path:"/home/countries",
             component:SideStrana,
             exact:true,
         },
@@ -177,8 +188,82 @@ const routes = {
         },
         {
             key:'file',
-            path:"/home/fakultet",
+            path:"/home/faculties",
             component:Fakultet,
+            exact:true,
+        },
+        {
+            key:'file',
+            path:"/home/branch",
+            component:SidebarFilial,
+            exact:true,
+        },
+        {
+            key:'file',
+            path:"/home/students",
+            component:Talabalar,
+            exact:true,
+        },
+        {
+            key:'file',
+            path:"/home/accountant",
+            component:Analitika,
+            exact:true,
+        },
+        {
+            key:'file',
+            path:"/home/payments",
+            component:Plateji,
+            exact:true,
+        },
+        {
+            key:'file',
+            path:"/home/contracts",
+            component:Dagavori,
+            exact:true,
+        },
+        {
+            key:'file',
+            path:"/home/contracts",
+            component:Dogovor,
+            exact:true,
+        },
+        {
+            key:'file',
+            path:"/home/agents",
+            component:SidebarAgentlar,
+            exact:true,
+        },
+        {
+            key:'file',
+            path:"/home/analytics-department",
+            component:SideOtdel,
+            exact:true,
+        },
+       ],
+       univerOffice:[
+        {
+            key:'file',
+            path:"/univer-backoffice-page",
+            component:Home,
+            exact:true,
+        },
+        {
+            key:'file',
+            path:"/studentsss",
+            component:Abiturient,
+            exact:true,
+        },
+        {
+            key:'file',
+            path:"/invoice",
+            component:Invoys,
+            exact:true,
+        },
+        {
+            key:'file',
+            path:"/info",
+            component:Info,
             exact:true,
         },
        ],

@@ -33,7 +33,6 @@ class UniversitetBackoffice extends Component {
 	render() { 
 		return ( 
 			<div className="univerBackoffice">
-				<BrowserRouter>
 					<div className="asos_u">
 						<div className="asos_1">
 							<div className="navfixed" id={this.state.menu ? "left0" : ""}>
@@ -42,9 +41,9 @@ class UniversitetBackoffice extends Component {
 									<h1>Education Gateway</h1>
 								</div>
 								<div className="links">
-									<NavLink onClick={this.handlemenu} activeClassName="active_unve" exact to="/univerBackofficePage"><img src={home} alt="" />Главное</NavLink>
-									<NavLink onClick={this.handlemenu} activeClassName="active_unve" to="/abiturient"><img src={user} alt="" />Абитуриенты</NavLink>
-									<NavLink onClick={this.handlemenu} activeClassName="active_unve" to="/invoys"><img src={paper} alt="" />Инвойсы</NavLink>
+									<NavLink onClick={this.handlemenu} activeClassName="active_unve" exact to="/univer-backoffice-page"><img src={home} alt="" />Главное</NavLink>
+									<NavLink onClick={this.handlemenu} activeClassName="active_unve" to="/studentsss"><img src={user} alt="" />Абитуриенты</NavLink>
+									<NavLink onClick={this.handlemenu} activeClassName="active_unve" to="/invoice"><img src={paper} alt="" />Инвойсы</NavLink>
 									<NavLink onClick={this.handlemenu} activeClassName="active_unve" to="/info"><img src={doc} alt="" />Данные</NavLink>
 								</div>
 							</div>
@@ -53,17 +52,10 @@ class UniversitetBackoffice extends Component {
 						<div className="asos_2" >
 							<button onClick={this.handlemenu} className="burger_btn"><span></span><span></span><span></span></button>
 							<div className="switchs" onClick={this.handlemenuclose}>
-								<Switch>
-									<Route exact path="/univerBackofficePage"><Home/></Route>
-									<Route path="/abiturient"><Abiturient/></Route>
-									<Route path="/singlepage" ><Singlepage/></Route>
-									<Route path="/invoys"><Invoys/></Route>
-									<Route path="/info"><Info/></Route>
-								</Switch>
+							    {this.props.children}
 							</div>
 						</div>
 					</div>
-				</BrowserRouter>
 			</div>
 		 );
 	}
