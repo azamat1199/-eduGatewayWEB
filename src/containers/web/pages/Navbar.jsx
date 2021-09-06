@@ -85,7 +85,7 @@ const Navbar = () => {
  }
 
     return (
-<>
+        <>
             <div className="eduGateMain">
                 <button id="burgerMenu"
                     className={
