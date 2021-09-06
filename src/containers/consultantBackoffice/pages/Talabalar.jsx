@@ -57,7 +57,7 @@ const Talabalar = () => {
 					</div>
 			</div>
 			<div className="SidebarUniverstitet">
-					<button onClick={handleOpen}>Добавить университет</button>
+					<button onClick={handleOpen}>Добавить студента</button>
 					<div className="settSearch">
 						<div className="searchUniv">
 							<img src={search_icon} alt="" />

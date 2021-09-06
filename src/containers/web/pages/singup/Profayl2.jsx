@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import arrowright from "../../../../assets/icon/arrowright.svg"
+import Navbar from '../Navbar';
 
 const data = require("../../json/data.json")
 
@@ -11,6 +12,9 @@ class Profayl2 extends Component {
 	render() { 
 		return ( 
 			<React.Fragment>
+				<div className="navRegist">
+					<Navbar/>
+				</div>
 				<div className="singup_asos container">
 					<div className="nav_name">
 						<h1>Процесс поступления</h1>

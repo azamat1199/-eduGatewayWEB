@@ -48,7 +48,7 @@ const MainEduGate = () => {
   };
   return (
     <>
-      <div className="bir">
+      <div className="n1">
         <Navbar />
       </div>
 

@@ -37,7 +37,7 @@ const SidebarFilial = () => {
                 </div>
             </div>
             <div className="SidebarFilial">
-                <button onClick={openModal}>Добавить университет</button>
+                <button onClick={openModal}>Добавить филиал</button>
                 <div className="settSearch">
                     <div className="searchUniv">
                         <img src={search_icon} alt="" />
