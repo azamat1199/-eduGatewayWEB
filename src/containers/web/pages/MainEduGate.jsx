@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css";
@@ -16,7 +16,7 @@ import icon3 from "../../../assets/icon/icon3.svg";
 import icon4 from "../../../assets/icon/icon4.svg";
 import icon5 from "../../../assets/icon/icon5.svg";
 import icon6 from "../../../assets/icon/icon6.svg";
-
+import Axios from '../../../utils/axios'
 import SwiperCore, { Pagination, Navigation } from "swiper/core";
 import Navbar from "./Navbar";
 
@@ -35,7 +35,14 @@ const MainEduGate = () => {
   const [serach, setSearch] = useState(false);
 
   const [dataFilter, setdataFilter] = useState([]);
-
+ const fetchCountry = async()=>{
+   try {
+     const data = await Axios.get("/university/university-faculty/")
+     console.log(data);
+   } catch (error) {
+     console.log(error);
+   }
+ }
   const fun1 = () => {
     let letFilter = cardData.filter(
       (filter) =>
@@ -46,6 +53,10 @@ const MainEduGate = () => {
     setdataFilter(letFilter);
     setSearch(true);
   };
+
+  useEffect(()=>{
+    fetchCountry()
+  },[])
   return (
     <>
       <div className="n1">

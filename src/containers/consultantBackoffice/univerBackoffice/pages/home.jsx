@@ -9,7 +9,7 @@ import {
 import { scaleOrdinal } from "d3-scale";
 import { schemeCategory10 } from "d3-scale-chromatic";
 import DatePicker from "react-datepicker";
-
+import {useSelector} from 'react-redux'
 //import css
 import "react-datepicker/dist/react-datepicker.css"
 import "../../../../style/css/home.css"
@@ -27,7 +27,10 @@ const dataPie2 = require("../json/data3.json")
 const data_doxod = require("../json/data_doxod.json")
 const dataComposed = require("../json/dataComposed.json")
 
-const Home = () => {
+function  Home () {
+	const selector = useSelector(state=> state)
+	console.log(selector);
+	const {data} = selector.user
 	const [startDate, setStartDate] = useState(null);
 	return ( 
 			<UniversitetBackoffice>

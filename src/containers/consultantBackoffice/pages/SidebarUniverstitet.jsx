@@ -177,7 +177,7 @@ const SidebarUniverstitet = () => {
                                 <h5>Добавить новый университет</h5>
                                 <div>
                                     <label>Название университета</label>
-                                    <input type="text" />
+                                    <input type="text"  />
                                 </div>
                                 <div>
                                     <label>Название университета</label>

@@ -1,4 +1,4 @@
-import React, { Component, useCallback, useState } from 'react';
+import React, { Component, useCallback, useEffect, useState } from 'react';
 
 // import diagramma
 import {
@@ -21,8 +21,7 @@ import { schemeCategory10 } from "d3-scale-chromatic";
 import "../../../style/css/SideOtdel.css"
 
 import Sidebar from './SidebarConsult';
-import SidebarUniverstitet from './SidebarAgentlar';
-import SidebarConsult from './SidebarConsult';
+import Axios from '../../../utils/axios';
 
 // import icon 
 
@@ -40,7 +39,18 @@ const COLORSPie = ["#4897D1", "#EF476F", "#C6E4FB"];
 const colors = scaleOrdinal(schemeCategory10).range();
 
 const  SideGlavny = () => {
-    
+
+    const fetchCountries = async() =>{
+      try {
+          const data = await Axios.get('/university/university/')
+          console.log(data);
+      } catch (error) {
+          
+      }
+    }
+    useEffect(()=>{
+        fetchCountries()
+    },[])
     return ( 
         <Sidebar>
         <div className="asos">

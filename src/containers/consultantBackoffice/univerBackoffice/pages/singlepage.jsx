@@ -9,11 +9,11 @@ import userpic from   "../../../../assets/icon/userpic.svg"
 
 //import css
 import "../../../../style/css/singlepage.css"
+import { useSelector } from 'react-redux';
 
 
-class Singlepage extends Component {
-	state = {  }
-	render() { 
+function Singlepage () {
+	const selector = useSelector(state=> console.log(state))
 		return ( 
 			<React.Fragment>
 				<div className="up_nav">
@@ -93,6 +93,5 @@ class Singlepage extends Component {
 			</React.Fragment>
 		);
 	}
-}
  
 export default Singlepage;
