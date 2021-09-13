@@ -281,52 +281,37 @@
 }
 .mainEduGate .aboutBlock .aboutUs {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-}
-.mainEduGate .aboutBlock .aboutUs > div > .cardAbout:nth-child(1) {
-  margin-bottom: 72px;
 }
 .mainEduGate .aboutBlock .aboutUs .cardAbout {
+  background: #E0F6FF;
+  border-radius: 12px;
+  height: 322px;
   display: flex;
   align-items: center;
-}
-.mainEduGate .aboutBlock .aboutUs .cardAbout .icon {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   justify-content: center;
-  width: 120px;
-  height: 120px;
-  background: #D1DCE0;
-  border-radius: 50%;
-  margin-right: 28px;
+  flex-direction: column;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.mainEduGate .aboutBlock .aboutUs .cardAbout h1 {
+  font-weight: bold;
+  font-size: 45px;
+  color: #00587F;
 }
 .mainEduGate .aboutBlock .aboutUs .cardAbout h4 {
-  font-family: Raleway;
-  font-style: normal;
   font-weight: 600;
-  font-size: 20px;
-  letter-spacing: 0.02em;
-  color: #FFFFFF;
-  text-decoration: none;
-  margin: 0;
-  font-size: 45px;
-  font-weight: bold;
-  color: #00587F;
-  line-height: 42px;
+  font-size: 26px;
+  color: #000000;
+  margin-top: 15px;
+  margin-bottom: 8px;
 }
-.mainEduGate .aboutBlock .aboutUs .cardAbout h4 span {
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  letter-spacing: 0.02em;
-  color: #FFFFFF;
-  text-decoration: none;
-  margin: 0;
-  font-size: 28px;
-  color: #5C7C8A;
+.mainEduGate .aboutBlock .aboutUs .cardAbout p {
+  font-size: 24px;
+  color: #000000;
+  text-align: center;
+  width: 440px;
 }
 .mainEduGate .topFacultetBlock {
   padding: 0 40px;
@@ -416,26 +401,29 @@
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 250px;
 }
+.mainEduGate .workBlock .weareWork .cardBack {
+  display: flex;
+  flex-direction: column;
+  background: #E0F6FF;
+  border-radius: 29px;
+  padding: 30px;
+}
 .mainEduGate .workBlock .weareWork .card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   position: relative;
 }
-.mainEduGate .workBlock .weareWork .card div {
+.mainEduGate .workBlock .weareWork .card .cardBack div {
   display: flex;
   align-items: center;
   justify-content: space-between;
   justify-content: center;
-  width: 180px;
-  height: 180px;
-  background: #D1DCE0;
   border-radius: 10px;
 }
-.mainEduGate .workBlock .weareWork .card div img {
-  width: 99px;
+.mainEduGate .workBlock .weareWork .card .cardBack div img {
+  width: 150px;
 }
 .mainEduGate .workBlock .weareWork .card p {
   font-family: Raleway;
@@ -447,56 +435,59 @@
   text-decoration: none;
   margin: 0;
   font-size: 25px;
-  margin-top: 14px;
   color: rgba(0, 0, 0, 0.75);
-  width: 360px;
+  width: 285px;
   text-align: center;
 }
 .mainEduGate .workBlock .weareWork .card:nth-child(1)::after {
   content: "";
   position: absolute;
   height: 24px;
-  width: 200px;
+  width: 120px;
   background-image: url("../../assets/icon/Line1.svg");
-  right: -90px;
-  top: 78px;
+  right: -60px;
+  top: 125px;
+  background-repeat: no-repeat;
 }
 .mainEduGate .workBlock .weareWork .card:nth-child(2)::after {
   content: "";
   position: absolute;
   height: 24px;
-  width: 200px;
+  width: 120px;
   background-image: url("../../assets/icon/Line1.svg");
-  right: -90px;
-  top: 78px;
+  right: -60px;
+  top: 125px;
+  background-repeat: no-repeat;
 }
 .mainEduGate .workBlock .weareWork .card:nth-child(3)::after {
   content: "";
   position: absolute;
-  height: 150px;
+  height: 120px;
   width: 24px;
   background-image: url("../../assets/icon/LineVec2.svg");
-  left: 292px;
-  bottom: -200px;
+  background-repeat: no-repeat;
+  left: 310px;
+  bottom: -180px;
 }
 .mainEduGate .workBlock .weareWork .card:nth-child(4)::after {
   content: "";
   position: absolute;
   height: 24px;
-  width: 200px;
+  width: 120px;
   background-image: url("../../assets/icon/Line1.svg");
-  right: -90px;
-  top: 78px;
+  right: -60px;
+  top: 125px;
   transform: rotate(180deg);
+  background-repeat: no-repeat;
 }
 .mainEduGate .workBlock .weareWork .card:nth-child(5)::after {
   content: "";
   position: absolute;
   height: 24px;
-  width: 200px;
+  width: 120px;
   background-image: url("../../assets/icon/Line1.svg");
-  right: -90px;
-  top: 78px;
+  right: -60px;
+  top: 125px;
   transform: rotate(180deg);
 }
 .mainEduGate .swipperBlock {
@@ -602,9 +593,80 @@
 .mainEduGate .swipperBlock .swiper-pagination-bullet {
   --swiper-theme-color:black;
 }
-@media (max-width: 1440px) {
+@media (max-width: 1600px) {
+  .mainEduGate .workBlock .weareWork {
+    row-gap: 165px;
+  }
+  .mainEduGate .workBlock .weareWork .card .cardBack {
+    border-radius: 20px;
+    padding: 20px;
+  }
+  .mainEduGate .workBlock .weareWork .card .cardBack div img {
+    width: 125px;
+  }
+  .mainEduGate .workBlock .weareWork .card:nth-child(1)::after {
+    top: 100px;
+  }
+  .mainEduGate .workBlock .weareWork .card:nth-child(2)::after {
+    top: 100px;
+  }
   .mainEduGate .workBlock .weareWork .card:nth-child(3)::after {
+    left: 245px;
+    bottom: -145px;
+  }
+  .mainEduGate .workBlock .weareWork .card:nth-child(4)::after {
+    top: 100px;
+  }
+  .mainEduGate .workBlock .weareWork .card:nth-child(5)::after {
+    top: 100px;
+  }
+  .mainEduGate .aboutBlock .aboutUs .cardAbout p {
+    width: 360px;
+  }
+}
+@media (max-width: 1440px) {
+  .mainEduGate .workBlock .weareWork {
+    row-gap: 110px;
+  }
+  .mainEduGate .workBlock .weareWork .card p {
+    font-size: 20px;
+    width: 215px;
+  }
+  .mainEduGate .workBlock .weareWork .card .cardBack {
+    padding: 15px;
+  }
+  .mainEduGate .workBlock .weareWork .card .cardBack div img {
+    width: 110px;
+  }
+  .mainEduGate .workBlock .weareWork .card:nth-child(1)::after {
+    background-position: right;
+    width: 70px;
+    right: -40px;
+    top: 77px;
+  }
+  .mainEduGate .workBlock .weareWork .card:nth-child(2)::after {
+    background-position: right;
+    width: 70px;
+    right: -40px;
+    top: 77px;
+  }
+  .mainEduGate .workBlock .weareWork .card:nth-child(3)::after {
+    height: 70px;
+    background-position: bottom;
     left: 215px;
+    bottom: -90px;
+  }
+  .mainEduGate .workBlock .weareWork .card:nth-child(4)::after {
+    width: 70px;
+    background-position: right;
+    right: -40px;
+    top: 77px;
+  }
+  .mainEduGate .workBlock .weareWork .card:nth-child(5)::after {
+    width: 70px;
+    background-position: right;
+    right: -40px;
+    top: 77px;
   }
 }
 @media (max-width: 1280px) {
@@ -643,70 +705,25 @@
   .mainEduGate .resultBlock .result .card h4 {
     font-size: 18px;
   }
+  .mainEduGate .aboutBlock .aboutUs .cardAbout {
+    height: 220px;
+  }
+  .mainEduGate .aboutBlock .aboutUs .cardAbout h1 {
+    font-size: 38px;
+  }
   .mainEduGate .aboutBlock .aboutUs .cardAbout h4 {
-    font-size: 40px;
+    font-size: 20px;
   }
-  .mainEduGate .aboutBlock .aboutUs .cardAbout h4 span {
-    font-size: 24px;
-  }
-  .mainEduGate .aboutBlock .aboutUs .cardAbout .icon {
-    width: 100px;
-    height: 100px;
-  }
-  .mainEduGate .aboutBlock .aboutUs .cardAbout .icon img {
-    width: 50px;
+  .mainEduGate .aboutBlock .aboutUs .cardAbout p {
+    font-size: 18px;
+    width: 270px;
   }
   .mainEduGate .topFacultetBlock .topFacultet .card {
     width: 380px;
     height: 160px;
   }
-  .mainEduGate .workBlock .weareWork {
-    row-gap: 160px;
-  }
-  .mainEduGate .workBlock .weareWork .card div {
-    width: 160px;
-    height: 160px;
-  }
-  .mainEduGate .workBlock .weareWork .card div img {
-    width: 80px;
-  }
-  .mainEduGate .workBlock .weareWork .card:nth-child(1)::after {
-    background-image: url("../../assets/icon/vector1024_2.svg");
-    height: 100px;
-    transform: rotate(90deg);
-    width: 24px;
-    right: -10px;
-    top: 30px;
-  }
-  .mainEduGate .workBlock .weareWork .card:nth-child(2)::after {
-    background-image: url("../../assets/icon/vector1024_2.svg");
-    height: 100px;
-    transform: rotate(90deg);
-    width: 24px;
-    right: -10px;
-    top: 30px;
-  }
   .mainEduGate .workBlock .weareWork .card:nth-child(3)::after {
-    background-image: url("../../assets/icon/vector1024_2.svg");
-    height: 100px;
-    left: 170px;
-    bottom: -125px;
-  }
-  .mainEduGate .workBlock .weareWork .card:nth-child(4)::after {
-    background-image: url("../../assets/icon/vector1024_2.svg");
-    height: 100px;
-    transform: rotate(90deg);
-    width: 24px;
-    right: -10px;
-    top: 30px;
-  }
-  .mainEduGate .workBlock .weareWork .card:nth-child(5)::after {
-    background-image: url("../../assets/icon/vector1024_2.svg");
-    height: 100px;
-    transform: rotate(90deg);
-    width: 24px;
-    right: -10px;
-    top: 30px;
+    left: 185px;
   }
   .mainEduGate .swipperBlock .card {
     padding-top: 20px;
@@ -802,23 +819,6 @@
   .mainEduGate .aboutBlock > h5 {
     font-size: 22px;
   }
-  .mainEduGate .aboutBlock .aboutUs .cardAbout {
-    margin-bottom: 50px;
-  }
-  .mainEduGate .aboutBlock .aboutUs .cardAbout h4 {
-    line-height: 30px;
-    font-size: 34px;
-  }
-  .mainEduGate .aboutBlock .aboutUs .cardAbout h4 span {
-    font-size: 22px;
-  }
-  .mainEduGate .aboutBlock .aboutUs .cardAbout .icon {
-    width: 70px;
-    height: 70px;
-  }
-  .mainEduGate .aboutBlock .aboutUs .cardAbout .icon img {
-    width: 35px;
-  }
   .mainEduGate .topFacultetBlock h4 {
     font-size: 22px;
   }
@@ -829,19 +829,36 @@
   .mainEduGate .topFacultetBlock .topFacultet .card p {
     font-size: 18px;
   }
-  .mainEduGate .workBlock .weareWork .card p {
-    width: 250px;
+  .mainEduGate .workBlock .weareWork .card .cardBack {
+    border-radius: 10px;
+  }
+  .mainEduGate .workBlock .weareWork .card .cardBack p {
     font-size: 18px;
+    width: 190px;
   }
-  .mainEduGate .workBlock .weareWork .card div {
-    width: 140px;
-    height: 140px;
+  .mainEduGate .workBlock .weareWork .card .cardBack div img {
+    width: 100px;
   }
-  .mainEduGate .workBlock .weareWork .card div img {
-    width: 70px;
+  .mainEduGate .workBlock .weareWork .card:nth-child(1)::after {
+    width: 40px;
+    right: -20px;
+  }
+  .mainEduGate .workBlock .weareWork .card:nth-child(2)::after {
+    width: 40px;
+    right: -20px;
   }
   .mainEduGate .workBlock .weareWork .card:nth-child(3)::after {
-    left: 145px;
+    height: 40px;
+    bottom: -75px;
+    left: 140px;
+  }
+  .mainEduGate .workBlock .weareWork .card:nth-child(4)::after {
+    width: 40px;
+    right: -20px;
+  }
+  .mainEduGate .workBlock .weareWork .card:nth-child(5)::after {
+    width: 40px;
+    right: -20px;
   }
   .mainEduGate .swipperBlock .card {
     height: 420px;
@@ -939,20 +956,22 @@
     font-size: 14px;
   }
   .mainEduGate .aboutBlock {
-    padding: 20px;
+    padding: 0 20px;
+  }
+  .mainEduGate .aboutBlock .aboutUs .cardAbout {
+    height: 220px;
+    width: 220px;
+  }
+  .mainEduGate .aboutBlock .aboutUs .cardAbout h1 {
+    font-size: 32px;
   }
   .mainEduGate .aboutBlock .aboutUs .cardAbout h4 {
-    font-size: 30px;
+    text-align: center;
+    font-size: 16px;
   }
-  .mainEduGate .aboutBlock .aboutUs .cardAbout h4 span {
-    font-size: 18px;
-  }
-  .mainEduGate .aboutBlock .aboutUs .cardAbout .icon {
-    width: 60px;
-    height: 60px;
-  }
-  .mainEduGate .aboutBlock .aboutUs .cardAbout .icon img {
-    width: 30px;
+  .mainEduGate .aboutBlock .aboutUs .cardAbout p {
+    font-size: 14px;
+    width: auto;
   }
   .mainEduGate .topFacultetBlock {
     padding: 0 20px;
@@ -965,34 +984,52 @@
   .mainEduGate .topFacultetBlock .topFacultet .card p {
     font-size: 16px;
   }
-  .mainEduGate .workBlock .weareWork {
-    row-gap: 125px;
+  .mainEduGate .workBlock {
+    padding-left: 20px;
+    padding-right: 20px;
   }
-  .mainEduGate .workBlock .weareWork .card p {
-    width: 215px;
+  .mainEduGate .workBlock h4 {
+    font-size: 22px;
   }
-  .mainEduGate .workBlock .weareWork .card div {
-    width: 100px;
-    height: 100px;
+  .mainEduGate .workBlock .weareWork .card .cardBack {
+    padding: 15px 12px;
   }
-  .mainEduGate .workBlock .weareWork .card div img {
-    width: 50px;
+  .mainEduGate .workBlock .weareWork .card .cardBack p {
+    font-size: 14px;
+    width: 150px;
+  }
+  .mainEduGate .workBlock .weareWork .card .cardBack div img {
+    width: 70px;
   }
   .mainEduGate .workBlock .weareWork .card:nth-child(1)::after {
-    top: 0;
+    background-image: url("../../assets/icon/Line768.svg");
+    top: 55px;
+    width: 28px;
+    height: 14px;
   }
   .mainEduGate .workBlock .weareWork .card:nth-child(2)::after {
-    top: 0;
+    background-image: url("../../assets/icon/Line768.svg");
+    top: 55px;
+    width: 28px;
+    height: 14px;
   }
   .mainEduGate .workBlock .weareWork .card:nth-child(3)::after {
-    left: 100px;
-    bottom: -115px;
+    background-image: url("../../assets/icon/Line768-2.svg");
+    height: 28px;
+    left: 115px;
+    width: 14px;
   }
   .mainEduGate .workBlock .weareWork .card:nth-child(4)::after {
-    top: 0;
+    background-image: url("../../assets/icon/Line768.svg");
+    top: 55px;
+    width: 28px;
+    height: 14px;
   }
   .mainEduGate .workBlock .weareWork .card:nth-child(5)::after {
-    top: 0;
+    background-image: url("../../assets/icon/Line768.svg");
+    top: 55px;
+    width: 28px;
+    height: 14px;
   }
   .mainEduGate .swipperBlock {
     padding: 50px 20px;
@@ -1059,10 +1096,9 @@
   .mainEduGate .aboutBlock .aboutUs {
     flex-direction: column;
   }
-  .mainEduGate .aboutBlock .aboutUs div > .cardAbout:nth-child(1) {
-    margin-bottom: 20px;
-  }
   .mainEduGate .aboutBlock .aboutUs .cardAbout {
+    height: 140px;
+    width: 100%;
     margin-bottom: 20px;
   }
   .mainEduGate .topFacultetBlock h4 {
@@ -1073,66 +1109,70 @@
     width: 180px;
     height: 97px;
   }
-  .mainEduGate .workBlock {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
   .mainEduGate .workBlock h4 {
     text-align: center;
   }
   .mainEduGate .workBlock .weareWork {
+    grid-template-columns: 1fr 1fr;
     row-gap: 60px;
   }
-  .mainEduGate .workBlock .weareWork .card p {
+  .mainEduGate .workBlock .weareWork .card .cardBack {
+    padding: 10px 8px;
+  }
+  .mainEduGate .workBlock .weareWork .card .cardBack p {
     width: 110px;
+    height: 50px;
     font-size: 12px;
   }
-  .mainEduGate .workBlock .weareWork .card div {
-    width: 60px;
-    height: 60px;
+  .mainEduGate .workBlock .weareWork .card .cardBack div img {
+    width: 50px;
   }
-  .mainEduGate .workBlock .weareWork .card div img {
-    width: 30px;
+  .mainEduGate .workBlock .weareWork .card:nth-child(1) {
+    order: 1;
   }
-  .mainEduGate .workBlock .weareWork .card:nth-child(1)::after {
-    background-image: url("../../assets/icon/vector1024_2.svg");
-    width: 18px;
-    height: 12px;
-    top: 23px;
-    left: 115px;
-    transform: rotate(0deg);
+  .mainEduGate .workBlock .weareWork .card:nth-child(2) {
+    order: 2;
+  }
+  .mainEduGate .workBlock .weareWork .card:nth-child(3) {
+    order: 4;
+  }
+  .mainEduGate .workBlock .weareWork .card:nth-child(4) {
+    order: 3;
+  }
+  .mainEduGate .workBlock .weareWork .card:nth-child(5) {
+    order: 5;
+  }
+  .mainEduGate .workBlock .weareWork .card:nth-child(6) {
+    order: 6;
   }
   .mainEduGate .workBlock .weareWork .card:nth-child(2)::after {
-    background-image: url("../../assets/icon/vector1024_2.svg");
-    width: 18px;
-    height: 12px;
-    top: 23px;
-    left: 115px;
-    transform: rotate(0deg);
+    background-image: url("../../assets/icon/Line768-2.svg");
+    height: 28px;
+    left: 90px;
+    width: 14px;
+    top: 135px;
+    background-position: bottom;
   }
   .mainEduGate .workBlock .weareWork .card:nth-child(3)::after {
-    background-image: url("../../assets/icon/vector1024_2.svg");
-    width: 18px;
-    height: 12px;
-    top: 135px;
-    left: 55px;
-    transform: rotate(90deg);
+    background-image: url("../../assets/icon/Line768.svg");
+    top: 55px;
+    width: 28px;
+    height: 14px;
+    background-position: right;
+    transform: rotate(180deg);
+    left: -12px;
   }
   .mainEduGate .workBlock .weareWork .card:nth-child(4)::after {
-    background-image: url("../../assets/icon/vector1024_2.svg");
-    width: 18px;
-    height: 12px;
-    top: 23px;
-    left: 115px;
-    transform: rotate(180deg);
+    background-image: url("../../assets/icon/Line768-2.svg");
+    height: 28px;
+    left: 90px;
+    width: 14px;
+    top: 135px;
+    background-position: bottom;
+    transform: rotate(0);
   }
   .mainEduGate .workBlock .weareWork .card:nth-child(5)::after {
-    background-image: url("../../assets/icon/vector1024_2.svg");
-    width: 18px;
-    height: 12px;
-    top: 23px;
-    left: 115px;
-    transform: rotate(180deg);
+    transform: rotate(0);
   }
 }
 @media (max-width: 400px) {
@@ -1141,26 +1181,6 @@
   }
   .mainEduGate .topFacultetBlock .topFacultet .card p {
     align-items: center;
-  }
-
-  .mainEduGate .workBlock .weareWork .card:nth-child(1)::after {
-    left: 106px;
-  }
-  .mainEduGate .workBlock .weareWork .card:nth-child(2)::after {
-    left: 106px;
-  }
-  .mainEduGate .workBlock .weareWork .card:nth-child(3)::after {
-    left: 46px;
-  }
-  .mainEduGate .workBlock .weareWork .card:nth-child(4)::after {
-    left: 106px;
-  }
-  .mainEduGate .workBlock .weareWork .card:nth-child(5)::after {
-    left: 106px;
-  }
-  .mainEduGate .workBlock .weareWork .card p {
-    width: 105px;
-    font-size: 10px;
   }
 }
 @media (max-width: 375px) {
@@ -1185,21 +1205,23 @@
     width: 84px;
     font-size: 10px;
   }
-  .mainEduGate .workBlock .weareWork .card:nth-child(1)::after {
-    left: 101px;
+  .mainEduGate .workBlock .weareWork .card:nth-child(1) {
+    justify-content: flex-start;
   }
-  .mainEduGate .workBlock .weareWork .card:nth-child(2)::after {
-    left: 101px;
+  .mainEduGate .workBlock .weareWork .card:nth-child(2) {
+    justify-content: flex-end;
   }
-  .mainEduGate .workBlock .weareWork .card:nth-child(3)::after {
-    left: 46px;
-    top: 135px;
+  .mainEduGate .workBlock .weareWork .card:nth-child(3) {
+    justify-content: flex-end;
   }
-  .mainEduGate .workBlock .weareWork .card:nth-child(4)::after {
-    left: 101px;
+  .mainEduGate .workBlock .weareWork .card:nth-child(4) {
+    justify-content: flex-start;
   }
-  .mainEduGate .workBlock .weareWork .card:nth-child(5)::after {
-    left: 101px;
+  .mainEduGate .workBlock .weareWork .card:nth-child(5) {
+    justify-content: flex-start;
+  }
+  .mainEduGate .workBlock .weareWork .card:nth-child(6) {
+    justify-content: flex-end;
   }
 }
 @media (max-width: 365px) {
@@ -1231,12 +1253,6 @@
     width: 135px;
     height: 85px;
   }
-  .mainEduGate .aboutBlock .aboutUs .cardAbout h4 {
-    font-size: 25px;
-  }
-  .mainEduGate .aboutBlock .aboutUs .cardAbout h4 span {
-    font-size: 13px;
-  }
   .mainEduGate .workBlock {
     padding-left: 10px;
     padding-right: 10px;
@@ -1245,19 +1261,13 @@
     font-size: 22px;
   }
   .mainEduGate .workBlock .weareWork .card:nth-child(1)::after {
-    left: 90px;
+    right: -17px;
   }
   .mainEduGate .workBlock .weareWork .card:nth-child(2)::after {
-    left: 90px;
-  }
-  .mainEduGate .workBlock .weareWork .card:nth-child(3)::after {
-    left: 37px;
+    left: 80px;
   }
   .mainEduGate .workBlock .weareWork .card:nth-child(4)::after {
-    left: 90px;
-  }
-  .mainEduGate .workBlock .weareWork .card:nth-child(5)::after {
-    left: 90px;
+    left: 55px;
   }
   .mainEduGate .swipperBlock h4 {
     font-size: 22px;
