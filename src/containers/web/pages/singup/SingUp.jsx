@@ -87,11 +87,12 @@ function SingUp() {
       setLoading(false);
     }
   };
-  
+
   console.log(error);
   console.log(inputRef);
   console.log(status);
   console.log(loginData);
+
   return (
     <React.Fragment>
       <div className="navRegist">
@@ -164,6 +165,7 @@ function SingUp() {
               onChange={handleInputChange}
               type="text"
               name="first_name"
+              placeholder="имя"
               required
             />
             <InputErrorMsg type="first_name" errorObj={error} />
@@ -174,6 +176,7 @@ function SingUp() {
               onChange={handleInputChange}
               type="text"
               name="last_name"
+              placeholder="фамилия"
               required
             />
             <InputErrorMsg type="last_name" errorObj={error} />
@@ -184,6 +187,7 @@ function SingUp() {
               type="phone"
               onChange={handleInputChange}
               name="phone_number"
+              placeholder="+998 90 123 45 67"
               required
             />
           </div>
@@ -195,6 +199,7 @@ function SingUp() {
                 onChange={handleInputChange}
                 name="password_1"
                 required
+                placeholder="пароль"
                 ref={inputRef}
                 type={type ? "password" : "text"}
               />
@@ -235,6 +240,7 @@ function SingUp() {
             <p>Повторите пароль</p>
             <div className="password">
               <input
+              placeholder="подтвердить пароль"
                 onClick={() =>
                   loginData.password_1.length >= 8 > 0
                     ? (statsuRef.current.style = "display:none;")
