@@ -2,19 +2,11 @@
 .status {
   padding: 30px;
 }
-
 .status .top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
-
 .status .top h1 {
   font-family: Raleway;
   font-style: normal;
@@ -31,22 +23,15 @@
   font-size: 26px;
   font-weight: bold;
 }
-
 .status .top div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .status .top div img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
-
 .status .top div h2 {
   font-family: Raleway;
   font-style: normal;
@@ -63,7 +48,6 @@
   margin-left: 12px;
   font-size: 16px;
 }
-
 .status .top div h2 span {
   font-family: Raleway;
   font-style: normal;
@@ -78,29 +62,17 @@
   font-weight: 500;
   display: block;
 }
-
 .status .bottom {
   margin-top: 48px;
   background: #FFFFFF;
-  -webkit-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
-          box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
   border-radius: 14px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   padding: 60px 0;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
 .status .bottom h1 {
   margin-top: 38px;
   font-family: Raleway;
@@ -110,7 +82,6 @@
   text-align: center;
   color: #000000;
 }
-
 .status .bottom h1 span {
   display: block;
 }
@@ -124,19 +95,13 @@
     font-size: 24px;
   }
 }
-
 @media (max-width: 768px) {
   .status {
     padding: 60px 10px 30px 10px;
   }
   .status .top {
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    align-items: flex-start;
+    flex-direction: column;
   }
   .status .top h1 {
     font-size: 24px;
@@ -154,27 +119,18 @@
     font-size: 20px;
   }
 }
-
 @media (max-width: 425px) {
   .status {
     padding-top: 5px;
   }
   .status .top {
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    align-items: flex-start;
+    flex-direction: column-reverse;
+    align-items: center;
     padding-top: 5px;
   }
   .status .top > div {
-    -ms-flex-item-align: end;
-        align-self: flex-end;
+    align-self: flex-end;
     margin-bottom: 20px;
   }
   .status .top h1 {
@@ -183,3 +139,5 @@
     margin-top: 10px;
   }
 }
+
+/*# sourceMappingURL=status.css.map */
