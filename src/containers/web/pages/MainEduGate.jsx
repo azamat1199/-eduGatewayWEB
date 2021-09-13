@@ -208,57 +208,69 @@ const MainEduGate = () => {
         )}
         {/* end resultBlock */}
 
-        {/* about block */}
-        <div className="aboutBlock">
-          <h5>О нас</h5>
-          <div className="aboutUs">
-            <div>
-              {/*  */}
-              <div className="cardAbout">
-                <div className="icon">
-                  <img src={univer_icon} alt="" />
+        {/* workBlock */}
+        <div id="howItWork" className="workBlock">
+          <h4>Как мы работаем</h4>
+          <div className="weareWork">
+            {/* card */}
+            <div className="card">
+              <div className="cardBack">
+                <div>
+                  <img src={icon1} alt="" />
                 </div>
-                <h4>
-                  250+ <br />
-                  <span>Университеты партнёры</span>
-                </h4>
-              </div>
-              {/*  */}
-              <div className="cardAbout">
-                <div className="icon">
-                  <img src={country_icon} alt="" />
-                </div>
-                <h4>
-                  100+ <br />
-                  <span>Стран куда мы отправляем</span>
-                </h4>
+                <p>Ищите программу и университет</p>
               </div>
             </div>
-            <div>
-              {/*  */}
-              <div className="cardAbout">
-                <div className="icon">
-                  <img src={univer_icon} alt="" />
+            {/* card */}
+            <div className="card">
+              <div className="cardBack">
+                <div>
+                  <img src={icon2} alt="" />
                 </div>
-                <h4>
-                  250+ <br />
-                  <span>Университеты партнёры</span>
-                </h4>
+                <p>Регистрируетесь на нашем сайте</p>
               </div>
-              {/*  */}
-              <div className="cardAbout">
-                <div className="icon">
-                  <img src={country_icon} alt="" />
+            </div>
+            {/* card */}
+            <div className="card">
+              <div className="cardBack">
+                <div>
+                  <img src={icon3} alt="" />
                 </div>
-                <h4>
-                  100+ <br />
-                  <span>Стран куда мы отправляем</span>
-                </h4>
+                <p>Заполняете анкету и подаете документы</p>
+            </div>
+            </div>
+            {/* card */}
+            <div className="card">
+              <div className="cardBack">
+                <div>
+                  <img src={icon4} alt="" />
+                </div>
+                <p>Получаете ответ от Университета</p>
+              </div>  
+            </div>
+            {/* card */}
+            <div className="card">
+              <div className="cardBack">
+                <div>
+                  <img src={icon5} alt="" />
+                </div>
+                <p>Мы отправляем ваши документы</p>
+              </div>
+            </div>
+            {/* card */}
+            <div className="card">
+              <div className="cardBack">
+                <div>
+                  <img src={icon6} alt="" />
+                </div>
+                <p>Оплачиваете за  наши услуги</p>
               </div>
             </div>
           </div>
         </div>
-        {/* end about block */}
+        {/* end workBlock */}
+
+        
 
         {/* resultBlock */}
         <div className="resultBlock" id="university">
@@ -324,55 +336,34 @@ const MainEduGate = () => {
         </div>
         {/* end top fakultet */}
 
-        {/* workBlock */}
-        <div id="howItWork" className="workBlock">
-          <h4>Как мы работаем</h4>
-          <div className="weareWork">
-            {/* card */}
-            <div className="card">
-              <div>
-                <img src={icon1} alt="" />
-              </div>
-              <p>Ищите программу и университет</p>
+        {/* about block */}
+        <div className="aboutBlock">
+          <h5>О нас</h5>
+          <div className="aboutUs">
+            {/*  */}
+            <div className="cardAbout">
+              <h1>250+</h1>
+              <h4>Университеты партнёры</h4>
+              <p>Education Gateway сотрудничает с более 250 университетами с разных уголков мира </p>
             </div>
-            {/* card */}
-            <div className="card">
-              <div>
-                <img src={icon2} alt="" />
-              </div>
-              <p>Регистрируетесь на нашем сайте</p>
+            {/*  */}
+            {/*  */}
+            <div className="cardAbout">
+              <h1>100+</h1>
+              <h4>Страны партнёры</h4>
+              <p>Education Gateway сотрудничает с более 250 университетами с разных уголков мира </p>
             </div>
-            {/* card */}
-            <div className="card">
-              <div>
-                <img src={icon3} alt="" />
-              </div>
-              <p>Заполняете анкету и подаете документы</p>
+            {/*  */}
+            {/*  */}
+            <div className="cardAbout">
+              <h1>250+</h1>
+              <h4>Университеты партнёры</h4>
+              <p>Education Gateway сотрудничает с более 250 университетами с разных уголков мира </p>
             </div>
-            {/* card */}
-            <div className="card">
-              <div>
-                <img src={icon4} alt="" />
-              </div>
-              <p>Получаете ответ от Университета</p>
-            </div>
-            {/* card */}
-            <div className="card">
-              <div>
-                <img src={icon5} alt="" />
-              </div>
-              <p>Мы отправляем ваши документы в Универ</p>
-            </div>
-            {/* card */}
-            <div className="card">
-              <div>
-                <img src={icon6} alt="" />
-              </div>
-              <p>Оплачиваете за услуги нашей компании</p>
-            </div>
+            {/*  */}
           </div>
         </div>
-        {/* end workBlock */}
+        {/* end about block */}
 
         {/* swipper block */}
         <div className="swipperBlock">

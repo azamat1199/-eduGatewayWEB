@@ -215,40 +215,39 @@
             margin-bottom: 32px;
         }
         .aboutUs{
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            
-            & > div > .cardAbout:nth-child(1){
-                margin-bottom: 72px;
-            }
-            .cardAbout{
-                display: flex;
-                align-items: center;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			.cardAbout{
+				background: #E0F6FF;
+				border-radius: 12px;
+				height: 322px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+				padding-left: 15px;
+				padding-right: 15px;
 
-                .icon{
-                    @include flexStyleEduGate();
-                    justify-content: center;
-                    width: 120px;
-                    height: 120px;
-                    background: #D1DCE0;
-                    border-radius: 50%;
-                    margin-right: 28px;
-                    
-                }
-                h4{
-                    @include textheader();
-                    font-size: 45px;
-                    font-weight: bold;
-                    color: #00587F;
-                    line-height: 42px;
-                    span{
-                        @include textheader();
-                        font-size: 28px;
-                        color: #5C7C8A;
-                    }
-                }
-            }
+				h1{
+					font-weight: bold;
+					font-size: 45px;
+					color: #00587F;
+				}
+				h4{
+					font-weight: 600;
+					font-size: 26px;
+					color: #000000;
+					margin-top: 15px;
+					margin-bottom: 8px;
+				}
+				p{
+					font-size: 24px;
+					color: #000000;
+					text-align: center;
+					width: 440px;
+				}
+			}
         } //end aboutUs
     } // end aboutBlock
 
@@ -315,30 +314,34 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             row-gap: 250px;
+			.cardBack{
+				display:flex;
+				flex-direction: column;
+				background: #E0F6FF;
+				border-radius: 29px;
+				padding: 30px;
+			}
             .card{
                 @include flexStyleEduGate();
-                flex-direction: column;
-                justify-content: flex-start;
+				justify-content: center;
+                // flex-direction: column;
+                // justify-content: flex-start;
                 position: relative;
                
-                div{
+                .cardBack div{
                     @include flexStyleEduGate();
                     justify-content: center;
-                    width: 180px;
-                    height: 180px;
-                    background: #D1DCE0;
                     border-radius: 10px;
 
                     img{
-                        width: 99px;
+                        width: 150px;
                     }
                 }
                 p{
                     @include textheader();
                     font-size: 25px;
-                    margin-top: 14px;
                     color: rgba(0, 0, 0, 0.75);
-                    width: 360px;
+                    width: 285px;
                     text-align: center;
                 }
             }
@@ -346,48 +349,51 @@
                 content: "";
                 position: absolute;
                 height: 24px;
-                width: 200px;
+                width: 120px;
                 background-image: url("../../assets/icon/Line1.svg");
-                right: -90px;
-                top: 78px;
+                right: -60px;
+                top: 125px;
+				background-repeat: no-repeat;
             }
             .card:nth-child(2)::after{
                 content: "";
                 position: absolute;
                 height: 24px;
-                width: 200px;
+                width: 120px;
                 background-image: url("../../assets/icon/Line1.svg");
-                right: -90px;
-                top: 78px;
+                right: -60px;
+                top: 125px;
+				background-repeat: no-repeat;
             }
             .card:nth-child(3)::after{
                 content: "";
                 position: absolute;
-                height: 150px;
+                height: 120px;
                 width: 24px;
                 background-image: url("../../assets/icon/LineVec2.svg");
-                
-                left: 292px;
-                bottom: -200px;
+				background-repeat: no-repeat;
+                left: 310px;
+                bottom: -180px;
             }
             .card:nth-child(4)::after{
                 content: "";
                 position: absolute;
                 height: 24px;
-                width: 200px;
+                width: 120px;
                 background-image: url("../../assets/icon/Line1.svg");
-                right: -90px;
-                top: 78px;
+                right: -60px;
+                top: 125px;
                 transform: rotate(180deg);
+				background-repeat: no-repeat;
             }
             .card:nth-child(5)::after{
                 content: "";
                 position: absolute;
                 height: 24px;
-                width: 200px;
+                width: 120px;
                 background-image: url("../../assets/icon/Line1.svg");
-                right: -90px;
-                top: 78px;
+                right: -60px;
+                top: 125px;
                 transform: rotate(180deg);
             }
             
@@ -473,10 +479,105 @@
 	}
 }
 
-// 1280
+
+// 1600
+@media (max-width:1600px) {
+	.mainEduGate{
+		.workBlock .weareWork{
+			row-gap: 165px;
+			.card{
+				.cardBack{
+					border-radius: 20px;
+					padding: 20px;
+					div{
+						img{
+							width: 125px;
+						}
+					}
+				}
+			} 
+			.card:nth-child(1)::after{
+				top: 100px;
+			}
+			.card:nth-child(2)::after{
+				top: 100px;
+			}
+			.card:nth-child(3)::after{
+				left: 245px;
+				bottom: -145px;
+			}
+			.card:nth-child(4)::after{
+				top: 100px;
+			}
+			.card:nth-child(5)::after{
+				top: 100px;
+			}
+		} 
+		.aboutBlock{
+			.aboutUs{
+				.cardAbout{
+					p{
+						width: 360px;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+// 1440
 @media (max-width:1440px) {
-	.mainEduGate .workBlock .weareWork .card:nth-child(3)::after{
-		left: 215px;
+	.mainEduGate{
+		.workBlock .weareWork{
+			row-gap: 110px;
+			.card{
+				p{
+					font-size: 20px;
+					width: 215px;
+				}
+				.cardBack{
+					padding: 15px;
+					div{
+						img{
+							width: 110px;
+						}
+					}
+				}
+			} 
+			.card:nth-child(1)::after{
+				background-position: right;
+				width: 70px;
+				right: -40px;
+				top: 77px;
+			}
+			.card:nth-child(2)::after{
+				background-position: right;
+				width: 70px;
+				right: -40px;
+				top: 77px;
+			}
+			.card:nth-child(3)::after{
+				height: 70px;
+				background-position: bottom;
+				left: 215px;
+				bottom: -90px;
+			}
+			.card:nth-child(4)::after{
+				width: 70px;
+				background-position: right;
+				right: -40px;
+				top: 77px;
+				
+			}
+			.card:nth-child(5)::after{
+				width: 70px;
+				background-position: right;
+				right: -40px;
+				top: 77px;
+				
+			}
+		} 
 	}
 }
 
@@ -520,81 +621,53 @@
 			  } 
 		 }
 		 .aboutBlock{
-			  .aboutUs{
-					.cardAbout{
-						h4{
-							 font-size: 40px;
-							 span{
-								  font-size: 24px;
-							 }
+			.aboutUs{
+				.cardAbout{
+					height: 220px;
+					h1{
+						font-size: 38px;
+					}
+					h4{
+						font-size: 20px;
+					}
+					p{
+						font-size: 18px;
+						width: 270px;
+					}
+				}
+			}
+		}
+		.topFacultetBlock{
+			.topFacultet{
+				.card{
+						width: 380px;
+						height: 160px;
+				}
+			}
+		}
+		.workBlock{
+			.weareWork{
+					.card{
+						div{
+							img{
+									
+							}
 						}
-						 .icon{ 
-							  width: 100px;
-							  height: 100px;
-							  img{
-									width: 50px;
-							  }
-						 }
-					}
-			  }
-		 }
-		 .topFacultetBlock{
-			  .topFacultet{
-					.card{
-						 width: 380px;
-						 height: 160px;
-					}
-			  }
-		 }
-		 .workBlock{
-			  .weareWork{
-					row-gap: 160px;
-					.card{
-						 div{
-							  width: 160px;
-							  height: 160px;
-							  img{
-									width: 80px;
-							  }
-						 }
 					}
 					.card:nth-child(1)::after{
-						 background-image: url("../../assets/icon/vector1024_2.svg");
-						 height: 100px;
-						 transform: rotate(90deg);
-						 width: 24px;
-						 right: -10px;
-						 top:30px;
+						
 					}
 					.card:nth-child(2)::after{
-						 background-image: url("../../assets/icon/vector1024_2.svg");
-						 height: 100px;
-						 transform: rotate(90deg);
-						 width: 24px;
-						 right: -10px;
-						 top:30px;
+					
 					}
 					.card:nth-child(3)::after{
-						 background-image: url("../../assets/icon/vector1024_2.svg");
-						 height: 100px;
-						 left: 170px;
-						 bottom: -125px;
+						left: 185px;
 					}
 					.card:nth-child(4)::after{
-						 background-image: url("../../assets/icon/vector1024_2.svg");
-						 height: 100px;
-						 transform: rotate(90deg);
-						 width: 24px;
-						 right: -10px;
-						 top:30px;
+						
 					}
 					.card:nth-child(5)::after{
-						 background-image: url("../../assets/icon/vector1024_2.svg");
-						 height: 100px;
-						 transform: rotate(90deg);
-						 width: 24px;
-						 right: -10px;
-						 top:30px;
+					
 					}
 			  }
 		 }
@@ -709,23 +782,7 @@
 					font-size: 22px;
 			  }
 			  .aboutUs{
-					.cardAbout{
-						 margin-bottom: 50px;
-						h4{
-							 line-height: 30px;
-							 font-size: 34px;
-							 span{
-								  font-size: 22px;
-							 }
-						}
-						 .icon{ 
-							  width: 70px;
-							  height: 70px;
-							  img{
-									width: 35px;
-							  }
-						 }
-					}
+					
 			  }
 		 }
 		 .topFacultetBlock{ 
@@ -743,27 +800,51 @@
 					}
 			  }
 		 }
-		 .workBlock{
-			  .weareWork{
-					.card{
-						 p{
-							  width: 250px;
-							  font-size: 18px;   
-						 }
-						 div{
-							  width: 140px;
-							  height: 140px;
-							  img{
-									width: 70px;
-							  }
-						 }
+		.workBlock{
+			.weareWork{
+				.card{
+					.cardBack{
+						border-radius: 10px;
+						p{
+							font-size: 18px;
+							width: 190px;
+						}
+						div{
+							img{
+								width: 100px;
+							}
+						}
+						.card:nth-child(3)::after{
+					
+						}
 					}
-					.card:nth-child(3)::after{
-						 left: 145px;
-					  
-					}
-			  }
-		 }
+				}
+				.card:nth-child(1)::after{
+					width: 40px;
+					right: -20px;
+				}
+				.card:nth-child(2)::after{
+					width: 40px;
+					right: -20px;
+				}
+				.card:nth-child(3)::after{
+					height: 40px;
+					bottom: -75px;
+					left: 140px;
+				}
+				.card:nth-child(4)::after{
+					width: 40px;
+					right: -20px;
+				}
+				.card:nth-child(5)::after{
+					width: 40px;
+					right: -20px;
+				}
+			}
+		}
+
+	
+
 		 .swipperBlock{
 			  .card{
 					height: 420px;
@@ -880,28 +961,26 @@
 			  } 
 		 }
 		 .aboutBlock{
-			  padding: 20px;
-			  // & > h5{
-			  // }
-			  .aboutUs{
-					.cardAbout{
-						h4{
-							 font-size: 30px;
-							 span{
-								  font-size: 18px;
-							 }
-						}
-						 .icon{ 
-							  width: 60px;
-							  height: 60px;
-							  img{
-									width: 30px;
-							  }
-						 }
+			 padding: 0 20px;
+			.aboutUs{
+				.cardAbout{
+					height: 220px;
+					width: 220px;
+					h1{
+						font-size: 32px;
 					}
-			  }
-		 }
-		 .topFacultetBlock{ 
+					h4{
+						text-align: center;
+						font-size: 16px;
+					}
+					p{
+						font-size: 14px;
+						width: auto;
+					}
+				}
+			}
+		}
+		.topFacultetBlock{ 
 			  padding: 0 20px;
 			  // h4{
 			  // }
@@ -917,43 +996,61 @@
 			  }
 		 }
 		 .workBlock{
-			  .weareWork{
-					row-gap: 125px;
-					.card{
-						 p{  
-							  width: 215px;
-						 }
-						 div{
-							  width: 100px;
-							  height: 100px;
-							  img{
-									width: 50px;
-							  }
-						 }
+			 padding-left: 20px;
+			 padding-right: 20px;
+			 h4{
+				 font-size: 22px;
+			 }
+			.weareWork{
+				.card{
+					.cardBack{
+						padding: 15px 12px;
+						p{
+							font-size: 14px;
+							width: 150px;
+						}
+						div{
+							img{
+								width: 70px;
+							}
+						}
+						.card:nth-child(3)::after{
+					
+						}
 					}
-					.card:nth-child(1)::after{
-						 top: 0;
-					  
-					}
-					.card:nth-child(2)::after{
-						 top: 0;
-						 
-					}
-					.card:nth-child(3)::after{
-						 left: 100px;
-						 bottom: -115px;
-					  
-					}
-					.card:nth-child(4)::after{
-						 top: 0;
-				  
-					}
-					.card:nth-child(5)::after{
-						 top: 0;
-					 
-					}
-			  }
-		 }
+				}
+				.card:nth-child(1)::after{
+					background-image: url("../../assets/icon/Line768.svg");
+					top: 55px;
+					width: 28px;
+					height: 14px;
+				}
+				.card:nth-child(2)::after{
+					background-image: url("../../assets/icon/Line768.svg");
+					top: 55px;
+					width: 28px;
+					height: 14px;
+				}
+				.card:nth-child(3)::after{
+					background-image: url("../../assets/icon/Line768-2.svg");
+					height: 28px;
+					left: 115px;
+					width: 14px;
+				}
+				.card:nth-child(4)::after{
+					background-image: url("../../assets/icon/Line768.svg");
+					top: 55px;
+					width: 28px;
+					height: 14px;
+				}
+				.card:nth-child(5)::after{
+					background-image: url("../../assets/icon/Line768.svg");
+					top: 55px;
+					width: 28px;
+					height: 14px;
+				}
+			}
+		}
 		 .swipperBlock{
 			  padding: 50px 20px;
 		 }
@@ -1043,25 +1140,18 @@
 			  } 
 		 }
 		 .aboutBlock{
+
 			  & > h5{
 					text-align: center;
 			  }
 			  .aboutUs{
-					flex-direction: column;
-					div > .cardAbout:nth-child(1){
-						 margin-bottom: 20px;
-					}
-					.cardAbout{
-						 margin-bottom: 20px;
-						h4{
-							 span{
-							 }
-						}
-						 .icon{ 
-							  img{
-							  }
-						 }
-					}
+
+				flex-direction: column;
+				.cardAbout{
+					height: 140px;
+					width: 100%;
+					margin-bottom: 20px;
+				}
 			  }
 		 }
 		 .topFacultetBlock{ 
@@ -1079,72 +1169,87 @@
 					}
 			  }
 		 }
-		 .workBlock{
-			 padding-left: 20px;
-			 padding-right: 20px;
-			  h4{
-					text-align: center;
-			  }
-			  .weareWork{
-					row-gap: 60px;
-					.card{
-						
-						 p{  
-							 width: 110px;
-							 font-size: 12px;	
-						 }
-						 div{
-							 width: 60px;
-							 height: 60px;
-							  img{
-								  width: 30px;
-							  }
-						 }
-					}
-					.card:nth-child(1)::after{
-						// background: none;
-						background-image: url("../../assets/icon/vector1024_2.svg"); 
-						 width: 18px;
-						 height: 12px;
-						 top:23px;
-						 left:115px;
-						 transform: rotate(0deg);
 
+		
+		.workBlock{
+			h4{
+				text-align: center;
+			}
+			.weareWork{
+				grid-template-columns: 1fr 1fr;
+				row-gap: 60px;
+				.card{
+					.cardBack{
+						padding: 10px 8px;
+						p{
+							width: 110px;
+							height: 50px;
+							font-size: 12px;
+						}
+						div{
+							img{
+								width: 50px;
+							}
+						}
+						.card:nth-child(3)::after{
+					
+						}
 					}
-					.card:nth-child(2)::after{
-						background-image: url("../../assets/icon/vector1024_2.svg"); 
-						width: 18px;
-						height: 12px;
-						top:23px;
-						left:115px;
-						transform: rotate(0deg);
-					}
-					.card:nth-child(3)::after{
-						background-image: url("../../assets/icon/vector1024_2.svg"); 
-						width: 18px;
-						height:12px;
-						top:135px;
-						left:55px;
-						transform: rotate(90deg);
-					}
-					.card:nth-child(4)::after{
-						background-image: url("../../assets/icon/vector1024_2.svg"); 
-						width: 18px;
-						height: 12px;
-						top:23px;
-						left:115px;
-						transform: rotate(180deg);
-					}
-					.card:nth-child(5)::after{
-						background-image: url("../../assets/icon/vector1024_2.svg"); 
-						width: 18px;
-						height: 12px;
-						top:23px;
-						left:115px;
-						transform: rotate(180deg);
-					}
-			  }
-		 }
+				}
+				.card:nth-child(1){
+					order: 1;
+				}
+				.card:nth-child(2){
+				order: 2;
+				}
+				.card:nth-child(3){
+					order: 4;
+				}
+				.card:nth-child(4){
+					order: 3;
+				}
+				.card:nth-child(5){
+					order: 5;
+				}
+				.card:nth-child(6){
+					order: 6;
+				}
+
+				.card:nth-child(1)::after{
+				
+				}
+				.card:nth-child(2)::after{
+					background-image: url("../../assets/icon/Line768-2.svg");
+					height: 28px;
+					left: 90px;
+					width: 14px;
+					top: 135px;
+					background-position: bottom;
+				}
+				.card:nth-child(3)::after{
+					background-image: url("../../assets/icon/Line768.svg");
+					top: 55px;
+					width: 28px;
+					height: 14px;
+					background-position: right;
+					transform: rotate(180deg);
+					left: -12px;
+				}	
+				.card:nth-child(4)::after{
+					background-image: url("../../assets/icon/Line768-2.svg");
+					height: 28px;
+					left: 90px;
+					width: 14px;
+					top: 135px;
+					background-position: bottom;
+					transform: rotate(0);
+				}
+				.card:nth-child(5)::after{
+					transform: rotate(0);
+				}
+			}
+		}
+
 		 .swipperBlock{
 			  .card{
 					.top{
@@ -1173,27 +1278,7 @@
 			align-items: center;
 		}
 	}
-	.mainEduGate .workBlock .weareWork {
-		.card:nth-child(1)::after{
-			left: 106px;
-		}
-		.card:nth-child(2)::after{
-			left: 106px;
-		}
-		.card:nth-child(3)::after{
-			left: 46px;
-		}
-		.card:nth-child(4)::after{
-			left: 106px;
-		}
-		.card:nth-child(5)::after{
-			left: 106px;
-		}
-		.card p{
-			width: 105px;
-			font-size: 10px;
-		}
-	}
+	
 }
 @media (max-width:375px) {
 	.mainEduGate{
@@ -1225,21 +1310,23 @@
 					width: 84px;
 					font-size: 10px;
 				}
-				.card:nth-child(1)::after{
-					left:101px;
+				.card:nth-child(1){
+					justify-content: flex-start;
 				}
-				.card:nth-child(2)::after{
-					left:101px;
+				.card:nth-child(2){
+					justify-content: flex-end;
 				}
-				.card:nth-child(3)::after{
-					left:46px;
-					top: 135px;
+				.card:nth-child(3){
+					justify-content: flex-end;
 				}
-				.card:nth-child(4)::after{
-					left:101px;
+				.card:nth-child(4){
+					justify-content: flex-start;
 				}
-				.card:nth-child(5)::after{
-					left:101px; 
+				.card:nth-child(5){
+					justify-content: flex-start;
+				}
+				.card:nth-child(6){
+					justify-content: flex-end;
 				}
 			}
 		}
@@ -1291,40 +1378,27 @@
 		}
 		.aboutBlock{
 			.aboutUs{
-				.cardAbout{
-					h4{
-						font-size: 25px;
-						span{
-							font-size: 13px;
-						}
-					}
-				}
+
 			}
 		}
 		.workBlock{	padding-left: 10px;
 				padding-right: 10px;
 			h4{
-				 font-size: 22px;
+			    font-size: 22px;
 			}
-			.weareWork{
 			
-				 .card:nth-child(1)::after{
-					  left:90px;
-				 }
-				 .card:nth-child(2)::after{
-					  left:90px;
-				 }
-				 .card:nth-child(3)::after{
-					  left:37px;
-				 }
-				 .card:nth-child(4)::after{
-					  left:90px;
-				 }
-				 .card:nth-child(5)::after{
-					  left:90px; 
-				 }
+		 }
+		.workBlock .weareWork{
+			.card:nth-child(1)::after{
+				right: -17px;
 			}
-	  	}
+			.card:nth-child(2)::after{
+				left: 80px;
+			}
+			.card:nth-child(4)::after{
+				left: 55px;
+			}
+		} 
 		.swipperBlock{
 			h4{
 				font-size: 22px;
