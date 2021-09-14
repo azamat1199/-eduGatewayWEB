@@ -47,7 +47,7 @@
 		position: fixed;
 		background: #0D5372;
 		height: 100vh;
-		padding: 0 40px 0 0 ;
+		padding: 0 0 0 0 ;
 		z-index: 10;
 		transition: 0.7s;
 	}
@@ -79,6 +79,24 @@
 			padding: 15px 0 15px 35px;
 			width: 100%;
 			img{
+				margin-right: 20px;
+			}
+		}
+		button{
+			display: flex;
+			align-items: center;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 18px;
+			line-height: 21px;
+			letter-spacing: 0.02em;
+			color: #FFFFFF;
+			padding: 15px 0 15px 35px;
+			width: 100%;
+			background: none;
+			border: none;
+			img{
+				transform: rotate(180deg);
 				margin-right: 20px;
 			}
 		}
