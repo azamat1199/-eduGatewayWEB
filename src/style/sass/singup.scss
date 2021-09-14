@@ -9,12 +9,11 @@
 	max-width: 1440px;
 	margin: 0 auto;
 }
-.switchs{
-	// margin-top: 120px;
-}
+
 .App{
 	background: red;
 }
+
 .singup_active1{
 	color: #00121A !important;
 	&::before{
@@ -363,6 +362,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		border:none;
+		width: 575px;
 		padding: 20px 200px;
 		background: #00587F;
 		border-radius: 10px;
@@ -371,6 +372,17 @@
 		font-size: 20px;
 		line-height: 23px;
 		color: #FFFFFF;
+		transition: .4s;
+		cursor: pointer;
+		z-index: 0;
+		 .ant-spin{
+			 .ant-spin-dot-spin{ 
+				 .ant-spin-dot-item{
+	       		     z-index: 1;
+					 background-color: #00587f !important;
+				 }
+			 }
+		 }
 	}
 	.next_btn{
 		background: #00587F;
@@ -420,13 +432,45 @@
 			margin-right: 25px;
 		}
 	}
+	.status-bar{
+		width: 40%;
+		display: flex;
+		height: 40px;
+		align-items: center;
+		.react-sweet-progress{
+			width: 131px;
+			height: 7px;
+			.react-sweet-progress-symbol{
+				// width: 100%;
+			}
+			.react-sweet-progress-line{
+				.react-sweet-progress-line-inner{
+                   min-height: 7px !important;
+				}
+			}
+		}
+	}
 	.password{
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 100%;
+		position: relative;
+		width: auto;
 		height: auto;
+		.box6{
+			position: absolute;
+			right: 20px;
+			.loader{
+				.loader-items{
+					& :nth-child(5){
+						display: none !important;
+					}
+				}
+			}
+		}
 		img{
+			position: absolute;
+			right: -22px;
 			width: 25px;
 			transform: translateX(-35px);
 			cursor: pointer;

@@ -19,7 +19,6 @@ function  Login () {
     const [loginData,setLoginData] = useState({
         password:''
     });
-
     const handleChange = useCallback ((e) => { 
         const {name,value} = e.target;
         setState(state=>({...state,[name]:value}))
@@ -41,7 +40,6 @@ console.log(dataGo);
             const {data} = await Axios.post('/common/auth/token/obtain',dataGo)
             console.log(data);
             const {user}  = data;
-           
             const {role} = user
             if(role.startsWith("u")){
                history.push('/univer-backoffice-page')
