@@ -40,21 +40,19 @@ console.log(dataGo);
             const {data} = await Axios.post('/common/auth/token/obtain',dataGo)
             console.log(data);
             const {user}  = data;
-            const {role} = user
-            if(role.startsWith("u")){
-               history.push('/univer-backoffice-page')
-            }else if(role.startsWith('s')){
-                history.push('/my-account')
-            }else if(role === 'admin'){
-                history.push('/home/main')
-            }else{
-                history.push('/')
-            }
+            // if(role.startsWith("u")){
+            //    history.push('/univer-backoffice-page')
+            // }else if(role.startsWith('s')){
+            //     history.push('/my-account')
+            // }else if(role === 'admin'){
+            //     history.push('/home/main')
+            // }else{
+            //     history.push('/')
+            // }
             dispatch(signUpAction(data))
            console.log(data);
         } catch (error) {
-            const {data} = error.response
-            setErrorMsg(data.detail)
+           console.log(error);
         }
     }
     console.log(loginData);

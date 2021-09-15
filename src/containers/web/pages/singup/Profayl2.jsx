@@ -1,15 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import arrowright from "../../../../assets/icon/arrowright.svg"
 import Navbar from '../Navbar';
 
-const data = require("../../json/data.json")
 
-class Profayl2 extends Component {
-	state = { 
-		data:data
-	 }
-	render() { 
+function Profayl2 () {
+	const [profileData,setProfileData] = useState({
+            school:'',
+            achiev:'',
+			gpa:'',
+			select:''
+	})
+	const handleChange = (e) =>{
+		const {name,value} = e.target;
+		setProfileData(state => ({...state,[name]:value}))
+	}
+	console.log(profileData);
+
+	const onSubmit = () => {
+
+	}
 		return ( 
 			<React.Fragment>
 				<div className="navRegist">
@@ -38,7 +48,7 @@ class Profayl2 extends Component {
 						</svg>
 						<h2>Оплата</h2>
 					</div>
-					<div className="main_singup">
+					<form className="main_singup">
 						<h1>Профайл</h1>
 						<div className="pagination">
 							<a className="page page_a"></a>
@@ -47,36 +57,35 @@ class Profayl2 extends Component {
 						</div>
 						<div className="form_div">
 							<p>Где вы учитесь/учились?</p>
-							<input type="text" />
+							<input type="text" onChange={handleChange} name="school" />
 						</div>
 						<div className="form_div">
 							<p>Уровень Английского языка</p>
-							<select name="" id="">
+							<select  onChange={handleChange} name="select" id="">
 								<option className="op_1" value=""></option>
-								<option value="">1</option>
-								<option value="">2</option>
-								<option value="">3</option>
-								<option value="">4</option>
-								<option value="">5</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
 							</select>
 						</div>
 						<div className="form_div">
 							<p>Достижения</p>
-							<input type="text" />
+							<input onChange={handleChange}  type="text"  name="achiev"/>
 						</div>
 						<div className="form_div">
 							<p>GPA</p>
-							<input type="text" />
+							<input onChange={handleChange}  type="text"  name="gpa"/>
 						</div>
 						<div className="btn_div">
 							<NavLink to="/files" className="save_btn">Сохранить</NavLink>
 							<NavLink to="/profile3" className="next_btn">Следующее <img src={arrowright} alt="" /></NavLink>
 						</div>
-					</div>
+					</form>
 				</div>
 			</React.Fragment>
 		 );
-	}
 }
  
 export default Profayl2;

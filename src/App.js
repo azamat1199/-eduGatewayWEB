@@ -9,73 +9,52 @@ import MainEduGate from './containers/web/pages/MainEduGate';
 import Home from './containers/consultantBackoffice/univerBackoffice/pages/home'
 
 function App() {
-  const selector = useSelector(state=>state)
-  console.log(selector.user)
-  const {access} = selector.user;
-  const {user} = selector.user;
-  if (!access) {
+  // const selector = useSelector(state=>state)
+  // console.log(selector.user)
+  // const {access} = selector.user;
+  // const {user} = selector.user;
    return (  
      <>
-      <Redirect to="/"/>
       <Switch>
             {routes.public.map(item=>{
               return(
                 <Route {...item}/>
               ) 
             })}
-            <Route component={MainEduGate}/>
       </Switch>
-    </>
-   )
-  }
-
-if(user.role.startsWith('u')){
+       <div className="asos_u">
+                 <Switch>
+                   {routes.univerOffice.map(item=>{
+                     return(
+                       <Route {...item}/>
+                     )
+                   })}
+                 </Switch>
+        </div>
+        <div className="switchs">
+  <Switch>
+  {routes.consult.map(item=>{
   return(
-    <div className="asos_u">
-  <Redirect to="/univer-backoffice-page"/>
-            <Switch>
-              {routes.univerOffice.map(item=>{
-                return(
-                  <Route {...item}/>
-                )
-              })}
-              <Route component={Home}/>
-						</Switch>
-            </div>
+  <Route {...item}/>
   )
-}
-  return (
-    <>
-      <div className="kabinet">
-      <Switch>
-        {
-          routes.student.map(item=>{
-            return(
-              <Route {...item}/>
-            )
-          })
-        }
-      
-      </Switch>
-    </div>
-         
+})}
+</Switch>
+</div>
+  <div className="kabinet">
+  <Switch>
+    {
+      routes.student.map(item=>{
+        return(
+          <Route {...item}/>
+        )
+      })
+    }
+  
+  </Switch>
+</div>
+  </>
 
-        
-            <div className="switchs">
-                  <Switch>
-                  {routes.consult.map(item=>{
-                  return(
-                  <Route {...item}/>
-                  )
-              })}
-            </Switch>
-           </div>
-        
-           
-       
-
-        </>
-  );
-}
+ )
+  }
 
 export default App;

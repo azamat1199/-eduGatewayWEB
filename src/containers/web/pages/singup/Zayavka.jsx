@@ -1,6 +1,6 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import { withStyles } from "@material-ui/core/styles";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import arrowright from "../../../../assets/icon/arrowright.svg"
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -73,7 +73,42 @@ const SSlider = withStyles({
  	function valuetext(value) {
 		return "$" + `${value}`;
  	}
-const Zayavka = () =>  {
+
+function Zayavka()  {
+	const history = useHistory()
+	const [university,setUniversity] = useState()
+	const [description,setDiscription] = useState()
+	const [value, setValue] = useState(1);
+	const[requisiton,setRequisition] = useState({
+		budget:'',
+	})
+	const handleInputChange = (e)  => {
+		console.log(e.target.value);
+            const { name, value} = e.target;
+			setRequisition((state) => ({...state,[name]:value.trim()}));
+	}
+	const handleChange = (event, newValue) => {
+		setValue(newValue);
+	  };
+	  const handleUniver = (event,newValue) =>{
+		  setUniversity(newValue)
+	  }
+	
+	
+	const finalData = {
+		university,
+        budget : requisiton.budget,
+		description
+	}
+
+	const handleSubmit = (e) =>{
+		e.preventDefault()
+        console.log(finalData);
+	}
+	console.log(requisiton);
+	console.log(university);
+	console.log(description);
+	console.log(value);
 	return ( 
 		<React.Fragment>
 				<div className="navRegist">
@@ -102,11 +137,13 @@ const Zayavka = () =>  {
 					</svg>
 					<h2>Оплата</h2>
 				</div>
-				<div className="main_singup">
+				<form onSubmit={handleSubmit} className="main_singup">
 					<h1>Заявка</h1>
 					<div className="form_div">
 						<p>Услуги Education Gateway</p>
 						<Autocomplete
+						aria-required
+						  onChange={handleUniver}
 							id="combo-box-demo"
 							options={data}
 							getOptionLabel={(option) => option.univer}
@@ -116,16 +153,20 @@ const Zayavka = () =>  {
 					</div>
 					<div className="form_div">
 						<p>Комментарии</p>
-						<textarea name="" id="" cols="30" rows="10" placeholder="Оставьте комментарии или предложения"></textarea>
+						<textarea  required value={description} onChange={(e)=>setDiscription(e.target.value)} name="" id="" cols="30" rows="10" placeholder="Оставьте комментарии или предложения"></textarea>
 					</div>
 					<div className="line_dash"></div>
 					<h4>Ваш бюджет</h4>
-					<NumberFormat className="input_budjet" format="$#######" placeholder="$0" mask=" " />
+					<NumberFormat required name="budget" onChange={handleInputChange}
+					//  value={requisiton.budget ? requisiton.budget : value} 
+					 className="input_budjet" format="$#######" placeholder="$0" mask=" " />
 					{/* <input className="input_budjet" type="text" /> */}
 					<div className="form_div input_range">
 						<SSlider
 							defaultValue={0}
+							value={value }
 							max={3000}
+							onChange={handleChange}
 							step={50}
 							marks={marks}
 							valueLabelDisplay="on"
@@ -133,8 +174,8 @@ const Zayavka = () =>  {
 						/>
 					</div>
 					<p className="zayavka_alert">*Пожалуйста укажите ваш реальный бюджет</p>
-					<NavLink className="reg_btn" to="/profile">Следующее <img src={arrowright} alt="" /></NavLink>
-				</div>
+					<button onClick={()=> history.push('/profile')} className="reg_btn" >Следующее <img src={arrowright} alt="" /></button>
+				</form>
 			</div>
 		</React.Fragment>
 	);

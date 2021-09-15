@@ -29,14 +29,14 @@ function SingUp() {
     last_name: "",
     password_1: "",
     password_2: "",
-    phone_number: "",
+    phone_number: '',
   });
 
   const handleInputChange = useCallback(
     (e) => {
+      console.log(e);
       const { name, value } = e.target;
       setLoginData((state) => ({ ...state, [name]: value }));
-
       if (name === "password_1" && !value.length) {
         setStatus("error");
         setLength(0);
@@ -72,7 +72,7 @@ function SingUp() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await Axios.post("/common/auth/register", loginData);
+      const res = await Axios.post("/student/auth/register", loginData);
       const { status } = res;
       const { data } = res;
       if (status == 201) {

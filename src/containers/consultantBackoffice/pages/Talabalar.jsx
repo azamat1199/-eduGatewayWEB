@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DatePicker from "react-datepicker"
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -19,15 +19,31 @@ import "../../../style/css/SidebarUniverstitet.css"
 import "../../../style/css/fakultet.css"
 import "react-datepicker/dist/react-datepicker.css";
 import Sidebar from './SidebarConsult';
+import Axios from '../../../utils/axios';
+import Item from 'antd/lib/list/Item';
 
 const Talabalar = () => {
 	const [startDate, setStartDate] = useState(null);
 	const [endDate, setEndDate] = useState(null);
 	// modal
 	const [fixEnd, setFix] = useState(false);
-
+    const [students,setStudents] =  useState([])
 	const [open, setOpen] = React.useState(false);
-
+    const fethcStudents = async ()=>{
+	   try {
+		   const res = await Axios.get('/student/student?pageSize=35')
+		   console.log(res);
+		   const{status,data} = res
+		   const {results} = data
+		   console.log(status,results);
+		   if(status === 200) {
+			   setStudents(results)
+		   }
+	   } catch (error) {
+		   console.log(error.response);
+		   alert(error.response)
+	   }
+	}
 	const handleOpen = () => {
 		setOpen(true);
 	};
@@ -44,6 +60,9 @@ const Talabalar = () => {
 	const handleClose_change = () => {
 		setOpen_change(false);
 	};
+	useEffect(()=>{
+		fethcStudents()
+	},[])
 	// modal
 	return ( 
 		<Sidebar>
@@ -87,54 +106,29 @@ const Talabalar = () => {
 									</tr>
 							</thead>
 							<tbody>
-									<tr>
-										<td className="firstTD">Максудов Сардорбек</td>
-										<td>Business Management</td>
-										<td>Harvard University</td>
-										<td>+998(97) 145 - 65 - 55</td>
-										<td>2021/1637	</td>
-										<td>07/15/2021	</td>
-										<td>$12,000</td>
-										<td>Ташкент</td>
-										<td>Sabina Sabirova</td>
-										<td>
+							{
+                    students.map(item=>{
+                        const{id,first_name,last_name,phone_number} = item
+                        return(
+                          <tr  key={id}>
+							  <td className="firstTD">{first_name} - {last_name}</td>
+                              <td>Business Management</td>
+                              <td>Harvard University</td>
+                              <td>{phone_number}</td>
+                              <td>2021/1637</td>
+							  <td>07/15/2021	</td>
+                              <td>$12,000</td>
+							  <td>Ташкент</td>
+							  <td>Sabina Sabirova</td>
+							  <td>
 											<button onClick={handleOpen_change}><img src={pencil} alt="" width="28"/></button>
 											<button><img src={doc} alt="" width="28"/></button>
 											<button><img src={delet} alt="" width="28"/></button>
-										</td>
-									</tr>
-									<tr>
-										<td className="firstTD">Максудов Сардорбек</td>
-										<td>Business Management</td>
-										<td>Harvard University</td>
-										<td>+998(97) 145 - 65 - 55</td>
-										<td>2021/1637	</td>
-										<td>07/15/2021	</td>
-										<td>$12,000</td>
-										<td>Ташкент</td>
-										<td>Sabina Sabirova</td>
-										<td>
-											<button onClick={handleOpen_change}><img src={pencil} alt="" width="28"/></button>
-											<button><img src={doc} alt="" width="28"/></button>
-											<button><img src={delet} alt="" width="28"/></button>
-										</td>
-									</tr>
-									<tr>
-										<td className="firstTD">Максудов Сардорбек</td>
-										<td>Business Management</td>
-										<td>Harvard University</td>
-										<td>+998(97) 145 - 65 - 55</td>
-										<td>2021/1637	</td>
-										<td>07/15/2021	</td>
-										<td>$12,000</td>
-										<td>Ташкент</td>
-										<td>Sabina Sabirova</td>
-										<td>
-											<button onClick={handleOpen_change}><img src={pencil} alt="" width="28"/></button>
-											<button><img src={doc} alt="" width="28"/></button>
-											<button><img src={delet} alt="" width="28"/></button>
-										</td>
-									</tr>
+							  </td>
+                          </tr>
+                        )
+                    })
+                }
 							</tbody>
 						</table>
 					</div>

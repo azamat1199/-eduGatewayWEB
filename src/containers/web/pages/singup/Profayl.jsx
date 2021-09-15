@@ -1,18 +1,65 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import NumberFormat from 'react-number-format';
 import { NavLink } from 'react-router-dom';
 import arrowright from "../../../../assets/icon/arrowright.svg"
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Navbar from '../Navbar';
+import { useState } from 'react';
+import Axios from '../../../../utils/axios';
 
-const data = require("../../json/data.json")
+const dataT = require("../../json/data.json")
 
-class Profayl extends Component {
-	state = { 
-		data:data
+ function Profayl () {
+	 const [data,setData] = useState(dataT)
+	 const[region,setRegion] = useState()
+	 const [cities,setCities] = useState()
+	 const[profileData,setProfileData] = useState({
+		 firstName:'',
+		 lastName:"",
+		 middleName:'',
+		 code:'',
+		 country:'',
+		 number:'',
+	 })
+	
+	 const handleRegion = (event,newValue) =>{
+           setRegion(newValue)
 	 }
-	render() { 
+
+	 const handleChange = (e) =>{
+		 const {name,value} = e.target;
+		 setProfileData(state => ({...state,[name]:value}))
+	 }
+	 const finalData = {
+		firstName: profileData.firstName,
+		lastName:profileData.lastName,
+		middleName:profileData.middleName,
+		code:profileData.code,
+		country:profileData.country,
+		number:profileData.number,
+		region
+	}
+	const fetchCities = async () =>{
+		try {
+			const data = await Axios.get('/common/city/')
+			const {results} = data.data
+			console.log(data.status);
+			if(data.status === 200) {
+				setCities(results)
+			}	
+		} catch (error) {
+			console.log(error.response);
+		}
+		
+	}
+	useEffect(()=>{
+		fetchCities()
+	},[])
+	 console.log(profileData);
+	 console.log(region);
+	 console.log(cities);
+	 console.log(finalData);
 		return ( 
 			<React.Fragment>
 				<div className="navRegist">
@@ -49,30 +96,43 @@ class Profayl extends Component {
 							<div className="page"></div>
 						</div>
 						<div className="form_div">
-							<p>Ваша имя и фамилия</p>
-							<input type="text" />
+							<p>Ваша имя </p>
+							<input type="text" onChange={handleChange}  name="firstName"/>
+						</div>
+						<div className="form_div">
+							<p>Ваша фамилия</p>
+							<input type="text"onChange={handleChange} name="lastName"/>
+						</div>
+						<div className="form_div">
+							<p>Отчество</p>
+							<input type="text" onChange={handleChange} name="middleName"/>
 						</div>
 						<div className="form_div">
 							<p>Гражданство</p>
-							<input type="text" />
+							<input type="text" onChange={handleChange} name="country" />
 						</div>
 						<div className="form_div">
 							<p>Город</p>
 							<Autocomplete
+							aria-required
+							// onInputChange={( newInputValue) => {
+							// 	setRegion(newInputValue.target.value);
+							//   }}
+							onChange = {handleRegion}
 							id="profayl_input"
-							options={data}
-							getOptionLabel={(option) => option.shahar}
+							options={cities}
+							getOptionLabel={(option) => option.name}
 							style={{ width: 575 }}
 							renderInput={(params) => <TextField {...params} label="" variant="outlined"/>}
 							/>
 						</div>
 						<div className="form_div">
 							<p>Телефон</p>
-							<NumberFormat format="+998(##) ###-##-##" allowEmptyFormatting mask="_" />
+							<NumberFormat name="number" onChange={handleChange} format="+998(##) ###-##-##" allowEmptyFormatting mask="_" />
 						</div>
 						<div className="form_div">
 							<p>Реферальный код</p>
-							<input type="text" />
+							<input type="text" name="code" onChange={handleChange} />
 						</div>
 						<div className="btn_div">
 							<NavLink to="/files" className="save_btn">Сохранить</NavLink>
@@ -82,7 +142,6 @@ class Profayl extends Component {
 				</div>
 			</React.Fragment>
 		 );
-	}
 }
  
 export default Profayl;

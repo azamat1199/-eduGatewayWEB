@@ -1,16 +1,36 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { Component, useState } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Navbar from '../Navbar';
 
-const data = require("../../json/data.json")
+const dataT = require("../../json/data.json")
 
-class Profayl3 extends Component {
-	state = { 
-		data:data
-	 }
-	render() { 
+function Profayl3 () {
+	const history = useHistory()
+	const [data,setData] = useState(dataT)
+	const[activity,setActivity] = useState()
+	const [profileData,setProfileData] = useState({
+		sportAchievemnts:'',
+		visa:'',
+		target:'',
+})
+const handleChange = (e) =>{
+	const {name,value} = e.target;
+	setProfileData(state => ({...state,[name]:value}))
+}
+const finalData = {
+	sportAchievemnts:profileData.sportAchievemnts,
+	visa:profileData.visa,
+	target:profileData.target,
+	activity
+}
+const handleSubmit = (e)=>{
+	e.preventDefault()
+	console.log(finalData);
+}
+console.log(activity);
+console.log(profileData);
 		return ( 
 			<React.Fragment>
 				<div className="navRegist">
@@ -39,7 +59,7 @@ class Profayl3 extends Component {
 						</svg>
 						<h2>Оплата</h2>
 					</div>
-					<div className="main_singup">
+					<form onSubmit={handleSubmit} className="main_singup">
 						<h1>Профайл</h1>
 						<div className="pagination">
 							<a className="page page_a"></a>
@@ -48,12 +68,13 @@ class Profayl3 extends Component {
 						</div>
 						<div className="form_div">
 							<p>Спортивные достижения</p>
-							<input type="text" />
+							<input type="text" onChange={handleChange} name="sportAchievemnts"/>
 						</div>
 						<div className="form_div">
 							<p>Активная деятельность</p>
 							<Autocomplete
 							id="profayl_input"
+							onInputChange={( newInputValue) => console.log(newInputValue.target)}
 							options={data}
 							getOptionLabel={(option) => option.hobbi}
 							style={{ width: 575 }}
@@ -62,21 +83,20 @@ class Profayl3 extends Component {
 						</div>
 						<div className="form_div">
 							<p>Визы</p>
-							<input type="text" />
+							<input type="text" onChange={handleChange}  name="visa"  />
 						</div>
 						<div className="form_div">
 							<p>Цель получения образования</p>
-							<input type="text" />
+							<input type="text" onChange={handleChange}  name="target" />
 						</div>
 						<div className="btn_div">
-							<NavLink to="/files" className="reg_btn">Завершить</NavLink>
+							<button onClick={() =>history.push ('/files')} className="reg_btn">Завершить</button>
 						</div>
 						
-					</div>
+					</form>
 				</div>
 			</React.Fragment>
 		 );
-	}
 }
  
 export default Profayl3;
