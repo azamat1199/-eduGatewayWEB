@@ -67,22 +67,22 @@ const Navbar = () => {
     howItWork = null
  }
  let universitet;
- if(currentPath === '/'){
-     universitet =   <Link
-     onClick={handleout}
-     to="university"
-     spy={true}
-     smooth={true}
-     offset={-60}
-     duration={700}
-     style={{cursor:"pointer"}}
-     >
-         
-     Университеты
-     </Link>
- }else{
-     universitet = null
- }
+if(currentPath === '/'){
+    universitet =   <Link
+    onClick={handleout}
+    to="university"
+    spy={true}
+    smooth={true}
+    offset={-60}
+    duration={700}
+    style={{cursor:"pointer"}}
+    >
+        
+    Университеты
+    </Link>
+}else{
+    universitet = null
+}
 
     return (
         <>
@@ -152,8 +152,8 @@ const Navbar = () => {
                         <div className="navRight">
                           
                             {button}
-                            {universitet}
                             {howItWork}
+                            {universitet}
                             <NavLink onClick={handleout}
                                 to="/partners">Стать партнером
                             </NavLink>

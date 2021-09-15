@@ -2,6 +2,7 @@ import React, { Component ,useState} from 'react';
 import { BrowserRouter, NavLink, Route, Switch,useHistory } from 'react-router-dom';
 
 //import img
+import Logout from  "../../../assets/icon/logout.svg"  
 import logo from  "../../../assets/icon/logo.svg"  
 import home from  "../../../assets/icon/Home.svg" 
 import user from  "../../../assets/icon/User.svg" 
@@ -49,7 +50,7 @@ function UniversitetBackoffice(props) {
 									<NavLink onClick={handlemenu} activeClassName="active_unve" to="/studentsss"><img src={user} alt="" />Абитуриенты</NavLink>
 									<NavLink onClick={handlemenu} activeClassName="active_unve" to="/invoice"><img src={paper} alt="" />Инвойсы</NavLink>
 									<NavLink onClick={handlemenu} activeClassName="active_unve" to="/info"><img src={doc} alt="" />Данные</NavLink>
-									<button onClick={signOut}>Log out</button>
+									<button onClick={signOut}><img src={Logout} /> Log out</button>
 								</div>
 							</div>
 							<div className="fix_diiv"></div>
