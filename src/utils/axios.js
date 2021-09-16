@@ -9,7 +9,7 @@ const Axios = axios.create({
 });
 
 Axios.interceptors.request.use((configs)=>{
-    const token = store.getState().user.access;
+    const token = store.getState().payload.access;
     configs.headers.Authorization = token ? `Berear ${token}`:'';
     return configs;
 },(err)=>{

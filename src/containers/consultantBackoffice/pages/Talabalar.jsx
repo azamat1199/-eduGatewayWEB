@@ -27,6 +27,26 @@ const Talabalar = () => {
   const [endDate, setEndDate] = useState(null);
   // modal
   const [fixEnd, setFix] = useState(false);
+  const [students, setStudents] = useState([]);
+  const [open, setOpen] = React.useState(false);
+  const fethcStudents = async () => {
+    try {
+      const res = await Axios.get('/student/student/?pageSize=35');
+      console.log(res);
+      const { status, data } = res;
+      const { results } = data;
+      console.log(status, results);
+      if (status === 200) {
+        setStudents(results);
+      }
+    } catch (error) {
+      console.log(error.response);
+      alert(error.response);
+    }
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   const [students, setStudents] = useState([]);
   const [open, setOpen] = React.useState(false);

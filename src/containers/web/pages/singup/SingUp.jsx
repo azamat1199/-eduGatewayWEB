@@ -13,8 +13,12 @@ import { Progress } from 'react-sweet-progress';
 import 'react-sweet-progress/lib/style.css';
 import Loader from 'react-js-loader';
 import { Spin, message } from 'antd';
+import { useDispatch } from 'react-redux';
+import { signUpAction } from '../../../../store/actions/authActions';
+import Swal from 'sweetalert2';
 
 function SingUp() {
+  const dispatch = useDispatch();
   const history = useHistory();
   const inputRef = useRef();
   const buttonRef = useRef();
@@ -76,13 +80,22 @@ function SingUp() {
       const { status } = res;
       const { data } = res;
       if (status == 201) {
-        history.push('/requisition');
-        console.log(loginData);
+        dispatch(signUpAction({ data: data }));
+        Swal.fire({
+          icon: 'success',
+          text: 'Успешно зарегистрирован',
+          showCancelButton: false,
+        }).then(() => history.push('/my-account'));
       }
       console.log(data);
       setLoading(false);
     } catch (err) {
       const { error } = err.response?.data;
+      Swal.fire({
+        icon: 'error',
+        text: 'На этот номер все готовы зарегистрироваться, выберите другой или войдите',
+        showCancelButton: true,
+      });
       console.log(error[0]?.error[0]);
       setError(error[0]?.error[0]);
       setLoading(false);

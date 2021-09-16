@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {BrowserRouter as Router, Switch, Link, NavLink,useRouteMatch} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Link, NavLink,useRouteMatch, useHistory} from "react-router-dom";
 
 // import component
 import Kabinet from "./kabinet"
@@ -22,10 +22,17 @@ import Universitet from './universitet';
 import Personal from './personal';
 import Status from './status';
 import Dogovor from './dogovor';
+import { useDispatch } from 'react-redux';
+import { signOutAction } from '../../../store/actions/authActions';
 
 const StudentSidebar = () => {
+    const history = useHistory()
+    const dispatch = useDispatch()
     const [sideFix, setSideFix] = useState(false)
-    
+    const signOut = ()=>{
+       dispatch(signOutAction())
+       history.replace('/')
+    }
     return (
         <>
                 <button id="none768" onClick={()=>setSideFix(true)}>
@@ -80,11 +87,11 @@ const StudentSidebar = () => {
                                     alt=""/>
                                 <h5>Настройки</h5>
                             </NavLink>
-                            <a className="logoutbtn">
+                            <button onClick={signOut} className="logoutbtn">
                                 <img src={logout_icon}
                                     alt=""/>
                                 <h5>Выйти</h5>
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>

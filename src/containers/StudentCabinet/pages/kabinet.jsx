@@ -6,7 +6,13 @@ import  "../../../style/css/kabinet.css"
 // import icon
 import download_icon from  "../../../assets/icon/download.svg" 
 import StudentCabinet from '../studentCabinet';
+import { useSelector } from 'react-redux';
 const Kabinet = () => {
+    const selector = useSelector(state=> state)
+    console.log(selector);
+    const{data} = selector.payload.payload
+    console.log(data);
+    const{first_name,last_name,id,base_user,sity,email} = data
     let progress = 25
     return ( 
         <>
@@ -29,7 +35,7 @@ const Kabinet = () => {
                 </div>
                 <div className="person">
                     <img src="https://cdn.pixabay.com/photo/2014/07/09/10/04/man-388104_960_720.jpg" alt="" />
-                    <h4>Rolland Noemi</h4>
+                    <h4>{first_name}  {last_name}</h4>
                     <h3>IT Specialist</h3>
                 </div>
             </div>

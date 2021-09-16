@@ -7,8 +7,11 @@ import  "../../../style/css/personal.css"
 import message_icon from    "../../../assets/icon/message.svg" 
 import call_icon from "../../../assets/icon/call.svg"
 import StudentSidebar from './SidebarStudent';
+import { useSelector } from 'react-redux';
 
 const Personal = () => {
+    const selector = useSelector(state=> state)
+    console.log(selector);
     return ( 
         <>
         <StudentSidebar/>

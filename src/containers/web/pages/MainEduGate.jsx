@@ -19,6 +19,7 @@ import icon6 from "../../../assets/icon/icon6.svg";
 import Axios from '../../../utils/axios'
 import SwiperCore, { Pagination, Navigation } from "swiper/core";
 import Navbar from "./Navbar";
+import { useHistory } from "react-router";
 
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation]);
@@ -29,16 +30,21 @@ const datafakultet = require("../json/topFakultet.json");
 const dataSwipper = require("../json/swipper.json");
 
 const MainEduGate = () => {
+  const history = useHistory()
   const [change1, setChange1] = useState("");
   const [change2, setChange2] = useState("");
   const [change3, setChange3] = useState("");
   const [serach, setSearch] = useState(false);
-
+  const [universities,setUniversities] = useState([])
   const [dataFilter, setdataFilter] = useState([]);
- const fetchCountry = async()=>{
+ const fetchUniversities = async()=>{
    try {
-     const data = await Axios.get("/university/university-faculty/")
-     console.log(data);
+     const data = await Axios.get("/university/university/")
+     const {results} = data.data 
+     console.log(results);
+     if(data.status === 200){
+       setUniversities(results)
+     }
    } catch (error) {
      console.log(error);
    }
@@ -55,8 +61,9 @@ const MainEduGate = () => {
   };
 
   useEffect(()=>{
-    fetchCountry()
+    fetchUniversities()
   },[])
+  console.log(universities);
   return (
     <>
       <div className="n1">
@@ -277,10 +284,11 @@ const MainEduGate = () => {
           <h5>Самые популярные Университетыа</h5>
           <div className="result">
             {/* card */}
-            {cardData.slice(0, 8).map((x) => {
+            {universities.map((item) => {
+              const {id,name,location,description,founding_year,rating,living_price,city} = item
               return (
-                <div className="card">
-                  <img src={x.img} alt="" />
+                <div onClick={() => history.push(`/university/${id}`) } className="card">
+                  <img src="https://universegroup.uz/wp-content/uploads/2020/02/harvard.jpg" alt="" />
                   <svg
                     width="20"
                     height="20"
@@ -298,17 +306,17 @@ const MainEduGate = () => {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <h1>{x.title1}</h1>
-                  <p>{x.title2}</p>
+                  <h1>{name}</h1>
+                  <p>{description}</p>
                   <h2>
                     Рейтинг:{" "}
                     <span>
-                      {x.rating} место {x.ratingCountry}
+                      {rating} место {city.name}
                     </span>
                   </h2>
                   <h3>Качество обучения:</h3>
                   <h4>
-                    Цена за один год: <span>${x.price}</span>
+                    Цена за один год: <span>${living_price}</span>
                   </h4>
                 </div>
               );
