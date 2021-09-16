@@ -1,226 +1,323 @@
-import React, { useState } from 'react';
-import DatePicker from "react-datepicker"
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
+import React, { useEffect, useState } from 'react';
+import DatePicker from 'react-datepicker';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
 
 // import img
-import search_icon from "../../../assets/icon/search.svg"   
-import settings from    "../../../assets/icon/settings.svg"  
-import info_icon from   "../../../assets/icon/info_icon.svg"  
-import close_modal from "../../../assets/icon/close_modal.svg"   
-import folder_icon from "../../../assets/icon/folder_icon.svg"   
+import search_icon from '../../../assets/icon/search.svg';
+import settings from '../../../assets/icon/settings.svg';
+import info_icon from '../../../assets/icon/info_icon.svg';
+import close_modal from '../../../assets/icon/close_modal.svg';
+import folder_icon from '../../../assets/icon/folder_icon.svg';
 
-
-// import css 
-import "../../../style/css/SidebarUniverstitet.css"
-import "react-datepicker/dist/react-datepicker.css";
+// import css
+import '../../../style/css/SidebarUniverstitet.css';
+import 'react-datepicker/dist/react-datepicker.css';
 import Sidebar from './SidebarConsult';
-
-
+import Axios from '../../../utils/axios';
 
 const SidebarUniverstitet = () => {
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
-    const [fixEnd, setFix] = useState(false);
+  const [fixEnd, setFix] = useState(false);
 
-    const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  const date = new Date();
+  const [name, setName] = useState('');
+  const [location, setLocation] = useState('');
+  const [description, setDescription] = useState('');
+  const [founding_year, setFoundingYear] = useState(date);
+  const [file, setFile] = useState('');
+  const [univerData, setUniverData] = useState({});
+  const [universtitet, setUniverstitet] = useState({});
 
-	const handleOpen = () => {
-		setOpen(true);
-	};
+  const fetchData = async () => {
+    const data = await Axios.get('university/university/');
+    setUniverData(data);
+    return data;
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-	const handleClose = () => {
-		setOpen(false);
-	};
-    // modal
-    return ( 
-        <Sidebar>
-        <div className="asos">
-            <div className="Up_navbar">
-                <h4>Университеты</h4>
-                <div>
-                    <img src="https://picsum.photos/70" alt="" />
-                    <div>
-                        <h5>Nargiza Akhmedova</h5>
-                        <p>IT Specialist</p>
-                    </div>
-                </div>
+  const submitUniverstet = async (e) => {
+    setUniverstitet({
+      name: name,
+      location: location,
+      description: description,
+      founding_year: parseInt(founding_year.getFullYear()),
+      city: { id: 5, name: '', country: null },
+      education_quality: [],
+      motto: 'every thing is possible',
+      rating: 5,
+      rating_source: null,
+      living_price: 189600,
+      file: file,
+    });
+    e.preventDefault();
+    try {
+      const res = await Axios.post('university/university/', {
+        name: name,
+        location: location,
+        description: description,
+        founding_year: parseInt(founding_year.getFullYear()),
+        city: { id: 5, name: '', country: null },
+        city_id: 8,
+        education_quality: [],
+        motto: 'every thing is possible',
+        rating: 5,
+        rating_source: null,
+        living_price: 189600,
+
+        file: file,
+      });
+      return { data: res };
+    } catch (err) {
+      console.log(err.response);
+    }
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  console.log({
+    name: name,
+    location: location,
+    description: description,
+    founding_year: parseInt(founding_year.getFullYear()),
+    city: { id: 5, name: '', country: null },
+    education_quality: [],
+    motto: 'every thing is possible',
+    rating: 5,
+    rating_source: null,
+    living_price: 189600,
+
+    file: file,
+  });
+  // modal
+  return (
+    <Sidebar>
+      <div className="asos">
+        <div className="Up_navbar">
+          <h4>Университеты</h4>
+          <div>
+            <img src="https://picsum.photos/70" alt="" />
+            <div>
+              <h5>Nargiza Akhmedova</h5>
+              <p>IT Specialist</p>
             </div>
-            <div className="SidebarUniverstitet">
-                <button onClick={handleOpen}>Добавить университет</button>
-                <div className="settSearch">
-                    <div className="searchUniv">
-                        <img src={search_icon} alt="" />
-                        <input type="text" placeholder="Поиск университетов"/>
-                    </div>
-                    <button onClick={()=>{setFix( !fixEnd)}} className="settingsUniver">
-                        <img src={settings} alt=""  />
-                    </button>
-                </div>
-                {/* end settSearch */}
-                <div className="univerList">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th className="firstTD">Название</th>
-                                <th>Город</th>
-                                <th>Срок</th>
-                                <th>Статус</th>
-                                <th className="infoTd">Информация</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td className="firstTD">Akdeniz Universiteti (Turkiya)</td>
-                                <td>Antaliya</td>
-                                <td>31.12.2021</td>
-                                <td className="priDoc">Прием документов</td>
-                                <td className="infoTd"><img src={info_icon} alt=""/></td>
-                            </tr>
-                            <tr>
-                                <td className="firstTD">Akdeniz Universiteti (Turkiya)</td>
-                                <td>Antaliya</td>
-                                <td>31.12.2021</td>
-                                <td className="priZak">Прием закрыт</td>
-                                <td className="infoTd"><img src={info_icon} alt=""/></td>
-                            </tr>
-                            <tr>
-                                <td className="firstTD">Akdeniz Universiteti (Turkiya)</td>
-                                <td>Antaliya</td>
-                                <td>31.12.2021</td>
-                                <td className="priDoc">Прием документов</td>
-                                <td className="infoTd"><img src={info_icon} alt=""/></td>
-                            </tr>
-                            
-                        </tbody>
-                        
-                        
-                    </table>
-                </div>
-                {/* end univerList */}
-                {/* Filter */}
-                {
-                    // fixEnd ?
-                    fixEnd === true ?
-                    <div className="FilterFix">
-                        <div className="fixLeft" onClick={()=>{setFix( !fixEnd)}}></div>
-                        <div className="FilterUniver">
-                            <h4>Фильтры</h4>
-                            <p>Выберите период</p>
-                            <div className="datapickBlock">
-                                <div>
-                                    <DatePicker
-                                        selected={startDate}
-                                        onChange={(date) => setStartDate(date)}
-                                        selectsStart
-                                        startDate={startDate}
-                                        endDate={endDate}
-                                        placeholderText="dan"
-                                    />
-                                </div>
-                                <div>
-                                    <DatePicker
-                                        selected={endDate}
-                                        onChange={(date) => setEndDate(date)}
-                                        selectsEnd
-                                        startDate={startDate}
-                                        endDate={endDate}
-                                        minDate={startDate}
-                                        placeholderText="gacha"
-                                    />
-                                </div>
-                            </div>
-                            <p>Выберите страну</p>
-                            <div className="selectCountry">
-                                <select name="" id="">
-                                    <option value="">Турция</option>
-                                    <option value="">Россия</option>
-                                    <option value="">США</option>
-                                    <option value="">Узбекистан</option>
-                                </select>
-                            </div>
-                            <p>Выберите город</p>
-                            <div className="selectCountry">
-                                <select name="" id="">
-                                    <option value="">Анталия</option>
-                                    <option value="">Анкара</option>
-                                    <option value="">Истанбул</option>
-                                    <option value="">Измир</option>
-                                </select>
-                            </div>
-                            <button>Применить</button>
-                        </div>
-                        {/* end FilterUniver */}
-                    </div>
-                    :
-                    null
-                }
-                
-                <Modal
-						aria-labelledby="transition-modal-title"
-						aria-describedby="transition-modal-description"
-						className="class1"
-						open={open}
-						onClose={handleClose}
-						closeAfterTransition
-						BackdropComponent={Backdrop}
-						BackdropProps={{
-							timeout: 500
-						}}
-					>
-						<Fade in={open}>
-                        <div className="addNewUniverModalUniver talaba_modal">
-                            <img onClick={handleClose} src={close_modal} alt="" />
-                            <div className="modalContainer">
-                                <h5>Добавить новый университет</h5>
-                                <div>
-                                    <label>Название университета</label>
-                                    <input type="text"  />
-                                </div>
-                                <div>
-                                    <label>Название университета</label>
-                                    <select>
-                                        <option>Выбрать страну</option>
-                                        <option>страну</option>
-                                        <option>страну</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label>Название университета</label>
-                                    <textarea name="" id="" cols="30" rows="5"></textarea>
-                                </div>
-                                <div className="modalDataPick">
-                                    <label>Прием документов заканчивается</label>
-                                    <DatePicker 
-                                        selected={startDate} 
-                                        onChange={(date) => setStartDate(date)} 
-                                        placeholderText="sana"
-                                        />
-                                </div>
-                                <div>
-                                    <label>Картинка</label>
-                                    <div className="importFile">
-                                        <img src={folder_icon} alt="" />
-                                        <p>
-                                            Drop your files here or a    
-                                            <input type="file" id="chFile"/> 
-                                            <label htmlFor="chFile">choose file</label>
-                                        </p>
-                                    </div>
-                                </div>
-                                <button>Добавить</button>
-                            </div>
-                        </div>
-						</Fade>
-					</Modal>
-                {/* end Filter */}
-            </div>
+          </div>
         </div>
-        </Sidebar>
-        // end SidebarUniverstitet
-    );
-}
+        <div className="SidebarUniverstitet">
+          <button onClick={handleOpen}>Добавить университет</button>
+          <div className="settSearch">
+            <div className="searchUniv">
+              <img src={search_icon} alt="" />
+              <input type="text" placeholder="Поиск университетов" />
+            </div>
+            <button
+              onClick={() => {
+                setFix(!fixEnd);
+              }}
+              className="settingsUniver"
+            >
+              <img src={settings} alt="" />
+            </button>
+          </div>
+          {/* end settSearch */}
+          <div className="univerList">
+            <table>
+              <thead>
+                <tr>
+                  <th className="firstTD">Название</th>
+                  <th>Город</th>
+                  <th>Срок</th>
+                  <th>Статус</th>
+                  <th className="infoTd">Информация</th>
+                </tr>
+              </thead>
+              <tbody>
+                {univerData?.data?.results?.map((v, i) => {
+                  return (
+                    <tr key={v.name}>
+                      <td className="firstTD">{v.name}</td>
+                      <td>Antaliya</td>
+                      <td>31.12.{v.founding_year}</td>
+                      <td className="priDoc">Прием документов</td>
+                      <td className="infoTd">
+                        <img src={info_icon} alt="" />
+                      </td>
+                    </tr>
+                  );
+                })}
+                <tr>
+                  <td className="firstTD">Akdeniz Universiteti (Turkiya)</td>
+                  <td>Antaliya</td>
+                  <td>31.12.2021</td>
+                  <td className="priZak">Прием закрыт</td>
+                  <td className="infoTd">
+                    <img src={info_icon} alt="" />
+                  </td>
+                </tr>
+                <tr>
+                  <td className="firstTD">Akdeniz Universiteti (Turkiya)</td>
+                  <td>Antaliya</td>
+                  <td>31.12.2021</td>
+                  <td className="priDoc">Прием документов</td>
+                  <td className="infoTd">
+                    <img src={info_icon} alt="" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          {/* end univerList */}
+          {/* Filter */}
+          {
+            // fixEnd ?
+            fixEnd === true ? (
+              <div className="FilterFix">
+                <div
+                  className="fixLeft"
+                  onClick={() => {
+                    setFix(!fixEnd);
+                  }}
+                ></div>
+                <div className="FilterUniver">
+                  <h4>Фильтры</h4>
+                  <p>Выберите период</p>
+                  <div className="datapickBlock">
+                    <div>
+                      <DatePicker
+                        selected={startDate}
+                        onChange={(date) => setStartDate(date)}
+                        selectsStart
+                        startDate={startDate}
+                        endDate={endDate}
+                        placeholderText="dan"
+                      />
+                    </div>
+                    <div>
+                      <DatePicker
+                        selected={endDate}
+                        onChange={(date) => setEndDate(date)}
+                        selectsEnd
+                        startDate={startDate}
+                        endDate={endDate}
+                        minDate={startDate}
+                        placeholderText="gacha"
+                      />
+                    </div>
+                  </div>
+                  <p>Выберите страну</p>
+                  <div className="selectCountry">
+                    <select name="" id="">
+                      <option value="">Турция</option>
+                      <option value="">Россия</option>
+                      <option value="">США</option>
+                      <option value="">Узбекистан</option>
+                    </select>
+                  </div>
+                  <p>Выберите город</p>
+                  <div className="selectCountry">
+                    <select name="" id="">
+                      <option value="">Анталия</option>
+                      <option value="">Анкара</option>
+                      <option value="">Истанбул</option>
+                      <option value="">Измир</option>
+                    </select>
+                  </div>
+                  <button>Применить</button>
+                </div>
+                {/* end FilterUniver */}
+              </div>
+            ) : null
+          }
+
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            className="class1"
+            open={open}
+            onClose={handleClose}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
+          >
+            <Fade in={open}>
+              <div className="addNewUniverModalUniver talaba_modal">
+                <img onClick={handleClose} src={close_modal} alt="" />
+                <div className="modalContainer">
+                  <h5>Добавить новый университет</h5>
+                  <div>
+                    <label>Название университета</label>
+                    <input
+                      type="text"
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label>Название университета</label>
+                    <select onChange={(e) => setLocation(e.target.value)}>
+                      <option>Выбрать страну</option>
+                      <option>страну</option>
+                      <option>страну</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label>Название университета</label>
+                    <textarea
+                      name=""
+                      id=""
+                      cols="30"
+                      rows="5"
+                      onChange={(e) => setDescription(e.target.value)}
+                    ></textarea>
+                  </div>
+                  <div className="modalDataPick">
+                    <label>Прием документов заканчивается</label>
+                    <DatePicker
+                      selected={founding_year}
+                      onChange={(e) => setFoundingYear(e)}
+                      placeholderText="sana"
+                    />
+                  </div>
+                  <div>
+                    <label>Картинка</label>
+                    <div className="importFile">
+                      <img src={folder_icon} alt="" />
+                      <p>
+                        Drop your files here or a
+                        <input
+                          type="file"
+                          id="chFile"
+                          onChange={(event) => setFile(event.target.files[0])}
+                        />
+                        <label htmlFor="chFile">choose file</label>
+                      </p>
+                    </div>
+                  </div>
+                  <button onClick={(event) => submitUniverstet(event)}>
+                    Добавить
+                  </button>
+                </div>
+              </div>
+            </Fade>
+          </Modal>
+          {/* end Filter */}
+        </div>
+      </div>
+    </Sidebar>
+    // end SidebarUniverstitet
+  );
+};
 
 export default SidebarUniverstitet;
