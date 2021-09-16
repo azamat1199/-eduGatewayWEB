@@ -31,7 +31,7 @@ const Talabalar = () => {
 	const [open, setOpen] = React.useState(false);
     const fethcStudents = async ()=>{
 	   try {
-		   const res = await Axios.get('/student/student?pageSize=35')
+		   const res = await Axios.get('/student/student/?pageSize=35')
 		   console.log(res);
 		   const{status,data} = res
 		   const {results} = data

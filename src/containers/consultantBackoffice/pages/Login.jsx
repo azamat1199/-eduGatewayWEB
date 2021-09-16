@@ -5,6 +5,8 @@ import {signUpAction} from '../../../store/actions/authActions';
 import logo_education from "../../../assets/icon/Logo_education.svg";
 import eye_login from  "../../../assets/icon/eye_login.svg" ;
 import "../../../style/css/Login.css";
+import Loader from "react-js-loader";
+import { Spin, message } from "antd";
 import Axios from '../../../utils/axios';
 
 function  Login () {
@@ -12,6 +14,7 @@ function  Login () {
     const history = useHistory();
     const [wiew, setWiew] = useState(false);
     const[errorMsg,setErrorMsg] = useState('')
+    const [loading, setLoading] = useState(false);
     const [state,setState] = useState({
         role:'',
         phone:''
@@ -36,23 +39,29 @@ function  Login () {
 console.log(dataGo);
     const submitData = async (e)=>{
         e.preventDefault()
+        setLoading(true);
         try {
             const {data} = await Axios.post('/common/auth/token/obtain',dataGo)
             console.log(data);
+            const {access,refresh} = data
             const {user}  = data;
-            // if(role.startsWith("u")){
-            //    history.push('/univer-backoffice-page')
-            // }else if(role.startsWith('s')){
-            //     history.push('/my-account')
-            // }else if(role === 'admin'){
-            //     history.push('/home/main')
-            // }else{
-            //     history.push('/')
-            // }
-            dispatch(signUpAction(data))
+            const {role} = user
+            dispatch(signUpAction({access,refresh,role,data:user.data}))
+            if(role.startsWith("u")){
+               history.push('/univer-backoffice-page')
+            }else if(role.startsWith('s')){
+                history.push('/my-account')
+            }else if(role === 'admin'){
+                history.push('/home/main')
+            }else{
+                history.push('/')
+            }
+          
            console.log(data);
+           setLoading(false);
         } catch (error) {
            console.log(error);
+           setLoading(false);
         }
     }
     console.log(loginData);
@@ -71,7 +80,7 @@ console.log(dataGo);
                         <h3>Войти</h3>
                       
                         <div onChange={handleChange} className="radioBlock">
-                            <label><input type="radio" name="role" value="students" required />Абитуриент</label>
+                            <label><input type="radio" name="role" value="student" required />Абитуриент</label>
                             <label><input type="radio" name="role" value="partner" required />Партнер</label>
                             <label><input type="radio" name="role" value="university" required />Университет</label>
                             <label><input type="radio" name="role" value="admin" required/>Админ</label>
@@ -104,7 +113,9 @@ console.log(dataGo);
                         </div>
                         {/* kirish */}
                         <h4 style={{color:"red",margin:'auto'}}>{errorMsg}</h4>
-                        <button type="submit" to="/home/main">Войти</button>
+                        <button  type="submit">{loading ?  <>
+                <Spin size="middle" spinning={loading} />
+              </>:"Войти" }</button>
                         {/* parolni unutdim */}
                         <div className="forgetPass">
                             <p>Забыли пароль? <Link to="/loginStaff">Восстановить</Link></p>

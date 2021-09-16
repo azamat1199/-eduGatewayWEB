@@ -10,11 +10,11 @@ import reduxThunk from 'redux-thunk'
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user']
+  whitelist: ['payload']
 }
 
 const rootReducer = combineReducers({
-  user: userReducer,
+  payload: userReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

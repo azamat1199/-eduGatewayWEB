@@ -52,7 +52,7 @@ const routes = {
         },
         {
             key:'university',
-            path:'/university',
+            path:'/university/:id',
             component:SinglePage,  
             exact:true,
         },

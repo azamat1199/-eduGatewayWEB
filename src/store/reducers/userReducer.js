@@ -1,19 +1,21 @@
 import {AUTH_SIGN_UP,AUTH_SIGN_OUT}from '../actionTypes'
 
 const initialState = {
-    access:'',
-    user:{
+   access:'',
+   refresh:'',
+   data:{
 
-    }
+   },
+   role:''
 }
 
 const userReducer = (state=initialState,action)=>{
     console.log(action);
-    const {user,access} = {...action?.payload};
-console.log(user);
+    const {payload} = {...action};
+    console.log(payload);
     switch (action.type){
         case AUTH_SIGN_UP:{
-            return{...state,user,access}
+            return{...state,payload}
         }
         case AUTH_SIGN_OUT:{
             return initialState;

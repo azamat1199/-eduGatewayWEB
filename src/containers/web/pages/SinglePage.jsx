@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import {ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 import GoogleMapReact from 'google-map-react';
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,25 +13,63 @@ import Universitet_pic from  "../../../assets/images/universitet_pic.svg"
 import img3 from  "../../../assets/images/img3.svg" 
 
 import "../../../style/css/singlepage.css"
+import { useHistory, useParams } from 'react-router';
+import Axios from '../../../utils/axios';
+import { useSelector } from 'react-redux';
 
 
 SwiperCore.use([Pagination]);
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-const data = require("../json/data_univer.json")
-class SinglePage extends Component {
-	state = { 
-		data:data
-	 }
-	static defaultProps = {
+const dataT = require("../json/data_univer.json")
+
+function SinglePage (props){
+	const selector = useSelector(state=> state)
+	console.log(selector);
+	const history = useHistory()
+	const [data,setData] = useState(dataT)
+	const params = useParams()
+	const [univer,setUniver] = useState({
+		id:'',
+		name:'',
+		location:'',
+		description:'',
+		founding_year:'',
+		city:{
+           id:'',
+		   name:'',
+		   country:''
+		},
+		motto:'',
+		rating:'',
+		rating_source:'',
+		education_quality:[],
+		living_price:''
+	})
+
+	const {name,city,rating,living_price} = univer
+	props = {
 		center: {
 			lat: 45.46016,
 			lng: 9.19457
 		},
 		zoom: 11
 	};
-	render() { 
+
+	const fetchUniversityById = async() =>{
+		try {
+			const {data} =  await Axios.get(`/university/university/${params.id}`)
+			setUniver(data)
+			console.log(data);
+		} catch (error) {
+			console.log(error);
+		}
+	}
+	useEffect(()=>{
+		fetchUniversityById()
+	},[])
+	console.log(params);
 		return ( 
 			<React.Fragment>
 				<div className="single_page">
@@ -40,8 +78,8 @@ class SinglePage extends Component {
 							<img src={Universitet_pic} alt="" width="100%"/>
 						</div>
 						<div className="sp_title">
-							<div><h1>University of Milan</h1></div>
-							<div><button>Подать</button></div>
+							<div><h1>{name}</h1></div>
+							<div><button onClick={()=> selector.user.payload ?  history.push('/requisition'): history.push('/login')}>Подать</button></div>
 						</div>
 					</div>
 					<div className="sp_navbar">
@@ -57,15 +95,15 @@ class SinglePage extends Component {
 									<table>
 										<tr>
 											<td>Рейтинг</td>
-											<td>235</td>
+											<td>{rating}</td>
 										</tr>
 										<tr>
 											<td>Страна</td>
-											<td>Италия</td>
+											<td>{city.name}</td>
 										</tr>
 										<tr>
 											<td>Город</td>
-											<td>Милан</td>
+											<td>{city.name}</td>
 										</tr>
 										<tr>
 											<td>Бакалавриат</td>
@@ -77,15 +115,15 @@ class SinglePage extends Component {
 										</tr>
 										<tr>
 											<td>Цена прожив -ния</td>
-											<td>$2,875/год</td>
+											<td>{living_price}</td>
 										</tr>
 									</table>
 								</div>
 								<div className="sp_map">
 								<GoogleMapReact
 									// bootstrapURLKeys={{ key: "AIzaSyCIuhJElVEhGVPYptJbkrWxEy4lKzEoOA8" }}
-									defaultCenter={this.props.center}
-									defaultZoom={this.props.zoom}
+									defaultCenter={props.center}
+									defaultZoom={props.zoom}
 								>
 									<AnyReactComponent
 										lat={45.46016}
@@ -289,7 +327,6 @@ class SinglePage extends Component {
 				</div>
 			</React.Fragment>
 		 );
-	}
 }
  
 export default SinglePage;
