@@ -3,7 +3,6 @@ import DatePicker from 'react-datepicker';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-
 // import img
 import search_icon from '../../../assets/icon/search.svg';
 import settings from '../../../assets/icon/settings.svg';
@@ -13,7 +12,6 @@ import pencil from '../../../assets/icon/pencil.svg';
 import doc from '../../../assets/icon/doc.svg';
 import delet from '../../../assets/icon/delet1.svg';
 import arrow1 from '../../../assets/icon/arrow1.svg';
-
 // import css
 import '../../../style/css/SidebarUniverstitet.css';
 import '../../../style/css/fakultet.css';
@@ -21,14 +19,24 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Sidebar from './SidebarConsult';
 import Axios from '../../../utils/axios';
 import Item from 'antd/lib/list/Item';
-
+import Swal from 'sweetalert2';
 const Talabalar = () => {
+  const [students, setStudents] = useState([]);
+  const [studentGetById, setStudentGetById] = useState({});
+  const [studentPostById, setStudentPostById] = useState({});
+  const [open, setOpen] = React.useState(false);
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [universtitetName, setUniverstitetName] = useState('');
+  const [nameFaculties, setNameFaculties] = useState('');
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+  const [file, setFile] = useState('');
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   // modal
+  const [open_change, setOpen_change] = React.useState(false);
   const [fixEnd, setFix] = useState(false);
-  const [students, setStudents] = useState([]);
-  const [open, setOpen] = React.useState(false);
   const fethcStudents = async () => {
     try {
       const res = await Axios.get('/student/student/?pageSize=35');
@@ -48,41 +56,10 @@ const Talabalar = () => {
     setOpen(true);
   };
 
-  const [students, setStudents] = useState([]);
-  const [open, setOpen] = React.useState(false);
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [universtitetName, setUniverstitetName] = useState('');
-  const [nameFaculties, setNameFaculties] = useState('');
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
-  const [file, setFile] = useState('');
-  const [len, setLen] = useState(null);
-  const fethcStudents = async () => {
-    try {
-      const res = await Axios.get('/student/student?pageSize=35');
-      console.log(res);
-      const { status, data } = res;
-      const { results } = data;
-      console.log(status, results);
-      if (status === 200) {
-        setStudents(results);
-        setLen(results.length);
-      }
-    } catch (error) {
-      console.log(error.response);
-      alert(error.response);
-    }
-  };
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
   const handleClose = () => {
     setOpen(false);
   };
 
-  const [open_change, setOpen_change] = React.useState(false);
   const handleOpen_change = () => {
     setOpen_change(true);
   };
@@ -92,6 +69,15 @@ const Talabalar = () => {
   useEffect(() => {
     fethcStudents();
   }, []);
+  const edit = async (id) => {
+    handleOpen_change();
+    try {
+      const res = await Axios.get(`student/student/${id}`);
+      setStudentGetById(res.data);
+      console.log(res);
+    } catch (error) {}
+    console.log(id);
+  };
   const setStudent = async (e) => {
     e.preventDefault();
     try {
@@ -110,11 +96,23 @@ const Talabalar = () => {
         // file: file,
         registration_ref: null,
       });
+      Swal.fire({
+        icon: 'success',
+        text: 'Успешно зарегистрирован',
+        showCancelButton: false,
+      });
     } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        text: 'На этот номер все готовы зарегистрироваться, выберите другой или войдите',
+        showCancelButton: true,
+      });
       console.log(error);
     }
+    handleClose();
   };
   // modal
+  const editUser = () => {};
   console.log({
     base_user: 82,
     first_name: name,
@@ -193,7 +191,7 @@ const Talabalar = () => {
                       <td>Ташкент</td>
                       <td>Sabina Sabirova</td>
                       <td>
-                        <button onClick={handleOpen_change}>
+                        <button onClick={() => edit(id)}>
                           <img src={pencil} alt="" width="28" />
                         </button>
                         <button>
@@ -270,84 +268,7 @@ const Talabalar = () => {
               </div>
             ) : null
           }
-
-          <Modal
-            aria-labelledby="transition-modal-title"
-            aria-describedby="transition-modal-description"
-            className="class1"
-            open={open_change}
-            onClose={handleClose_change}
-            closeAfterTransition
-            BackdropComponent={Backdrop}
-            BackdropProps={{
-              timeout: 500,
-            }}
-          >
-            <Fade in={open_change}>
-              <div
-                className="addNewUniverModalUniver talaba_modal"
-                id="scroll_bar"
-              >
-                <img onClick={handleClose_change} src={close_modal} alt="" />
-                <div className="modalContainer">
-                  <h5>Изменить</h5>
-                  <div>
-                    <label>ФИО</label>
-                    <input type="text" />
-                  </div>
-                  <div>
-                    <label>Номер телефона</label>
-                    <input type="text" />
-                  </div>
-                  <div>
-                    <label>Университет</label>
-                    <select>
-                      <option>Harvard University</option>
-                      <option>University 1</option>
-                      <option>University 2</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label>Факультет</label>
-                    <select>
-                      <option>Экономика</option>
-                      <option>Факультет 1</option>
-                      <option>Факультет 2</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label>Логин</label>
-                    <input type="text" />
-                  </div>
-                  <div>
-                    <label>Пароль</label>
-                    <input type="text" />
-                  </div>
-                  <div>
-                    <label>Документы</label>
-                    <div className="importFile">
-                      <img src={folder_icon} alt="" />
-                      <p>
-                        Drop your files here or a
-                        <input type="file" id="chFile" />
-                        <label htmlFor="chFile">choose file</label>
-                      </p>
-                    </div>
-                  </div>
-                  <button
-                    onClick={(e) => {
-                      setStudents(e);
-                    }}
-                  >
-                    Добавить
-                  </button>
-                  <button onClick={handleClose_change} className="back_btn">
-                    <img src={arrow1} alt="" /> Вернуться
-                  </button>
-                </div>
-              </div>
-            </Fade>
-          </Modal>
+          {/* modal one */}
           <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
@@ -414,6 +335,7 @@ const Talabalar = () => {
                     <label>Логин</label>
                     <input
                       type="text"
+                      value=""
                       onChange={(e) => {
                         setLogin(e.target.value);
                       }}
@@ -423,6 +345,7 @@ const Talabalar = () => {
                     <label>Пароль</label>
                     <input
                       type="password"
+                      value=""
                       onChange={(e) => {
                         setPassword(e.target.value);
                       }}
@@ -453,6 +376,79 @@ const Talabalar = () => {
                     Добавить
                   </button>
                   <button onClick={handleClose} className="back_btn">
+                    <img src={arrow1} alt="" /> Вернуться
+                  </button>
+                </div>
+              </div>
+            </Fade>
+          </Modal>
+
+          {/* Modal two */}
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            className="class1"
+            open={open_change}
+            onClose={handleClose_change}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
+          >
+            <Fade in={open_change}>
+              <div
+                className="addNewUniverModalUniver talaba_modal"
+                id="scroll_bar"
+              >
+                <img onClick={handleClose_change} src={close_modal} alt="" />
+                <div className="modalContainer">
+                  <h5>Изменить</h5>
+                  <div>
+                    <label>ФИО</label>
+                    <input type="text" value={studentGetById.last_name} />
+                  </div>
+                  <div>
+                    <label>Номер телефона</label>
+                    <input type="text" value={studentGetById.phone_number} />
+                  </div>
+                  <div>
+                    <label>Университет</label>
+                    <select>
+                      <option>Harvard University</option>
+                      <option>University 1</option>
+                      <option>University 2</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label>Факультет</label>
+                    <select>
+                      <option>Экономика</option>
+                      <option>Факультет 1</option>
+                      <option>Факультет 2</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label>Логин</label>
+                    <input type="text" />
+                  </div>
+                  <div>
+                    <label>Пароль</label>
+                    <input type="text" />
+                  </div>
+                  <div>
+                    <label>Документы</label>
+                    <div className="importFile">
+                      <img src={folder_icon} alt="" />
+                      <p>
+                        Drop your files here or a
+                        <input type="file" id="chFile" />
+                        <label htmlFor="chFile">choose file</label>
+                      </p>
+                    </div>
+                  </div>
+                  <button onClick={(e) => editUser()}>Добавить</button>
+                  <button onClick={handleClose_change} className="back_btn">
                     <img src={arrow1} alt="" /> Вернуться
                   </button>
                 </div>

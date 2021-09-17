@@ -10,13 +10,16 @@ import settings from '../../../assets/icon/settings.svg';
 import info_icon from '../../../assets/icon/info_icon.svg';
 import close_modal from '../../../assets/icon/close_modal.svg';
 import folder_icon from '../../../assets/icon/folder_icon.svg';
-
+import pencil from '../../../assets/icon/pencil.svg';
+import doc from '../../../assets/icon/doc.svg';
+import delet from '../../../assets/icon/delet1.svg';
 // import css
 import '../../../style/css/SidebarUniverstitet.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import Sidebar from './SidebarConsult';
 import Axios from '../../../utils/axios';
-
+import Swal from 'sweetalert2';
+import arrow1 from '../../../assets/icon/arrow1.svg';
 const SidebarUniverstitet = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
@@ -32,7 +35,7 @@ const SidebarUniverstitet = () => {
   const [file, setFile] = useState('');
   const [univerData, setUniverData] = useState({});
   const [universtitet, setUniverstitet] = useState({});
-
+  const [status, setStatus] = useState('');
   const fetchData = async () => {
     const data = await Axios.get('university/university/');
     setUniverData(data);
@@ -41,7 +44,17 @@ const SidebarUniverstitet = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const edit = (index) => {
+    handleOpen();
+    console.log(index);
+  };
   const submitUniverstet = async (e) => {
     setUniverstitet({
       name: name,
@@ -58,7 +71,7 @@ const SidebarUniverstitet = () => {
     });
     e.preventDefault();
     try {
-      const res = await Axios.post('university/university/', {
+      const res = await Axios.post('/university/university/', {
         name: name,
         location: location,
         description: description,
@@ -70,36 +83,41 @@ const SidebarUniverstitet = () => {
         rating: 5,
         rating_source: null,
         living_price: 189600,
-
         file: file,
       });
-      return { data: res };
+
+      if (res.status == 200) {
+        Swal.fire({
+          icon: 'success',
+          text: 'Success',
+          showCancelButton: false,
+        });
+      }
     } catch (err) {
-      console.log(err.response);
+      Swal.fire({
+        icon: 'error',
+        text: 'Error',
+        showCancelButton: true,
+      });
+      console.log(err.response.status);
     }
+    handleClose();
   };
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
+  // console.log({
+  //   name: name,
+  //   location: location,
+  //   description: description,
+  //   founding_year: parseInt(founding_year.getFullYear()),
+  //   city: { id: 5, name: '', country: null },
+  //   education_quality: [],
+  //   motto: 'every thing is possible',
+  //   rating: 5,
+  //   rating_source: null,
+  //   living_price: 189600,
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-  console.log({
-    name: name,
-    location: location,
-    description: description,
-    founding_year: parseInt(founding_year.getFullYear()),
-    city: { id: 5, name: '', country: null },
-    education_quality: [],
-    motto: 'every thing is possible',
-    rating: 5,
-    rating_source: null,
-    living_price: 189600,
-
-    file: file,
-  });
+  //   file: file,
+  // });
   // modal
   return (
     <Sidebar>
@@ -152,6 +170,14 @@ const SidebarUniverstitet = () => {
                       <td className="priDoc">Прием документов</td>
                       <td className="infoTd">
                         <img src={info_icon} alt="" />
+                        <img
+                          src={pencil}
+                          onClick={() => edit(i)}
+                          alt=""
+                          width="28"
+                          className="mx-3"
+                        />
+                        <img src={delet} alt="" width="28" />
                       </td>
                     </tr>
                   );
@@ -163,6 +189,14 @@ const SidebarUniverstitet = () => {
                   <td className="priZak">Прием закрыт</td>
                   <td className="infoTd">
                     <img src={info_icon} alt="" />
+                    <img
+                      src={pencil}
+                      onClick={handleOpen}
+                      alt=""
+                      className="mx-3"
+                      width="28"
+                    />
+                    <img src={delet} alt="" width="28" />
                   </td>
                 </tr>
                 <tr>
@@ -172,6 +206,14 @@ const SidebarUniverstitet = () => {
                   <td className="priDoc">Прием документов</td>
                   <td className="infoTd">
                     <img src={info_icon} alt="" />
+                    <img
+                      onClick={handleOpen}
+                      src={pencil}
+                      alt=""
+                      className="mx-3"
+                      width="28"
+                    />
+                    <img src={delet} alt="" width="28" />
                   </td>
                 </tr>
               </tbody>
@@ -265,15 +307,25 @@ const SidebarUniverstitet = () => {
                     />
                   </div>
                   <div>
-                    <label>Название университета</label>
+                    <label>Страна</label>
                     <select onChange={(e) => setLocation(e.target.value)}>
                       <option>Выбрать страну</option>
                       <option>страну</option>
                       <option>страну</option>
                     </select>
                   </div>
+
                   <div>
-                    <label>Название университета</label>
+                    <label>Город</label>
+                    <select>
+                      <option>Выбрать страну</option>
+                      <option>страну</option>
+                      <option>страну</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label>Описание</label>
                     <textarea
                       name=""
                       id=""
@@ -289,6 +341,14 @@ const SidebarUniverstitet = () => {
                       onChange={(e) => setFoundingYear(e)}
                       placeholderText="sana"
                     />
+                  </div>
+                  <div>
+                    <label>Статус</label>
+                    <select onChange={(e) => setStatus(e.target.value)}>
+                      <option>Выбрать страну</option>
+                      <option>страну</option>
+                      <option>страну</option>
+                    </select>
                   </div>
                   <div>
                     <label>Картинка</label>
@@ -307,6 +367,9 @@ const SidebarUniverstitet = () => {
                   </div>
                   <button onClick={(event) => submitUniverstet(event)}>
                     Добавить
+                  </button>
+                  <button onClick={handleClose} className="back_btn">
+                    <img src={arrow1} alt="" /> Вернуться
                   </button>
                 </div>
               </div>
