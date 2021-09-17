@@ -210,6 +210,11 @@
 .lichKabinet .bottom .danni table tr {
   height: 75px;
 }
+.lichKabinet .bottom .danni table tr td {
+  font-size: 22px;
+  font-weight: 600;
+  padding: 0 32px;
+}
 .lichKabinet .bottom .danni table tr th {
   font-family: Raleway;
   font-style: normal;
@@ -243,6 +248,27 @@
 }
 .lichKabinet .bottom .danni table tr:nth-child(even) {
   background: #F0FAFF;
+}
+.lichKabinet .bottom .danni button {
+  height: 64px;
+  width: 600px;
+  position: relative;
+  left: calc(50% - 300px);
+  top: 13px;
+  color: #fff;
+  margin: auto;
+  cursor: pointer;
+  border: none;
+  font-size: 20px;
+  background: #00587F;
+  border-radius: 10px;
+  transition: 0.4s;
+  font-weight: 500;
+}
+.lichKabinet .bottom .danni button:hover {
+  border: 1px solid #00587F;
+  background: transparent;
+  color: #00587F;
 }
 
 @media (max-width: 1024px) {

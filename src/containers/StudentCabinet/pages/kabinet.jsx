@@ -7,7 +7,9 @@ import  "../../../style/css/kabinet.css"
 import download_icon from  "../../../assets/icon/download.svg" 
 import StudentCabinet from '../studentCabinet';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 const Kabinet = () => {
+    const history = useHistory()
     const selector = useSelector(state=> state)
     console.log(selector);
     const{data} = selector.payload.payload
@@ -56,43 +58,42 @@ const Kabinet = () => {
                 </div>
                 <div className="danni">
                     <div className="izmenit">
-                        <h2>Ваши данные</h2>
-                        <button>Изменить</button>
+                        <h2>Список документов для подачи заявки</h2>
+                        {/* <button>Изменить</button> */}
                     </div>
                     <table>
                         <tr>
-                            <th>Имя</th>
-                            <th>Нафиса</th>
+                            <td>1. Сканер с оригинала паспорта</td>
                         </tr> 
                         <tr>
-                            <th>Фамилия</th>
-                            <th>Абдураимова</th>
+                            <td>2. Сканер с оригинала диплома или аттестата</td>
                         </tr> 
                         <tr>
-                            <th>Отчество</th>
-                            <th>Зафар кизи</th>
+                            <td>  3. 8шт. фото 3х4, скан с оригинала </td>
                         </tr> 
                         <tr>
-                            <th>Университет</th>
-                            <th>Омская гуманитарная академия</th>
+                            <td>  4. 063 мед. справка, скан с оригинала </td>
                         </tr> 
                         <tr>
-                            <th>Факультет</th>
-                            <th>Педагогическое образование (с двумя профилями подготовки) (уровень бакалавриата)</th>
+                            <td>  5. 086 мед. справка, скан с оригинала</td>
                         </tr> 
                         <tr>
-                            <th>Специальность</th>
-                            <th>Начальное образование и иностранный язык (английский язык)</th>
+                            <td>  6. Свидетельство о рождении, скан с оригинала</td>
                         </tr> 
                         <tr>
-                            <th>Паспорт</th>
-                            <th><img src={download_icon}/></th>
+                            <td>  7. Справка о ВИЧ </td>
                         </tr> 
                         <tr>
-                            <th>Диплом</th>
-                            <th><img src={download_icon}/></th>
+                            <td>  8. Сканер паспорта матери с оригинала, + прописка</td>
+                        </tr> 
+                        <tr>
+                            <td>     9. Свидетельсво о браке (если в браке)  </td>
+                        </tr> 
+                        <tr>
+                            <td>     10. Договор с компанией </td>
                         </tr> 
                     </table>
+                    <button onClick={()=> history.push('/requisition')}> Заполнить анкету </button>
                 </div>
             </div>
         </div> 

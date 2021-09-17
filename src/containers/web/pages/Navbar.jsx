@@ -5,13 +5,17 @@ import {Link,animateScroll as scroll} from 'react-scroll'
 import "../../../style/css/Navbar.css"
 // import Icon
 import search_icon from "../../../assets/icon/searchIcon.svg" 
+import { useSelector } from 'react-redux';
 
 
 const Navbar = () => {
-    const currentPath = window.location.pathname
-    
-    const [burger, setBurger] = useState(false);
+    const selector  = useSelector(state => state)
+    console.log(selector.payload);
+    const {payload} = selector.payload
+    console.log(payload);
 
+    const currentPath = window.location.pathname
+    const [burger, setBurger] = useState(false);
     const [scrollTop, setScrollTop] = useState(0);
     const [navActive, setnavActive] = useState(false);
 
@@ -161,9 +165,8 @@ if(currentPath === '/'){
                                 to="/registration">Регистрация
                             </NavLink>
                             <NavLink
-                            to='/my-account'>
+                               to= { payload ? '/my-account' :  '/login'}>
                                 Личный кабинет
-
                             </NavLink>
                             <img src={search_icon}
                                 alt=""/>

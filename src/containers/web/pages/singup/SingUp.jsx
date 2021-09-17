@@ -1,5 +1,6 @@
 import React, { Component, useState, useCallback, useRef } from "react";
 import axios from "axios";
+import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { NavLink, useHistory } from "react-router-dom";
 import google from "../../../../assets/icon/google.svg";
 import facebook from "../../../../assets/icon/facebookreg.svg";
@@ -71,7 +72,14 @@ function SingUp() {
     },
     [loginData]
   );
+const onSuccess = (res)=>{
+  console.log("Successfull",res);
 
+}
+const onFailure = (res)=>{
+  console.log("Failure",res);
+
+}
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -298,7 +306,13 @@ function SingUp() {
           <h2>или</h2>
           <h2>Войдите через</h2>
           <a className="reg_link" href="#">
-            <img src={google} alt="" /> Google
+             <GoogleLogin
+              clientId="971142751474-u0fttn4so4e7melu9jlruprvsplget6r.apps.googleusercontent.com"
+              buttonText="Google"
+              onSuccess={onSuccess}
+              onFailure={onFailure}
+              cookiePolicy={'single_host_origin'}
+              isSignedIn={true}/>
           </a>
           <a className="reg_link" href="#">
             <img src={facebook} alt="" /> Facebook

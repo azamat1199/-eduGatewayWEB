@@ -87,7 +87,7 @@ const StudentSidebar = () => {
                                     alt=""/>
                                 <h5>Настройки</h5>
                             </NavLink>
-                            <button onClick={signOut} className="logoutbtn">
+                            <button className="active" onClick={signOut} className="logoutbtn">
                                 <img src={logout_icon}
                                     alt=""/>
                                 <h5>Выйти</h5>

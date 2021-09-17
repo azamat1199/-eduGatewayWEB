@@ -8,8 +8,9 @@ import "../../../style/css/Login.css";
 import Loader from "react-js-loader";
 import { Spin, message } from "antd";
 import Axios from '../../../utils/axios';
-
+import Swal from 'sweetalert2'
 function  Login () {
+    
     const dispatch = useDispatch()
     const history = useHistory();
     const [wiew, setWiew] = useState(false);
@@ -60,7 +61,11 @@ console.log(dataGo);
            console.log(data);
            setLoading(false);
         } catch (error) {
-           console.log(error);
+           Swal.fire({
+               icon:'error',
+               text:'Активная учетная запись с указанными учетными данными не найдена'
+           })
+           console.log(error.response);
            setLoading(false);
         }
     }
@@ -109,7 +114,9 @@ console.log(dataGo);
                                 <p>
                                     Запомнить меня
                                 </p>
+
                             </label>
+                            <p>Забыли пароль? <Link to="/loginStaff">Восстановить</Link></p>
                         </div>
                         {/* kirish */}
                         <h4 style={{color:"red",margin:'auto'}}>{errorMsg}</h4>
@@ -118,7 +125,7 @@ console.log(dataGo);
               </>:"Войти" }</button>
                         {/* parolni unutdim */}
                         <div className="forgetPass">
-                            <p>Забыли пароль? <Link to="/loginStaff">Восстановить</Link></p>
+                           <p> Нет аккаунта? <Link to="/registration"> Регистрация</Link></p>
                         </div>
                     </form>
                 </div>
