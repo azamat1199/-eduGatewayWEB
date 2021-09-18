@@ -1,10 +1,19 @@
 import React, { Component, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink ,useLocation,useHistory} from 'react-router-dom';
+import Swal from 'sweetalert2';
 import arrowright from "../../../../assets/icon/arrowright.svg"
+import { authSaveData } from '../../../../store/actions/authActions';
 import Navbar from '../Navbar';
 
 
 function Profayl2 () {
+	const selector = useSelector(state=> state)
+	const {form} = selector.payload
+	const dispatch = useDispatch()
+	const location = useLocation()
+	const {pathname} = location
+	const history = useHistory()
 	const [profileData,setProfileData] = useState({
             school:'',
             achiev:'',
@@ -17,8 +26,12 @@ function Profayl2 () {
 	}
 	console.log(profileData);
 
-	const onSubmit = () => {
-
+	const saveData =  ()  =>{
+		dispatch(authSaveData(pathname,profileData))
+		Swal.fire({
+			icon:"success",
+			text:"Текущие данные сохранены без промедления"
+		}).then(()=> history.push('/my-account'))
 	}
 		return ( 
 			<React.Fragment>
@@ -57,11 +70,11 @@ function Profayl2 () {
 						</div>
 						<div className="form_div">
 							<p>Где вы учитесь/учились?</p>
-							<input type="text" onChange={handleChange} name="school" />
+							<input type="text" value={form.school} onChange={handleChange} name="school" />
 						</div>
 						<div className="form_div">
 							<p>Уровень Английского языка</p>
-							<select  onChange={handleChange} name="select" id="">
+							<select  onChange={handleChange} value={form.select} name="select" id="">
 								<option className="op_1" value=""></option>
 								<option value="1">1</option>
 								<option value="2">2</option>
@@ -72,14 +85,14 @@ function Profayl2 () {
 						</div>
 						<div className="form_div">
 							<p>Достижения</p>
-							<input onChange={handleChange}  type="text"  name="achiev"/>
+							<input onChange={handleChange} value={form.achiev}  type="text"  name="achiev"/>
 						</div>
 						<div className="form_div">
 							<p>GPA</p>
-							<input onChange={handleChange}  type="text"  name="gpa"/>
+							<input onChange={handleChange} value={form.gpa} type="text"  name="gpa"/>
 						</div>
 						<div className="btn_div">
-							<NavLink to="/files" className="save_btn">Сохранить</NavLink>
+						<button type="button" onClick={saveData} className="save_btn">Сохранить</button>
 							<NavLink to="/profile3" className="next_btn">Следующее <img src={arrowright} alt="" /></NavLink>
 						</div>
 					</form>

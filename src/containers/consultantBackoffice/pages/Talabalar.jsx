@@ -62,7 +62,7 @@ const Talabalar = () => {
 	};
 	useEffect(()=>{
 		fethcStudents()
-	},[])
+	},[students])
 	// modal
 	return ( 
 		<Sidebar>

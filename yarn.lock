@@ -10127,6 +10127,7 @@
   "version" "11.0.4"
   dependencies:
     "@babel/code-frame" "7.10.4"
+<<<<<<< HEAD
     "address" "1.1.2"
     "browserslist" "4.14.2"
     "chalk" "2.4.2"
@@ -10179,6 +10180,65 @@
   "integrity" "sha512-JUngfvaSMcOuV0lFff7+SzJ2qviuNMQdqlsDJkUM145xkGPVIfqWXq9Ui+2Dr6jdJWH5KYdynz9+4CzKjI5u6g=="
   "resolved" "https://registry.npmjs.org/react-google-login/-/react-google-login-5.2.2.tgz"
   "version" "5.2.2"
+=======
+    address "1.1.2"
+    browserslist "4.14.2"
+    chalk "2.4.2"
+    cross-spawn "7.0.3"
+    detect-port-alt "1.1.6"
+    escape-string-regexp "2.0.0"
+    filesize "6.1.0"
+    find-up "4.1.0"
+    fork-ts-checker-webpack-plugin "4.1.6"
+    global-modules "2.0.0"
+    globby "11.0.1"
+    gzip-size "5.1.1"
+    immer "8.0.1"
+    is-root "2.1.0"
+    loader-utils "2.0.0"
+    open "^7.0.2"
+    pkg-up "3.1.0"
+    prompts "2.4.0"
+    react-error-overlay "^6.0.9"
+    recursive-readdir "2.2.2"
+    shell-quote "1.7.2"
+    strip-ansi "6.0.0"
+    text-table "0.2.0"
+
+react-dom@^17.0.2:
+  version "17.0.2"
+  resolved "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
+  integrity sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    scheduler "^0.20.2"
+
+react-drop-zone@^4.3.2:
+  version "4.3.2"
+  resolved "https://registry.npmjs.org/react-drop-zone/-/react-drop-zone-4.3.2.tgz"
+  integrity sha512-ANIn3wUT5Wg8XX7aqo6gN3G+vkQ17EQ+MADaSsogh/NXgyjGPoRKk6zQW60ulMa9Pl699p1NkVvNA56+tbjzVw==
+
+react-error-overlay@^6.0.9:
+  version "6.0.9"
+  resolved "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.9.tgz"
+  integrity sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==
+
+react-facebook-login@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/react-facebook-login/-/react-facebook-login-4.1.1.tgz#005121236a6ac0dee02099976fb1a3265f9d633e"
+  integrity sha512-COnHEHlYGTKipz4963safFAK9PaNTcCiXfPXMS/yxo8El+/AJL5ye8kMJf23lKSSGGPgqFQuInskIHVqGqTvSw==
+
+react-fast-compare@^3.0.1:
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-3.2.0.tgz"
+  integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
+
+react-google-login@^5.2.2:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/react-google-login/-/react-google-login-5.2.2.tgz#a20b46440c6c1610175ef75baf427118ff0e9859"
+  integrity sha512-JUngfvaSMcOuV0lFff7+SzJ2qviuNMQdqlsDJkUM145xkGPVIfqWXq9Ui+2Dr6jdJWH5KYdynz9+4CzKjI5u6g==
+>>>>>>> 55f0b8a5a7a87aa9c21d0a78863b8e1dbb3bddc4
   dependencies:
     "@types/react" "*"
     "prop-types" "^15.6.0"

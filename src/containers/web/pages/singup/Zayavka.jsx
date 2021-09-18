@@ -167,7 +167,7 @@ function Zayavka()  {
 							value={value }
 							max={3000}
 							onChange={handleChange}
-							step={50}
+							step={10}
 							marks={marks}
 							valueLabelDisplay="on"
 							valueLabelFormat={valuetext}
