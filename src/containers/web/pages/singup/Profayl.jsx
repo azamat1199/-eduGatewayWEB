@@ -125,11 +125,11 @@ const dataT = require("../../json/data.json")
 						</div>
 						<div className="form_div">
 							<p>Отчество</p>
-							<input type="text" onChange={handleChange} name="middleName"/>
+							<input type="text" onChange={handleChange} value={form.middleName} name="middleName"/>
 						</div>
 						<div className="form_div">
 							<p>Гражданство</p>
-							<input type="text" onChange={handleChange} name="country" />
+							<input type="text" onChange={handleChange} value={form.country} name="country" />
 						</div>
 						<div className="form_div">
 							<p>Город</p>
@@ -145,11 +145,11 @@ const dataT = require("../../json/data.json")
 						</div>
 						<div className="form_div">
 							<p>Телефон</p>
-							<NumberFormat name="number" onChange={handleChange} format="+998(##) ###-##-##" allowEmptyFormatting mask="_" />
+							<NumberFormat name="number" value ={form.number} onChange={handleChange} format="+998(##) ###-##-##" allowEmptyFormatting mask="_" />
 						</div>
 						<div className="form_div">
 							<p>Реферальный код</p>
-							<input type="text" name="code" onChange={handleChange} />
+							<input type="text" name="code" value={form.code} onChange={handleChange} />
 						</div>
 						<div className="btn_div">
 							<button onClick={saveData} className="save_btn">Сохранить</button>
