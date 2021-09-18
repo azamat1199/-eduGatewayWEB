@@ -1,96 +1,96 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @mixin textheader{
-    font-family: Raleway;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;    
-    letter-spacing: 0.02em;
-    color: #FFFFFF;
-    text-decoration: none;
-    margin: 0;
+	font-family: Raleway;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;    
+	letter-spacing: 0.02em;
+	color: #FFFFFF;
+	text-decoration: none;
+	margin: 0;
 }
 @mixin flexStyleEduGate{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 
 .mainEduGate{
-    .header{
-        background-image: url("../../assets/images/headerBackground.png");
-        background-size: cover;
+	.header{
+		background-image: url("../../assets/images/headerBackground.png");
+		background-size: cover;
 		background-position: bottom;
-        padding-top: 170px;
-        padding:170px 40px 140px 40px;
-        h2{
-            @include textheader();
-            font-weight: bold;
-            font-size: 40px;
-            width: 45%;
-            margin-bottom: 32px;
-        }
-        h3{
-            @include textheader();
-            line-height: 28px;
-            width: 700px;
-            margin-bottom: 28px;
-        }
-        .listLvl{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            width: 360px;
-            p{
-                @include textheader();
-                list-style: inside;
-                display: flex;
-                align-items: center;
-                .circleList{
-                    margin-right: 13px;
-                    width: 4px;
-                    height: 4px;
-                    background: #fff;
-                    border-radius: 50%;
-                }
-            }
+		padding-top: 170px;
+		padding:170px 40px 140px 40px;
+		h2{
+			@include textheader();
+			font-weight: bold;
+			font-size: 40px;
+			width: 45%;
+			margin-bottom: 32px;
+		}
+		h3{
+			@include textheader();
+			line-height: 28px;
+			width: 700px;
+			margin-bottom: 28px;
+		}
+		.listLvl{
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			width: 360px;
+			p{
+				@include textheader();
+				list-style: inside;
+				display: flex;
+				align-items: center;
+				.circleList{
+					margin-right: 13px;
+					width: 4px;
+					height: 4px;
+					background: #fff;
+					border-radius: 50%;
+				}
+			}
 			p:nth-child(1){
 				margin-bottom: 16px;
 			}
 			p:nth-child(2){
 				margin-bottom: 16px;
 			}
-        }
-        .freeConsult{
-            @include textheader();
-            margin-top: 38px;
-            padding: 20px 40px;
-            background: #E5F7FF;
-            border-radius: 10px;
-            color: #00587F;
-            border: none;
-            cursor: pointer;
-        }
-        .chat{
-            @include flexStyleEduGate();
-            margin-top: 73px;
-            h4{
-                @include textheader();
-                font-size: 25px;
-            }
-            img{
-                width: 78px;
-                height: 78px;
-                cursor: pointer;
-            }
-        }
-        .filter{
-            @include flexStyleEduGate();
-            padding:30px 36px;
-            background: rgba(166, 201, 217, 0.5);
-            backdrop-filter: blur(12px);
-            border-radius: 17px;
-            .dropDwn{
+		}
+		.freeConsult{
+			@include textheader();
+			margin-top: 38px;
+			padding: 20px 40px;
+			background: #E5F7FF;
+			border-radius: 10px;
+			color: #00587F;
+			border: none;
+			cursor: pointer;
+		}
+		.chat{
+			@include flexStyleEduGate();
+			margin-top: 73px;
+			h4{
+				@include textheader();
+				font-size: 25px;
+			}
+			img{
+				width: 78px;
+				height: 78px;
+				cursor: pointer;
+			}
+		}
+		.filter{
+			@include flexStyleEduGate();
+			padding:30px 36px;
+			background: rgba(166, 201, 217, 0.5);
+			backdrop-filter: blur(12px);
+			border-radius: 17px;
+			.dropDwn{
 					background: #F3F6F7;
 					border-radius: 12px;
 					width: 335px;
@@ -115,106 +115,106 @@
 					svg{
 						z-index: 11;
 					}
-            }
-            .dropSearch{
-                cursor: pointer;
-                padding: 20px 37px;
-                // width: 32px;
-                background: #F3F6F7;
-                box-shadow: 0px 4px 8px rgba(92, 124, 138, 0.12);
-                border-radius: 12px;
+			}
+			.dropSearch{
+				cursor: pointer;
+				padding: 20px 37px;
+				// width: 32px;
+				background: #F3F6F7;
+				box-shadow: 0px 4px 8px rgba(92, 124, 138, 0.12);
+				border-radius: 12px;
 				margin-left: 15px;
-            }
-        }
-       
-    } // end header
+			}
+		}
+	
+	} // end header
 
-    .resultBlock{
-        padding: 70px 40px 28px 40px;
-        h5{
-            @include textheader();
-            font-size: 25px;
-            color: #000;
-            margin-bottom: 32px;
-        }
-        .result{
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            .card{
-                padding-bottom: 36px;
-                width: 426px;
-                position: relative;
-                background: #E2F1F8;
-                border-radius: 12px;
-                margin-bottom: 40px;
+	.resultBlock{
+		padding: 70px 40px 28px 40px;
+		h5{
+			@include textheader();
+			font-size: 25px;
+			color: #000;
+			margin-bottom: 32px;
+		}
+		.result{
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			.card{
+				padding-bottom: 36px;
+				width: 426px;
+				position: relative;
+				background: #E2F1F8;
+				border-radius: 12px;
+				margin-bottom: 40px;
 
-                img{
-                    width: 426px;
-                    height: 286px;
-                    border-radius: 12px 12px 0 0;
-                }
-                svg{
-                    position: absolute;
-                    top: 17px;
-                    right: 17px;
-                    cursor: pointer;
-                }
-                h1{
-                    @include textheader();
-                    font-weight: bold;
-                    font-size: 26px;
-                    color: #000;
-                    margin-top: 22px;
-                    margin-bottom: 12px;
-                    padding: 0 20px;
-                }
-                p{
-                    @include textheader();
-                    font-weight: normal;
-                    font-size: 24px;
-                    color: #000;
-                    margin: 0;
-                    padding: 0 20px;
-                }
-                h2{
-                    @include textheader();
-                    color: #000;
-                    margin-top: 22px;
-                    font-weight: 500;
-                    padding: 0 20px;
-                }
-                span{
-                    color: #00121A;
-                    font-weight: bold;
-                }
-                h3{
-                    @include textheader();
-                    color: #000;
-                    margin: 14px 0;
-                    font-weight: 500;
-                    padding: 0 20px;
-                }
-                h4{
-                    @include textheader();
-                    color: #000;
-                    font-weight: 500;
-                    padding: 0 20px;
-                }
-            }
-        } // end result
-    } // endresultBlock
+				img{
+					width: 426px;
+					height: 286px;
+					border-radius: 12px 12px 0 0;
+				}
+				svg{
+					position: absolute;
+					top: 17px;
+					right: 17px;
+					cursor: pointer;
+				}
+				h1{
+					@include textheader();
+					font-weight: bold;
+					font-size: 26px;
+					color: #000;
+					margin-top: 22px;
+					margin-bottom: 12px;
+					padding: 0 20px;
+				}
+				p{
+					@include textheader();
+					font-weight: normal;
+					font-size: 24px;
+					color: #000;
+					margin: 0;
+					padding: 0 20px;
+				}
+				h2{
+					@include textheader();
+					color: #000;
+					margin-top: 22px;
+					font-weight: 500;
+					padding: 0 20px;
+				}
+				span{
+					color: #00121A;
+					font-weight: bold;
+				}
+				h3{
+					@include textheader();
+					color: #000;
+					margin: 14px 0;
+					font-weight: 500;
+					padding: 0 20px;
+				}
+				h4{
+					@include textheader();
+					color: #000;
+					font-weight: 500;
+					padding: 0 20px;
+				}
+			}
+		} // end result
+	} // endresultBlock
 
-    .aboutBlock{
-        padding: 70px 40px 20px 40px;
-        h5{
-            @include textheader();
-            font-size: 25px;
-            color: #000;
-            margin-bottom: 32px;
-        }
-        .aboutUs{
+	.aboutBlock{
+		padding: 70px 40px 20px 40px;
+		h5{
+			@include textheader();
+			font-size: 25px;
+			color: #000;
+			margin-bottom: 32px;
+		}
+		.aboutUs{
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
@@ -248,72 +248,72 @@
 					width: 440px;
 				}
 			}
-        } //end aboutUs
-    } // end aboutBlock
+		} //end aboutUs
+	} // end aboutBlock
 
-    .topFacultetBlock{
-        padding: 0 40px;
-        h4{
+	.topFacultetBlock{
+		padding: 0 40px;
+		h4{
 			@include textheader();
 			font-size: 25px;
 			color: #000;
 			margin-bottom: 32px;
-        }
-        .topFacultet{
-            @include flexStyleEduGate();
-            flex-wrap: wrap;
-            .card{
-                position: relative;
-                width: 426px;
-                height: 180px;
-                border-radius: 10px;
-                margin-bottom: 40px;
-                img{
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 10px;
-                }
-                p{
-                    @include textheader();
-                    @include flexStyleEduGate();
-                    justify-content: center;
-                    position: absolute;
-                    font-weight: bold;
-                    font-size: 24px;
-                    top: 0;
-                    width: 100%;
-                    height: 100%;
-                    z-index: 3;
-                }
-                span{
-                    content: "";
-                    top:0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    position: absolute;
-                    background: linear-gradient(0deg, rgba(0, 88, 127, 0.4), rgba(0, 88, 127, 0.4));
-                    border-radius:12px;
-                    z-index: 2; 
-                }
-            }
-        }
-    } // end topFacultetBlock
+		}
+		.topFacultet{
+			@include flexStyleEduGate();
+			flex-wrap: wrap;
+			.card{
+				position: relative;
+				width: 426px;
+				height: 180px;
+				border-radius: 10px;
+				margin-bottom: 40px;
+				img{
+					width: 100%;
+					height: 100%;
+					border-radius: 10px;
+				}
+				p{
+					@include textheader();
+					@include flexStyleEduGate();
+					justify-content: center;
+					position: absolute;
+					font-weight: bold;
+					font-size: 24px;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					z-index: 3;
+				}
+				span{
+					content: "";
+					top:0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					background: linear-gradient(0deg, rgba(0, 88, 127, 0.4), rgba(0, 88, 127, 0.4));
+					border-radius:12px;
+					z-index: 2; 
+				}
+			}
+		}
+	} // end topFacultetBlock
 
-    .workBlock{
-        
-        padding:58px 40px 0 40px;
-        h4{
-            @include textheader();
-            font-size: 24px;
-            font-weight: bold;
-            color: #000;
-            margin-bottom: 32px;
-        }
-        .weareWork{
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            row-gap: 250px;
+	.workBlock{
+		
+		padding:58px 40px 0 40px;
+		h4{
+			@include textheader();
+			font-size: 24px;
+			font-weight: bold;
+			color: #000;
+			margin-bottom: 32px;
+		}
+		.weareWork{
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			row-gap: 250px;
 			.cardBack{
 				display:flex;
 				flex-direction: column;
@@ -321,159 +321,159 @@
 				border-radius: 29px;
 				padding: 30px;
 			}
-            .card{
-                @include flexStyleEduGate();
+			.card{
+				@include flexStyleEduGate();
 				justify-content: center;
-                // flex-direction: column;
-                // justify-content: flex-start;
-                position: relative;
-               
-                .cardBack div{
-                    @include flexStyleEduGate();
-                    justify-content: center;
-                    border-radius: 10px;
+				// flex-direction: column;
+				// justify-content: flex-start;
+				position: relative;
+			
+				.cardBack div{
+					@include flexStyleEduGate();
+					justify-content: center;
+					border-radius: 10px;
 
-                    img{
-                        width: 150px;
-                    }
-                }
-                p{
-                    @include textheader();
-                    font-size: 25px;
-                    color: rgba(0, 0, 0, 0.75);
-                    width: 285px;
-                    text-align: center;
-                }
-            }
-            .card:nth-child(1)::after{
-                content: "";
-                position: absolute;
-                height: 24px;
-                width: 120px;
-                background-image: url("../../assets/icon/Line1.svg");
-                right: -60px;
-                top: 125px;
+					img{
+						width: 150px;
+					}
+				}
+				p{
+					@include textheader();
+					font-size: 25px;
+					color: rgba(0, 0, 0, 0.75);
+					width: 285px;
+					text-align: center;
+				}
+			}
+			.card:nth-child(1)::after{
+				content: "";
+				position: absolute;
+				height: 24px;
+				width: 120px;
+				background-image: url("../../assets/icon/Line1.svg");
+				right: -60px;
+				top: 125px;
 				background-repeat: no-repeat;
-            }
-            .card:nth-child(2)::after{
-                content: "";
-                position: absolute;
-                height: 24px;
-                width: 120px;
-                background-image: url("../../assets/icon/Line1.svg");
-                right: -60px;
-                top: 125px;
+			}
+			.card:nth-child(2)::after{
+				content: "";
+				position: absolute;
+				height: 24px;
+				width: 120px;
+				background-image: url("../../assets/icon/Line1.svg");
+				right: -60px;
+				top: 125px;
 				background-repeat: no-repeat;
-            }
-            .card:nth-child(3)::after{
-                content: "";
-                position: absolute;
-                height: 120px;
-                width: 24px;
-                background-image: url("../../assets/icon/LineVec2.svg");
+			}
+			.card:nth-child(3)::after{
+				content: "";
+				position: absolute;
+				height: 120px;
+				width: 24px;
+				background-image: url("../../assets/icon/LineVec2.svg");
 				background-repeat: no-repeat;
-                left: 310px;
-                bottom: -180px;
-            }
-            .card:nth-child(4)::after{
-                content: "";
-                position: absolute;
-                height: 24px;
-                width: 120px;
-                background-image: url("../../assets/icon/Line1.svg");
-                right: -60px;
-                top: 125px;
-                transform: rotate(180deg);
+				left: 310px;
+				bottom: -180px;
+			}
+			.card:nth-child(4)::after{
+				content: "";
+				position: absolute;
+				height: 24px;
+				width: 120px;
+				background-image: url("../../assets/icon/Line1.svg");
+				right: -60px;
+				top: 125px;
+				transform: rotate(180deg);
 				background-repeat: no-repeat;
-            }
-            .card:nth-child(5)::after{
-                content: "";
-                position: absolute;
-                height: 24px;
-                width: 120px;
-                background-image: url("../../assets/icon/Line1.svg");
-                right: -60px;
-                top: 125px;
-                transform: rotate(180deg);
-            }
-            
+			}
+			.card:nth-child(5)::after{
+				content: "";
+				position: absolute;
+				height: 24px;
+				width: 120px;
+				background-image: url("../../assets/icon/Line1.svg");
+				right: -60px;
+				top: 125px;
+				transform: rotate(180deg);
+			}
+			
 
-        }
-    } // end workBlock
+		}
+	} // end workBlock
 
-    .swipperBlock{
-        padding: 98px 40px;
-        h4{
-            @include textheader();
-            font-size: 25px;
-            font-weight: 600;
-            color: #000;
-            margin-bottom: 32px;
-        }
-           
-        .card{
-            padding: 42px 22px 34px 22px;
-            background: #E2F1F8;
-            border-radius: 10px;
-            height: 600px;
-            .top{
-                display: flex;
-                align-items: center;
-                img{
-                    width: 140px;
-                    height: 140px;
-                    border-radius: 50%;
-                    margin-right: 22px;
-                }
-                h1{
-                    @include textheader();
-                    font-weight: bold;
-                    font-size: 26px;
-                    color: #000;
-                }
-                h2{
-                    @include textheader();
-                    font-weight: 500;
-                    font-size: 24px;
-                    color: #000;
-                    margin: 11px 0;
-                }
-                h3{
-                    @include textheader();
-                    font-weight: 500;
-                    font-size: 22px;
-                    color: #000;
-                }
-            }
-            p{
-                @include textheader();
-                font-weight: 500;
-                font-size: 24px;
-                color: #000;
-                margin-top: 25px;
-                line-height: 35px;
-            }
-            
-        } // end card
-        .swiper-wrapper{
-            padding-bottom: 40px !important; 
-        }
-        .swiper-container{
-            padding-bottom: 30px;
-        }
-        .swiper-button-next, .swiper-button-prev{
-            top: 338px;
-        }
-        .swiper-button-next::before{
-            // background-image: url("../icon/swipNext.svg" ) ;
-        }
-        .swiper-button-disabled{
-            display: none;
-        }
-        .swiper-pagination-bullet{
-            --swiper-theme-color:black;
-        }
-    } // end swipperBlock
+	.swipperBlock{
+		padding: 98px 40px;
+		h4{
+			@include textheader();
+			font-size: 25px;
+			font-weight: 600;
+			color: #000;
+			margin-bottom: 32px;
+		}
+		
+		.card{
+			padding: 42px 22px 34px 22px;
+			background: #E2F1F8;
+			border-radius: 10px;
+			height: 600px;
+			.top{
+				display: flex;
+				align-items: center;
+				img{
+					width: 140px;
+					height: 140px;
+					border-radius: 50%;
+					margin-right: 22px;
+				}
+				h1{
+					@include textheader();
+					font-weight: bold;
+					font-size: 26px;
+					color: #000;
+				}
+				h2{
+					@include textheader();
+					font-weight: 500;
+					font-size: 24px;
+					color: #000;
+					margin: 11px 0;
+				}
+				h3{
+					@include textheader();
+					font-weight: 500;
+					font-size: 22px;
+					color: #000;
+				}
+			}
+			p{
+				@include textheader();
+				font-weight: 500;
+				font-size: 24px;
+				color: #000;
+				margin-top: 25px;
+				line-height: 35px;
+			}
+			
+		} // end card
+		.swiper-wrapper{
+			padding-bottom: 40px !important; 
+		}
+		.swiper-container{
+			padding-bottom: 30px;
+		}
+		.swiper-button-next, .swiper-button-prev{
+			top: 338px;
+		}
+		.swiper-button-next::before{
+			// background-image: url("../icon/swipNext.svg" ) ;
+		}
+		.swiper-button-disabled{
+			display: none;
+		}
+		.swiper-pagination-bullet{
+			--swiper-theme-color:black;
+		}
+	} // end swipperBlock
 	.mainEduGate .swipperBlock .swiper-button-next, .mainEduGate .swipperBlock .swiper-button-prev{
 	
 	}
@@ -578,6 +578,27 @@
 				
 			}
 		} 
+
+		.swipperBlock .card{
+			.top{
+				img{
+					width: 120px;
+					height: 120px;
+				}
+				h1{
+					font-size: 18px;
+				}
+				h2{
+					font-size: 18px;
+				}
+				h3{
+					font-size: 16px;
+				}
+			} 
+			p{
+				font-size: 19px;
+			}
+		}
 	}
 }
 
@@ -588,47 +609,49 @@
 		.header .filter .dropDwn{
 			width: 265px;
 		}
-		 .resultBlock{
-			  padding-top: 50px;
-			  padding-bottom: 0;
-			  .result{
+		.resultBlock{
+			padding-top: 50px;
+			padding-bottom: 0;
+			.result{
 					justify-content: space-evenly;
 					.card{
-						 width: 370px;
-						 h1{
-							  margin-top: 15px;
-							  margin-bottom: 10px;   
-							  font-size: 24px;
-						 }
-						 p{
-							  font-size: 22px;
-						 }
-						 img{
-							  width: 370px;
-							  height: 250px;
-						 }
-						 h2{
-							  margin-top: 16px;
-							  font-size: 18px;
-						 }
-						 h3{
-							  font-size: 18px;
-						 }
-						 h4{
-							  font-size: 18px;
-						 }
+						width: 370px;
+						h1{
+							margin-top: 15px;
+							margin-bottom: 10px;   
+							font-size: 24px;
+						}
+						p{
+							font-size: 22px;
+						}
+						img{
+							width: 370px;
+							height: 250px;
+						}
+						h2{
+							margin-top: 16px;
+							font-size: 18px;
+						}
+						h3{
+							font-size: 18px;
+						}
+						h4{
+							font-size: 18px;
+						}
 					}
-			  } 
-		 }
-		 .aboutBlock{
+			} 
+		}
+		.aboutBlock{
 			.aboutUs{
 				.cardAbout{
 					height: 220px;
 					h1{
-						font-size: 38px;
+						font-size: 36px;
+						margin-bottom: 0;
 					}
 					h4{
 						font-size: 20px;
+						margin-top: 10px;
 					}
 					p{
 						font-size: 18px;
@@ -669,33 +692,33 @@
 					.card:nth-child(5)::after{
 					
 					}
-			  }
-		 }
-		 .swipperBlock{
-			  .card{
+			}
+		}
+		.swipperBlock{
+			.card{
 					padding-top:20px;
 					.top{
-						 h1{
-							  font-size: 22px;
-						 }
-						 h2{
-							  font-size: 20px;
-							  margin: 6px 0;
-						 }
-						 h3{
-							  font-size: 18px;
-						 }
-						 img{
-							  width: 100px;
-							  height: 100px;
-						 }
+						h1{
+							font-size: 22px;
+						}
+						h2{
+							font-size: 20px;
+							margin: 6px 0;
+						}
+						h3{
+							font-size: 18px;
+						}
+						img{
+							width: 100px;
+							height: 100px;
+						}
 					}
 					p{
-						 margin-top: 14px;
-						 font-size: 18px;
+						margin-top: 14px;
+						font-size: 18px;
 					}
-			  } 
-		 }
+			} 
+		}
 	}
 } 
 
@@ -705,101 +728,101 @@
 // 1024 
 @media (max-width:1024px) {
 	.mainEduGate{
-		 .header{
-			  padding-top: 120px;
-			  h2{
+		.header{
+			padding-top: 120px;
+			h2{
 					font-size: 28px;
 					width: 65%;
 					margin-bottom: 15px;
-			  }
-			  h3{
+			}
+			h3{
 					font-size: 18px;
 					width: 550px;
 					margin: 25px 0;
-			  }
-			  .listLvl{
+			}
+			.listLvl{
 					p{
-						 font-size: 18px;
+						font-size: 18px;
 					}
-			  }
-			  .freeConsult{
+			}
+			.freeConsult{
 					margin-top: 15px;
 					font-size: 18px;
-			  }
-			  .chat{
+			}
+			.chat{
 					margin-top: 30px;
 					h4{
-						 font-size: 22px;
+						font-size: 22px;
 					}
-			  }
-			  .filter{
+			}
+			.filter{
 					padding:22px 30px;
 					.dropDwn{
-						 width: 190px;
+						width: 190px;
 					}
 					.dropSearch{
-						 padding: 17px 30px;
+						padding: 17px 30px;
 					}
-			  }
-		 }
-		 .resultBlock{
-			  & > h5{
+			}
+		}
+		.resultBlock{
+			& > h5{
 					font-size: 22px;
-			  }
-			  .result{
+			}
+			.result{
 					.card{
-						 width: 280px;
-						 h1{
-							  font-size: 19px;
-							  padding:0 10px;
-						 }
-						 p{
-							  font-size: 18px;
-							  padding:0 10px;
-						 }
-						 img{
-							  width: 280px;
-							  height: 190px;
-						 }
-						 h2{
-							  font-size: 16px;
-							  padding:0 10px;
-						 }
-						 h3{
-							  font-size: 16px;
-							  padding:0 10px;
-						 }
-						 h4{
-							  font-size: 16pz;
-							  padding:0 10px;
-						 }
+						width: 280px;
+						h1{
+							font-size: 19px;
+							padding:0 10px;
+						}
+						p{
+							font-size: 18px;
+							padding:0 10px;
+						}
+						img{
+							width: 280px;
+							height: 190px;
+						}
+						h2{
+							font-size: 16px;
+							padding:0 10px;
+						}
+						h3{
+							font-size: 16px;
+							padding:0 10px;
+						}
+						h4{
+							font-size: 16pz;
+							padding:0 10px;
+						}
 					}
-			  } 
-		 }
-		 .aboutBlock{
-			  padding-top: 20px;
-			  & > h5{
+			} 
+		}
+		.aboutBlock{
+			padding-top: 20px;
+			& > h5{
 					font-size: 22px;
-			  }
-			  .aboutUs{
+			}
+			.aboutUs{
 					
-			  }
-		 }
-		 .topFacultetBlock{ 
-			  h4{
+			}
+		}
+		.topFacultetBlock{ 
+			h4{
 					font-size: 22px;
-			  }
-			  .topFacultet{
-				  
+			}
+			.topFacultet{
+				
 					.card{
-						 width: 290px;
-						 height: 126px;
-						 p{
-							  font-size: 18px;
-						 }
+						width: 290px;
+						height: 126px;
+						p{
+							font-size: 18px;
+						}
 					}
-			  }
-		 }
+			}
+		}
 		.workBlock{
 			.weareWork{
 				.card{
@@ -845,34 +868,34 @@
 
 	
 
-		 .swipperBlock{
-			  .card{
+		.swipperBlock{
+			.card{
 					height: 420px;
 					.top{
-						 h1{
-							  font-size: 16px;
-						 }
-						 h2{
-							  font-size: 14px;
-						 }
-						 h3{
-							  font-size: 14px;
-						 }
-						 img{
-							  width: 70px;
-							  height: 70px;
-							  margin-right: 15px;
-						 }
+						h1{
+							font-size: 16px;
+						}
+						h2{
+							font-size: 14px;
+						}
+						h3{
+							font-size: 14px;
+						}
+						img{
+							width: 70px;
+							height: 70px;
+							margin-right: 15px;
+						}
 					}
 					p{
-						 font-size: 15px;
-						 line-height: 28px;
+						font-size: 15px;
+						line-height: 28px;
 					}
-			  } 
-		 }
+			} 
+		}
 	}
 	.mainEduGate .swipperBlock .swiper-button-next, .mainEduGate .swipperBlock .swiper-button-prev{
-		 top: 237px;
+		top: 237px;
 	}
 } 
 
@@ -882,86 +905,86 @@
 // 768 
 @media (max-width:768px) {
 	.mainEduGate{
-		 .header{
-			  padding-bottom: 70px;
-			  h2{
+		.header{
+			padding-bottom: 70px;
+			h2{
 					width: 75%;
 					font-size: 26px;
-			  }
-			  h3{
+			}
+			h3{
 					font-size: 16px;
 					width: 490px;
-			  }
-			  .listLvl{
+			}
+			.listLvl{
 					p{
-						 font-size: 16px;
+						font-size: 16px;
 					}
-			  }
-			  .freeConsult{
+			}
+			.freeConsult{
 					font-size: 16px;
-			  }
-			  .chat{
+			}
+			.chat{
 					h4{
-						 font-size: 20px;
+						font-size: 20px;
 					}
 					img{
-						 width: 54px;
-						 height: 54px;
+						width: 54px;
+						height: 54px;
 					}
-			  }
-			  .filter{
+			}
+			.filter{
 					.dropDwn{
-						 width: 115px;
-						 height: 56px;
-						 select{
-							  font-size: 16px;
-						 }
+						width: 115px;
+						height: 56px;
+						select{
+							font-size: 16px;
+						}
 					}
 					.dropSearch{
-						 padding: 14PX 25px;
-						 svg{
-							  width: 26px;
-							  height: 24px;
-						 }
+						padding: 14PX 25px;
+						svg{
+							width: 26px;
+							height: 24px;
+						}
 					}
-			  }
-		 }
-		 .resultBlock{
-			  padding: 40px 20px  0 20px;
-			  // & > h5{
-			  // }
-			  .result{
+			}
+		}
+		.resultBlock{
+			padding: 40px 20px  0 20px;
+			// & > h5{
+			// }
+			.result{
 					.card{
-						 width: 220px;
-						 svg{
-							  top: 10px;
-							  right: 10px;
-						 }
-						 h1{
-							  font-size: 16px;
-							  margin-top: 6px;
-						 }
-						 p{
-							  font-size: 16px;
-						 }
-						 img{
-							  width: 220px;
-							  height: 140px;
-						 }
-						 h2{
-							  font-size: 14px;
-						 }
-						 h3{
-							  font-size: 14px;
-						 }
-						 h4{
-							  font-size: 14px;
-						 }
+						width: 220px;
+						svg{
+							top: 10px;
+							right: 10px;
+						}
+						h1{
+							font-size: 16px;
+							margin-top: 6px;
+						}
+						p{
+							font-size: 16px;
+						}
+						img{
+							width: 220px;
+							height: 140px;
+						}
+						h2{
+							font-size: 14px;
+						}
+						h3{
+							font-size: 14px;
+						}
+						h4{
+							font-size: 14px;
+						}
 					}
-			  } 
-		 }
-		 .aboutBlock{
-			 padding: 0 20px;
+			} 
+		}
+		.aboutBlock{
+			padding: 0 20px;
 			.aboutUs{
 				.cardAbout{
 					height: 220px;
@@ -981,26 +1004,26 @@
 			}
 		}
 		.topFacultetBlock{ 
-			  padding: 0 20px;
-			  // h4{
-			  // }
-			  .topFacultet{
+			padding: 0 20px;
+			// h4{
+			// }
+			.topFacultet{
 					.card{
-						 width: 225px;
-						 height: 107px;
-						 margin-bottom: 20px;
-						 p{
-							  font-size: 16px;
-						 }
+						width: 225px;
+						height: 107px;
+						margin-bottom: 20px;
+						p{
+							font-size: 16px;
+						}
 					}
-			  }
-		 }
-		 .workBlock{
-			 padding-left: 20px;
-			 padding-right: 20px;
-			 h4{
-				 font-size: 22px;
-			 }
+			}
+		}
+		.workBlock{
+			padding-left: 20px;
+			padding-right: 20px;
+			h4{
+				font-size: 22px;
+			}
 			.weareWork{
 				.card{
 					.cardBack{
@@ -1051,9 +1074,9 @@
 				}
 			}
 		}
-		 .swipperBlock{
-			  padding: 50px 20px;
-		 }
+		.swipperBlock{
+			padding: 50px 20px;
+		}
 	}
 } 
 
@@ -1066,85 +1089,85 @@
 		margin-left: 0;
 	}
 	.mainEduGate{
-		 .header{
+		.header{
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
 			padding: 40px 15px 20px 15px;
-			  h2{
+			h2{
 					font-size: 22px;
 					width: 80%;
 					text-align: center;
 					margin: 0 auto;
-			  }
-			  h3{
+			}
+			h3{
 					width: auto;
 					font-size: 14px;
 					font-size: 14px;
 					width: auto;
 					text-align: center;
-			  }
-			  .listLvl{
+			}
+			.listLvl{
 					
 					p{
-						 display: flex;
-						 align-items: center;
-						 justify-content: center;
-						 .circleList{
-							  margin-right: 8px;
-						 }
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						.circleList{
+							margin-right: 8px;
+						}
 					}
-			  }
-			  .freeConsult{
+			}
+			.freeConsult{
 					margin: auto;
 					margin-top: 15px;
 					display: block;
-			  }
-			  .chat{
+			}
+			.chat{
 					h4{
 					}
-			  }
-			  .filter{
+			}
+			.filter{
 					flex-direction: column;
 					.dropDwn{
-						 margin-bottom: 20px;
-						 width: 280px;
+						margin-bottom: 20px;
+						width: 280px;
 					}
 					.dropSearch{
 					}
-			  }
-		 }
-		 .resultBlock{
-			  & > h5{
+			}
+		}
+		.resultBlock{
+			& > h5{
 					text-align: center;
-			  }
-			  .result{
+			}
+			.result{
 					.card{
-						 width: 350px;
-						 h1{
-						 }
-						 p{
-						 }
-						 img{
-							  width: 350px;
-							  height: 250px;
-						 }
-						 h2{
-						 }
-						 h3{
-						 }
-						 h4{
-						 }
+						width: 350px;
+						h1{
+						}
+						p{
+						}
+						img{
+							width: 350px;
+							height: 250px;
+						}
+						h2{
+						}
+						h3{
+						}
+						h4{
+						}
 					}
-			  } 
-		 }
-		 .aboutBlock{
+			} 
+		}
+		.aboutBlock{
 
-			  & > h5{
+			& > h5{
 					text-align: center;
-			  }
-			  .aboutUs{
+			}
+			.aboutUs{
 
 				flex-direction: column;
 				.cardAbout{
@@ -1152,23 +1175,23 @@
 					width: 100%;
 					margin-bottom: 20px;
 				}
-			  }
-		 }
-		 .topFacultetBlock{ 
-			  h4{
+			}
+		}
+		.topFacultetBlock{ 
+			h4{
 					text-align: center;
 					margin-bottom: 20px;
-			  }
-			  .topFacultet{
-				  
+			}
+			.topFacultet{
+				
 					.card{
-						 width: 180px;
-						 height: 97px;
-						 p{
-						 }
+						width: 180px;
+						height: 97px;
+						p{
+						}
 					}
-			  }
-		 }
+			}
+		}
 
 		
 		.workBlock{
@@ -1250,22 +1273,22 @@
 			}
 		}
 
-		 .swipperBlock{
-			  .card{
+		.swipperBlock{
+			.card{
 					.top{
-						 h1{
-						 }
-						 h2{
-						 }
-						 h3{
-						 }
-						 img{
-						 }
+						h1{
+						}
+						h2{
+						}
+						h3{
+						}
+						img{
+						}
 					}
 					p{
 					}
-			  } 
-		 }
+			} 
+		}
 	}
 	.mainEduGate .swipperBlock .swiper-button-next, .mainEduGate .swipperBlock .swiper-button-prev{
 		
@@ -1280,6 +1303,9 @@
 	}
 	
 }
+
+
+
 @media (max-width:375px) {
 	.mainEduGate{
 		.header{
@@ -1384,10 +1410,10 @@
 		.workBlock{	padding-left: 10px;
 				padding-right: 10px;
 			h4{
-			    font-size: 22px;
+				font-size: 22px;
 			}
 			
-		 }
+		}
 		.workBlock .weareWork{
 			.card:nth-child(1)::after{
 				right: -17px;
