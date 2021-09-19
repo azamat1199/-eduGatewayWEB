@@ -76,39 +76,39 @@ const SSlider = withStyles({
 
 function Zayavka()  {
 	const history = useHistory()
-	const [university,setUniversity] = useState()
-	const [description,setDiscription] = useState()
+	const [faculty,setUniversity] = useState()
+	const [service,setDiscription] = useState()
 	const [value, setValue] = useState(1);
 	const[requisiton,setRequisition] = useState({
-		budget:'',
+		budget:0
 	})
 	const handleInputChange = (e)  => {
 		console.log(e.target.value);
             const { name, value} = e.target;
-			setRequisition((state) => ({...state,[name]:value.trim()}));
+			setRequisition((state) => ({...state,[name]:+value.trim()}));
 	}
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
 	  };
 	  const handleUniver = (event,newValue) =>{
-		  setUniversity(newValue)
+		  setUniversity(newValue.id)
 	  }
 	
 	
 	const finalData = {
-		university,
-        budget : requisiton.budget,
-		description
+		faculty,
+        budget :requisiton.budget,
+		service
 	}
 
 	const handleSubmit = (e) =>{
 		e.preventDefault()
         console.log(finalData);
 	}
-	console.log(requisiton);
-	console.log(university);
-	console.log(description);
-	console.log(value);
+	const localStr = ()=>{
+		localStorage.setItem('zayavka',JSON.stringify(finalData))
+	}
+	console.log(finalData);
 	return ( 
 		<React.Fragment>
 				<div className="navRegist">
@@ -153,18 +153,18 @@ function Zayavka()  {
 					</div>
 					<div className="form_div">
 						<p>Комментарии</p>
-						<textarea  required value={description} onChange={(e)=>setDiscription(e.target.value)} name="" id="" cols="30" rows="10" placeholder="Оставьте комментарии или предложения"></textarea>
+						<textarea  required value={service} onChange={(e)=>setDiscription(+e.target.value)} name="" id="" cols="30" rows="10" placeholder="Оставьте комментарии или предложения"></textarea>
 					</div>
 					<div className="line_dash"></div>
 					<h4>Ваш бюджет</h4>
-					<NumberFormat required name="budget" onChange={handleInputChange}
+					<input required name="budget" onChange={handleInputChange}
 					//  value={requisiton.budget ? requisiton.budget : value} 
-					 className="input_budjet" format="$#######" placeholder="$0" mask=" " />
+					 className="input_budjet" placeholder="$0"  />
 					{/* <input className="input_budjet" type="text" /> */}
 					<div className="form_div input_range">
 						<SSlider
 							defaultValue={0}
-							value={value }
+							value={value}
 							max={3000}
 							onChange={handleChange}
 							step={10}
@@ -174,7 +174,7 @@ function Zayavka()  {
 						/>
 					</div>
 					<p className="zayavka_alert">*Пожалуйста укажите ваш реальный бюджет</p>
-					<button onClick={()=> history.push('/profile')} className="reg_btn" >Следующее <img src={arrowright} alt="" /></button>
+					<NavLink onClick={localStr} to='/profile' className="reg_btn" >Следующее <img src={arrowright} alt="" /></NavLink>
 				</form>
 			</div>
 		</React.Fragment>

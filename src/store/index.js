@@ -5,6 +5,7 @@ import userReducer from './reducers/userReducer';
 import logger from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import reduxThunk from 'redux-thunk'
+import dataSaveReducer from './reducers/fileSaveReducer';
 
 // Configure persisted store with localstorage property name
 const persistConfig = {
@@ -15,6 +16,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   payload: userReducer,
+  dataSave:dataSaveReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

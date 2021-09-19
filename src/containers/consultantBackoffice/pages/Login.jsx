@@ -42,15 +42,14 @@ console.log(dataGo);
         e.preventDefault()
         setLoading(true);
         try {
-            const {data} = await Axios.post('/common/auth/token/obtain',dataGo)
+            const {data} = await Axios.post('/common/token/obtain',dataGo)
             console.log(data);
-            const {access,refresh} = data
-            const {user}  = data;
-            const {role} = user
-            dispatch(signUpAction({access,refresh,role,data:user.data}))
+            const {access,refresh,role,enrollee} = data
+           
+            dispatch(signUpAction({access,refresh,role,data:enrollee}))
             if(role.startsWith("u")){
                history.push('/univer-backoffice-page')
-            }else if(role.startsWith('s')){
+            }else if(role.startsWith('e')){
                 history.push('/my-account')
             }else if(role === 'admin'){
                 history.push('/home/main')
@@ -58,7 +57,7 @@ console.log(dataGo);
                 history.push('/')
             }
           
-           console.log(data);
+        //    console.log(data);
            setLoading(false);
         } catch (error) {
            Swal.fire({
@@ -85,10 +84,10 @@ console.log(dataGo);
                         <h3>Войти</h3>
                       
                         <div onChange={handleChange} className="radioBlock">
-                            <label><input type="radio" name="role" value="student" required />Абитуриент</label>
-                            <label><input type="radio" name="role" value="partner" required />Партнер</label>
-                            <label><input type="radio" name="role" value="university" required />Университет</label>
-                            <label><input type="radio" name="role" value="admin" required/>Админ</label>
+                            <label><input type="radio" name="role" value="enrollee"  />Абитуриент</label>
+                            <label><input type="radio" name="role" value="partner"  />Партнер</label>
+                            <label><input type="radio" name="role" value="university"  />Университет</label>
+                            <label><input type="radio" name="role" value="admin" />Админ</label>
                         </div>
                         {/* Login kiritish */}
                         <div className="loginInput">

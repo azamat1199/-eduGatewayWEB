@@ -32,6 +32,7 @@ function SingUp() {
   const [loginData, setLoginData] = useState({
     first_name: "",
     last_name: "",
+    middle_name:"Alisher",
     password_1: "",
     password_2: "",
     phone_number: '',
@@ -82,30 +83,33 @@ const onFailure = (res)=>{
 }
   const handleSubmit = async (e) => {
     e.preventDefault();
+    localStorage.setItem('enrolle-user',loginData.first_name)
     setLoading(true);
     try {
-      const res = await Axios.post("/student/auth/register", loginData);
-      const { status } = res;
-      const { data } = res;
-      if (status == 201) {
-        dispatch(signUpAction({data:data}))
-        Swal.fire({
-          icon:"success",
-          text:"Успешно зарегистрирован",
-          showCancelButton:false
-        }).then(()=> history.push("/my-account"))
-      }
-      console.log(data);
+      const res = await Axios.post("/enrollee/enrollee-user/", loginData);
+      console.log(res)
+      // const { status } = res;
+      // const { data } = res;
+      // if (status == 201) {
+      //   dispatch(signUpAction({data:data}))
+      //   Swal.fire({
+      //     icon:"success",
+      //     text:"Успешно зарегистрирован",
+      //     showCancelButton:false
+      //   }).then(()=> history.push("/my-account"))
+      // }
+      // console.log(data);
       setLoading(false);
     } catch (err) {
-      const { error } = err.response?.data;
-      Swal.fire({
-        icon:"error",
-        text:"На этот номер все готовы зарегистрироваться, выберите другой или войдите",
-        showCancelButton:true
-      })
-      console.log(error[0]?.error[0]);
-      setError(error[0]?.error[0]);
+      console.log(err.response)
+      // const { error } = err.response?.data;
+      // Swal.fire({
+      //   icon:"error",
+      //   text:"На этот номер все готовы зарегистрироваться, выберите другой или войдите",
+      //   showCancelButton:true
+      // })
+      // console.log(error[0]?.error[0]);
+      // setError(error[0]?.error[0]);
       setLoading(false);
     }
   };

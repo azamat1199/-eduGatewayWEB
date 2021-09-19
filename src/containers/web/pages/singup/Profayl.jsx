@@ -15,7 +15,8 @@ const dataT = require("../../json/data.json")
 
  function Profayl () {
 	 const selector = useSelector(state=> state)
-	 const {form} = selector.payload
+	 console.log(selector);
+	 const {form} = selector.dataSave
      const history = useHistory()
 	 console.log(form);
 	 const dispatch = useDispatch()
@@ -60,8 +61,9 @@ const dataT = require("../../json/data.json")
 	}
 	const fetchCities = async () =>{
 		try {
-			const data = await Axios.get('/common/city/')
+			const data = await Axios.get('/common/city')
 			const {results} = data.data
+			console.log(results);
 			console.log(data.status);
 			if(data.status === 200) {
 				setCities(results)
@@ -71,7 +73,9 @@ const dataT = require("../../json/data.json")
 		}
 		
 	}
-
+  const localStr = ()=>{
+	  localStorage.setItem('profile',JSON.stringify(finalData))
+  }
 
 	useEffect(()=>{
 		fetchCities()
@@ -121,7 +125,7 @@ const dataT = require("../../json/data.json")
 						</div>
 						<div className="form_div">
 							<p>Ваша фамилия</p>
-							<input type="text"onChange={handleChange} value={form.lastName} name="lastName"/>
+							<input type="text"onChange={handleChange} value={form.lastName}  name="lastName"/>
 						</div>
 						<div className="form_div">
 							<p>Отчество</p>
@@ -145,15 +149,15 @@ const dataT = require("../../json/data.json")
 						</div>
 						<div className="form_div">
 							<p>Телефон</p>
-							<NumberFormat name="number" value ={form.number} onChange={handleChange} format="+998(##) ###-##-##" allowEmptyFormatting mask="_" />
+							<NumberFormat name="number"  value={form.number} onChange={handleChange} format="+998(##) ###-##-##" allowEmptyFormatting mask="_" />
 						</div>
 						<div className="form_div">
 							<p>Реферальный код</p>
-							<input type="text" name="code" value={form.code} onChange={handleChange} />
+							<input type="text" name="code"  value={form.code} onChange={handleChange} />
 						</div>
 						<div className="btn_div">
 							<button onClick={saveData} className="save_btn">Сохранить</button>
-							<NavLink to="/profile2" className="next_btn">Следующее <img src={arrowright} alt="" /></NavLink>
+							<NavLink onClick={localStr} to="/profile2" className="next_btn">Следующее <img src={arrowright} alt="" /></NavLink>
 						</div>
 					</div>
 				</div>

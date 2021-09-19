@@ -12,7 +12,7 @@ const Kabinet = () => {
     const history = useHistory()
     const selector = useSelector(state=> state)
     console.log(selector);
-    const {lastStep} = selector.payload
+    const {lastStep} = selector.dataSave
     console.log(lastStep);
     const{data} = selector.payload.payload
     console.log(data);

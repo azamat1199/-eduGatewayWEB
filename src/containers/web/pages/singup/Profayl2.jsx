@@ -9,29 +9,33 @@ import Navbar from '../Navbar';
 
 function Profayl2 () {
 	const selector = useSelector(state=> state)
-	const {form} = selector.payload
+	const {form} = selector.dataSave
 	const dispatch = useDispatch()
 	const location = useLocation()
 	const {pathname} = location
 	const history = useHistory()
 	const [profileData,setProfileData] = useState({
-            school:'',
-            achiev:'',
-			gpa:'',
-			select:''
+		educated_in:'',
+		achievements:'',
+		gpa:'',
+		english_level_type:'',
+		english_level_value:'',
 	})
 	const handleChange = (e) =>{
 		const {name,value} = e.target;
 		setProfileData(state => ({...state,[name]:value}))
 	}
-	console.log(profileData);
+	console.log(profileData.english_level_type);
 
-	const saveData =  ()  =>{
+	const saveData = ()  =>{
 		dispatch(authSaveData(pathname,profileData))
 		Swal.fire({
 			icon:"success",
 			text:"Текущие данные сохранены без промедления"
 		}).then(()=> history.push('/my-account'))
+	}
+	const localStr = ()=>{
+		localStorage.setItem('profile2',JSON.stringify(profileData))
 	}
 		return ( 
 			<React.Fragment>
@@ -47,7 +51,7 @@ function Profayl2 () {
 						<svg id="svg_pass" width="82" height="10" viewBox="0 0 82 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M82 5L74.5 0.669873V9.33013L82 5ZM0 5.75H5.125V4.25H0V5.75ZM15.375 5.75H25.625V4.25H15.375V5.75ZM35.875 5.75H46.125V4.25H35.875V5.75ZM56.375 5.75H66.625V4.25H56.375V5.75Z" fill="#5C7C8A"/>
 						</svg>
-						<h2 className="singup_pass">Заявка</h2>
+						<h2 className="singup_pass"><NavLink to='/profile'>Заявка</NavLink></h2>
 						<svg id="svg_pass" width="82" height="10" viewBox="0 0 82 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M82 5L74.5 0.669873V9.33013L82 5ZM0 5.75H5.125V4.25H0V5.75ZM15.375 5.75H25.625V4.25H15.375V5.75ZM35.875 5.75H46.125V4.25H35.875V5.75ZM56.375 5.75H66.625V4.25H56.375V5.75Z" fill="#5C7C8A"/>
 						</svg>
@@ -70,22 +74,29 @@ function Profayl2 () {
 						</div>
 						<div className="form_div">
 							<p>Где вы учитесь/учились?</p>
-							<input type="text" value={form.school} onChange={handleChange} name="school" />
+							<input type="text" value={form.school} onChange={handleChange} name="educated_in" />
 						</div>
 						<div className="form_div">
-							<p>Уровень Английского языка</p>
-							<select  onChange={handleChange} value={form.select} name="select" id="">
-								<option className="op_1" value=""></option>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
+							<p>Выберите тип сертификата</p>
+							<select  onChange={handleChange} value={form.select} name="english_level_type"  id="">
+								<option value="ielts" >ielts</option>
+								<option value="cefr">cefr</option>
+								<option value="sat">sat</option>
+								<option value="pearson">pearson</option>
+								<option value="other">other</option>
 							</select>
+						</div>
+						<div className="form_div" style={ profileData.english_level_type == 'other' ?{display:'block'}:{display:'none'}}>
+							<p>напишите свой тип сертификата</p>
+							<input onChange={handleChange} value={form.achiev}  type="text"  name="english_level_other"/>
+						</div>
+						<div className="form_div">
+							<p>оценка вашего сертификата</p>
+							<input onChange={handleChange} value={form.achiev}  type="text"  name="english_level_value"/>
 						</div>
 						<div className="form_div">
 							<p>Достижения</p>
-							<input onChange={handleChange} value={form.achiev}  type="text"  name="achiev"/>
+							<input onChange={handleChange} value={form.achiev}  type="text"  name="achievements"/>
 						</div>
 						<div className="form_div">
 							<p>GPA</p>
@@ -93,7 +104,7 @@ function Profayl2 () {
 						</div>
 						<div className="btn_div">
 						<button type="button" onClick={saveData} className="save_btn">Сохранить</button>
-							<NavLink to="/profile3" className="next_btn">Следующее <img src={arrowright} alt="" /></NavLink>
+							<NavLink onClick={localStr} to="/profile3" className="next_btn">Следующее <img src={arrowright} alt="" /></NavLink>
 						</div>
 					</form>
 				</div>

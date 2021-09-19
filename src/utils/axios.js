@@ -4,8 +4,8 @@ import {AUTH_SIGN_OUT} from '../store/actionTypes'
 
 
 const Axios = axios.create({
-    baseURL:'http://185.107.237.6/api/v1/',
-    timeout: 20000,
+    baseURL:'http://backend.edugateway.uz/api/v1/',
+    timeout: 30000,
     timeoutErrorMessage: 'Connection is lost. Server not responded'
 });
 

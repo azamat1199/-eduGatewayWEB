@@ -2,7 +2,7 @@ import React, { Component, useRef, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import folder_icon from "../../../../assets/icon/folder_icon.svg"
 import Navbar from '../Navbar';
-
+import Axios from '../../../../utils/axios'
 
 
 
@@ -28,7 +28,7 @@ function Fayli () {
 
 	console.log(data);
 	console.log(doc);
-	const submitHandler = (e) => {
+	const submitHandler = async (e) => {
 		e.preventDefault();
 		const formData = new FormData();
 		formData.append("files", inputEl1.current.files[0]);
@@ -38,6 +38,14 @@ function Fayli () {
 		formData.append("files", inputEl5.current.files[0]);
 	
 		console.log(formData, Array.from(formData), "file input");
+		try {
+			const data = await Axios.post('/enrollee/enrollee-profile/',formData)
+	  console.log(data);
+		} catch (error) {
+			console.log(error.response);
+		}
+      
+
 	  };
 		return ( 
 			<React.Fragment>
@@ -128,7 +136,7 @@ function Fayli () {
 							</div>
 						</div>
 						<div className="btn_div">
-							<button onClick={()=> history.push('/payment-click')} className="reg_btn">Завершить</button>
+							<button className="reg_btn">Завершить</button>
 						</div>
 					</form>
 				</div>

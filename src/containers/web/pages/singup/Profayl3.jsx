@@ -3,33 +3,57 @@ import { NavLink, useHistory } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Navbar from '../Navbar';
+import Axios from '../../../../utils/axios';
 
 const dataT = require("../../json/data.json")
 
 function Profayl3 () {
 	const history = useHistory()
 	const [data,setData] = useState(dataT)
-	const[activity,setActivity] = useState()
+	const [profile,setProfile] = useState(JSON.parse(localStorage.getItem('profileData')))
+	const [profile2,setProfile2] = useState(JSON.parse(localStorage.getItem('profile2Data')))
+	const[active_activity,setActivity] = useState()
+	const data1 = JSON.parse(localStorage.getItem('profile'))
+	const data2 = JSON.parse(localStorage.getItem('profile2'))
+	const data3 = JSON.parse(localStorage.getItem('zayavka'))
+	const data4 = JSON.parse(localStorage.getItem('enrollee-user'))
 	const [profileData,setProfileData] = useState({
-		sportAchievemnts:'',
-		visa:'',
-		target:'',
+		sport_achievements:'',
+		visas:'',
+		education_purpose:'',
 })
+const handleActivity = (event,newValue) => {
+	const {hobbi} = newValue
+	console.log(hobbi);
+	setActivity(hobbi)
+}
 const handleChange = (e) =>{
 	const {name,value} = e.target;
 	setProfileData(state => ({...state,[name]:value}))
 }
 const finalData = {
-	sportAchievemnts:profileData.sportAchievemnts,
-	visa:profileData.visa,
-	target:profileData.target,
-	activity
+	sport_achievements:profileData.sport_achievements,
+	visas:profileData.visas,
+	education_purpose:profileData.education_purpose,
+	active_activity,
+    ...data1,
+	...data2,
+	...data3,
+	enrollee_user:1
 }
-const handleSubmit = (e)=>{
+const handleSubmit = async(e)=>{
 	e.preventDefault()
-	console.log(finalData);
+	try {
+		const res = await Axios.post('/enrollee/enrollee-profile/',finalData)
+		console.log(res)
+	} catch (error) {
+		console.log(error.response)
+	}
 }
-console.log(activity);
+console.log(active_activity);
+console.log(profile);
+console.log(profile2);
+console.log(finalData);
 console.log(profileData);
 		return ( 
 			<React.Fragment>
@@ -68,13 +92,13 @@ console.log(profileData);
 						</div>
 						<div className="form_div">
 							<p>Спортивные достижения</p>
-							<input type="text" onChange={handleChange} name="sportAchievemnts"/>
+							<input type="text" onChange={handleChange} name="sport_achievements"/>
 						</div>
 						<div className="form_div">
 							<p>Активная деятельность</p>
 							<Autocomplete
 							id="profayl_input"
-							onInputChange={( newInputValue) => console.log(newInputValue.target)}
+							onChange={handleActivity}
 							options={data}
 							getOptionLabel={(option) => option.hobbi}
 							style={{ width: 575 }}
@@ -83,14 +107,14 @@ console.log(profileData);
 						</div>
 						<div className="form_div">
 							<p>Визы</p>
-							<input type="text" onChange={handleChange}  name="visa"  />
+							<input type="text" onChange={handleChange}  name="visas"  />
 						</div>
 						<div className="form_div">
 							<p>Цель получения образования</p>
-							<input type="text" onChange={handleChange}  name="target" />
+							<input type="text" onChange={handleChange}  name="education_purpose" />
 						</div>
 						<div className="btn_div">
-							<button onClick={() =>history.push ('/files')} className="reg_btn">Завершить</button>
+							<button  className="reg_btn">Завершить</button>
 						</div>
 						
 					</form>
