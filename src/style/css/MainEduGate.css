@@ -1462,6 +1462,9 @@
         -ms-flex-pack: end;
             justify-content: flex-end;
   }
+  .mainEduGate .aboutBlock .aboutUs .cardAbout {
+    height: 170px;
+  }
 }
 
 @media (max-width: 365px) {
