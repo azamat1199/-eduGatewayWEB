@@ -933,6 +933,7 @@
   }
   .main_singup .reg_btn {
     padding: 15px 85px;
+    width: 80%;
   }
   .main_singup .reg_link {
     width: 364px;

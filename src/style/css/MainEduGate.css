@@ -1241,6 +1241,9 @@
   .mainEduGate .workBlock .weareWork .card:nth-child(6) {
     justify-content: flex-end;
   }
+  .mainEduGate .aboutBlock .aboutUs .cardAbout {
+    height: 170px;
+  }
 }
 @media (max-width: 365px) {
   .mainEduGate .topFacultetBlock .topFacultet .card {
