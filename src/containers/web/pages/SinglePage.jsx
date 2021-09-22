@@ -27,6 +27,9 @@ const dataT = require("../json/data_univer.json")
 function SinglePage (props){
 	const selector = useSelector(state=> state)
 	console.log(selector);
+	const {payload} = selector.payload
+	const {id} = payload.data
+	console.log(id);
 	const history = useHistory()
 	const [data,setData] = useState(dataT)
 	const params = useParams()
@@ -60,12 +63,26 @@ function SinglePage (props){
 	const fetchUniversityById = async() =>{
 		try {
 			const {data} =  await Axios.get(`/university/university/${params.id}`)
+			localStorage.setItem('univerId',params.id)
 			setUniver(data)
 			console.log(data);
 		} catch (error) {
 			console.log(error);
 		}
 	}
+ 
+	// const setFavourite = async()=>{
+	// 	try {
+	// 	  const data = await Axios.post('/enrollee/enrollee-user-favorite-university/',{
+	// 		  university:params.id,
+	// 		  enrollee_user:id
+	// 	  })
+	// 	  console.log(data);
+	// 	} catch (error) {
+		  
+	// 	}
+	//   }
+
 	useEffect(()=>{
 		fetchUniversityById()
 	},[])

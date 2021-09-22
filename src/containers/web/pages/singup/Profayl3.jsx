@@ -16,7 +16,6 @@ function Profayl3 () {
 	const data1 = JSON.parse(localStorage.getItem('profile'))
 	const data2 = JSON.parse(localStorage.getItem('profile2'))
 	const data3 = JSON.parse(localStorage.getItem('zayavka'))
-	const data4 = JSON.parse(localStorage.getItem('enrollee-user'))
 	const [profileData,setProfileData] = useState({
 		sport_achievements:'',
 		visas:'',
@@ -36,15 +35,24 @@ const finalData = {
 	visas:profileData.visas,
 	education_purpose:profileData.education_purpose,
 	active_activity,
+	service:1,
     ...data1,
 	...data2,
 	...data3,
-	enrollee_user:1
+	enrollee_user:data1.id
 }
 const handleSubmit = async(e)=>{
 	e.preventDefault()
+	localStorage.setItem('files',JSON.stringify(finalData))
 	try {
 		const res = await Axios.post('/enrollee/enrollee-profile/',finalData)
+		const {status} = res;
+		const {data} = res
+		const {id} = data
+		if(status === 201){
+			localStorage.setItem('userId',JSON.stringify(id))
+           history.push('/files')
+		}
 		console.log(res)
 	} catch (error) {
 		console.log(error.response)
@@ -69,10 +77,7 @@ console.log(profileData);
 						<svg id="svg_pass" width="82" height="10" viewBox="0 0 82 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M82 5L74.5 0.669873V9.33013L82 5ZM0 5.75H5.125V4.25H0V5.75ZM15.375 5.75H25.625V4.25H15.375V5.75ZM35.875 5.75H46.125V4.25H35.875V5.75ZM56.375 5.75H66.625V4.25H56.375V5.75Z" fill="#5C7C8A"/>
 						</svg>
-						<h2 className="singup_pass">Заявка</h2>
-						<svg id="svg_pass" width="82" height="10" viewBox="0 0 82 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M82 5L74.5 0.669873V9.33013L82 5ZM0 5.75H5.125V4.25H0V5.75ZM15.375 5.75H25.625V4.25H15.375V5.75ZM35.875 5.75H46.125V4.25H35.875V5.75ZM56.375 5.75H66.625V4.25H56.375V5.75Z" fill="#5C7C8A"/>
-						</svg>
+						
 						<h2 className="singup_active3">Профайл</h2>
 						<svg width="82" height="10" viewBox="0 0 82 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M82 5L74.5 0.669873V9.33013L82 5ZM0 5.75H5.125V4.25H0V5.75ZM15.375 5.75H25.625V4.25H15.375V5.75ZM35.875 5.75H46.125V4.25H35.875V5.75ZM56.375 5.75H66.625V4.25H56.375V5.75Z" fill="#5C7C8A"/>
@@ -86,7 +91,6 @@ console.log(profileData);
 					<form onSubmit={handleSubmit} className="main_singup">
 						<h1>Профайл</h1>
 						<div className="pagination">
-							<a className="page page_a"></a>
 							<a className="page page_a"></a>
 							<div className="page page_a"></div>
 						</div>
@@ -114,7 +118,7 @@ console.log(profileData);
 							<input type="text" onChange={handleChange}  name="education_purpose" />
 						</div>
 						<div className="btn_div">
-							<button  className="reg_btn">Завершить</button>
+							<button type="submit"  className="reg_btn">Завершить</button>
 						</div>
 						
 					</form>

@@ -1,7 +1,5 @@
 import axios from 'axios';
 import store from '../store'
-import {AUTH_SIGN_OUT} from '../store/actionTypes'
-
 
 const Axios = axios.create({
     baseURL:'http://backend.edugateway.uz/api/v1/',
@@ -14,10 +12,8 @@ Axios.interceptors.request.use((configs)=>{
     configs.headers.Authorization = token ? `Berear ${token}`:'';
     return configs;
 },(err)=>{
-    console.log(err)
+    console.log(err.response)
 })
-
-
 
 Axios.interceptors.response.use((response) => {
     return response

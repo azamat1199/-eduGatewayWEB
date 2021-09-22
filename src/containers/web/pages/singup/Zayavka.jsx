@@ -77,7 +77,7 @@ const SSlider = withStyles({
 function Zayavka()  {
 	const history = useHistory()
 	const [faculty,setUniversity] = useState()
-	const [service,setDiscription] = useState()
+	const [comment,setDiscription] = useState()
 	const [value, setValue] = useState(1);
 	const[requisiton,setRequisition] = useState({
 		budget:0
@@ -91,14 +91,15 @@ function Zayavka()  {
 		setValue(newValue);
 	  };
 	  const handleUniver = (event,newValue) =>{
-		  setUniversity(newValue.id)
+		  const {id} = newValue
+		  setUniversity(id)
 	  }
 	
 	
 	const finalData = {
 		faculty,
         budget :requisiton.budget,
-		service
+		comment
 	}
 
 	const handleSubmit = (e) =>{
@@ -121,10 +122,6 @@ function Zayavka()  {
 				<div className="up_nav">
 					<h2 className="singup_pass">Регистрация/Войти</h2>
 					<svg id="svg_pass" width="82" height="10" viewBox="0 0 82 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M82 5L74.5 0.669873V9.33013L82 5ZM0 5.75H5.125V4.25H0V5.75ZM15.375 5.75H25.625V4.25H15.375V5.75ZM35.875 5.75H46.125V4.25H35.875V5.75ZM56.375 5.75H66.625V4.25H56.375V5.75Z" fill="#5C7C8A"/>
-					</svg>
-					<h2 className="singup_active2">Заявка</h2>
-					<svg width="82" height="10" viewBox="0 0 82 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M82 5L74.5 0.669873V9.33013L82 5ZM0 5.75H5.125V4.25H0V5.75ZM15.375 5.75H25.625V4.25H15.375V5.75ZM35.875 5.75H46.125V4.25H35.875V5.75ZM56.375 5.75H66.625V4.25H56.375V5.75Z" fill="#5C7C8A"/>
 					</svg>
 					<h2>Профайл</h2>
@@ -153,7 +150,7 @@ function Zayavka()  {
 					</div>
 					<div className="form_div">
 						<p>Комментарии</p>
-						<textarea  required value={service} onChange={(e)=>setDiscription(+e.target.value)} name="" id="" cols="30" rows="10" placeholder="Оставьте комментарии или предложения"></textarea>
+						<textarea  required value={comment} onChange={(e)=>setDiscription(e.target.value)} name="" id="" cols="30" rows="10" placeholder="Оставьте комментарии или предложения"></textarea>
 					</div>
 					<div className="line_dash"></div>
 					<h4>Ваш бюджет</h4>
@@ -174,7 +171,7 @@ function Zayavka()  {
 						/>
 					</div>
 					<p className="zayavka_alert">*Пожалуйста укажите ваш реальный бюджет</p>
-					<NavLink onClick={localStr} to='/profile' className="reg_btn" >Следующее <img src={arrowright} alt="" /></NavLink>
+					<NavLink onClick={localStr} to='/profile2' className="reg_btn" >Следующее <img src={arrowright} alt="" /></NavLink>
 				</form>
 			</div>
 		</React.Fragment>
