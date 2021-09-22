@@ -31,8 +31,9 @@ function SingUp() {
   const [loading, setLoading] = useState(false);
   const [type, setType] = useState(true);
   const [error, setError] = useState("");
-  const [countries, setCountry] = useState("");
-  const [citiess, setCities] = useState("");
+  const [countries, setCountry] = useState();
+  const [countriess, setSountry] = useState();
+  const [citiess, setCities] = useState([]);
   const [length, setLength] = useState();
   const [status, setStatus] = useState("");
   const [loginData, setLoginData] = useState({
@@ -91,13 +92,13 @@ const fetchCountries = async() =>{
     const data = await Axios.get('/common/country/')
     console.log(data);
     const {status} = data
-    const {results} = data.data
+    const {results} = data?.data
     console.log(results);
     
     if(status === 200){
-      setCountry(results)
+      setSountry(results)
       const newData = []
-      for (let x=0; x<results.length; x++) {
+      for (let x=0; x < results.length; x++) {
       newData.push(results[x].cities[0])
      }
      setCities(newData)
@@ -210,11 +211,19 @@ console.log(finalData);
 
           <div className="form_div">
 							<p>Гражданство</p>
+              {/* <select name="" id="">
+                {countries.map(item=> {
+                  const {id,name} = item
+                  return(
+                    <option value={id}>{name}</option>
+                  )
+                })}
+              </select> */}
 							<Autocomplete
 							aria-required
 							onChange = {handleCountry}
 							id="profayl_input"
-							options={countries}
+							options={countriess}
 							getOptionLabel={(option) => option.name}
 							style={{ width: 575 }}
 							renderInput={(params) => <TextField {...params} label="" variant="outlined"/>}

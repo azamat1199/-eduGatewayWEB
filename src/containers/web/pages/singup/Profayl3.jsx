@@ -4,12 +4,13 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Navbar from '../Navbar';
 import Axios from '../../../../utils/axios';
+import Swal from 'sweetalert2';
 
 const dataT = require("../../json/data.json")
 
 function Profayl3 () {
 	const history = useHistory()
-	const [data,setData] = useState(dataT)
+	const [dataSet,setData] = useState(dataT)
 	const [profile,setProfile] = useState(JSON.parse(localStorage.getItem('profileData')))
 	const [profile2,setProfile2] = useState(JSON.parse(localStorage.getItem('profile2Data')))
 	const[active_activity,setActivity] = useState()
@@ -22,9 +23,9 @@ function Profayl3 () {
 		education_purpose:'',
 })
 const handleActivity = (event,newValue) => {
-	const {hobbi} = newValue
-	console.log(hobbi);
-	setActivity(hobbi)
+	// const {hobbi} = newValue
+	// console.log(hobbi);
+	setActivity(newValue?.hobbi)
 }
 const handleChange = (e) =>{
 	const {name,value} = e.target;
@@ -44,19 +45,24 @@ const finalData = {
 const handleSubmit = async(e)=>{
 	e.preventDefault()
 	localStorage.setItem('files',JSON.stringify(finalData))
-	try {
-		const res = await Axios.post('/enrollee/enrollee-profile/',finalData)
-		const {status} = res;
-		const {data} = res
-		const {id} = data
-		if(status === 201){
-			localStorage.setItem('userId',JSON.stringify(id))
-           history.push('/files')
-		}
-		console.log(res)
-	} catch (error) {
-		console.log(error.response)
-	}
+	history.push('/files')
+	// try {
+	// 	const res = await Axios.post('/enrollee/enrollee-profile/',finalData)
+	// 	const {status} = res;
+	// 	const {data} = res
+	// 	const {id} = data
+	// 	if(status === 201){
+	// 		localStorage.setItem('userId',JSON.stringify(id))
+    //        history.push('/files')
+	// 	}
+	// 	console.log(res)
+	// } catch (error) {
+	// 	Swal.fire({
+	// 		icon:'warning',
+	// 		text:'Пожалуйста, заполните все поля и попробуйте еще раз'
+	// 	})
+	// 	console.log(error.response)
+	// }
 }
 console.log(active_activity);
 console.log(profile);
@@ -103,8 +109,8 @@ console.log(profileData);
 							<Autocomplete
 							id="profayl_input"
 							onChange={handleActivity}
-							options={data}
-							getOptionLabel={(option) => option.hobbi}
+							options={dataSet}
+							getOptionLabel={(option) => option?.hobbi}
 							style={{ width: 575 }}
 							renderInput={(params) => <TextField {...params} label="" variant="outlined"/>}
 							/>

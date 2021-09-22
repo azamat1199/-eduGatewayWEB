@@ -15,11 +15,11 @@ function Profayl2 () {
 	const {pathname} = location
 	const history = useHistory()
 	const [profileData,setProfileData] = useState({
-		educated_in:'',
-		achievements:'',
-		gpa:'',
-		english_level_type:'',
-		english_level_value:'',
+		educated_in:"",
+		achievements:"",
+		gpa:"",
+		english_level_type:"",
+		english_level_value:"",
 	})
 	const handleChange = (e) =>{
 		const {name,value} = e.target;
@@ -37,6 +37,7 @@ function Profayl2 () {
 	const localStr = ()=>{
 		localStorage.setItem('profile2',JSON.stringify(profileData))
 	}
+	console.log(profileData);
 		return ( 
 			<React.Fragment>
 				<div className="navRegist">
