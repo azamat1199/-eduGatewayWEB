@@ -90,8 +90,10 @@ function Zayavka() {
     const { id } = newValue;
     setUniversity(id);
   };
-
+  const enrollee_user = JSON.parse(localStorage.getItem('data')).id;
+  console.log(enrollee_user);
   const finalData = {
+    enrollee_user,
     faculty,
     budget: requisiton.budget,
     comment,
@@ -211,7 +213,7 @@ function Zayavka() {
               step={10}
               marks={marks}
               valueLabelDisplay="on"
-              valueLabelFormat={valuetext}
+              valueLabelFormat={''}
             />
           </div>
           <p className="zayavka_alert">

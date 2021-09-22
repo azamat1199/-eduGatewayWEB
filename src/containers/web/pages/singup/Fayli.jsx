@@ -9,9 +9,7 @@ import Swal from 'sweetalert2';
 const handleInputChange = (e) => {
   // setData({ data: e.target.files[0] });
 };
-const handleChange = (e) => {
-  setDoc({ doc: e.target.files[0] });
-};
+const handleChange = (e) => {};
 
 function Fayli() {
   const history = useHistory();
@@ -19,7 +17,6 @@ function Fayli() {
   console.log(userID);
   console.log(userID);
   const [data, setData] = useState();
-  const [doc, setDoc] = useState();
   const files = JSON.parse(localStorage.getItem('files'));
   console.log(files);
   const handleInputChange = (e) => {
@@ -36,10 +33,6 @@ function Fayli() {
   const inputEl7 = useRef(null);
   const inputEl8 = useRef(null);
   const inputEl9 = useRef(null);
-
-  console.log(data);
-  console.log(doc);
-
   const submitHandler = async (e) => {
     e.preventDefault();
     const formData = new FormData();
