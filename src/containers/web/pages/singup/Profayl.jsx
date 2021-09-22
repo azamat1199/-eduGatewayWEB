@@ -1,16 +1,26 @@
 import React, { Component, useEffect } from 'react';
 import NumberFormat from 'react-number-format';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import arrowright from "../../../../assets/icon/arrowright.svg"
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Navbar from '../Navbar';
 import { useState } from 'react';
 import Axios from '../../../../utils/axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { authSaveData } from '../../../../store/actions/authActions';
+import Swal from 'sweetalert2';
 
 const dataT = require("../../json/data.json")
 
  function Profayl () {
+	 const selector = useSelector(state=> state)
+	 const {form} = selector.payload
+     const history = useHistory()
+	 console.log(form);
+	 const dispatch = useDispatch()
+	 const location = useLocation()
+	 const {pathname} = location
 	 const [data,setData] = useState(dataT)
 	 const[region,setRegion] = useState()
 	 const [cities,setCities] = useState()
@@ -40,6 +50,14 @@ const dataT = require("../../json/data.json")
 		number:profileData.number,
 		region
 	}
+	
+	const saveData =  () =>{
+		dispatch(authSaveData(pathname,finalData))
+		Swal.fire({
+			icon:"success",
+			text:"Текущие данные сохранены без промедления"
+		}).then(()=> history.push('/my-account'))
+	}
 	const fetchCities = async () =>{
 		try {
 			const data = await Axios.get('/common/city/')
@@ -53,6 +71,8 @@ const dataT = require("../../json/data.json")
 		}
 		
 	}
+
+
 	useEffect(()=>{
 		fetchCities()
 	},[])
@@ -97,11 +117,11 @@ const dataT = require("../../json/data.json")
 						</div>
 						<div className="form_div">
 							<p>Ваша имя </p>
-							<input type="text" onChange={handleChange}  name="firstName"/>
+							<input type="text" onChange={handleChange} value={form.firstName}  name="firstName"/>
 						</div>
 						<div className="form_div">
 							<p>Ваша фамилия</p>
-							<input type="text"onChange={handleChange} name="lastName"/>
+							<input type="text"onChange={handleChange} value={form.lastName} name="lastName"/>
 						</div>
 						<div className="form_div">
 							<p>Отчество</p>
@@ -115,9 +135,6 @@ const dataT = require("../../json/data.json")
 							<p>Город</p>
 							<Autocomplete
 							aria-required
-							// onInputChange={( newInputValue) => {
-							// 	setRegion(newInputValue.target.value);
-							//   }}
 							onChange = {handleRegion}
 							id="profayl_input"
 							options={cities}
@@ -135,7 +152,7 @@ const dataT = require("../../json/data.json")
 							<input type="text" name="code" onChange={handleChange} />
 						</div>
 						<div className="btn_div">
-							<NavLink to="/files" className="save_btn">Сохранить</NavLink>
+							<button onClick={saveData} className="save_btn">Сохранить</button>
 							<NavLink to="/profile2" className="next_btn">Следующее <img src={arrowright} alt="" /></NavLink>
 						</div>
 					</div>

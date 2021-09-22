@@ -20,12 +20,18 @@ import Sidebar from './SidebarConsult';
 import Axios from '../../../utils/axios';
 import Item from 'antd/lib/list/Item';
 import Swal from 'sweetalert2';
+import { useHistory } from 'react-router';
+import { SET_DOC } from '../../../store/actionTypes';
+import { dispatch } from '../../../store';
 const Talabalar = () => {
+  const history = useHistory();
   const [students, setStudents] = useState([]);
   const [studentGetById, setStudentGetById] = useState({});
   const [studentPostById, setStudentPostById] = useState({});
   const [open, setOpen] = React.useState(false);
   const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [middleName, setMiddleName] = useState('');
   const [phone, setPhone] = useState('');
   const [universtitetName, setUniverstitetName] = useState('');
   const [nameFaculties, setNameFaculties] = useState('');
@@ -39,27 +45,23 @@ const Talabalar = () => {
   const [fixEnd, setFix] = useState(false);
   const fethcStudents = async () => {
     try {
-      const res = await Axios.get('/student/student/?pageSize=35');
+      const res = await Axios.get('enrollee/enrollee-user/');
       console.log(res);
       const { status, data } = res;
       const { results } = data;
-      console.log(status, results);
       if (status === 200) {
         setStudents(results);
       }
     } catch (error) {
       console.log(error.response);
-      alert(error.response);
     }
   };
   const handleOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
-
   const handleOpen_change = () => {
     setOpen_change(true);
   };
@@ -72,30 +74,64 @@ const Talabalar = () => {
   const edit = async (id) => {
     handleOpen_change();
     try {
-      const res = await Axios.get(`student/student/${id}`);
+      const res = await Axios.get(`enrollee/enrollee-user/${id}`);
       setStudentGetById(res.data);
+      const { first_name, last_name, middle_name, phone_number } = res.data;
+      setName(first_name);
+      setLastName(last_name);
+      setMiddleName(middle_name);
+      setPhone(phone_number);
       console.log(res);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
     console.log(id);
+  };
+  const setEdit = async (e, id) => {
+    e.preventDefault();
+    try {
+      const res = await Axios.patch(`enrollee/enrollee-user/${id}`, {
+        first_name: name,
+        last_name: lastName,
+        middle_name: middleName,
+        phone_number: parseInt(phone),
+        email: null,
+        city: null,
+        password_1: password,
+        password_2: password,
+        registration_ref: null,
+      });
+      Swal.fire({
+        icon: 'success',
+        text: 'Успешно зарегистрирован',
+        showCancelButton: false,
+      });
+    } catch (error) {
+      if (error.status == 500)
+        Swal.fire({
+          icon: 'error',
+          text: 'Server Errror',
+          showCancelButton: true,
+        });
+    }
+    fethcStudents();
+    handleClose_change();
   };
   const setStudent = async (e) => {
     e.preventDefault();
     try {
-      const res = await Axios.post('/student/auth/register', {
+      const res = await Axios.post('enrollee/enrollee-user/', {
         first_name: name,
-        last_name: name,
-        middle_name: 'behzod',
+        last_name: lastName,
+        middle_name: middleName,
         phone_number: parseInt(phone),
-        email: 'behzodhamroyev@gamil.com',
+        email: null,
         city: null,
-        // universtitetName: universtitetName,
-        // nameFaculties: nameFaculties,
-        // login: login,
         password_1: password,
         password_2: password,
-        // file: file,
         registration_ref: null,
       });
+
       Swal.fire({
         icon: 'success',
         text: 'Успешно зарегистрирован',
@@ -110,24 +146,28 @@ const Talabalar = () => {
       console.log(error);
     }
     handleClose();
+    fethcStudents();
+  };
+  const setDoc = async (id) => {
+    try {
+      const res = await Axios.get(`enrollee/enrollee-user/${id}`);
+      setStudentGetById(res.data);
+      const { first_name, last_name, middle_name, phone_number } = res.data;
+      console.log(res.data);
+      const userData = {
+        id: id,
+      };
+      localStorage.setItem('data', JSON.stringify(userData));
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+    // console.log(id);
+    const action = { type: SET_DOC, payload: { id: id } };
+    dispatch(action);
+    history.push('/requisition');
   };
   // modal
-  const editUser = () => {};
-  console.log({
-    base_user: 82,
-    first_name: name,
-    last_name: name,
-    middle_name: 'behzod',
-    phone_number: parseInt(phone),
-    email: 'behzodhamroyev@gamil.com',
-    city: null,
-    universtitetName: universtitetName,
-    nameFaculties: nameFaculties,
-    login: login,
-    password: password,
-    file: file,
-    registration_ref: null,
-  });
   return (
     <Sidebar>
       <div className="asos">
@@ -141,12 +181,13 @@ const Talabalar = () => {
             </div>
           </div>
         </div>
+       
         <div className="SidebarUniverstitet">
           <button onClick={handleOpen}>Добавить студента</button>
           <div className="settSearch">
             <div className="searchUniv">
               <img src={search_icon} alt="" />
-              <input type="text" placeholder="Поиск университетов" />
+              <input type="text" placeholder="Поиск Студенты" />
             </div>
             <button
               onClick={() => {
@@ -162,6 +203,7 @@ const Talabalar = () => {
             <table>
               <thead>
                 <tr>
+                  <th className="px-3">N</th>
                   <th className="firstTD">ФИО</th>
                   <th>Факультет</th>
                   <th>Университет</th>
@@ -175,10 +217,11 @@ const Talabalar = () => {
                 </tr>
               </thead>
               <tbody>
-                {students.map((item) => {
+                {students.map((item, i) => {
                   const { id, first_name, last_name, phone_number } = item;
                   return (
                     <tr key={id}>
+                      <td className="px-3">{i + 1}</td>
                       <td className="firstTD">
                         {first_name} - {last_name}
                       </td>
@@ -192,13 +235,21 @@ const Talabalar = () => {
                       <td>Sabina Sabirova</td>
                       <td>
                         <button onClick={() => edit(id)}>
-                          <img src={pencil} alt="" width="28" />
+                          <img
+                            src={pencil}
+                            alt=""
+                            width="28"
+                            className="me-5"
+                          />
                         </button>
                         <button>
-                          <img src={doc} alt="" width="28" />
-                        </button>
-                        <button>
-                          <img src={delet} alt="" width="28" />
+                          <img
+                            src={doc}
+                            alt=""
+                            onClick={() => setDoc(id)}
+                            width="28"
+                            className="ms-5"
+                          />
                         </button>
                       </td>
                     </tr>
@@ -290,11 +341,29 @@ const Talabalar = () => {
                 <div className="modalContainer">
                   <h5>Добавить нового студента</h5>
                   <div>
-                    <label>ФИО</label>
+                    <label>Ваша имя</label>
                     <input
                       type="text"
                       onChange={(e) => {
                         setName(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label>Ваша фамилия</label>
+                    <input
+                      type="text"
+                      onChange={(e) => {
+                        setLastName(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label>Отчество</label>
+                    <input
+                      type="text"
+                      onChange={(e) => {
+                        setMiddleName(e.target.value);
                       }}
                     />
                   </div>
@@ -308,65 +377,14 @@ const Talabalar = () => {
                     />
                   </div>
                   <div>
-                    <label>Университет</label>
-                    <select
-                      onChange={(e) => {
-                        setUniverstitetName(e.target.value);
-                      }}
-                    >
-                      <option>Harvard University</option>
-                      <option>University 1</option>
-                      <option>University 2</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label>Факультет</label>
-                    <select
-                      onChange={(e) => {
-                        setNameFaculties(e.target.value);
-                      }}
-                    >
-                      <option>Экономика</option>
-                      <option>Факультет 1</option>
-                      <option>Факультет 2</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label>Логин</label>
-                    <input
-                      type="text"
-                      value=""
-                      onChange={(e) => {
-                        setLogin(e.target.value);
-                      }}
-                    />
-                  </div>
-                  <div>
                     <label>Пароль</label>
                     <input
                       type="password"
-                      value=""
+                      value={password}
                       onChange={(e) => {
                         setPassword(e.target.value);
                       }}
                     />
-                  </div>
-                  <div>
-                    <label>Документы</label>
-                    <div className="importFile">
-                      <img src={folder_icon} alt="" />
-                      <p>
-                        Drop your files here or a
-                        <input
-                          type="file"
-                          id="chFile"
-                          onChange={(e) => {
-                            setFile(e.target.files[0]);
-                          }}
-                        />
-                        <label htmlFor="chFile">choose file</label>
-                      </p>
-                    </div>
                   </div>
                   <button
                     onClick={(e) => {
@@ -405,49 +423,40 @@ const Talabalar = () => {
                 <div className="modalContainer">
                   <h5>Изменить</h5>
                   <div>
-                    <label>ФИО</label>
-                    <input type="text" value={studentGetById.last_name} />
+                    <label>Ваша имя</label>
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => {
+                        setName(e.target.value);
+                      }}
+                    />
                   </div>
+
                   <div>
-                    <label>Номер телефона</label>
-                    <input type="text" value={studentGetById.phone_number} />
+                    <label>Ваша фамилия</label>
+                    <input
+                      value={lastName}
+                      type="text"
+                      onChange={(e) => {
+                        setLastName(e.target.value);
+                      }}
+                    />
                   </div>
+
                   <div>
-                    <label>Университет</label>
-                    <select>
-                      <option>Harvard University</option>
-                      <option>University 1</option>
-                      <option>University 2</option>
-                    </select>
+                    <label>Отчество</label>
+                    <input
+                      type="text"
+                      value={middleName}
+                      onChange={(e) => {
+                        setMiddleName(e.target.value);
+                      }}
+                    />
                   </div>
-                  <div>
-                    <label>Факультет</label>
-                    <select>
-                      <option>Экономика</option>
-                      <option>Факультет 1</option>
-                      <option>Факультет 2</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label>Логин</label>
-                    <input type="text" />
-                  </div>
-                  <div>
-                    <label>Пароль</label>
-                    <input type="text" />
-                  </div>
-                  <div>
-                    <label>Документы</label>
-                    <div className="importFile">
-                      <img src={folder_icon} alt="" />
-                      <p>
-                        Drop your files here or a
-                        <input type="file" id="chFile" />
-                        <label htmlFor="chFile">choose file</label>
-                      </p>
-                    </div>
-                  </div>
-                  <button onClick={(e) => editUser()}>Добавить</button>
+                  <button onClick={(e) => setEdit(e, studentGetById.id)}>
+                    Добавить
+                  </button>
                   <button onClick={handleClose_change} className="back_btn">
                     <img src={arrow1} alt="" /> Вернуться
                   </button>

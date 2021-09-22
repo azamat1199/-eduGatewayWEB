@@ -27,15 +27,16 @@ const SidebarUniverstitet = () => {
   const [fixEnd, setFix] = useState(false);
 
   const [open, setOpen] = React.useState(false);
-  const date = new Date();
+
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
-  const [founding_year, setFoundingYear] = useState(date);
+  const [founding_year, setFoundingYear] = useState();
   const [file, setFile] = useState('');
   const [univerData, setUniverData] = useState({});
-  const [universtitet, setUniverstitet] = useState({});
-  const [status, setStatus] = useState('');
+  const [open_change, setOpen_change] = React.useState(false);
+  const [id, setId] = useState();
+  console.log(founding_year);
   const fetchData = async () => {
     const data = await Axios.get('university/university/');
     setUniverData(data);
@@ -44,6 +45,12 @@ const SidebarUniverstitet = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  const handleOpen_change = () => {
+    setOpen_change(true);
+  };
+  const handleClose_change = () => {
+    setOpen_change(false);
+  };
   const handleOpen = () => {
     setOpen(true);
   };
@@ -51,24 +58,8 @@ const SidebarUniverstitet = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  const edit = (index) => {
-    handleOpen();
-    console.log(index);
-  };
+
   const submitUniverstet = async (e) => {
-    setUniverstitet({
-      name: name,
-      location: location,
-      description: description,
-      founding_year: parseInt(founding_year.getFullYear()),
-      city: { id: 5, name: '', country: null },
-      education_quality: [],
-      motto: 'every thing is possible',
-      rating: 5,
-      rating_source: null,
-      living_price: 189600,
-      file: file,
-    });
     e.preventDefault();
     try {
       const res = await Axios.post('/university/university/', {
@@ -76,14 +67,16 @@ const SidebarUniverstitet = () => {
         location: location,
         description: description,
         founding_year: parseInt(founding_year.getFullYear()),
-        city: { id: 5, name: '', country: null },
+        city: 1,
         city_id: 8,
-        education_quality: [],
         motto: 'every thing is possible',
         rating: 5,
-        rating_source: null,
+        rating_source: 5,
         living_price: 189600,
         file: file,
+        education_quality: 4,
+        education_fee_per_annum: 6000,
+        bachelor_degree_fee_per_annum: 6000,
       });
 
       if (res.status == 200) {
@@ -94,31 +87,48 @@ const SidebarUniverstitet = () => {
         });
       }
     } catch (err) {
-      Swal.fire({
-        icon: 'error',
-        text: 'Error',
-        showCancelButton: true,
-      });
-      console.log(err.response.status);
+      if (err.response.status == 500)
+        Swal.fire({
+          icon: 'error',
+          text: 'Server Error',
+          showCancelButton: true,
+        });
     }
     handleClose();
   };
+  const edit = async (id) => {
+    handleOpen_change();
+    try {
+      const res = await Axios.get(`university/university/${id + 1}`);
+      const { name, location, description, founding_year } = res.data;
+      setId(id + 1);
+      setName(name);
+      setLocation(location);
+      setDescription(description);
+      setFoundingYear(parseInt(founding_year));
+    } catch (error) {
+      if (error.status == 500)
+        Swal.fire({
+          icon: 'error',
+          text: 'Server Errror',
+          showCancelButton: true,
+        });
+      console.log(error);
+    }
+  };
+  const setEdit = async (i) => {
+    try {
+      const res = await Axios.patch(`/university/university/1`, {
+        name: name,
+        location: location,
+        description: description,
+        founding_year: parseInt(founding_year.getFullYear()),
+      });
+    } catch (error) {}
+    handleClose_change();
+    fetchData();
+  };
 
-  // console.log({
-  //   name: name,
-  //   location: location,
-  //   description: description,
-  //   founding_year: parseInt(founding_year.getFullYear()),
-  //   city: { id: 5, name: '', country: null },
-  //   education_quality: [],
-  //   motto: 'every thing is possible',
-  //   rating: 5,
-  //   rating_source: null,
-  //   living_price: 189600,
-
-  //   file: file,
-  // });
-  // modal
   return (
     <Sidebar>
       <div className="asos">
@@ -153,6 +163,7 @@ const SidebarUniverstitet = () => {
             <table>
               <thead>
                 <tr>
+                  <th className="px-3">N</th>
                   <th className="firstTD">Название</th>
                   <th>Город</th>
                   <th>Срок</th>
@@ -164,58 +175,24 @@ const SidebarUniverstitet = () => {
                 {univerData?.data?.results?.map((v, i) => {
                   return (
                     <tr key={v.name}>
+                      <td className="px-3">{v.id}</td>
                       <td className="firstTD">{v.name}</td>
                       <td>Antaliya</td>
-                      <td>31.12.{v.founding_year}</td>
-                      <td className="priDoc">Прием документов</td>
+                      <td>{v.founding_year}</td>
+                      <td className="priDoc">Прием докуметов</td>
                       <td className="infoTd">
-                        <img src={info_icon} alt="" />
+                        <img src={info_icon} alt="" className="me-5" />
                         <img
                           src={pencil}
-                          onClick={() => edit(i)}
+                          onClick={(e) => edit(i)}
                           alt=""
                           width="28"
-                          className="mx-3"
+                          className="ms-5"
                         />
-                        <img src={delet} alt="" width="28" />
                       </td>
                     </tr>
                   );
                 })}
-                <tr>
-                  <td className="firstTD">Akdeniz Universiteti (Turkiya)</td>
-                  <td>Antaliya</td>
-                  <td>31.12.2021</td>
-                  <td className="priZak">Прием закрыт</td>
-                  <td className="infoTd">
-                    <img src={info_icon} alt="" />
-                    <img
-                      src={pencil}
-                      onClick={handleOpen}
-                      alt=""
-                      className="mx-3"
-                      width="28"
-                    />
-                    <img src={delet} alt="" width="28" />
-                  </td>
-                </tr>
-                <tr>
-                  <td className="firstTD">Akdeniz Universiteti (Turkiya)</td>
-                  <td>Antaliya</td>
-                  <td>31.12.2021</td>
-                  <td className="priDoc">Прием документов</td>
-                  <td className="infoTd">
-                    <img src={info_icon} alt="" />
-                    <img
-                      onClick={handleOpen}
-                      src={pencil}
-                      alt=""
-                      className="mx-3"
-                      width="28"
-                    />
-                    <img src={delet} alt="" width="28" />
-                  </td>
-                </tr>
               </tbody>
             </table>
           </div>
@@ -323,7 +300,6 @@ const SidebarUniverstitet = () => {
                       <option>страну</option>
                     </select>
                   </div>
-
                   <div>
                     <label>Описание</label>
                     <textarea
@@ -341,14 +317,6 @@ const SidebarUniverstitet = () => {
                       onChange={(e) => setFoundingYear(e)}
                       placeholderText="sana"
                     />
-                  </div>
-                  <div>
-                    <label>Статус</label>
-                    <select onChange={(e) => setStatus(e.target.value)}>
-                      <option>Выбрать страну</option>
-                      <option>страну</option>
-                      <option>страну</option>
-                    </select>
                   </div>
                   <div>
                     <label>Картинка</label>
@@ -369,6 +337,96 @@ const SidebarUniverstitet = () => {
                     Добавить
                   </button>
                   <button onClick={handleClose} className="back_btn">
+                    <img src={arrow1} alt="" /> Вернуться
+                  </button>
+                </div>
+              </div>
+            </Fade>
+          </Modal>
+
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            className="class1"
+            open={open_change}
+            onClose={handleClose_change}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
+          >
+            <Fade in={open_change}>
+              <div className="addNewUniverModalUniver talaba_modal">
+                <img onClick={handleClose_change} src={close_modal} alt="" />
+                <div className="modalContainer">
+                  <h5>Добавить новый университет</h5>
+                  <div>
+                    <label>Название университета</label>
+                    <input
+                      value={name}
+                      type="text"
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label>Страна</label>
+                    <select
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
+                    >
+                      <option>Выбрать страну</option>
+                      <option>страну</option>
+                      <option>страну</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label>Город</label>
+                    <select value={location}>
+                      <option>Выбрать страну</option>
+                      <option>страну</option>
+                      <option>страну</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label>Описание</label>
+                    <textarea
+                      name=""
+                      id=""
+                      cols="30"
+                      rows="5"
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                    ></textarea>
+                  </div>
+                  <div className="modalDataPick">
+                    <label>Прием документов заканчивается</label>
+                    <DatePicker
+                      selected={founding_year}
+                      onChange={(e) => setFoundingYear(e)}
+                      placeholderText="sana"
+                    />
+                  </div>
+                  <div>
+                    <label>Картинка</label>
+                    <div className="importFile">
+                      <img src={folder_icon} alt="" />
+                      <p>
+                        Drop your files here or a
+                        <input
+                          type="file"
+                          id="chFile"
+                          onChange={(event) => setFile(event.target.files[0])}
+                        />
+                        <label htmlFor="chFile">choose file</label>
+                      </p>
+                    </div>
+                  </div>
+                  <button onClick={(event) => setEdit(event, id + 1)}>
+                    Добавить
+                  </button>
+                  <button onClick={handleClose_change} className="back_btn">
                     <img src={arrow1} alt="" /> Вернуться
                   </button>
                 </div>

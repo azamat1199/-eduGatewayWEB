@@ -1,5 +1,6 @@
 import React, { Component, useState, useCallback, useRef } from 'react';
 import axios from 'axios';
+import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { NavLink, useHistory } from 'react-router-dom';
 import google from '../../../../assets/icon/google.svg';
 import facebook from '../../../../assets/icon/facebookreg.svg';
@@ -71,12 +72,17 @@ function SingUp() {
     },
     [loginData]
   );
-
+  const onSuccess = (res) => {
+    console.log('Successfull', res);
+  };
+  const onFailure = (res) => {
+    console.log('Failure', res);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await Axios.post('/student/auth/register', loginData);
+      const res = await Axios.post('enrollee/enrollee-user/', loginData);
       const { status } = res;
       const { data } = res;
       if (status == 201) {
@@ -96,8 +102,8 @@ function SingUp() {
         text: 'На этот номер все готовы зарегистрироваться, выберите другой или войдите',
         showCancelButton: true,
       });
-      console.log(error[0]?.error[0]);
-      setError(error[0]?.error[0]);
+      // console.log(error[0]?.error[0]);
+      // setError(error[0]?.error[0]);
       setLoading(false);
     }
   };
@@ -194,6 +200,17 @@ function SingUp() {
               required
             />
             <InputErrorMsg type="last_name" errorObj={error} />
+          </div>
+          <div className="form_div">
+            <p>Ваша фамилия</p>
+            <input
+              onChange={handleInputChange}
+              type="text"
+              name="middle_name"
+              placeholder="фамилия"
+              required
+            />
+            <InputErrorMsg type="middle_name" errorObj={error} />
           </div>
           <div className="form_div">
             <p>Ваш телефон номера</p>
@@ -298,7 +315,14 @@ function SingUp() {
           <h2>или</h2>
           <h2>Войдите через</h2>
           <a className="reg_link" href="#">
-            <img src={google} alt="" /> Google
+            <GoogleLogin
+              clientId="971142751474-u0fttn4so4e7melu9jlruprvsplget6r.apps.googleusercontent.com"
+              buttonText="Google"
+              onSuccess={onSuccess}
+              onFailure={onFailure}
+              cookiePolicy={'single_host_origin'}
+              isSignedIn={true}
+            />
           </a>
           <a className="reg_link" href="#">
             <img src={facebook} alt="" /> Facebook

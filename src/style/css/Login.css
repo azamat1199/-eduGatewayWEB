@@ -113,6 +113,9 @@
 }
 .Login .container > .block .blockBox .loginRemberMe {
   margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   /* для элемента label, связанного с .custom-checkbox */
   /* создание в label псевдоэлемента before со следующими стилями */
   /* стили при наведении курсора на checkbox */

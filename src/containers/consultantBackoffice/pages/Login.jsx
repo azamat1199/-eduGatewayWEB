@@ -8,7 +8,7 @@ import '../../../style/css/Login.css';
 import Loader from 'react-js-loader';
 import { Spin, message } from 'antd';
 import Axios from '../../../utils/axios';
-
+import Swal from 'sweetalert2';
 function Login() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -66,7 +66,11 @@ function Login() {
       console.log(data);
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: 'error',
+        text: 'Активная учетная запись с указанными учетными данными не найдена',
+      });
+      console.log(error.response);
       setLoading(false);
     }
   };
@@ -172,6 +176,9 @@ function Login() {
                       <span></span>
                       <p>Запомнить меня</p>
                     </label>
+                    <p>
+                      Забыли пароль? <Link to="/loginStaff">Восстановить</Link>
+                    </p>
                   </div>
                   {/* kirish */}
                   <h4 style={{ color: 'red', margin: 'auto' }}>{errorMsg}</h4>
@@ -187,30 +194,12 @@ function Login() {
                   {/* parolni unutdim */}
                   <div className="forgetPass">
                     <p>
-                      Забыли пароль? <Link to="/loginStaff">Восстановить</Link>
+                      {' '}
+                      Нет аккаунта? <Link to="/registration"> Регистрация</Link>
                     </p>
                   </div>
                 </form>
               </div>
-            </div>
-            {/* eslab qolish */}
-            <div className="loginRemberMe">
-              <label className="custom-checkbox">
-                <input type="checkbox" name="rememberMe" value="rememberMe" />
-                <span></span>
-                <p>Запомнить меня</p>
-              </label>
-            </div>
-            {/* kirish */}
-            <h4 style={{ color: 'red', margin: 'auto' }}>{errorMsg}</h4>
-            <button type="submit" to="/home/main">
-              Войти
-            </button>
-            {/* parolni unutdim */}
-            <div className="forgetPass">
-              <p>
-                Забыли пароль? <Link to="/loginStaff">Восстановить</Link>
-              </p>
             </div>
           </form>
         </div>

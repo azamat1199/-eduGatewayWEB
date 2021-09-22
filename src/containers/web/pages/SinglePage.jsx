@@ -79,7 +79,7 @@ function SinglePage (props){
 						</div>
 						<div className="sp_title">
 							<div><h1>{name}</h1></div>
-							<div><button onClick={()=> selector.user.payload ?  history.push('/requisition'): history.push('/login')}>Подать</button></div>
+							<div><button onClick={()=> selector.payload.payload ?  history.push('/requisition'): history.push('/login')}>Подать</button></div>
 						</div>
 					</div>
 					<div className="sp_navbar">

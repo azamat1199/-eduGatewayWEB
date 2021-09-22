@@ -10,12 +10,16 @@ import SwiperCore, {
 // import css
 import "../../../style/css/universitet.css"  
 import StudentSidebar from './SidebarStudent';
+import { Empty ,Button} from 'antd';
+import EmptyPic from '../../../assets/icon/empty.svg'
+import { useHistory } from 'react-router';
 
 SwiperCore.use([Pagination]);
 
 const dataCard = require("../json/card.json")
 
 const Universitet = () => {
+const history = useHistory()    
     return ( 
         <>
         <StudentSidebar/>
@@ -28,7 +32,21 @@ const Universitet = () => {
                 </div>
             </div>
             <div className="bottom">
-                <h1>Избранные </h1>
+                {/* <h1>Избранные </h1> */}
+                <Empty 
+                 image={EmptyPic}
+                 imageStyle={{
+                    height: 309,
+                  }}
+                 description={
+                    <span style={{fontWeight:"600",fontSize:"26px"}}>
+                     У вас пока не имеется выбранных университетов
+                    </span>
+                  }
+                 
+                >
+                <Button  style={{height:"64px",width:"600px",background:"#00587F",color:"#fff",borderRadius:"10px",fontSize:"20px"}} onClick={()=> history.push('/')}>Найти университет</Button>
+                </Empty>
                 <div className="cardSwipperBlock">
                     <Swiper 
                         
@@ -96,7 +114,7 @@ const Universitet = () => {
                         }}
                         >
                         
-                        {
+                        {/* {
                             dataCard.slice(0, 8).map( (x) => {
                                 return(
                                     <SwiperSlide>
@@ -111,13 +129,13 @@ const Universitet = () => {
                                     </SwiperSlide>
                                 )
                             } )
-                        }
+                        } */}
                         
                     </Swiper>
                 </div>
                 <div className="document">
-                    <h1>Куда вы подали документы</h1>
-                    {
+                    {/* <h1>Куда вы подали документы</h1> */}
+                    {/* {
                         dataCard.slice(0, 1).map( (x) => {
                             return(
                                 <div className="card">
@@ -130,7 +148,7 @@ const Universitet = () => {
                                 </div>
                             )
                         } )
-                    }
+                    } */}
                 </div>
             </div>
         </div>
