@@ -1,9 +1,16 @@
 .Up_navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-bottom: 50px;
 }
+
 .Up_navbar h4 {
   margin: 0;
   font-family: Raleway;
@@ -13,20 +20,33 @@
   line-height: 31px;
   color: #000000;
 }
+
 .Up_navbar div {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 .Up_navbar div img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   margin-right: 12px;
 }
+
 .Up_navbar div div {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
+
 .Up_navbar div div h5 {
   margin: 0;
   margin-bottom: 4px;
@@ -36,6 +56,7 @@
   font-size: 16px;
   color: #000000;
 }
+
 .Up_navbar div div p {
   margin: 0;
   font-family: Raleway;
@@ -50,9 +71,11 @@
   overflow-y: hidden;
   overflow-x: scroll;
 }
+
 .fakultet table {
   width: 140% !important;
 }
+
 .fakultet table td {
   padding-right: 50px;
 }
@@ -62,14 +85,17 @@
   overflow-y: hidden;
   overflow-x: scroll;
 }
+
 .talabalar table {
   width: 200% !important;
   position: fixed;
   overflow-x: scroll;
 }
+
 .talabalar table td {
   padding-right: 50px;
 }
+
 .talabalar button {
   background: none;
   outline: none;
@@ -83,9 +109,15 @@
   outline: none !important;
   border: none !important;
   color: #00587F !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .talaba_modal {
@@ -96,9 +128,15 @@
 }
 
 .class1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 50px;
   overflow: hidden;
 }
@@ -122,7 +160,8 @@
 
 @media (max-width: 1024px) {
   .card_3tali {
-    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
   }
   .card_3tali .card {
     text-align: center;
@@ -131,16 +170,23 @@
     font-size: 20px !important;
   }
 }
+
 @media (max-width: 425px) {
   .asos .Up_navbar {
-    align-items: center;
-    flex-direction: column-reverse;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
     margin-bottom: 70px;
   }
   .asos .Up_navbar h4 {
     font-size: 20px;
     width: 60%;
-    transform: translateX(-100px) translateY(25px);
+    -webkit-transform: translateX(-100px) translateY(25px);
+            transform: translateX(-100px) translateY(25px);
   }
   .asos .Up_navbar h5 {
     font-size: 16px;
@@ -153,48 +199,45 @@
     height: 40px;
   }
   .asos .Up_navbar div {
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .asos .Up_navbar div div {
-    align-items: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
-
   .talabalar table {
     width: 370% !important;
   }
-
   .fakultet table {
     width: 250% !important;
   }
-
   .sideGlavny .block_1 {
     margin-bottom: 10px;
   }
-
   .card_3tali {
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
   .card_3tali .card h4 {
     font-size: 18px !important;
   }
-
   .SidebarUniverstitet .fakultet table thead::before {
     top: 60px !important;
   }
-
   .sideGlavny .block_2 > div:nth-child(1) {
+    display: -ms-grid !important;
     display: grid !important;
-    grid-template-columns: 1fr;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
     grid-gap: 20px;
   }
-
   .sideGlavny .block_1 .card h4 {
     text-align: center;
   }
-
   .sideGlavny .block_2 > div:nth-child(1) {
     margin-bottom: 20px !important;
   }
 }
-
-/*# sourceMappingURL=fakultet.css.map */

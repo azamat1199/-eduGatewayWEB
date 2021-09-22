@@ -668,6 +668,22 @@
     right: -40px;
     top: 77px;
   }
+  .mainEduGate .swipperBlock .card .top img {
+    width: 120px;
+    height: 120px;
+  }
+  .mainEduGate .swipperBlock .card .top h1 {
+    font-size: 18px;
+  }
+  .mainEduGate .swipperBlock .card .top h2 {
+    font-size: 18px;
+  }
+  .mainEduGate .swipperBlock .card .top h3 {
+    font-size: 16px;
+  }
+  .mainEduGate .swipperBlock .card p {
+    font-size: 19px;
+  }
 }
 @media (max-width: 1280px) {
   .mainEduGate .header .filter .dropDwn {
@@ -709,10 +725,12 @@
     height: 220px;
   }
   .mainEduGate .aboutBlock .aboutUs .cardAbout h1 {
-    font-size: 38px;
+    font-size: 36px;
+    margin-bottom: 0;
   }
   .mainEduGate .aboutBlock .aboutUs .cardAbout h4 {
     font-size: 20px;
+    margin-top: 10px;
   }
   .mainEduGate .aboutBlock .aboutUs .cardAbout p {
     font-size: 18px;
@@ -1222,6 +1240,9 @@
   }
   .mainEduGate .workBlock .weareWork .card:nth-child(6) {
     justify-content: flex-end;
+  }
+  .mainEduGate .aboutBlock .aboutUs .cardAbout {
+    height: 170px;
   }
 }
 @media (max-width: 365px) {

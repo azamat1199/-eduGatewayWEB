@@ -70,47 +70,41 @@ const SSlider = withStyles({
   },
 })(Slider);
 
-function valuetext(value) {
-  return '$' + `${value}`;
-}
-
 function Zayavka() {
   const history = useHistory();
-  const [university, setUniversity] = useState();
-  const [description, setDiscription] = useState();
+  const [faculty, setUniversity] = useState();
+  const [comment, setDiscription] = useState();
   const [value, setValue] = useState(1);
   const [requisiton, setRequisition] = useState({
-    budget: '',
+    budget: 0,
   });
   const handleInputChange = (e) => {
-    // console.log(e.target.value);
+    console.log(e.target.value);
     const { name, value } = e.target;
-    setRequisition((state) => ({
-      ...state,
-      [name]: value.trim(),
-    }));
+    setRequisition((state) => ({ ...state, [name]: +value.trim() }));
   };
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   const handleUniver = (event, newValue) => {
-    setUniversity(newValue);
+    const { id } = newValue;
+    setUniversity(id);
   };
 
   const finalData = {
-    university,
+    faculty,
     budget: requisiton.budget,
-    description,
+    comment,
   };
-  // const userData = JSON.parse(localStorage.getItem('data'));
-  // const datas = { ...finalData, ...userData };
-  // console.log(datas);
+
   const handleSubmit = (e) => {
-    // e.preventDefault();
-    // localStorage.setItem('data', JSON.stringify(datas));
-    history.push('/profile2');
+    e.preventDefault();
+    console.log(finalData);
   };
-  // console.log(datas, 'salom');
+  const localStr = () => {
+    localStorage.setItem('zayavka', JSON.stringify(finalData));
+  };
+  console.log(finalData);
   return (
     <React.Fragment>
       <div className="navRegist">
@@ -124,19 +118,6 @@ function Zayavka() {
           <h2 className="singup_pass">Регистрация/Войти</h2>
           <svg
             id="svg_pass"
-            width="82"
-            height="10"
-            viewBox="0 0 82 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M82 5L74.5 0.669873V9.33013L82 5ZM0 5.75H5.125V4.25H0V5.75ZM15.375 5.75H25.625V4.25H15.375V5.75ZM35.875 5.75H46.125V4.25H35.875V5.75ZM56.375 5.75H66.625V4.25H56.375V5.75Z"
-              fill="#5C7C8A"
-            />
-          </svg>
-          <h2 className="singup_active2">Заявка</h2>
-          <svg
             width="82"
             height="10"
             viewBox="0 0 82 10"
@@ -176,7 +157,7 @@ function Zayavka() {
           </svg>
           <h2>Оплата</h2>
         </div>
-        <form className="main_singup">
+        <form onSubmit={handleSubmit} className="main_singup">
           <h1>Заявка</h1>
           <div className="form_div">
             <p>Услуги Education Gateway</p>
@@ -201,9 +182,9 @@ function Zayavka() {
             <p>Комментарии</p>
             <textarea
               required
-              value={description}
+              value={comment}
               onChange={(e) => setDiscription(e.target.value)}
-              name="description"
+              name=""
               id=""
               cols="30"
               rows="10"
@@ -212,15 +193,13 @@ function Zayavka() {
           </div>
           <div className="line_dash"></div>
           <h4>Ваш бюджет</h4>
-          <NumberFormat
+          <input
             required
             name="budget"
-            onChange={(e) => handleInputChange(e)}
+            onChange={handleInputChange}
             //  value={requisiton.budget ? requisiton.budget : value}
             className="input_budjet"
-            format="$#######"
             placeholder="$0"
-            mask=" "
           />
           {/* <input className="input_budjet" type="text" /> */}
           <div className="form_div input_range">
@@ -229,7 +208,7 @@ function Zayavka() {
               value={value}
               max={3000}
               onChange={handleChange}
-              step={50}
+              step={10}
               marks={marks}
               valueLabelDisplay="on"
               valueLabelFormat={valuetext}
@@ -238,9 +217,9 @@ function Zayavka() {
           <p className="zayavka_alert">
             *Пожалуйста укажите ваш реальный бюджет
           </p>
-          <button onClick={(e) => handleSubmit(e)} className="reg_btn">
+          <NavLink onClick={localStr} to="/profile2" className="reg_btn">
             Следующее <img src={arrowright} alt="" />
-          </button>
+          </NavLink>
         </form>
       </div>
     </React.Fragment>

@@ -512,6 +512,18 @@
 .main_singup .importFile p #chFile5 {
   display: none;
 }
+.main_singup .importFile p #chFile6 {
+  display: none;
+}
+.main_singup .importFile p #chFile7 {
+  display: none;
+}
+.main_singup .importFile p #chFile8 {
+  display: none;
+}
+.main_singup .importFile p #chFile9 {
+  display: none;
+}
 .main_singup .oplata_asos {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -921,6 +933,7 @@
   }
   .main_singup .reg_btn {
     padding: 15px 85px;
+    width: 80%;
   }
   .main_singup .reg_link {
     width: 364px;

@@ -2,87 +2,89 @@ import React, { Component, useRef, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import folder_icon from '../../../../assets/icon/folder_icon.svg';
 import Navbar from '../Navbar';
-import { useSelector } from 'react-redux';
-import { dispatch } from '../../../../store';
-import { SET_DOC } from '../../../../store/actionTypes';
 import Axios from '../../../../utils/axios';
-import axios from 'axios';
-import { AxiosRequestConfig } from 'axios';
+import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
+
+const handleInputChange = (e) => {
+  // setData({ data: e.target.files[0] });
+};
+const handleChange = (e) => {
+  setDoc({ doc: e.target.files[0] });
+};
 
 function Fayli() {
   const history = useHistory();
+  const userID = JSON.parse(localStorage.getItem('userId'));
+  console.log(userID);
+  console.log(userID);
+  const [data, setData] = useState();
   const [doc, setDoc] = useState();
-  const [file1, setFile1] = useState();
-  const [file2, setFile2] = useState();
-  const [file3, setFile3] = useState();
-  const [file4, setFile4] = useState();
-  const [file5, setFile5] = useState();
-
+  const files = JSON.parse(localStorage.getItem('files'));
+  console.log(files);
   const handleInputChange = (e) => {
-    // setData({ data: e.target.files[0] });
-  };
-  const handleChange = (e) => {
-    setDoc({ doc: e.target.files[0] });
+    console.log(e);
+    setData({ data: e.target.files[0] });
   };
 
-  // const userData = JSON.parse(localStorage.getItem('data'));
-  // const {
-  //   id,
-  //   achiev,
-  //   active_activity,
-  //   budget,
-  //   description,
-  //   gpa,
-  //   school,
-  //   select,
-  //   sportAchievemnts,
-  //   target,
-  //   visa,
-  // } = userData;
-  // console.log(budget);
-  // var bodyFormData = new FormData();
-  // bodyFormData.append('scan_passport_self', file1);
-  // bodyFormData.append('agreement_with_company', file1);
-  // bodyFormData.append('scan_diploma', file1);
-  // bodyFormData.append('scan_photo', file1);
-  // bodyFormData.append('scan_passport_mother_with_residence_permit', file1);
-  // bodyFormData.append('cert_marriage', file1);
-  // bodyFormData.append('cert_birth', file1);
-  // bodyFormData.append('cert_063', file1);
-  // bodyFormData.append('cert_086', file1);
-  // bodyFormData.append('cert_hivs', file1);
-  // bodyFormData.append('enrollee_user', parseInt(id));
-  // bodyFormData.append('service', parseInt(id));
-  // bodyFormData.append('faculty', parseInt(id));
-  // bodyFormData.append('budget', parseInt('3000'));
-  // bodyFormData.append('comment', description);
-  // bodyFormData.append('english_level_type', 'Ielts');
-  // bodyFormData.append('english_level_other', '');
-  // bodyFormData.append('english_level_value', select);
-  // bodyFormData.append('educated_in', school);
-  // bodyFormData.append('achievements', achiev);
-  // bodyFormData.append('gpa', gpa);
-  // bodyFormData.append('sport_achievements', sportAchievemnts);
-  // bodyFormData.append('active_activity', active_activity);
-  // bodyFormData.append('visas', visa);
-  // bodyFormData.append('education_purpose', target);
-  // console.log(userData);
+  const inputEl1 = useRef(null);
+  const inputEl2 = useRef(null);
+  const inputEl3 = useRef(null);
+  const inputEl4 = useRef(null);
+  const inputEl5 = useRef(null);
+  const inputEl6 = useRef(null);
+  const inputEl7 = useRef(null);
+  const inputEl8 = useRef(null);
+  const inputEl9 = useRef(null);
+
+  console.log(data);
+  console.log(doc);
+
   const submitHandler = async (e) => {
-    //   e.preventDefault();
-    //   try {
-    //     const data = await Axios.put(
-    //       `/enrollee/enrollee-profile/${id}`,
-    //       bodyFormData,
-    //       {
-    //         headers: {
-    //           'Content-Type': 'multipart/form-data',
-    //         },
-    //       }
-    //     );
-    //     console.log(data);
-    //   } catch (error) {
-    //     console.log(error.response);
-    //   }
+    e.preventDefault();
+    const formData = new FormData();
+    for (let x in files) {
+      formData.append(x, files[x]);
+    }
+    formData.append('scan_passport_self', inputEl1.current.files[0]);
+    formData.append('scan_diploma', inputEl2.current.files[0]);
+    formData.append('scan_photo', inputEl3.current.files[0]);
+    formData.append(
+      'scan_passport_mother_with_residence_permit	',
+      inputEl4.current.files[0]
+    );
+    formData.append('cert_marriage', inputEl5.current.files[0]);
+    formData.append('cert_birth', inputEl6.current.files[0]);
+    formData.append('cert_063', inputEl7.current.files[0]);
+    formData.append('cert_086', inputEl8.current.files[0]);
+    formData.append('cert_hivs', inputEl9.current.files[0]);
+
+    try {
+      const data = await Axios.put(
+        `/enrollee/enrollee-profile/${userID}`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+
+      console.log(data);
+      const { status } = data;
+      if (status === 200) {
+        Swal.fire({
+          icon: 'success',
+          text: 'Файлы загружены успешно',
+        }).then(() => history.push('/payment-transaction'));
+      }
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        text: 'Что-то пошло не так, пожалуйста, повторно загрузите файлы',
+      });
+      console.log(error);
+    }
   };
   return (
     <React.Fragment>
@@ -108,20 +110,7 @@ function Fayli() {
               fill="#5C7C8A"
             />
           </svg>
-          <h2 className="singup_pass">Заявка</h2>
-          <svg
-            id="svg_pass"
-            width="82"
-            height="10"
-            viewBox="0 0 82 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M82 5L74.5 0.669873V9.33013L82 5ZM0 5.75H5.125V4.25H0V5.75ZM15.375 5.75H25.625V4.25H15.375V5.75ZM35.875 5.75H46.125V4.25H35.875V5.75ZM56.375 5.75H66.625V4.25H56.375V5.75Z"
-              fill="#5C7C8A"
-            />
-          </svg>
+
           <h2 className="singup_pass">Профайл</h2>
           <svg
             id="svg_pass"
@@ -151,7 +140,7 @@ function Fayli() {
           </svg>
           <h2>Оплата</h2>
         </div>
-        <form className="main_singup">
+        <form onSubmit={(e) => submitHandler(e)} className="main_singup">
           <h1>Файлы</h1>
           <div className="form_div">
             <p className="long_p">
@@ -162,94 +151,160 @@ function Fayli() {
             </p>
           </div>
           <div className="form_div">
-            <p>
-              Документы об образовании{' '}
-              <span>Школьный аттестат, диплом колледжа, вуза.</span>
-            </p>
+            <p>Сканер с оригинала паспорта</p>
             <div className="importFile">
               <img src={folder_icon} alt="" />
               <p>
                 Drop your files here or a
                 <input
-                  onChange={(e) => setFile1(e.target.files[0])}
+                  onChange={handleInputChange}
+                  ref={inputEl1}
                   type="file"
                   id="chFile"
+                  name="scan_passport_self"
                 />
                 <label htmlFor="chFile">choose file</label>
               </p>
             </div>
           </div>
           <div className="form_div">
-            <p>Сертификаты IELTS, TOEFL, GMAT, SAT</p>
+            <p>Сканер диплом или аттестат с приложением</p>
             <div className="importFile">
               <img src={folder_icon} alt="" />
               <p>
                 Drop your files here or a
                 <input
-                  onChange={(e) => setFile2(e.target.files[0])}
+                  onChange={handleInputChange}
+                  ref={inputEl2}
                   type="file"
                   id="chFile2"
+                  name="scan_passport_self"
                 />
                 <label htmlFor="chFile2">choose file</label>
               </p>
             </div>
           </div>
           <div className="form_div">
-            <p>Грамоты и сертификаты</p>
+            <p>8 шт. фото 3х4, скан с оригинала</p>
             <div className="importFile">
               <img src={folder_icon} alt="" />
               <p>
                 Drop your files here or a
                 <input
-                  onChange={(e) => setFile3(e.target.files[0])}
+                  onChange={handleInputChange}
+                  ref={inputEl3}
                   type="file"
                   id="chFile3"
+                  name="scan_diploma"
                 />
                 <label htmlFor="chFile3">choose file</label>
               </p>
             </div>
           </div>
           <div className="form_div">
-            <p>Резюме, эссе, мотивационные и рекомендовательные письма</p>
+            <p>Сканер паспорта матери с оригинала, + прописка</p>
             <div className="importFile">
               <img src={folder_icon} alt="" />
               <p>
                 Drop your files here or a
                 <input
-                  onChange={(e) => setFile4(e.target.files[0])}
+                  onChange={handleInputChange}
+                  ref={inputEl4}
                   type="file"
                   id="chFile4"
+                  name="resume"
                 />
                 <label htmlFor="chFile4">choose file</label>
               </p>
             </div>
           </div>
           <div className="form_div">
-            <p>
-              Договор с компанией{' '}
-              <span>Документ должен быть подписан заявителем</span>
-            </p>
+            <p>Свидетельсво о браке, если в браке (Не обязательно)</p>
             <div className="importFile">
               <img src={folder_icon} alt="" />
               <p>
                 Drop your files here or a
                 <input
-                  onChange={(e) => setFile5(e.target.files[0])}
+                  onChange={handleInputChange}
+                  ref={inputEl5}
                   type="file"
                   id="chFile5"
+                  name="document"
                 />
                 <label htmlFor="chFile5">choose file</label>
               </p>
             </div>
           </div>
+          <div className="form_div">
+            <p>Свидетельство о рождении, скан с оригинала </p>
+            <div className="importFile">
+              <img src={folder_icon} alt="" />
+              <p>
+                Drop your files here or a
+                <input
+                  onChange={handleInputChange}
+                  ref={inputEl6}
+                  type="file"
+                  id="chFile6"
+                  name="document"
+                />
+                <label htmlFor="chFile6">choose file</label>
+              </p>
+            </div>
+          </div>
+          <div className="form_div">
+            <p>063 мед. справка, скан с оригинала</p>
+            <div className="importFile">
+              <img src={folder_icon} alt="" />
+              <p>
+                Drop your files here or a
+                <input
+                  onChange={handleInputChange}
+                  ref={inputEl7}
+                  type="file"
+                  id="chFile7"
+                  name="document"
+                />
+                <label htmlFor="chFile7">choose file</label>
+              </p>
+            </div>
+          </div>
+          <div className="form_div">
+            <p>086 мед. справка, скан с оригинала</p>
+            <div className="importFile">
+              <img src={folder_icon} alt="" />
+              <p>
+                Drop your files here or a
+                <input
+                  onChange={handleInputChange}
+                  ref={inputEl8}
+                  type="file"
+                  id="chFile8"
+                  name="document"
+                />
+                <label htmlFor="chFile8">choose file</label>
+              </p>
+            </div>
+          </div>
+          <div className="form_div">
+            <p>Справка о ВИЧ</p>
+            <div className="importFile">
+              <img src={folder_icon} alt="" />
+              <p>
+                Drop your files here or a
+                <input
+                  onChange={handleInputChange}
+                  ref={inputEl9}
+                  type="file"
+                  id="chFile9"
+                  name="document"
+                />
+                <label htmlFor="chFile9">choose file</label>
+              </p>
+            </div>
+          </div>
           <div className="btn_div">
-            <button
-              type="submit"
-              onClick={(e) => submitHandler(e)}
-              className="reg_btn"
-            >
-              Завершить
-            </button>
+            <button className="reg_btn">Завершить</button>
           </div>
         </form>
       </div>

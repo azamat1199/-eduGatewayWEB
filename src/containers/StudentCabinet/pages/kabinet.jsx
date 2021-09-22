@@ -12,6 +12,8 @@ const Kabinet = () => {
     const history = useHistory()
     const selector = useSelector(state=> state)
     console.log(selector);
+    const {lastStep} = selector.dataSave
+    console.log(lastStep);
     const{data} = selector.payload.payload
     console.log(data);
     const{first_name,last_name,id,base_user,sity,email} = data
@@ -93,7 +95,7 @@ const Kabinet = () => {
                             <td>     10. Договор с компанией </td>
                         </tr> 
                     </table>
-                    <button onClick={()=> history.push('/requisition')}> Заполнить анкету </button>
+                    <button onClick={()=> lastStep ?  history.push(lastStep): history.push('/requisition')}> Заполнить анкету </button>
                 </div>
             </div>
         </div> 

@@ -181,7 +181,7 @@ const Talabalar = () => {
             </div>
           </div>
         </div>
-       
+
         <div className="SidebarUniverstitet">
           <button onClick={handleOpen}>Добавить студента</button>
           <div className="settSearch">

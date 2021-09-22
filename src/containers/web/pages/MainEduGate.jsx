@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {useSelector} from 'react-redux'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css";
@@ -30,6 +31,10 @@ const datafakultet = require("../json/topFakultet.json");
 const dataSwipper = require("../json/swipper.json");
 
 const MainEduGate = () => {
+  const selector = useSelector(state=> state)
+	console.log(selector);
+	const {payload} = selector.payload
+	const {id} = payload.data
   const history = useHistory()
   const [change1, setChange1] = useState("");
   const [change2, setChange2] = useState("");
@@ -49,6 +54,7 @@ const MainEduGate = () => {
      console.log(error);
    }
  }
+ 
   const fun1 = () => {
     let letFilter = cardData.filter(
       (filter) =>
@@ -59,7 +65,21 @@ const MainEduGate = () => {
     setdataFilter(letFilter);
     setSearch(true);
   };
-
+  const setFavourite = async(univerId)=>{
+		try {
+		  const data = await Axios.post('/enrollee/enrollee-user-favorite-university/',{
+			  university:univerId,
+        enrollee_user:id
+		  })
+		  console.log(data);
+		} catch (error) {
+		  
+		}
+	  }
+    const handler = (univerId) => {
+       setFavourite(univerId)
+       .then(()=> history.push(`/university/${univerId}`))
+    }
   useEffect(()=>{
     fetchUniversities()
   },[])
@@ -287,10 +307,10 @@ const MainEduGate = () => {
             {universities.map((item) => {
               const {id,name,location,description,founding_year,rating,living_price,city} = item
               return (
-                <div onClick={() => history.push(`/university/${id}`) } className="card">
+                <div onClick={() => handler(id)} className="card">
                   <img src="https://universegroup.uz/wp-content/uploads/2020/02/harvard.jpg" alt="" />
                   <svg
-                    width="20"
+                    width="20"  
                     height="20"
                     viewBox="0 0 20 20"
                     fill="none"

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component, useState, useCallback, useRef } from 'react';
 import axios from 'axios';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
@@ -17,23 +18,62 @@ import { Spin, message } from 'antd';
 import { useDispatch } from 'react-redux';
 import { signUpAction } from '../../../../store/actions/authActions';
 import Swal from 'sweetalert2';
+=======
+import React, { Component, useState, useCallback, useRef,useEffect } from "react";
+import axios from "axios";
+import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import { NavLink, useHistory } from "react-router-dom";
+import google from "../../../../assets/icon/google.svg";
+import facebook from "../../../../assets/icon/facebookreg.svg";
+import view from "../../../../assets/icon/view.svg";
+import check from "../../../../assets/icon/checked.svg";
+import "../../../../style/css/singup.css";
+import Navbar from "../Navbar";
+import InputErrorMsg from "./inputErrorMsg";
+import Axios from "../../../../utils/axios";
+import { Progress } from "react-sweet-progress";
+import "react-sweet-progress/lib/style.css";
+import Loader from "react-js-loader";
+import { Spin, message } from "antd";
+import { useDispatch } from "react-redux";
+import { signUpAction } from "../../../../store/actions/authActions";
+import Swal from "sweetalert2";
+import { Autocomplete } from "@material-ui/lab";
+import TextField from '@material-ui/core/TextField';
+
+>>>>>>> 3b24bf54270a1c25cbdee0ae12e2f2a6ae0bc890
 
 function SingUp() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const[region,setRegion] = useState()
   const inputRef = useRef();
   const buttonRef = useRef();
   const statsuRef = useRef();
   const [loading, setLoading] = useState(false);
   const [type, setType] = useState(true);
+<<<<<<< HEAD
   const [error, setError] = useState('');
+=======
+  const [error, setError] = useState("");
+  const [countries, setCountry] = useState("");
+  const [citiess, setCities] = useState("");
+>>>>>>> 3b24bf54270a1c25cbdee0ae12e2f2a6ae0bc890
   const [length, setLength] = useState();
   const [status, setStatus] = useState('');
   const [loginData, setLoginData] = useState({
+<<<<<<< HEAD
     first_name: '',
     last_name: '',
     password_1: '',
     password_2: '',
+=======
+    first_name: "",
+    last_name: "",
+    middle_name:"",
+    password_1: "",
+    password_2: "",
+>>>>>>> 3b24bf54270a1c25cbdee0ae12e2f2a6ae0bc890
     phone_number: '',
   });
 
@@ -72,21 +112,83 @@ function SingUp() {
     },
     [loginData]
   );
+<<<<<<< HEAD
   const onSuccess = (res) => {
     console.log('Successfull', res);
   };
   const onFailure = (res) => {
     console.log('Failure', res);
   };
+=======
+const onSuccess = (res)=>{
+  console.log("Successfull",res);
+
+}
+const onFailure = (res)=>{
+  console.log("Failure",res);
+}
+const fetchCountries = async() =>{
+  try {
+    const data = await Axios.get('/common/country/')
+    console.log(data);
+    const {status} = data
+    const {results} = data.data
+    console.log(results);
+    
+    if(status === 200){
+      setCountry(results)
+      const newData = []
+      for (let x=0; x<results.length; x++) {
+      newData.push(results[x].cities[0])
+     }
+     setCities(newData)
+     }
+      console.log(data);
+  } catch (error) {
+    console.log(error.response);
+  }
+}
+const handleRegion = (event,newValue) =>{
+  setRegion(newValue)
+}
+const handleCountry = (event,newValue) =>{
+  setCountry(newValue)
+}
+const id1 = countries?.id
+const id2 = region?.id
+const finalData = {
+  first_name: loginData.first_name,
+  last_name:loginData.last_name,
+  middle_name:loginData.middle_name,
+  citizenship	:id1,
+  phone_number:loginData.phone_number,
+  city:id2,
+  password_1:loginData.password_1,
+  password_2:loginData.password_2,
+}
+console.log(finalData);
+>>>>>>> 3b24bf54270a1c25cbdee0ae12e2f2a6ae0bc890
   const handleSubmit = async (e) => {
     e.preventDefault();
+    localStorage.setItem('enrolle-user',loginData.first_name)
     setLoading(true);
     try {
+<<<<<<< HEAD
       const res = await Axios.post('enrollee/enrollee-user/', loginData);
+=======
+      const res = await Axios.post("/enrollee/enrollee-user/", finalData);
+      console.log(res)
+>>>>>>> 3b24bf54270a1c25cbdee0ae12e2f2a6ae0bc890
       const { status } = res;
       const { data } = res;
+      console.log(data);
       if (status == 201) {
+<<<<<<< HEAD
         dispatch(signUpAction({ data: data }));
+=======
+        dispatch(signUpAction({data:data}))
+        localStorage.setItem('profile',JSON.stringify(data))
+>>>>>>> 3b24bf54270a1c25cbdee0ae12e2f2a6ae0bc890
         Swal.fire({
           icon: 'success',
           text: 'Успешно зарегистрирован',
@@ -96,87 +198,39 @@ function SingUp() {
       console.log(data);
       setLoading(false);
     } catch (err) {
+      console.log(err.response)
       const { error } = err.response?.data;
       Swal.fire({
+<<<<<<< HEAD
         icon: 'error',
         text: 'На этот номер все готовы зарегистрироваться, выберите другой или войдите',
         showCancelButton: true,
       });
       // console.log(error[0]?.error[0]);
       // setError(error[0]?.error[0]);
+=======
+        icon:"error",
+        text:"На этот номер все готовы зарегистрироваться, выберите другой или войдите",
+        showCancelButton:true
+      })
+>>>>>>> 3b24bf54270a1c25cbdee0ae12e2f2a6ae0bc890
       setLoading(false);
     }
   };
 
-  console.log(error);
-  console.log(inputRef);
-  console.log(status);
+  // console.log(results);
+  console.log(countries);
+  console.log(citiess);
   console.log(loginData);
-
+  useEffect(()=>{
+    fetchCountries()
+  },[])
   return (
     <React.Fragment>
       <div className="navRegist">
         <Navbar />
       </div>
       <div className="singup_asos container">
-        <div className="nav_name">
-          <h1>Процесс поступления</h1>
-        </div>
-        <div className="up_nav">
-          <h2 className="singup_active1">Регистрация/Войти</h2>
-          <svg
-            width="82"
-            height="10"
-            viewBox="0 0 82 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M82 5L74.5 0.669873V9.33013L82 5ZM0 5.75H5.125V4.25H0V5.75ZM15.375 5.75H25.625V4.25H15.375V5.75ZM35.875 5.75H46.125V4.25H35.875V5.75ZM56.375 5.75H66.625V4.25H56.375V5.75Z"
-              fill="#5C7C8A"
-            />
-          </svg>
-          <h2>Заявка</h2>
-          <svg
-            width="82"
-            height="10"
-            viewBox="0 0 82 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M82 5L74.5 0.669873V9.33013L82 5ZM0 5.75H5.125V4.25H0V5.75ZM15.375 5.75H25.625V4.25H15.375V5.75ZM35.875 5.75H46.125V4.25H35.875V5.75ZM56.375 5.75H66.625V4.25H56.375V5.75Z"
-              fill="#5C7C8A"
-            />
-          </svg>
-          <h2>Профайл</h2>
-          <svg
-            width="82"
-            height="10"
-            viewBox="0 0 82 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M82 5L74.5 0.669873V9.33013L82 5ZM0 5.75H5.125V4.25H0V5.75ZM15.375 5.75H25.625V4.25H15.375V5.75ZM35.875 5.75H46.125V4.25H35.875V5.75ZM56.375 5.75H66.625V4.25H56.375V5.75Z"
-              fill="#5C7C8A"
-            />
-          </svg>
-          <h2>Файлы</h2>
-          <svg
-            width="82"
-            height="10"
-            viewBox="0 0 82 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M82 5L74.5 0.669873V9.33013L82 5ZM0 5.75H5.125V4.25H0V5.75ZM15.375 5.75H25.625V4.25H15.375V5.75ZM35.875 5.75H46.125V4.25H35.875V5.75ZM56.375 5.75H66.625V4.25H56.375V5.75Z"
-              fill="#5C7C8A"
-            />
-          </svg>
-          <h2>Оплата</h2>
-        </div>
         <form onSubmit={handleSubmit} className="main_singup">
           <h1>Регистрация</h1>
           <div className="form_div">
@@ -202,7 +256,11 @@ function SingUp() {
             <InputErrorMsg type="last_name" errorObj={error} />
           </div>
           <div className="form_div">
+<<<<<<< HEAD
             <p>Ваша фамилия</p>
+=======
+            <p>Отчество</p>
+>>>>>>> 3b24bf54270a1c25cbdee0ae12e2f2a6ae0bc890
             <input
               onChange={handleInputChange}
               type="text"
@@ -210,8 +268,38 @@ function SingUp() {
               placeholder="фамилия"
               required
             />
+<<<<<<< HEAD
             <InputErrorMsg type="middle_name" errorObj={error} />
           </div>
+=======
+            <InputErrorMsg type="last_name" errorObj={error} />
+          </div>
+
+          <div className="form_div">
+							<p>Гражданство</p>
+							<Autocomplete
+							aria-required
+							onChange = {handleCountry}
+							id="profayl_input"
+							options={countries}
+							getOptionLabel={(option) => option.name}
+							style={{ width: 575 }}
+							renderInput={(params) => <TextField {...params} label="" variant="outlined"/>}
+							/>
+						</div>
+          <div className="form_div">
+							<p>Город</p>
+							<Autocomplete
+							aria-required
+							onChange = {handleRegion}
+							id="profayl_input"
+							options={citiess}
+							getOptionLabel={(option) => option.name}
+							style={{ width: 575 }}
+							renderInput={(params) => <TextField {...params} label="" variant="outlined"/>}
+							/>
+						</div>
+>>>>>>> 3b24bf54270a1c25cbdee0ae12e2f2a6ae0bc890
           <div className="form_div">
             <p>Ваш телефон номера</p>
             <input
