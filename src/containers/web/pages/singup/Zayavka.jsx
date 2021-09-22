@@ -94,8 +94,8 @@ function Zayavka() {
   console.log(enrollee_user);
   const finalData = {
     enrollee_user,
-    faculty,
-    budget: requisiton.budget,
+    faculty: parseInt(faculty),
+    budget: 3000,
     comment,
   };
 

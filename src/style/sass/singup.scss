@@ -121,6 +121,15 @@
 		width: 625px;
 		margin-bottom: 20px;
 		padding-left: 25px;
+		position: relative;
+		.checkIcon{
+			position: absolute;
+			right: -50px;
+			top: 57%;
+			img{
+				height: 25px;
+			}
+		}
 		p{
 			font-style: normal;
 			font-weight: 500;

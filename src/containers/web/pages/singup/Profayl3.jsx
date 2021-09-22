@@ -4,12 +4,13 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Navbar from '../Navbar';
 import Axios from '../../../../utils/axios';
+import Swal from 'sweetalert2';
 
 const dataT = require('../../json/data.json');
 
 function Profayl3() {
   const history = useHistory();
-  const [data, setData] = useState(dataT);
+  const [dataSet, setData] = useState(dataT);
   const [profile, setProfile] = useState(
     JSON.parse(localStorage.getItem('profileData'))
   );
@@ -20,15 +21,16 @@ function Profayl3() {
   const data1 = JSON.parse(localStorage.getItem('profile'));
   const data2 = JSON.parse(localStorage.getItem('profile2'));
   const data3 = JSON.parse(localStorage.getItem('zayavka'));
+  const id = JSON.parse(localStorage.getItem('data'));
   const [profileData, setProfileData] = useState({
     sport_achievements: '',
     visas: '',
     education_purpose: '',
   });
   const handleActivity = (event, newValue) => {
-    const { hobbi } = newValue;
-    console.log(hobbi);
-    setActivity(hobbi);
+    // const {hobbi} = newValue
+    // console.log(hobbi);
+    setActivity(newValue?.hobbi);
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,24 +45,12 @@ function Profayl3() {
     ...data1,
     ...data2,
     ...data3,
-    enrollee_user: data2.id,
+    enrollee_user: id.id,
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
     localStorage.setItem('files', JSON.stringify(finalData));
-    try {
-      const res = await Axios.post('/enrollee/enrollee-profile/', finalData);
-      const { status } = res;
-      const { data } = res;
-      const { id } = data;
-      if (status === 201) {
-        localStorage.setItem('userId', JSON.stringify(id));
-        history.push('/files');
-      }
-      console.log(res);
-    } catch (error) {
-      console.log(error.response);
-    }
+    history.push('/files');
   };
   console.log(active_activity);
   console.log(profile);
@@ -139,8 +129,8 @@ function Profayl3() {
             <Autocomplete
               id="profayl_input"
               onChange={handleActivity}
-              options={data}
-              getOptionLabel={(option) => option.hobbi}
+              options={dataSet}
+              getOptionLabel={(option) => option?.hobbi}
               style={{ width: 575 }}
               renderInput={(params) => (
                 <TextField {...params} label="" variant="outlined" />

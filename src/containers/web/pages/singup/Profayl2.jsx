@@ -7,6 +7,24 @@ import { authSaveData } from '../../../../store/actions/authActions';
 import Navbar from '../Navbar';
 
 function Profayl2() {
+  // const selector = useSelector((state) => state);
+  // const { form } = selector;
+  // const dispatch = useDispatch();
+  // const location = useLocation();
+  // const { pathname } = location;
+  // const history = useHistory();
+  // const [profileData, setProfileData] = useState({
+  //   school: '',
+  //   achiev: '',
+  //   gpa: '',
+  //   select: '',
+  // });
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setProfileData((state) => ({ ...state, [name]: value }));
+  // };
+  // const userData = JSON.parse(localStorage.getItem('data'));
+
   const selector = useSelector((state) => state);
   const { form } = selector.dataSave;
   const dispatch = useDispatch();
@@ -14,17 +32,17 @@ function Profayl2() {
   const { pathname } = location;
   const history = useHistory();
   const [profileData, setProfileData] = useState({
-    school: '',
-    achiev: '',
+    educated_in: '',
+    achievements: '',
     gpa: '',
-    select: '',
+    english_level_type: '',
+    english_level_value: 120,
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProfileData((state) => ({ ...state, [name]: value }));
   };
-  console.log(profileData);
-  // const userData = JSON.parse(localStorage.getItem('data'));
+  console.log(profileData.english_level_type);
 
   const saveData = () => {
     dispatch(authSaveData(pathname, profileData));
@@ -36,6 +54,7 @@ function Profayl2() {
   const localStr = () => {
     localStorage.setItem('profile2', JSON.stringify(profileData));
   };
+  console.log(profileData);
   return (
     <React.Fragment>
       <div className="navRegist">

@@ -5,23 +5,33 @@ import Navbar from '../Navbar';
 import Axios from '../../../../utils/axios';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
-
-const handleInputChange = (e) => {
-  // setData({ data: e.target.files[0] });
-};
-const handleChange = (e) => {};
+import check from '../../../../assets/icon/checked.svg';
+import { Spin } from 'antd';
 
 function Fayli() {
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
   const userID = JSON.parse(localStorage.getItem('userId'));
   console.log(userID);
   console.log(userID);
-  const [data, setData] = useState();
+  const [data, setData] = useState({
+    scan_passport_self: '',
+    scan_diplom: '',
+    photo: '',
+    mather_passport: '',
+    married: '',
+    birth: '',
+    med063: '',
+    med086: '',
+    drink: '',
+  });
+  const [doc, setDoc] = useState();
   const files = JSON.parse(localStorage.getItem('files'));
   console.log(files);
   const handleInputChange = (e) => {
     console.log(e);
-    setData({ data: e.target.files[0] });
+    const { name, files } = e.target;
+    setData((state) => ({ ...state, [name]: files[0] }));
   };
 
   const inputEl1 = useRef(null);
@@ -33,8 +43,13 @@ function Fayli() {
   const inputEl7 = useRef(null);
   const inputEl8 = useRef(null);
   const inputEl9 = useRef(null);
+
+  console.log(data);
+  console.log(doc);
+
   const submitHandler = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const formData = new FormData();
     for (let x in files) {
       formData.append(x, files[x]);
@@ -53,32 +68,30 @@ function Fayli() {
     formData.append('cert_hivs', inputEl9.current.files[0]);
 
     try {
-      const data = await Axios.put(
-        `/enrollee/enrollee-profile/${userID}`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        }
-      );
-
+      const data = await Axios.post(`/enrollee/enrollee-profile/`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       console.log(data);
       const { status } = data;
-      if (status === 200) {
+      if (status === 201) {
         Swal.fire({
           icon: 'success',
           text: 'Файлы загружены успешно',
         }).then(() => history.push('/payment-transaction'));
       }
+      setLoading(false);
     } catch (error) {
       Swal.fire({
         icon: 'error',
         text: 'Что-то пошло не так, пожалуйста, повторно загрузите файлы',
       });
       console.log(error);
+      setLoading(false);
     }
   };
+
   return (
     <React.Fragment>
       <div className="navRegist">
@@ -159,6 +172,9 @@ function Fayli() {
                 <label htmlFor="chFile">choose file</label>
               </p>
             </div>
+            <p className="checkIcon">
+              {data.scan_passport_self ? <img src={check} alt="success" /> : ''}
+            </p>
           </div>
           <div className="form_div">
             <p>Сканер диплом или аттестат с приложением</p>
@@ -171,11 +187,14 @@ function Fayli() {
                   ref={inputEl2}
                   type="file"
                   id="chFile2"
-                  name="scan_passport_self"
+                  name="scan_diplom"
                 />
                 <label htmlFor="chFile2">choose file</label>
               </p>
             </div>
+            <p className="checkIcon">
+              {data.scan_diplom ? <img src={check} alt="success" /> : ''}
+            </p>
           </div>
           <div className="form_div">
             <p>8 шт. фото 3х4, скан с оригинала</p>
@@ -188,11 +207,14 @@ function Fayli() {
                   ref={inputEl3}
                   type="file"
                   id="chFile3"
-                  name="scan_diploma"
+                  name="photo"
                 />
                 <label htmlFor="chFile3">choose file</label>
               </p>
             </div>
+            <p className="checkIcon">
+              {data.photo ? <img src={check} alt="success" /> : ''}
+            </p>
           </div>
           <div className="form_div">
             <p>Сканер паспорта матери с оригинала, + прописка</p>
@@ -205,11 +227,14 @@ function Fayli() {
                   ref={inputEl4}
                   type="file"
                   id="chFile4"
-                  name="resume"
+                  name="mather_passport"
                 />
                 <label htmlFor="chFile4">choose file</label>
               </p>
             </div>
+            <p className="checkIcon">
+              {data.mather_passport ? <img src={check} alt="success" /> : ''}
+            </p>
           </div>
           <div className="form_div">
             <p>Свидетельсво о браке, если в браке (Не обязательно)</p>
@@ -222,11 +247,14 @@ function Fayli() {
                   ref={inputEl5}
                   type="file"
                   id="chFile5"
-                  name="document"
+                  name="married"
                 />
                 <label htmlFor="chFile5">choose file</label>
               </p>
             </div>
+            <p className="checkIcon">
+              {data.married ? <img src={check} alt="success" /> : ''}
+            </p>
           </div>
           <div className="form_div">
             <p>Свидетельство о рождении, скан с оригинала </p>
@@ -239,11 +267,14 @@ function Fayli() {
                   ref={inputEl6}
                   type="file"
                   id="chFile6"
-                  name="document"
+                  name="birth"
                 />
                 <label htmlFor="chFile6">choose file</label>
               </p>
             </div>
+            <p className="checkIcon">
+              {data.birth ? <img src={check} alt="success" /> : ''}
+            </p>
           </div>
           <div className="form_div">
             <p>063 мед. справка, скан с оригинала</p>
@@ -256,11 +287,14 @@ function Fayli() {
                   ref={inputEl7}
                   type="file"
                   id="chFile7"
-                  name="document"
+                  name="med063"
                 />
                 <label htmlFor="chFile7">choose file</label>
               </p>
             </div>
+            <p className="checkIcon">
+              {data.med063 ? <img src={check} alt="success" /> : ''}
+            </p>
           </div>
           <div className="form_div">
             <p>086 мед. справка, скан с оригинала</p>
@@ -273,11 +307,14 @@ function Fayli() {
                   ref={inputEl8}
                   type="file"
                   id="chFile8"
-                  name="document"
+                  name="med086"
                 />
                 <label htmlFor="chFile8">choose file</label>
               </p>
             </div>
+            <p className="checkIcon">
+              {data.med086 ? <img src={check} alt="success" /> : ''}
+            </p>
           </div>
           <div className="form_div">
             <p>Справка о ВИЧ</p>
@@ -290,14 +327,30 @@ function Fayli() {
                   ref={inputEl9}
                   type="file"
                   id="chFile9"
-                  name="document"
+                  name="drink"
                 />
                 <label htmlFor="chFile9">choose file</label>
               </p>
             </div>
+            <p className="checkIcon">
+              {data.drink ? <img src={check} alt="success" /> : ''}
+            </p>
           </div>
           <div className="btn_div">
-            <button className="reg_btn">Завершить</button>
+            <button
+              style={
+                loading ? { background: '#8cb4c5' } : { background: '#00587F' }
+              }
+              className="reg_btn"
+            >
+              {loading ? (
+                <>
+                  <Spin size="middle" spinning={loading} />
+                </>
+              ) : (
+                'Завершить'
+              )}
+            </button>
           </div>
         </form>
       </div>

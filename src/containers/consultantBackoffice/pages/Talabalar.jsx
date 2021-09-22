@@ -23,6 +23,7 @@ import Swal from 'sweetalert2';
 import { useHistory } from 'react-router';
 import { SET_DOC } from '../../../store/actionTypes';
 import { dispatch } from '../../../store';
+import { Pagination } from '@material-ui/lab';
 const Talabalar = () => {
   const history = useHistory();
   const [students, setStudents] = useState([]);
@@ -256,6 +257,9 @@ const Talabalar = () => {
                   );
                 })}
               </tbody>
+              {/* <Stack spacing={2}>
+                <Pagination count={10} color="secondary" />
+              </Stack> */}
             </table>
           </div>
           {/* end univerList */}
