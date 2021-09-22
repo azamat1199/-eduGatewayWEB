@@ -32,9 +32,9 @@ const dataSwipper = require("../json/swipper.json");
 
 const MainEduGate = () => {
   const selector = useSelector(state=> state)
+  const [userId,setUserId] = useState()
 	console.log(selector);
-	const {payload} = selector.payload
-	const {id} = payload.data
+ 
   const history = useHistory()
   const [change1, setChange1] = useState("");
   const [change2, setChange2] = useState("");
@@ -42,6 +42,8 @@ const MainEduGate = () => {
   const [serach, setSearch] = useState(false);
   const [universities,setUniversities] = useState([])
   const [dataFilter, setdataFilter] = useState([]);
+
+
  const fetchUniversities = async()=>{
    try {
      const data = await Axios.get("/university/university/")
@@ -69,19 +71,27 @@ const MainEduGate = () => {
 		try {
 		  const data = await Axios.post('/enrollee/enrollee-user-favorite-university/',{
 			  university:univerId,
-        enrollee_user:id
+        enrollee_user:userId
 		  })
 		  console.log(data);
 		} catch (error) {
-		  
-		}
+      console.log(error);
+	 	}
 	  }
     const handler = (univerId) => {
+      console.log(univerId);
        setFavourite(univerId)
        .then(()=> history.push(`/university/${univerId}`))
     }
+
   useEffect(()=>{
     fetchUniversities()
+    if(selector.payload.payload){
+      const {payload} = selector?.payload
+      const {id} = payload?.data
+      setUserId(id)
+      console.log(id);
+    }
   },[])
   console.log(universities);
   return (
