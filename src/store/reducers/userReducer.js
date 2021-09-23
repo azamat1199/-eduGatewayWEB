@@ -16,7 +16,7 @@ const userReducer = (state=initialState,action)=>{
     console.log(payload);
     switch (action.type){
         case AUTH_SIGN_UP:{
-            return{...state,payload}
+            return{payload}
         }
         // case AUTH_SAVE_DATA:{
         //     return {...state,lastStep,form}

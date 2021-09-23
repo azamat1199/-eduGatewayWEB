@@ -115,21 +115,11 @@ function Profayl2() {
           </div>
           <div className="form_div">
             <p>Где вы учитесь/учились?</p>
-            <input
-              type="text"
-              value={form.school}
-              onChange={handleChange}
-              name="educated_in"
-            />
+            <input type="text" onChange={handleChange} name="educated_in" />
           </div>
           <div className="form_div">
             <p>Выберите тип сертификата</p>
-            <select
-              onChange={handleChange}
-              value={form.select}
-              name="english_level_type"
-              id=""
-            >
+            <select onChange={handleChange} name="english_level_type">
               <option value="ielts">ielts</option>
               <option value="cefr">cefr</option>
               <option value="sat">sat</option>
@@ -148,7 +138,6 @@ function Profayl2() {
             <p>напишите свой тип сертификата</p>
             <input
               onChange={handleChange}
-              value={form.achiev}
               type="text"
               name="english_level_other"
             />
@@ -157,28 +146,17 @@ function Profayl2() {
             <p>оценка вашего сертификата</p>
             <input
               onChange={handleChange}
-              value={form.achiev}
               type="text"
               name="english_level_value"
             />
           </div>
           <div className="form_div">
             <p>Достижения</p>
-            <input
-              onChange={handleChange}
-              value={form.achiev}
-              type="text"
-              name="achievements"
-            />
+            <input onChange={handleChange} type="text" name="achievements" />
           </div>
           <div className="form_div">
             <p>GPA</p>
-            <input
-              onChange={handleChange}
-              value={form.gpa}
-              type="text"
-              name="gpa"
-            />
+            <input onChange={handleChange} type="text" name="gpa" />
           </div>
           <div className="btn_div">
             <button type="button" onClick={saveData} className="save_btn">

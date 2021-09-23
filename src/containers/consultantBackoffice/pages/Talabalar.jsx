@@ -25,7 +25,6 @@ import { SET_DOC } from '../../../store/actionTypes';
 import { dispatch } from '../../../store';
 import { Pagination } from '@material-ui/lab';
 const Talabalar = () => {
-  const history = useHistory();
   const [students, setStudents] = useState([]);
   const [studentGetById, setStudentGetById] = useState({});
   const [studentPostById, setStudentPostById] = useState({});
@@ -44,6 +43,7 @@ const Talabalar = () => {
   // modal
   const [open_change, setOpen_change] = React.useState(false);
   const [fixEnd, setFix] = useState(false);
+  const history = useHistory();
   const fethcStudents = async () => {
     try {
       const res = await Axios.get('enrollee/enrollee-user/');
@@ -218,7 +218,7 @@ const Talabalar = () => {
                 </tr>
               </thead>
               <tbody>
-                {students.map((item, i) => {
+                {students.reverse().map((item, i) => {
                   const { id, first_name, last_name, phone_number } = item;
                   return (
                     <tr key={id}>

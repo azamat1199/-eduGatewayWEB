@@ -35,6 +35,7 @@ import Abiturient from '../containers/consultantBackoffice/univerBackoffice/page
 import Invoys from '../containers/consultantBackoffice/univerBackoffice/pages/invoys';
 import Info from '../containers/consultantBackoffice/univerBackoffice/pages/info';
 import Documents from '../containers/consultantBackoffice/pages/Documents';
+import UserDocument from '../containers/consultantBackoffice/pages/userDocument';
 
 const routes = {
   public: [
@@ -79,6 +80,12 @@ const routes = {
       path: '/requisition',
       component: Zayavka,
       exact: true,
+    },
+    {
+      key: 'balance',
+      path: '/home/documents/user',
+      component: UserDocument,
+      exact: false,
     },
     {
       key: 'balance',

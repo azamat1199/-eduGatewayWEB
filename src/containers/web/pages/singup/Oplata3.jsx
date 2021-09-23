@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { Component, useState } from 'react';
+import { NavLink,useLocation,useHistory } from 'react-router-dom';
 import copy from  "../../../../assets/icon/copy.svg" 
 import click from  "../../../../assets/icon/click.svg" 
 import payme from  "../../../../assets/icon/payme.svg"
@@ -12,43 +12,58 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Navbar from '../Navbar';
+import { authSaveData } from '../../../../store/actions/authActions';
+import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2';
 
-class Oplata3 extends Component {
-	 state = { 
+function Oplata3 () {
+	const history = useHistory()
+	const profileData = JSON.parse(localStorage.getItem('files'))
+	const location = useLocation()
+	const dispatch = useDispatch()
+	const {pathname} = location
+	 const [state,setState] = useState( { 
 		textToCopy: '',
 		modal1:false,
 		modal2:false
-	 }
-	handleopen1 = () => {
-		this.setState({
+	 })
+    const	handleopen1 = () => {
+		setState({
 			modal1: true
 		})
 	}
-	handleclose1 = () => {
-		this.setState({
+    const	handleclose1 = () => {
+		setState({
 			modal1: false
 		})
 	}
-	handleopen2 = () => {
-		this.setState({
+	const handleopen2 = () => {
+		setState({
 			modal2: true
 		})
 	}
-	handleclose2 = () => {
-		this.setState({
+	 const handleclose2 = () => {
+		setState({
 			modal2: false
 		})
 	}
-	onButtonClick = () => this.setState({ textToCopy: [
+	const saveData = ()  =>{
+		dispatch(authSaveData(pathname,profileData))
+		Swal.fire({
+			icon:"success",
+			text:"Текущие данные сохранены без промедления"
+		}).then(()=> history.push('/my-account'))
+	}
+
+	const onButtonClick = () => setState({ textToCopy: [
 		"Получатель: “Education Gateway”",
 		"ИНН: 2340212",
 		"Х/Р: 23402000300100001010",
 		"Банк получателя: РКЦ ГУ ЦБ г. по Ташкент",
 		"МФО банка получателя: 00014",
 	] })
-  	onCopied = (text) => console.log(`${text} was copied to the clipboard`)
+     const onCopied = (text) => console.log(`${text} was copied to the clipboard`)
 
-	render() {
 		return ( 
 			<React.Fragment>
 				<div className="navRegist">
@@ -90,9 +105,9 @@ class Oplata3 extends Component {
 										<div className="bank_list"><h5>ИНН: </h5><h5>2340212</h5></div>
 										<div className="bank_list"><h5>Х/Р: </h5><h5>23402000300100001010</h5></div>
 										<div className="bank_list"><h5>Банк получателя: </h5><h5>РКЦ ГУ ЦБ г. по Ташкент</h5></div>
-										<div className="bank_list"><h5 onChange={this.state.textToCopy}>МФО банка получателя: </h5><h5>00014</h5></div>
-										<button onClick={this.onButtonClick}><img src={copy} alt="" />Скопировать реквизиты</button>
-										<CopyText  text={this.state.textToCopy} onCopied={this.onCopied} />
+										<div className="bank_list"><h5 onChange={state.textToCopy}>МФО банка получателя: </h5><h5>00014</h5></div>
+										<button onClick={onButtonClick}><img src={copy} alt="" />Скопировать реквизиты</button>
+										<CopyText  text={state.textToCopy} onCopied={onCopied} />
 									</div>
 								</div>
 							</div>
@@ -113,16 +128,16 @@ class Oplata3 extends Component {
 									<label htmlFor="chFile">choose file</label>
 								</p>
 							</div>
-							<button onClick={this.handleopen1} className="a_send">Отправить</button>
-							<button  style={{background: "#e6ebed",border:'none',color:'#00587f',cursor:'pointer'}} className="a_send">Сохранить</button>
+							<button onClick={handleopen1} className="a_send">Отправить</button>
+							<button type="button" onClick={saveData}  style={{background: "#e6ebed",border:'none',color:'#00587f',cursor:'pointer'}} className="a_send">Сохранить</button>
 						</div>
 					</div>
 					<Modal
 						aria-labelledby="spring-modal-title"
 						aria-describedby="spring-modal-description"
 						className="modalll"
-						open={this.state.modal1}
-						onClose={this.handleclose1}
+						open={state.modal1}
+						onClose={handleclose1}
 						className="oplata_modal"
 						closeAfterTransition
 						BackdropComponent={Backdrop}
@@ -130,11 +145,11 @@ class Oplata3 extends Component {
 							timeout: 500
 						}}
 					>
-						<Fade in={this.state.modal1}>
+						<Fade in={state.modal1}>
 							<div className="alert_tasdiq">
 								<img src={tasdiq} alt="" />
 								<p>Ваш платеж был проведен успешно</p>
-								<button onClick={this.handleclose1}>Вернуться</button>
+								<button onClick={handleclose1}>Вернуться</button>
 							</div>
 						</Fade>
 					</Modal>
@@ -142,8 +157,8 @@ class Oplata3 extends Component {
 						aria-labelledby="spring-modal-title"
 						aria-describedby="spring-modal-description"
 						className="modalll"
-						open={this.state.modal2}
-						onClose={this.handleclose2}
+						open={state.modal2}
+						onClose={handleclose2}
 						className="oplata_modal"
 						closeAfterTransition
 						BackdropComponent={Backdrop}
@@ -151,12 +166,12 @@ class Oplata3 extends Component {
 							timeout: 500
 						}}
 					>
-						<Fade in={this.state.modal2}>
+						<Fade in={state.modal2}>
 						<div className="alert_error">
 							<img src={error} alt="" />
 							<p>Произошла ошибка при оплате</p>
 							<div className="alert_btn">
-								<button Click={this.submit_error}>Отменить</button>
+								{/* <button Click={submit_error}>Отменить</button> */}
 								<button>Повторить оплату</button>
 							</div>
 				  		</div>
@@ -165,7 +180,6 @@ class Oplata3 extends Component {
 				</div>
 			</React.Fragment>
 		 );
-	}
 }
  
 export default Oplata3;

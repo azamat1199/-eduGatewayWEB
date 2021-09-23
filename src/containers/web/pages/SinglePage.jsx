@@ -27,9 +27,9 @@ const dataT = require("../json/data_univer.json")
 function SinglePage (props){
 	const selector = useSelector(state=> state)
 	console.log(selector);
-	const {payload} = selector.payload
-	const {id} = payload.data
-	console.log(id);
+	// const {payload} = selector.payload
+	// const {id} = payload.data
+	// console.log(id);
 	const history = useHistory()
 	const [data,setData] = useState(dataT)
 	const params = useParams()

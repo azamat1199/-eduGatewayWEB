@@ -176,6 +176,7 @@ function Fayli() {
               {data.scan_passport_self ? <img src={check} alt="success" /> : ''}
             </p>
           </div>
+
           <div className="form_div">
             <p>Сканер диплом или аттестат с приложением</p>
             <div className="importFile">
