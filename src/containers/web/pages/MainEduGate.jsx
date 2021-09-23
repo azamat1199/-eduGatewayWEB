@@ -73,6 +73,7 @@ const MainEduGate = () => {
 			  university:univerId,
         enrollee_user:userId
 		  })
+     
 		  console.log(data);
 		} catch (error) {
       console.log(error);
@@ -83,15 +84,17 @@ const MainEduGate = () => {
        setFavourite(univerId)
        .then(()=> history.push(`/university/${univerId}`))
     }
-
+    const checkValidty = () =>{
+      // if(selector.payload.payload){
+      //   const {payload} = selector?.payload
+      //   const {id} = payload?.data
+      //   setUserId(id)
+      //   console.log(id);
+      // }
+    }
   useEffect(()=>{
     fetchUniversities()
-    if(selector.payload.payload){
-      const {payload} = selector?.payload
-      const {id} = payload?.data
-      setUserId(id)
-      console.log(id);
-    }
+    checkValidty()
   },[])
   console.log(universities);
   return (

@@ -28,6 +28,19 @@ const fetchSelectedUniver = async ()=>{
     try {
         const res = await Axios.get('enrollee/enrollee-user-favorite-university/')
         console.log(res);
+        const {status} = res
+        const {results} = res.data
+        console.log(results);
+        if(status === 200) {
+            
+            const newData = []
+            for (let x=0; x < results.length; x++) {
+            newData.push(results[x].university)
+            console.log(results[x].university);
+           }
+           setUniversities(newData)
+            console.log(newData);
+        }
     } catch (error) {
         console.log(error.response);     
     }
@@ -130,22 +143,24 @@ useEffect(()=>{
                         }}
                         >
                         
-                        {/* {
-                            dataCard.slice(0, 8).map( (x) => {
+                        {
+                            universities.map( (x) => {
+                                console.log(x);
+                                const  {name,description,rating,location,living_price_per_annum,bachelor_degree_fee_per_annum} = x
                                 return(
                                     <SwiperSlide>
                                     <div className="card">
-                                        <img src={x.img} alt="" />
-                                        <h1>{x.title1}</h1>
-                                        <p>{x.title2}</p>
-                                        <h3>Рейтинг: <span>{x.rating} место  ({x.ratingCountry} Ratings)</span></h3>
+                                        <img src="https://universegroup.uz/wp-content/uploads/2020/02/harvard.jpg" alt="" />
+                                        <h1>{name}</h1>
+                                        <p>{description}</p>
+                                        <h3>Рейтинг: <span>{rating} место  ({location} Ratings)</span></h3>
                                         <h4>Качество обучения:</h4>
-                                        <h5>Цена за один год: <span>{x.price}</span></h5>
+                                        <h5>Цена за один год: <span>{bachelor_degree_fee_per_annum}</span></h5>
                                     </div>
                                     </SwiperSlide>
                                 )
                             } )
-                        } */}
+                        }
                         
                     </Swiper>
                 </div>

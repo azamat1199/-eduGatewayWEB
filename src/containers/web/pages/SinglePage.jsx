@@ -50,7 +50,7 @@ function SinglePage (props){
 		education_quality:[],
 		living_price:''
 	})
-
+const files = JSON.parse(localStorage.getItem('files'))
 	const {name,city,rating,living_price} = univer
 	props = {
 		center: {
@@ -96,7 +96,7 @@ function SinglePage (props){
 						</div>
 						<div className="sp_title">
 							<div><h1>{name}</h1></div>
-							<div><button onClick={()=> selector.payload.payload ?  history.push('/requisition'): history.push('/login')}>Подать</button></div>
+							<div><button onClick={()=> selector.payload.payload ? files? history.push('/my-account'):  history.push('/requisition'): history.push('/login')}>Подать</button></div>
 						</div>
 					</div>
 					<div className="sp_navbar">

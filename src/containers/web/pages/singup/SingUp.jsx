@@ -36,20 +36,25 @@ function SingUp() {
   const [citiess, setCities] = useState([]);
   const [length, setLength] = useState();
   const [status, setStatus] = useState("");
+  const [phone ,setPhone] = useState()
   const [loginData, setLoginData] = useState({
     first_name: "",
     last_name: "",
     middle_name:"",
     password_1: "",
     password_2: "",
-    phone_number: '',
+    phone_number: phone,
   });
-
+console.log(phone);
   const handleInputChange = useCallback(
     (e) => {
       console.log(e);
       const { name, value } = e.target;
       setLoginData((state) => ({ ...state, [name]: value }));
+      if(name === 'phone_number'){
+        const finalValue = value.slice(1)
+        setPhone(finalValue)
+      }
       if (name === "password_1" && !value.length) {
         setStatus("error");
         setLength(0);
@@ -211,14 +216,6 @@ console.log(finalData);
 
           <div className="form_div">
 							<p>Гражданство</p>
-              {/* <select name="" id="">
-                {countries.map(item=> {
-                  const {id,name} = item
-                  return(
-                    <option value={id}>{name}</option>
-                  )
-                })}
-              </select> */}
 							<Autocomplete
 							aria-required
 							onChange = {handleCountry}

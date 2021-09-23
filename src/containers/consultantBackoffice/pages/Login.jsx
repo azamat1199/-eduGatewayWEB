@@ -16,16 +16,26 @@ function  Login () {
     const [wiew, setWiew] = useState(false);
     const[errorMsg,setErrorMsg] = useState('')
     const [loading, setLoading] = useState(false);
+    const [phone,setPhone] = useState()
     const [state,setState] = useState({
         role:'',
-        phone:''
     });
     const [loginData,setLoginData] = useState({
         password:''
     });
+    console.log(phone);
     const handleChange = useCallback ((e) => { 
         const {name,value} = e.target;
         setState(state=>({...state,[name]:value}))
+        if(name === 'phone'){
+            if(value.startsWith('+')){
+                const  finalValue =  value.slice(1)
+                setPhone(finalValue)
+            } else{
+            setPhone(value)
+            }
+        }
+
     } ,[state])  
 
     const handleValue = useCallback ((e) => {
@@ -33,7 +43,7 @@ function  Login () {
         setLoginData(state=>({...state,[name]:value}))
    },[loginData])
    const dataGo = {
-    username:`${state.role}_${state.phone}`,
+    username:`${state.role}_${phone}`,
     password:loginData.password
  }
    
@@ -42,22 +52,21 @@ console.log(dataGo);
         e.preventDefault()
         setLoading(true);
         try {
-            const {data} = await Axios.post('/common/token/obtain',dataGo)
-            console.log(data);
-            const {access,refresh,role,enrollee} = data
+            const res = await Axios.post('/common/token/obtain',dataGo)
+            const {access,refresh,role,data} = res.data
            
-            dispatch(signUpAction({access,refresh,role,data:enrollee}))
+            dispatch(signUpAction({access,refresh,role,data:data}))
             if(role.startsWith("u")){
                history.push('/univer-backoffice-page')
             }else if(role.startsWith('e')){
                 history.push('/my-account')
-            }else if(role === 'admin'){
+            }else if(role === 'company'){
                 history.push('/home/main')
             }else{
                 history.push('/')
             }
           
-        //    console.log(data);
+           console.log(data);
            setLoading(false);
         } catch (error) {
            Swal.fire({
@@ -87,7 +96,7 @@ console.log(dataGo);
                             <label><input type="radio" name="role" value="enrollee"  />Абитуриент</label>
                             <label><input type="radio" name="role" value="partner"  />Партнер</label>
                             <label><input type="radio" name="role" value="university"  />Университет</label>
-                            <label><input type="radio" name="role" value="admin" />Админ</label>
+                            <label><input type="radio" name="role" value="companyuser" />Админ</label>
                         </div>
                         {/* Login kiritish */}
                         <div className="loginInput">

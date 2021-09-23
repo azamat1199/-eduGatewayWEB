@@ -9,10 +9,7 @@ import MainEduGate from './containers/web/pages/MainEduGate';
 import Home from './containers/consultantBackoffice/univerBackoffice/pages/home'
 
 function App() {
-  // const selector = useSelector(state=>state)
-  // console.log(selector.user)
-  // const {access} = selector.user;
-  // const {user} = selector.user;
+  const selector = useSelector(state=>state)
    return (  
      <>
       <Switch>
