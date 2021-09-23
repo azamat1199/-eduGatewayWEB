@@ -57,7 +57,7 @@ const Document = () => {
   };
   const fethcStudents = async () => {
     try {
-      const res = await Axios.get(`enrollee/enrollee-user/${id}`);
+      const res = await Axios.get(`enrollee/enrollee-profile`);
       console.log(res);
       const { status, data } = res;
       const { results } = data;

@@ -47,7 +47,7 @@ const Document = () => {
   const [fixEnd, setFix] = useState(false);
   const fethcStudents = async () => {
     try {
-      const res = await Axios.get('enrollee/enrollee-user/');
+      const res = await Axios.get('/enrollee/enrollee-user');
       console.log(res);
       const { status, data } = res;
       const { results } = data;
@@ -73,52 +73,7 @@ const Document = () => {
   useEffect(() => {
     fethcStudents();
   }, []);
-  const edit = async (id) => {
-    handleOpen_change();
-    try {
-      const res = await Axios.get(`enrollee/enrollee-user/${id}`);
-      setStudentGetById(res.data);
-      const { first_name, last_name, middle_name, phone_number } = res.data;
-      setName(first_name);
-      setLastName(last_name);
-      setMiddleName(middle_name);
-      setPhone(phone_number);
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-    console.log(id);
-  };
-  const setEdit = async (e, id) => {
-    e.preventDefault();
-    try {
-      const res = await Axios.patch(`enrollee/enrollee-user/${id}`, {
-        first_name: name,
-        last_name: lastName,
-        middle_name: middleName,
-        phone_number: parseInt(phone),
-        email: null,
-        city: null,
-        password_1: password,
-        password_2: password,
-        registration_ref: null,
-      });
-      Swal.fire({
-        icon: 'success',
-        text: 'Успешно зарегистрирован',
-        showCancelButton: false,
-      });
-    } catch (error) {
-      if (error.status == 500)
-        Swal.fire({
-          icon: 'error',
-          text: 'Server Errror',
-          showCancelButton: true,
-        });
-    }
-    fethcStudents();
-    handleClose_change();
-  };
+
   const setStudent = async (e) => {
     e.preventDefault();
     try {
@@ -150,25 +105,11 @@ const Document = () => {
     handleClose();
     fethcStudents();
   };
-  const setDoc = async (id) => {
-    try {
-      const res = await Axios.get(`enrollee/enrollee-user/${id}`);
-      setStudentGetById(res.data);
-      const { first_name, last_name, middle_name, phone_number } = res.data;
-      console.log(res.data);
-      const userData = {
-        id: id,
-      };
-      localStorage.setItem('data', JSON.stringify(userData));
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-    // console.log(id);
-    const action = { type: SET_DOC, payload: { id: id } };
-    dispatch(action);
-    history.push('/requisition');
+  const getDoc = (id) => {
+    localStorage.setItem('docId', id);
+    history.push('documents/user');
   };
+
   // modal
   return (
     <Sidebar>
@@ -220,7 +161,7 @@ const Document = () => {
                   return (
                     <tr
                       key={id}
-                      onClick={() => history.push('documents/user')}
+                      onClick={() => getDoc(id)}
                       style={{ cursor: 'pointer' }}
                     >
                       <td className="px-3">{i + 1}</td>
@@ -233,9 +174,6 @@ const Document = () => {
                   );
                 })}
               </tbody>
-              {/* <Stack spacing={2}>
-                <Pagination count={10} color="secondary" />
-              </Stack> */}
             </table>
           </div>
 
@@ -300,152 +238,6 @@ const Document = () => {
               </div>
             ) : null
           }
-          {/* modal one */}
-          <Modal
-            aria-labelledby="transition-modal-title"
-            aria-describedby="transition-modal-description"
-            className="class1"
-            open={open}
-            onClose={handleClose}
-            closeAfterTransition
-            BackdropComponent={Backdrop}
-            BackdropProps={{
-              timeout: 500,
-            }}
-          >
-            <Fade in={open}>
-              <div
-                className="addNewUniverModalUniver talaba_modal"
-                id="scroll_bar"
-              >
-                <img onClick={handleClose} src={close_modal} alt="" />
-                <div className="modalContainer">
-                  <h5>Добавить нового студента</h5>
-                  <div>
-                    <label>Ваша имя</label>
-                    <input
-                      type="text"
-                      onChange={(e) => {
-                        setName(e.target.value);
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <label>Ваша фамилия</label>
-                    <input
-                      type="text"
-                      onChange={(e) => {
-                        setLastName(e.target.value);
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <label>Отчество</label>
-                    <input
-                      type="text"
-                      onChange={(e) => {
-                        setMiddleName(e.target.value);
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <label>Номер телефона</label>
-                    <input
-                      type="text"
-                      onChange={(e) => {
-                        setPhone(e.target.value);
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <label>Пароль</label>
-                    <input
-                      type="password"
-                      value={password}
-                      onChange={(e) => {
-                        setPassword(e.target.value);
-                      }}
-                    />
-                  </div>
-                  <button
-                    onClick={(e) => {
-                      setStudent(e);
-                    }}
-                  >
-                    Добавить
-                  </button>
-                  <button onClick={handleClose} className="back_btn">
-                    <img src={arrow1} alt="" /> Вернуться
-                  </button>
-                </div>
-              </div>
-            </Fade>
-          </Modal>
-
-          {/* Modal two */}
-          <Modal
-            aria-labelledby="transition-modal-title"
-            aria-describedby="transition-modal-description"
-            className="class1"
-            open={open_change}
-            onClose={handleClose_change}
-            closeAfterTransition
-            BackdropComponent={Backdrop}
-            BackdropProps={{
-              timeout: 500,
-            }}
-          >
-            <Fade in={open_change}>
-              <div
-                className="addNewUniverModalUniver talaba_modal"
-                id="scroll_bar"
-              >
-                <img onClick={handleClose_change} src={close_modal} alt="" />
-                <div className="modalContainer">
-                  <h5>Изменить</h5>
-                  <div>
-                    <label>Ваша имя</label>
-                    <input
-                      type="text"
-                      value={name}
-                      onChange={(e) => {
-                        setName(e.target.value);
-                      }}
-                    />
-                  </div>
-
-                  <div>
-                    <label>Ваша фамилия</label>
-                    <input
-                      value={lastName}
-                      type="text"
-                      onChange={(e) => {
-                        setLastName(e.target.value);
-                      }}
-                    />
-                  </div>
-
-                  <div>
-                    <label>Отчество</label>
-                    <input
-                      type="text"
-                      value={middleName}
-                      onChange={(e) => {
-                        setMiddleName(e.target.value);
-                      }}
-                    />
-                  </div>
-                  <button onClick={(e) => setEdit(e, studentGetById.id)}>
-                    Добавить
-                  </button>
-                  <button onClick={handleClose_change} className="back_btn">
-                    <img src={arrow1} alt="" /> Вернуться
-                  </button>
-                </div>
-              </div>
-            </Fade>
-          </Modal>
-          {/* end Filter */}
         </div>
       </div>
     </Sidebar>

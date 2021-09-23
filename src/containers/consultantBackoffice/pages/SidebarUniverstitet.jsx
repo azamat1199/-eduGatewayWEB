@@ -76,7 +76,9 @@ const SidebarUniverstitet = () => {
         file: file,
         education_quality: 4,
         education_fee_per_annum: 6000,
+        living_price_per_annum: 6000,
         bachelor_degree_fee_per_annum: 6000,
+        masters_degree_fee_per_annum: 6000,
       });
 
       if (res.status == 200) {
@@ -94,12 +96,14 @@ const SidebarUniverstitet = () => {
           showCancelButton: true,
         });
     }
+    fetchData();
     handleClose();
   };
   const edit = async (id) => {
     handleOpen_change();
     try {
       const res = await Axios.get(`university/university/${id + 1}`);
+      console.log(res);
       const { name, location, description, founding_year } = res.data;
       setId(id + 1);
       setName(name);
