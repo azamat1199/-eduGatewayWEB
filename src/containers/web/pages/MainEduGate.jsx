@@ -1,62 +1,61 @@
-import React, { useEffect, useState } from "react";
-import {useSelector} from 'react-redux'
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper.min.css";
-import "swiper/components/pagination/pagination.min.css";
-import "swiper/components/navigation/navigation.min.css";
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper.min.css';
+import 'swiper/components/pagination/pagination.min.css';
+import 'swiper/components/navigation/navigation.min.css';
 
-import Footer from "../footer/footer";
-import "../../../style/css/MainEduGate.css";
+import Footer from '../footer/footer';
+import '../../../style/css/MainEduGate.css';
 
-import chat_icon from "../../../assets/icon/chat.svg";
-import univer_icon from "../../../assets/icon/univer.svg";
-import country_icon from "../../../assets/icon/country.svg";
-import icon1 from "../../../assets/icon/icon1.svg";
-import icon2 from "../../../assets/icon/icon2.svg";
-import icon3 from "../../../assets/icon/icon3.svg";
-import icon4 from "../../../assets/icon/icon4.svg";
-import icon5 from "../../../assets/icon/icon5.svg";
-import icon6 from "../../../assets/icon/icon6.svg";
-import Axios from '../../../utils/axios'
-import SwiperCore, { Pagination, Navigation } from "swiper/core";
-import Navbar from "./Navbar";
-import { useHistory } from "react-router";
+import chat_icon from '../../../assets/icon/chat.svg';
+import univer_icon from '../../../assets/icon/univer.svg';
+import country_icon from '../../../assets/icon/country.svg';
+import icon1 from '../../../assets/icon/icon1.svg';
+import icon2 from '../../../assets/icon/icon2.svg';
+import icon3 from '../../../assets/icon/icon3.svg';
+import icon4 from '../../../assets/icon/icon4.svg';
+import icon5 from '../../../assets/icon/icon5.svg';
+import icon6 from '../../../assets/icon/icon6.svg';
+import Axios from '../../../utils/axios';
+import SwiperCore, { Pagination, Navigation } from 'swiper/core';
+import Navbar from './Navbar';
+import { useHistory } from 'react-router';
 
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation]);
 
 // import data json
-const cardData = require("../json/card.json");
-const datafakultet = require("../json/topFakultet.json");
-const dataSwipper = require("../json/swipper.json");
+const cardData = require('../json/card.json');
+const datafakultet = require('../json/topFakultet.json');
+const dataSwipper = require('../json/swipper.json');
 
 const MainEduGate = () => {
-  const selector = useSelector(state=> state)
-  const [userId,setUserId] = useState()
-	console.log(selector);
- 
-  const history = useHistory()
-  const [change1, setChange1] = useState("");
-  const [change2, setChange2] = useState("");
-  const [change3, setChange3] = useState("");
+  const selector = useSelector((state) => state);
+  const [userId, setUserId] = useState();
+  console.log(selector);
+
+  const history = useHistory();
+  const [change1, setChange1] = useState('');
+  const [change2, setChange2] = useState('');
+  const [change3, setChange3] = useState('');
   const [serach, setSearch] = useState(false);
-  const [universities,setUniversities] = useState([])
+  const [universities, setUniversities] = useState([]);
   const [dataFilter, setdataFilter] = useState([]);
 
+  const fetchUniversities = async () => {
+    try {
+      const data = await Axios.get('/university/university/');
+      const { results } = data.data;
+      console.log(results);
+      if (data.status === 200) {
+        setUniversities(results);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
- const fetchUniversities = async()=>{
-   try {
-     const data = await Axios.get("/university/university/")
-     const {results} = data.data 
-     console.log(results);
-     if(data.status === 200){
-       setUniversities(results)
-     }
-   } catch (error) {
-     console.log(error);
-   }
- }
- 
   const fun1 = () => {
     let letFilter = cardData.filter(
       (filter) =>
@@ -77,20 +76,14 @@ const MainEduGate = () => {
 		  console.log(data);
 		} catch (error) {
       console.log(error);
-	 	}
-	  }
-    const handler = (univerId) => {
-      console.log(univerId);
-       setFavourite(univerId)
-       .then(()=> history.push(`/university/${univerId}`))
     }
     const checkValidty = () =>{
-      // if(selector.payload.payload){
-      //   const {payload} = selector?.payload
-      //   const {id} = payload?.data
-      //   setUserId(id)
-      //   console.log(id);
-      // }
+      if(selector.payload.payload){
+        const {payload} = selector?.payload
+        const {id} = payload?.data
+        setUserId(id)
+        console.log(id);
+      }
     }
   useEffect(()=>{
     fetchUniversities()
@@ -221,7 +214,7 @@ const MainEduGate = () => {
                       <h1>{x.title1}</h1>
                       <p>{x.title2}</p>
                       <h2>
-                        Рейтинг:{" "}
+                        Рейтинг:{' '}
                         <span>
                           {x.rating} место {x.ratingCountry}
                         </span>
@@ -236,7 +229,7 @@ const MainEduGate = () => {
                     </div>
                   );
                 } else {
-                  return "";
+                  return '';
                 }
               })}
               {/* end card */}
@@ -244,7 +237,7 @@ const MainEduGate = () => {
             {/* end result */}
           </div>
         ) : (
-          ""
+          ''
         )}
         {/* end resultBlock */}
 
@@ -277,7 +270,7 @@ const MainEduGate = () => {
                   <img src={icon3} alt="" />
                 </div>
                 <p>Заполняете анкету и подаете документы</p>
-            </div>
+              </div>
             </div>
             {/* card */}
             <div className="card">
@@ -286,7 +279,7 @@ const MainEduGate = () => {
                   <img src={icon4} alt="" />
                 </div>
                 <p>Получаете ответ от Университета</p>
-              </div>  
+              </div>
             </div>
             {/* card */}
             <div className="card">
@@ -303,14 +296,12 @@ const MainEduGate = () => {
                 <div>
                   <img src={icon6} alt="" />
                 </div>
-                <p>Оплачиваете за  наши услуги</p>
+                <p>Оплачиваете за наши услуги</p>
               </div>
             </div>
           </div>
         </div>
         {/* end workBlock */}
-
-        
 
         {/* resultBlock */}
         <div className="resultBlock" id="university">
@@ -318,12 +309,24 @@ const MainEduGate = () => {
           <div className="result">
             {/* card */}
             {universities.map((item) => {
-              const {id,name,location,description,founding_year,rating,living_price,city} = item
+              const {
+                id,
+                name,
+                location,
+                description,
+                founding_year,
+                rating,
+                living_price,
+                city,
+              } = item;
               return (
                 <div onClick={() => handler(id)} className="card">
-                  <img src="https://universegroup.uz/wp-content/uploads/2020/02/harvard.jpg" alt="" />
+                  <img
+                    src="https://universegroup.uz/wp-content/uploads/2020/02/harvard.jpg"
+                    alt=""
+                  />
                   <svg
-                    width="20"  
+                    width="20"
                     height="20"
                     viewBox="0 0 20 20"
                     fill="none"
@@ -342,7 +345,7 @@ const MainEduGate = () => {
                   <h1>{name}</h1>
                   <p>{description}</p>
                   <h2>
-                    Рейтинг:{" "}
+                    Рейтинг:{' '}
                     <span>
                       {rating} место {city.name}
                     </span>
@@ -385,21 +388,30 @@ const MainEduGate = () => {
             <div className="cardAbout">
               <h1>250+</h1>
               <h4>Университеты партнёры</h4>
-              <p>Education Gateway сотрудничает с более 250 университетами с разных уголков мира </p>
+              <p>
+                Education Gateway сотрудничает с более 250 университетами с
+                разных уголков мира{' '}
+              </p>
             </div>
             {/*  */}
             {/*  */}
             <div className="cardAbout">
               <h1>100+</h1>
               <h4>Страны партнёры</h4>
-              <p>Education Gateway сотрудничает с более 250 университетами с разных уголков мира </p>
+              <p>
+                Education Gateway сотрудничает с более 250 университетами с
+                разных уголков мира{' '}
+              </p>
             </div>
             {/*  */}
             {/*  */}
             <div className="cardAbout">
               <h1>250+</h1>
               <h4>Университеты партнёры</h4>
-              <p>Education Gateway сотрудничает с более 250 университетами с разных уголков мира </p>
+              <p>
+                Education Gateway сотрудничает с более 250 университетами с
+                разных уголков мира{' '}
+              </p>
             </div>
             {/*  */}
           </div>
@@ -481,5 +493,6 @@ const MainEduGate = () => {
     </>
   );
 };
+}
 
-export default MainEduGate;
+export default MainEduGate
