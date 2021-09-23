@@ -251,7 +251,7 @@ function SinglePage (props){
 						<div className="sp_main1 sp4">
 							<div className="sp_main_left">
 								<div className="sp_table">
-									<table>
+									{/* <table>
 										<tr>
 											<td>Рейтинг</td>
 											<td>235</td>
@@ -276,7 +276,7 @@ function SinglePage (props){
 											<td>Цена прожив -ния</td>
 											<td>$2,875/год</td>
 										</tr>
-									</table>
+									</table> */}
 								</div>
 							</div>
 							<div className="sp_main2_right">
@@ -296,7 +296,7 @@ function SinglePage (props){
 						<div className="sp_main1 sp5">
 							<div className="sp_main_left"></div>
 							<div className="sp_main3_right">
-								<a href="#">Подать документы</a>
+								<a onClick={()=> selector.payload.payload ?  history.push('/requisition'): history.push('/login')}>Подать документы</a>
 								<a href="#">Консультация</a>
 							</div>
 						</div>

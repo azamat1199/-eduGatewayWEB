@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .single_page {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -94,6 +98,11 @@
   margin: 25px 0;
   -webkit-column-gap: 30px;
           column-gap: 30px;
+}
+
+.sp_main .sp4 {
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
 }
 
 .sp_main .sp_main_left {

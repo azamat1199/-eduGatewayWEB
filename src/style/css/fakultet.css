@@ -3,11 +3,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-bottom: 50px;
 }
 
@@ -26,8 +26,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .Up_navbar div img {
@@ -43,8 +43,8 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .Up_navbar div div h5 {
@@ -63,7 +63,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
-  color: #5c7c8a;
+  color: #5C7C8A;
 }
 
 .fakultet {
@@ -108,16 +108,16 @@
   background: none !important;
   outline: none !important;
   border: none !important;
-  color: #00587f !important;
+  color: #00587F !important;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .talaba_modal {
@@ -132,11 +132,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 50px;
   overflow: hidden;
 }
@@ -155,13 +155,13 @@
 #scroll_bar::-webkit-scrollbar-thumb {
   margin: 10px 0;
   border-radius: 10px;
-  background-color: #00587f;
+  background-color: #00587F;
 }
 
 @media (max-width: 1024px) {
   .card_3tali {
     -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
+        flex-wrap: nowrap;
   }
   .card_3tali .card {
     text-align: center;
@@ -174,19 +174,19 @@
 @media (max-width: 425px) {
   .asos .Up_navbar {
     -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
     margin-bottom: 70px;
   }
   .asos .Up_navbar h4 {
     font-size: 20px;
     width: 60%;
     -webkit-transform: translateX(-100px) translateY(25px);
-    transform: translateX(-100px) translateY(25px);
+            transform: translateX(-100px) translateY(25px);
   }
   .asos .Up_navbar h5 {
     font-size: 16px;
@@ -200,13 +200,13 @@
   }
   .asos .Up_navbar div {
     -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .asos .Up_navbar div div {
     -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
   .talabalar table {
     width: 370% !important;
@@ -219,7 +219,7 @@
   }
   .card_3tali {
     -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+        flex-wrap: wrap;
   }
   .card_3tali .card h4 {
     font-size: 18px !important;
@@ -231,7 +231,7 @@
     display: -ms-grid !important;
     display: grid !important;
     -ms-grid-columns: 1fr;
-    grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     grid-gap: 20px;
   }
   .sideGlavny .block_1 .card h4 {
