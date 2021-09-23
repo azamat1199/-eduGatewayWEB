@@ -1,32 +1,32 @@
-import React, { Component, useRef, useState } from "react";
-import { NavLink, useHistory } from "react-router-dom";
-import folder_icon from "../../../../assets/icon/folder_icon.svg";
-import Navbar from "../Navbar";
-import Axios from "../../../../utils/axios";
-import { useSelector } from "react-redux";
-import Swal from "sweetalert2";
-import check from "../../../../assets/icon/checked.svg";
-import { Spin } from "antd";
+import React, { Component, useRef, useState } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
+import folder_icon from '../../../../assets/icon/folder_icon.svg';
+import Navbar from '../Navbar';
+import Axios from '../../../../utils/axios';
+import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
+import check from '../../../../assets/icon/checked.svg';
+import { Spin } from 'antd';
 
 function Fayli() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-  const userID = JSON.parse(localStorage.getItem("userId"));
+  const userID = JSON.parse(localStorage.getItem('userId'));
   console.log(userID);
   console.log(userID);
   const [data, setData] = useState({
-    scan_passport_self: "",
-    scan_diplom: "",
-    photo: "",
-    mather_passport: "",
-    married: "",
-    birth: "",
-    med063: "",
-    med086: "",
-    drink: "",
+    scan_passport_self: '',
+    scan_diplom: '',
+    photo: '',
+    mather_passport: '',
+    married: '',
+    birth: '',
+    med063: '',
+    med086: '',
+    drink: '',
   });
   const [doc, setDoc] = useState();
-  const files = JSON.parse(localStorage.getItem("files"));
+  const files = JSON.parse(localStorage.getItem('files'));
   console.log(files);
   const handleInputChange = (e) => {
     console.log(e);
@@ -54,38 +54,38 @@ function Fayli() {
     for (let x in files) {
       formData.append(x, files[x]);
     }
-    formData.append("scan_passport_self", inputEl1.current.files[0]);
-    formData.append("scan_diploma", inputEl2.current.files[0]);
-    formData.append("scan_photo", inputEl3.current.files[0]);
+    formData.append('scan_passport_self', inputEl1.current.files[0]);
+    formData.append('scan_diploma', inputEl2.current.files[0]);
+    formData.append('scan_photo', inputEl3.current.files[0]);
     formData.append(
-      "scan_passport_mother_with_residence_permit	",
+      'scan_passport_mother_with_residence_permit	',
       inputEl4.current.files[0]
     );
-    formData.append("cert_marriage", inputEl5.current.files[0]);
-    formData.append("cert_birth", inputEl6.current.files[0]);
-    formData.append("cert_063", inputEl7.current.files[0]);
-    formData.append("cert_086", inputEl8.current.files[0]);
-    formData.append("cert_hivs", inputEl9.current.files[0]);
+    formData.append('cert_marriage', inputEl5.current.files[0]);
+    formData.append('cert_birth', inputEl6.current.files[0]);
+    formData.append('cert_063', inputEl7.current.files[0]);
+    formData.append('cert_086', inputEl8.current.files[0]);
+    formData.append('cert_hivs', inputEl9.current.files[0]);
 
     try {
       const data = await Axios.post(`/enrollee/enrollee-profile/`, formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
         },
       });
       console.log(data);
       const { status } = data;
       if (status === 201) {
         Swal.fire({
-          icon: "success",
-          text: "Файлы загружены успешно",
-        }).then(() => history.push("/payment-transaction"));
+          icon: 'success',
+          text: 'Файлы загружены успешно',
+        }).then(() => history.push('/payment-transaction'));
       }
       setLoading(false);
     } catch (error) {
       Swal.fire({
-        icon: "error",
-        text: "Что-то пошло не так, пожалуйста, повторно загрузите файлы",
+        icon: 'error',
+        text: 'Что-то пошло не так, пожалуйста, повторно загрузите файлы',
       });
       console.log(error);
       setLoading(false);
@@ -173,9 +173,10 @@ function Fayli() {
               </p>
             </div>
             <p className="checkIcon">
-              {data.scan_passport_self ? <img src={check} alt="success" /> : ""}
+              {data.scan_passport_self ? <img src={check} alt="success" /> : ''}
             </p>
           </div>
+
           <div className="form_div">
             <p>Сканер диплом или аттестат с приложением</p>
             <div className="importFile">
@@ -193,7 +194,7 @@ function Fayli() {
               </p>
             </div>
             <p className="checkIcon">
-              {data.scan_diplom ? <img src={check} alt="success" /> : ""}
+              {data.scan_diplom ? <img src={check} alt="success" /> : ''}
             </p>
           </div>
           <div className="form_div">
@@ -213,7 +214,7 @@ function Fayli() {
               </p>
             </div>
             <p className="checkIcon">
-              {data.photo ? <img src={check} alt="success" /> : ""}
+              {data.photo ? <img src={check} alt="success" /> : ''}
             </p>
           </div>
           <div className="form_div">
@@ -233,7 +234,7 @@ function Fayli() {
               </p>
             </div>
             <p className="checkIcon">
-              {data.mather_passport ? <img src={check} alt="success" /> : ""}
+              {data.mather_passport ? <img src={check} alt="success" /> : ''}
             </p>
           </div>
           <div className="form_div">
@@ -253,7 +254,7 @@ function Fayli() {
               </p>
             </div>
             <p className="checkIcon">
-              {data.married ? <img src={check} alt="success" /> : ""}
+              {data.married ? <img src={check} alt="success" /> : ''}
             </p>
           </div>
           <div className="form_div">
@@ -273,7 +274,7 @@ function Fayli() {
               </p>
             </div>
             <p className="checkIcon">
-              {data.birth ? <img src={check} alt="success" /> : ""}
+              {data.birth ? <img src={check} alt="success" /> : ''}
             </p>
           </div>
           <div className="form_div">
@@ -293,7 +294,7 @@ function Fayli() {
               </p>
             </div>
             <p className="checkIcon">
-              {data.med063 ? <img src={check} alt="success" /> : ""}
+              {data.med063 ? <img src={check} alt="success" /> : ''}
             </p>
           </div>
           <div className="form_div">
@@ -313,7 +314,7 @@ function Fayli() {
               </p>
             </div>
             <p className="checkIcon">
-              {data.med086 ? <img src={check} alt="success" /> : ""}
+              {data.med086 ? <img src={check} alt="success" /> : ''}
             </p>
           </div>
           <div className="form_div">
@@ -333,13 +334,13 @@ function Fayli() {
               </p>
             </div>
             <p className="checkIcon">
-              {data.drink ? <img src={check} alt="success" /> : ""}
+              {data.drink ? <img src={check} alt="success" /> : ''}
             </p>
           </div>
           <div className="btn_div">
             <button
               style={
-                loading ? { background: "#8cb4c5" } : { background: "#00587F" }
+                loading ? { background: '#8cb4c5' } : { background: '#00587F' }
               }
               className="reg_btn"
             >
@@ -348,7 +349,7 @@ function Fayli() {
                   <Spin size="middle" spinning={loading} />
                 </>
               ) : (
-                "Завершить"
+                'Завершить'
               )}
             </button>
           </div>

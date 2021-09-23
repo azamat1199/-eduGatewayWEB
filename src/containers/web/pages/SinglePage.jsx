@@ -25,7 +25,7 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 const dataT = require("../json/data_univer.json")
 
 function SinglePage (props){
-	const selector = useSelector(state=> state)
+	const selector = useSelector(state => state)
 	console.log(selector);
 	// const {payload} = selector.payload
 	// const {id} = payload.data
@@ -48,10 +48,24 @@ function SinglePage (props){
 		rating:'',
 		rating_source:'',
 		education_quality:[],
-		living_price:''
+		bachelor_degree_fee_per_annum:"",
+		masters_degree_fee_per_annum:"",
+		living_price_per_annum:'',
+		faculties:[],
+		images:[]
 	})
 
-	const {name,city,rating,living_price} = univer
+
+
+	const { 
+		name,city,rating,living_price_per_annum,images,
+		location,description,faculties,masters_degree_fee_per_annum,
+		bachelor_degree_fee_per_annum
+	} = univer
+
+	const lat = location.split(",")[0]
+	const lng = location.split(",")[1]
+
 	props = {
 		center: {
 			lat: 45.46016,
@@ -59,13 +73,14 @@ function SinglePage (props){
 		},
 		zoom: 11
 	};
+	// console.log(lat.toString())
 
 	const fetchUniversityById = async() =>{
 		try {
 			const {data} =  await Axios.get(`/university/university/${params.id}`)
 			localStorage.setItem('univerId',params.id)
 			setUniver(data)
-			console.log(data);
+			// console.log(data);
 		} catch (error) {
 			console.log(error);
 		}
@@ -92,6 +107,7 @@ function SinglePage (props){
 				<div className="single_page">
 					<div className="sp_up">
 						<div className="sp_img">
+							{/* <img src={images[0].image} alt="" height="700px" width="100%"/> */}
 							<img src={Universitet_pic} alt="" width="100%"/>
 						</div>
 						<div className="sp_title">
@@ -100,10 +116,10 @@ function SinglePage (props){
 						</div>
 					</div>
 					<div className="sp_navbar">
-						<a href="#">Описание</a>
-						<a href="#">Локация</a>
-						<a href="#">Поступление</a>
-						<a href="#">Галерея</a>
+						<a href="#opisaniya">Описание</a>
+						<a href="#lokatsya">Локация</a>
+						<a href="#postupleniya">Поступление</a>
+						<a href="#galereya">Галерея</a>
 					</div>
 					<div className="sp_main">
 						<div className="sp_main1 sp1">
@@ -124,25 +140,27 @@ function SinglePage (props){
 										</tr>
 										<tr>
 											<td>Бакалавриат</td>
-											<td>$2,875/год</td>
+											<td>${bachelor_degree_fee_per_annum}/год</td>
 										</tr>
 										<tr>
 											<td>Магистратура</td>
-											<td>$2,875/год</td>
+											<td>${masters_degree_fee_per_annum}/год</td>
 										</tr>
 										<tr>
 											<td>Цена прожив -ния</td>
-											<td>{living_price}</td>
+											<td>${living_price_per_annum}/год</td>
 										</tr>
 									</table>
 								</div>
-								<div className="sp_map">
+								<div className="sp_map" id="lokatsya">
 								<GoogleMapReact
 									// bootstrapURLKeys={{ key: "AIzaSyCIuhJElVEhGVPYptJbkrWxEy4lKzEoOA8" }}
 									defaultCenter={props.center}
 									defaultZoom={props.zoom}
 								>
 									<AnyReactComponent
+										// lat={45.46016}
+										// lng={9.19457}
 										lat={45.46016}
 										lng={9.19457}
 										text=""
@@ -150,13 +168,9 @@ function SinglePage (props){
 								</GoogleMapReact>
 								</div>
 							</div>
-							<div className="sp_main1_right">
+							<div className="sp_main1_right" id="opisaniya">
 								<h1>
-									<span>Миланский университет или University of Milan (UNIMI) -</span> государственное высшее учебное заведение в Италии. Начало академической деятельности UNIMI было положено в 1924 году. Главное здание университета расположено в Милано на территории кампуса городского типа.
-								</h1><br />
-								<h1>
-									Рейтинг университета. University of Milan считается одним из самых престижных учебных заведений Италии и входит в пятёрку лучших вузов страны. Университет входит в 5% лучших высших учебных заведений мира, занимая 223 позицию. Сильными направлениями университета являются: «Искусство и Гуманитарные науки», «Инженерное дело и технологии», «Науки о жизни и медицина», «Естественные науки», «Социальные науки и менеджмент», «Математика», «Экономика и бизнес». Учебное заведение признаётся одним из самых лучших вузов по качеству образования и входит в топ 200 в мировом рейтинге по данному критерию. Миланский университет считается одним из наиболее уважаемых учебных заведений среди работодателей в Италии и по всему миру.
-									Миланский университет считается одним из наиболее уважаемых учебных заведений среди работодателей в Италии и по всему миру.
+								{description}
 								</h1>
 							</div>
 						</div>
@@ -195,12 +209,11 @@ function SinglePage (props){
 							<div className="sp_main2_right">
 								<h1>Факультеты</h1>
 								<ul>
-									<li>Факультет Науки</li>
-									<li>Факультет Информационных Технологий</li>
-									<li>Факультет Науки</li>
-									<li>Факультет Информационных Технологий</li>
-									<li>Факультет Науки</li>
-									<li>Факультет Информационных Технологий</li>
+									{faculties.map((f)=>{
+										return(
+											<li>{f.name}</li>
+										)
+									})}
 								</ul>
 							</div>
 						</div>
@@ -226,7 +239,7 @@ function SinglePage (props){
 								</AreaChart>
 							</ResponsiveContainer>
 							</div>
-							<div className="sp_main2_right">
+							<div className="sp_main2_right" id="postupleniya">
 								<h1>Процесс поступления</h1>
 								<h2>
 									Полное курирование поступления — от 789 USD
@@ -288,7 +301,7 @@ function SinglePage (props){
 							</div>
 						</div>
 					
-						<div className="sp_swiper">
+						<div className="sp_swiper" id="galereya">
 						<Swiper
 							slidesPerView={3.5}
 							spaceBetween={30}
@@ -327,7 +340,7 @@ function SinglePage (props){
 							 }}
 							className="mySwiper"
 						>
-							<SwiperSlide><img src={img1} alt="" /></SwiperSlide>
+							{/* <SwiperSlide><img src={img1} alt="" /></SwiperSlide>
 							<SwiperSlide><img src={img2} alt="" /></SwiperSlide>
 							<SwiperSlide><img src={img3} alt="" /></SwiperSlide>
 							<SwiperSlide><img src={img2} alt="" /></SwiperSlide>
@@ -337,7 +350,12 @@ function SinglePage (props){
 							<SwiperSlide><img src={img2} alt="" /></SwiperSlide>
 							<SwiperSlide><img src={img3} alt="" /></SwiperSlide>
 							<SwiperSlide><img src={img1} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img2} alt="" /></SwiperSlide>
+							<SwiperSlide><img src={img2} alt="" /></SwiperSlide> */}
+							{images.map((i)=>{
+								return(
+									<SwiperSlide><img src={i.image} alt="" width="400px" /></SwiperSlide>
+								)
+							})}
 						</Swiper>
 						</div>
 					</div>

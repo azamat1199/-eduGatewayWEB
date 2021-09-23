@@ -1,12 +1,12 @@
 import React from 'react';
-import { Switch,Route,Redirect} from "react-router-dom";
-import {useSelector} from 'react-redux'
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import routes from './routes/routes';
-import  "./style/css/sidebarCabinet.css" 
-import "./style/css/sidebar.css"
+import './style/css/sidebarCabinet.css';
+import './style/css/sidebar.css';
 import MainEduGate from './containers/web/pages/MainEduGate';
-import Home from './containers/consultantBackoffice/univerBackoffice/pages/home'
+import Home from './containers/consultantBackoffice/univerBackoffice/pages/home';
 
 function App() {
   // const selector = useSelector(state=>state)
@@ -15,12 +15,10 @@ function App() {
   // const {user} = selector.user;
    return (  
      <div className="container">
-      <Switch>
-            {routes.public.map(item=>{
-              return(
-                <Route {...item}/>
-              ) 
-            })}
+<Switch>
+        {routes.public.map((item) => {
+          return <Route {...item} />;
+        })}
       </Switch>
       <div className="asos_u">
           <Switch>
@@ -55,6 +53,6 @@ function App() {
   </div>
 
  )
-  }
+}
 
 export default App;
