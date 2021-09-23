@@ -34,7 +34,6 @@ const MainEduGate = () => {
   const selector = useSelector((state) => state);
   const [userId, setUserId] = useState();
   console.log(selector);
-
   const history = useHistory();
   const [change1, setChange1] = useState('');
   const [change2, setChange2] = useState('');
@@ -77,6 +76,11 @@ const MainEduGate = () => {
 		} catch (error) {
       console.log(error);
     }
+  }
+  const handler = (univerId) => {
+    console.log(univerId);
+    setFavourite(univerId).then(() => history.push(`/university/${univerId}`));
+  };
     const checkValidty = () =>{
       if(selector.payload.payload){
         const {payload} = selector?.payload
@@ -493,6 +497,5 @@ const MainEduGate = () => {
     </>
   );
 };
-}
 
 export default MainEduGate

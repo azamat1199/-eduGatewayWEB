@@ -7,7 +7,7 @@ import './style/css/sidebarCabinet.css';
 import './style/css/sidebar.css';
 import MainEduGate from './containers/web/pages/MainEduGate';
 import Home from './containers/consultantBackoffice/univerBackoffice/pages/home';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const selector = useSelector(state=>state)

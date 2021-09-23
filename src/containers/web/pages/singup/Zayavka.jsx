@@ -87,14 +87,15 @@ function Zayavka() {
     setValue(newValue);
   };
   const handleUniver = (event, newValue) => {
+    console.log(newValue)
     const { id } = newValue;
     setUniversity(id);
   };
-  const enrollee_user = JSON.parse(localStorage.getItem('data')).id;
-  console.log(enrollee_user);
+  // const enrollee_user = JSON.parse(localStorage.getItem('data')).id;
+  // console.log(enrollee_user);
   const finalData = {
-    enrollee_user,
-    faculty: parseInt(faculty),
+    enrollee_user:1,
+    faculty: 1,
     budget: 3000,
     comment,
   };
