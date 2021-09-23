@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 .single_page{
 	display: flex;
 	flex-direction: column;
@@ -63,6 +66,9 @@
 		grid-template-columns: 1fr 2fr;
 		margin: 25px 0;
 		column-gap: 30px;
+	}
+	.sp4{
+		grid-template-columns: 1fr;
 	}
 	.sp_main_left{
 		display: flex;

@@ -82,7 +82,6 @@ console.log(dataGo);
   return (
     <div className="Login">
       <div className="background_login"></div>
-
             <div className="background_login"></div>
             
             <div className="container">
@@ -98,14 +97,14 @@ console.log(dataGo);
                             <label><input type="radio" name="role" value="enrollee"  />Абитуриент</label>
                             <label><input type="radio" name="role" value="partner"  />Партнер</label>
                             <label><input type="radio" name="role" value="university"  />Университет</label>
-                            <label><input type="radio" name="role" value="companyuser" />Админ</label>
+                            <label><input type="radio" name="role" value="company" />Админ</label>
                         </div>
                         {/* Login kiritish */}
                         <div className="loginInput">
                             <p>Логин</p>
                          
                             <div>
-                                <input  onChange={handleChange}  type="phone" name="phone"  placeholder='998 90 123 45 67' required/>
+                                <input  onChange={handleChange}  type="phone" name="phone"  placeholder='' required/>
                             </div>
                         </div>
                         {/* Parol kiritish */}
@@ -118,48 +117,13 @@ console.log(dataGo);
                         </div>
                         {/* eslab qolish */}
                         <div className="loginRemberMe">
-                            <label className='custom-checkbox'/>
+                            <label className='custom-checkbox'>
                                 <input  type="checkbox" name="rememberMe" value="rememberMe"/>
                                 <span></span>
                                 <p>
                                     Запомнить меня
                                 </p>
-
-              <div>
-                <input
-                  onChange={handleChange}
-                  type="phone"
-                  name="phone"
-                  placeholder="998 90 123 45 67"
-                  required
-                />
-              </div>
-            </div>
-            {/* Parol kiritish */}
-            <div className="loginInput">
-              <p>пароль</p>
-              <div>
-                <input
-                  onChange={(e) => handleValue(e)}
-                  name="password"
-                  type={wiew === false ? 'password' : 'text'}
-                  required
-                />
-                <img
-                  src={eye_login}
-                  alt=""
-                  onClick={() => {
-                    setWiew(!wiew);
-                  }}
-                />
-              </div>
-            </div>
-            {/* eslab qolish */}
-            <div className="loginRemberMe">
-              <label className="custom-checkbox">
-                <input type="checkbox" name="rememberMe" value="rememberMe" />
-                <span></span>
-                <p>Запомнить меня</p>
+              
               </label>
               <p>
                 Забыли пароль? <Link to="/loginStaff">Восстановить</Link>

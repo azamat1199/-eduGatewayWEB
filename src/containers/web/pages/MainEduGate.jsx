@@ -325,10 +325,7 @@ const MainEduGate = () => {
               } = item;
               return (
                 <div onClick={() => handler(id)} className="card">
-                  <img
-                    src="https://universegroup.uz/wp-content/uploads/2020/02/harvard.jpg"
-                    alt=""
-                  />
+                  <img src={item.images[0].image.toString()} alt="" />
                   <svg
                     width="20"
                     height="20"
@@ -347,7 +344,14 @@ const MainEduGate = () => {
                     />
                   </svg>
                   <h1>{name}</h1>
-                  <p>{description}</p>
+                  {
+                    description.length > 100 ?
+                        <p>{description.substring(0, 100)}...</p>
+                      :
+                        <p>{description}</p>
+                  }
+
+
                   <h2>
                     Рейтинг:{' '}
                     <span>

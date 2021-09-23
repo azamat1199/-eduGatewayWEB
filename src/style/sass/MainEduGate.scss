@@ -23,7 +23,7 @@
 		background-size: cover;
 		background-position: bottom;
 		padding-top: 170px;
-		padding:170px 40px 140px 40px;
+		padding:170px 40px 0 40px;
 		h2{
 			@include textheader();
 			font-weight: bold;
@@ -130,7 +130,7 @@
 	} // end header
 
 	.resultBlock{
-		padding: 70px 40px 28px 40px;
+		padding: 70px 30px 28px 30px;
 		h5{
 			@include textheader();
 			font-size: 25px;
@@ -140,7 +140,7 @@
 		.result{
 			display: flex;
 			align-items: flex-start;
-			justify-content: space-between;
+			justify-content: flex-start;
 			flex-wrap: wrap;
 			.card{
 				padding-bottom: 36px;
@@ -149,6 +149,9 @@
 				background: #E2F1F8;
 				border-radius: 12px;
 				margin-bottom: 40px;
+				box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
+				margin: 15px;
+				cursor: pointer;
 
 				img{
 					width: 426px;
@@ -177,6 +180,7 @@
 					color: #000;
 					margin: 0;
 					padding: 0 20px;
+					height: 150px;
 				}
 				h2{
 					@include textheader();
@@ -525,6 +529,13 @@
 	}
 }
 
+
+// 1600
+@media (max-width:1600px) {
+	.mainEduGate .header{
+
+	}
+}
 
 // 1440
 @media (max-width:1440px) {
