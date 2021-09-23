@@ -94,7 +94,7 @@ console.log(dataGo);
                             <p>Логин</p>
                          
                             <div>
-                                <input  onChange={handleChange}  type="phone" name="phone"  placeholder='998 90 123 45 67' required/>
+                                <input  onChange={handleChange}  type="phone" name="phone"  placeholder='' required/>
                             </div>
                         </div>
                         {/* Parol kiritish */}

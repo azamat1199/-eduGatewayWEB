@@ -14,7 +14,7 @@ function App() {
   // const {access} = selector.user;
   // const {user} = selector.user;
    return (  
-     <>
+     <div className="container">
       <Switch>
             {routes.public.map(item=>{
               return(
@@ -22,37 +22,37 @@ function App() {
               ) 
             })}
       </Switch>
-       <div className="asos_u">
-                 <Switch>
-                   {routes.univerOffice.map(item=>{
-                     return(
-                       <Route {...item}/>
-                     )
-                   })}
-                 </Switch>
+      <div className="asos_u">
+          <Switch>
+            {routes.univerOffice.map(item=>{
+              return(
+                <Route {...item}/>
+              )
+            })}
+          </Switch>
         </div>
-        <div className="switchs">
-  <Switch>
-  {routes.consult.map(item=>{
-  return(
-  <Route {...item}/>
-  )
-})}
-</Switch>
-</div>
-  <div className="kabinet">
-  <Switch>
-    {
-      routes.student.map(item=>{
+      <div className="switchs">
+      <Switch>
+        {routes.consult.map(item=>{
         return(
-          <Route {...item}/>
-        )
-      })
-    }
-  
-  </Switch>
-</div>
-  </>
+        <Route {...item}/>
+          )
+        })}
+    </Switch>
+    </div>
+      <div className="kabinet">
+      <Switch>
+        {
+          routes.student.map(item=>{
+            return(
+              <Route {...item}/>
+            )
+          })
+        }
+      
+      </Switch>
+    </div>
+  </div>
 
  )
   }
