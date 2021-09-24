@@ -43,7 +43,7 @@ const Fakultet = () => {
   };
   const submitFaculty = async (e) => {
     try {
-      const res = await Axios.post('/', {
+      const res = await Axios.post('/university/university-faculty/', {
         name: name,
         universtitetName: universtitetName,
         kvota: kvota,

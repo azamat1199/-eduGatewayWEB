@@ -48,9 +48,12 @@ const Document = () => {
   const fethcStudents = async () => {
     try {
       const res = await Axios.get('/enrollee/enrollee-user');
-      console.log(res);
+
       const { status, data } = res;
       const { results } = data;
+      // console.log(results[0].id);
+      // console.log(results);
+
       if (status === 200) {
         setStudents(results);
       }
@@ -58,18 +61,14 @@ const Document = () => {
       console.log(error.response);
     }
   };
+
   const handleOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
-  const handleOpen_change = () => {
-    setOpen_change(true);
-  };
-  const handleClose_change = () => {
-    setOpen_change(false);
-  };
+
   useEffect(() => {
     fethcStudents();
   }, []);
@@ -157,7 +156,13 @@ const Document = () => {
               </thead>
               <tbody>
                 {students.reverse().map((item, i) => {
-                  const { id, first_name, last_name, phone_number } = item;
+                  const {
+                    id,
+                    first_name,
+                    last_name,
+                    phone_number,
+                    documents_filled,
+                  } = item;
                   return (
                     <tr
                       key={id}
@@ -169,7 +174,9 @@ const Document = () => {
                         {first_name} - {last_name}
                       </td>
                       <td>8</td>
-                      <td style={{ color: 'red' }}>Не потверждён</td>
+                      {(documents_filled && (
+                        <td style={{ color: '#37ed52' }}> потверждён</td>
+                      )) || <td style={{ color: 'red' }}>Не потверждён</td>}
                     </tr>
                   );
                 })}

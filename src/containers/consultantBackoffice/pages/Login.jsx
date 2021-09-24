@@ -47,19 +47,20 @@ function Login() {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await Axios.post('/common/token/obtain', dataGo);
-      console.log(data);
-      const { access, refresh, role, enrollee } = data;
-
-      dispatch(signUpAction({ access, refresh, role, data: enrollee }));
-      if (role.startsWith('u')) {
-        history.push('/univer-backoffice-page');
-      } else if (role.startsWith('e')) {
-        history.push('/my-account');
-      } else if (role === 'admin') {
-        history.push('/home/main');
-      } else {
-        history.push('/');
+      const res = await Axios.post('/common/token/obtain', dataGo);
+      const { status } = res;
+      if (status === 200) {
+        const { access, refresh, role, data } = res.data;
+        dispatch(signUpAction({ access, refresh, role, data: data }));
+        if (role.startsWith('u')) {
+          history.push('/univer-backoffice-page');
+        } else if (role.startsWith('e')) {
+          history.push('/my-account');
+        } else if (role === 'company') {
+          history.push('/home/main');
+        } else {
+          history.push('/');
+        }
       }
 
       //    console.log(data);
@@ -101,7 +102,7 @@ function Login() {
                 Университет
               </label>
               <label>
-                <input type="radio" name="role" value="admin" />
+                <input type="radio" name="role" value="companyuser" />
                 Админ
               </label>
             </div>

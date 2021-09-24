@@ -91,7 +91,7 @@ const MainEduGate = () => {
       const { payload } = selector?.payload;
       const { id } = payload?.data;
       setUserId(id);
-      console.log(id);
+      // console.log(id);
     }
   }, []);
   console.log(universities);
@@ -323,11 +323,15 @@ const MainEduGate = () => {
                 rating,
                 living_price,
                 city,
+                images,
               } = item;
+              console.log(images);
               return (
                 <div onClick={() => handler(id)} className="card">
                   <img
-                    src="https://universegroup.uz/wp-content/uploads/2020/02/harvard.jpg"
+                    src={
+                      'https://universegroup.uz/wp-content/uploads/2020/02/harvard.jpg'
+                    }
                     alt=""
                   />
                   <svg

@@ -33,24 +33,13 @@ import { Pagination } from '@material-ui/lab';
 const Document = () => {
   const history = useHistory();
   const [students, setStudents] = useState([]);
-  const [studentGetById, setStudentGetById] = useState({});
-  const [studentPostById, setStudentPostById] = useState({});
   const [open, setOpen] = React.useState(false);
-  const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [middleName, setMiddleName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [universtitetName, setUniverstitetName] = useState('');
-  const [nameFaculties, setNameFaculties] = useState('');
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
-  const [file, setFile] = useState('');
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const [dataUser, setDataUser] = useState();
   // modal
   const [open_change, setOpen_change] = React.useState(false);
   const [fixEnd, setFix] = useState(false);
-  const id = useSelector((state) => state);
+  const id = JSON.parse(localStorage.getItem('docId'));
+  console.log(id);
   const handleInputChange = (e) => {
     console.log(e);
     const { name, files } = e.target;
@@ -61,29 +50,28 @@ const Document = () => {
       console.log(res);
       const { status, data } = res;
       const { results } = data;
+
       if (status === 200) {
         setStudents(results);
+        {
+          results.map((v, i) => {
+            if (v.enrollee_user == id) {
+              setDataUser(v);
+              // console.log(v);
+              return v;
+            }
+          });
+        }
       }
     } catch (error) {
       console.log(error.response);
     }
   };
-  const handleOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const handleOpen_change = () => {
-    setOpen_change(true);
-  };
-  const handleClose_change = () => {
-    setOpen_change(false);
-  };
+
   useEffect(() => {
     fethcStudents();
   }, []);
-
+  console.log(dataUser);
   // modal
   return (
     <Sidebar>
@@ -118,7 +106,9 @@ const Document = () => {
                   {' '}
                   <img src={pdf} alt="" />
                   Паспорт
-                  <img src={download} alt="" />
+                  <a href={`${dataUser?.scan_passport_self}`} target="_blank">
+                    <img src={download} alt="" />
+                  </a>
                 </div>
               </div>
               <div className="col-5 mt-4">
@@ -131,6 +121,7 @@ const Document = () => {
                   </button>
                 </div>
               </div>
+
               <div className="col-5 mt-4">
                 <div
                   className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
@@ -138,8 +129,10 @@ const Document = () => {
                 >
                   {' '}
                   <img src={pdf} alt="" />
-                  Паспорт
-                  <img src={download} alt="" />
+                  Диплом/Аттестат
+                  <a href={`${dataUser?.scan_diploma}`} target="_blank">
+                    <img src={download} alt="" />
+                  </a>
                 </div>
               </div>
               <div className="col-5 mt-4">
@@ -152,6 +145,7 @@ const Document = () => {
                   </button>
                 </div>
               </div>
+
               <div className="col-5 mt-4">
                 <div
                   className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
@@ -159,8 +153,10 @@ const Document = () => {
                 >
                   {' '}
                   <img src={pdf} alt="" />
-                  Паспорт
-                  <img src={download} alt="" />
+                  Свидет. о рождении
+                  <a href={`${dataUser?.cert_birth}`} target="_blank">
+                    <img src={download} alt="" />
+                  </a>
                 </div>
               </div>
               <div className="col-5 mt-4">
@@ -173,6 +169,7 @@ const Document = () => {
                   </button>
                 </div>
               </div>
+
               <div className="col-5 mt-4">
                 <div
                   className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
@@ -180,8 +177,10 @@ const Document = () => {
                 >
                   {' '}
                   <img src={pdf} alt="" />
-                  Паспорт
-                  <img src={download} alt="" />
+                  3х4 фото 8шт.
+                  <a href={`${dataUser?.scan_photo}`} target="_blank">
+                    <img src={download} alt="" />
+                  </a>
                 </div>
               </div>
               <div className="col-5 mt-4">
@@ -194,6 +193,7 @@ const Document = () => {
                   </button>
                 </div>
               </div>
+
               <div className="col-5 mt-4">
                 <div
                   className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
@@ -201,8 +201,13 @@ const Document = () => {
                 >
                   {' '}
                   <img src={pdf} alt="" />
-                  Паспорт
-                  <img src={download} alt="" />
+                  Паспорт матери
+                  <a
+                    href={`${dataUser?.scan_passport_mother_with_residence_permit}`}
+                    target="_blank"
+                  >
+                    <img src={download} alt="" />
+                  </a>
                 </div>
               </div>
               <div className="col-5 mt-4">
@@ -215,6 +220,7 @@ const Document = () => {
                   </button>
                 </div>
               </div>
+
               <div className="col-5 mt-4">
                 <div
                   className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
@@ -222,8 +228,106 @@ const Document = () => {
                 >
                   {' '}
                   <img src={pdf} alt="" />
-                  Паспорт
-                  <img src={download} alt="" />
+                  Свид. о браке
+                  <a href={`${dataUser?.cert_marriage}`} target="_blank">
+                    <img src={download} alt="" />
+                  </a>
+                </div>
+              </div>
+              <div className="col-5 mt-4">
+                <div className="w-100 fw-bold fs-5  rounded d-flex justify-content-between   p-3">
+                  <button className="btn btn-outline-success fw-bold">
+                    Передать нотариусу
+                  </button>
+                  <button className="btn btn-outline-success fw-bold">
+                    Потвердить оригинал
+                  </button>
+                </div>
+              </div>
+
+              <div className="col-5 mt-4">
+                <div
+                  className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
+                  style={{ backgroundColor: '#EAF5FA' }}
+                >
+                  {' '}
+                  <img src={pdf} alt="" />
+                  Договор с компанией
+                  <a href={`${dataUser?.cert_063}`} target="_blank">
+                    <img src={download} alt="" />
+                  </a>
+                </div>
+              </div>
+              <div className="col-5 mt-4">
+                <div className="w-100 fw-bold fs-5  rounded d-flex justify-content-between   p-3">
+                  <button className="btn btn-outline-success fw-bold">
+                    Передать нотариусу
+                  </button>
+                  <button className="btn btn-outline-success fw-bold">
+                    Потвердить оригинал
+                  </button>
+                </div>
+              </div>
+
+              <div className="col-5 mt-4">
+                <div
+                  className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
+                  style={{ backgroundColor: '#EAF5FA' }}
+                >
+                  {' '}
+                  <img src={pdf} alt="" />
+                  063 мед. справка
+                  <a href={`${dataUser?.cert_063}`} target="_blank">
+                    <img src={download} alt="" />
+                  </a>
+                </div>
+              </div>
+              <div className="col-5 mt-4">
+                <div className="w-100 fw-bold fs-5  rounded d-flex justify-content-between   p-3">
+                  <button className="btn btn-outline-success fw-bold">
+                    Передать нотариусу
+                  </button>
+                  <button className="btn btn-outline-success fw-bold">
+                    Потвердить оригинал
+                  </button>
+                </div>
+              </div>
+
+              <div className="col-5 mt-4">
+                <div
+                  className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
+                  style={{ backgroundColor: '#EAF5FA' }}
+                >
+                  {' '}
+                  <img src={pdf} alt="" />
+                  086 мед. справка
+                  <a href={`${dataUser?.cert_086}`} target="_blank">
+                    <img src={download} alt="" />
+                  </a>
+                </div>
+              </div>
+              <div className="col-5 mt-4">
+                <div className="w-100 fw-bold fs-5  rounded d-flex justify-content-between   p-3">
+                  <button className="btn btn-outline-success fw-bold">
+                    Передать нотариусу
+                  </button>
+                  <button className="btn btn-outline-success fw-bold">
+                    Потвердить оригинал
+                  </button>
+                </div>
+              </div>
+
+              <div className="col-5 mt-4">
+                <div
+                  className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
+                  style={{ backgroundColor: '#EAF5FA' }}
+                >
+                  {' '}
+                  <img src={pdf} alt="" />
+                  Справка о ВИЧ
+                  <a href={`${dataUser?.cert_hivs}`} target="_blank">
+                    <img src={download} alt="" />
+                  </a>
                 </div>
               </div>
               <div className="col-5 mt-4">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -32,19 +32,33 @@ const SidebarUniverstitet = () => {
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
   const [founding_year, setFoundingYear] = useState();
-  const [file, setFile] = useState('');
+  const inputEl1 = useRef(null);
   const [univerData, setUniverData] = useState({});
+  // const [file, setFile] = useState();
   const [open_change, setOpen_change] = React.useState(false);
+  const [contry, setContry] = useState([]);
   const [id, setId] = useState();
-  console.log(founding_year);
+  const [data, setData] = useState();
   const fetchData = async () => {
     const data = await Axios.get('university/university/');
     setUniverData(data);
     return data;
   };
+
+  const getContry = async () => {
+    try {
+      const res = await Axios.get('common/country/');
+      const { results } = res.data;
+      // console.log(results);
+      setContry(results);
+      return res;
+    } catch (error) {}
+  };
   useEffect(() => {
     fetchData();
+    getContry();
   }, []);
+  // console.log(contry);
   const handleOpen_change = () => {
     setOpen_change(true);
   };
@@ -58,27 +72,39 @@ const SidebarUniverstitet = () => {
   const handleClose = () => {
     setOpen(false);
   };
-
+  const handleInputChange = (e) => {
+    // console.log(e);
+    const { name, value } = e.target;
+    setData((state) => ({ ...state, [name]: value }));
+  };
+  const handleFileChange = (e) => {
+    const { name, files } = e.target;
+    setData((state) => ({ ...state, [name]: files[0] }));
+    console.log(data);
+  };
+  // console.log(data);
+  const formData = new FormData();
+  formData.append('name', data?.name);
+  formData.append('description', data?.description);
+  formData.append('city', 1);
+  formData.append('location', data?.location);
+  formData.append('rating', 5);
+  formData.append('rating_source', data?.name);
+  formData.append('education_quality', 5);
+  formData.append('education_fee_per_annum', 6000);
+  formData.append('bachelor_degree_fee_per_annum', 6000);
+  formData.append('masters_degree_fee_per_annum', 6000);
+  formData.append('living_price_per_annum', 6000);
+  formData.append('application_status', true);
+  formData.append('faculties', true);
+  formData.append('images', inputEl1?.current?.files[0]);
   const submitUniverstet = async (e) => {
     e.preventDefault();
     try {
-      const res = await Axios.post('/university/university/', {
-        name: name,
-        location: location,
-        description: description,
-        founding_year: parseInt(founding_year.getFullYear()),
-        city: 1,
-        city_id: 8,
-        motto: 'every thing is possible',
-        rating: 5,
-        rating_source: 5,
-        living_price: 189600,
-        file: file,
-        education_quality: 4,
-        education_fee_per_annum: 6000,
-        living_price_per_annum: 6000,
-        bachelor_degree_fee_per_annum: 6000,
-        masters_degree_fee_per_annum: 6000,
+      const res = await Axios.post('/university/university/', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
 
       if (res.status == 200) {
@@ -102,8 +128,7 @@ const SidebarUniverstitet = () => {
   const edit = async (id) => {
     handleOpen_change();
     try {
-      const res = await Axios.get(`university/university/${id + 1}`);
-      console.log(res);
+      const res = await Axios.get(`university/university/${id}`);
       const { name, location, description, founding_year } = res.data;
       setId(id + 1);
       setName(name);
@@ -117,22 +142,17 @@ const SidebarUniverstitet = () => {
           text: 'Server Errror',
           showCancelButton: true,
         });
-      console.log(error);
+      // console.log(error);
     }
   };
-  const setEdit = async (i) => {
+  const setEdit = async (id) => {
     try {
-      const res = await Axios.patch(`/university/university/1`, {
-        name: name,
-        location: location,
-        description: description,
-        founding_year: parseInt(founding_year.getFullYear()),
-      });
+      const res = await Axios.patch(`/university/university/${id}`, formData);
     } catch (error) {}
     handleClose_change();
     fetchData();
   };
-
+  console.log(inputEl1?.current?.files[0]);
   return (
     <Sidebar>
       <div className="asos">
@@ -176,7 +196,7 @@ const SidebarUniverstitet = () => {
                 </tr>
               </thead>
               <tbody>
-                {univerData?.data?.results?.map((v, i) => {
+                {univerData?.data?.results?.reverse().map((v, i) => {
                   return (
                     <tr key={v.name}>
                       <td className="px-3">{v.id}</td>
@@ -188,7 +208,7 @@ const SidebarUniverstitet = () => {
                         <img src={info_icon} alt="" className="me-5" />
                         <img
                           src={pencil}
-                          onClick={(e) => edit(i)}
+                          onClick={(e) => edit(v.id)}
                           alt=""
                           width="28"
                           className="ms-5"
@@ -241,10 +261,9 @@ const SidebarUniverstitet = () => {
                   <p>Выберите страну</p>
                   <div className="selectCountry">
                     <select name="" id="">
-                      <option value="">Турция</option>
-                      <option value="">Россия</option>
-                      <option value="">США</option>
-                      <option value="">Узбекистан</option>
+                      <option>Tashkent</option>
+                      <option>Istabul</option>
+                      <option>Maskiva</option>
                     </select>
                   </div>
                   <p>Выберите город</p>
@@ -284,12 +303,13 @@ const SidebarUniverstitet = () => {
                     <label>Название университета</label>
                     <input
                       type="text"
-                      onChange={(e) => setName(e.target.value)}
+                      name="name"
+                      onChange={(e) => handleInputChange(e)}
                     />
                   </div>
                   <div>
                     <label>Страна</label>
-                    <select onChange={(e) => setLocation(e.target.value)}>
+                    <select value={location}>
                       <option>Выбрать страну</option>
                       <option>страну</option>
                       <option>страну</option>
@@ -298,7 +318,7 @@ const SidebarUniverstitet = () => {
 
                   <div>
                     <label>Город</label>
-                    <select>
+                    <select value={location}>
                       <option>Выбрать страну</option>
                       <option>страну</option>
                       <option>страну</option>
@@ -307,11 +327,11 @@ const SidebarUniverstitet = () => {
                   <div>
                     <label>Описание</label>
                     <textarea
-                      name=""
+                      name="description"
                       id=""
                       cols="30"
                       rows="5"
-                      onChange={(e) => setDescription(e.target.value)}
+                      onChange={(e) => handleInputChange(e)}
                     ></textarea>
                   </div>
                   <div className="modalDataPick">
@@ -324,14 +344,15 @@ const SidebarUniverstitet = () => {
                   </div>
                   <div>
                     <label>Картинка</label>
-                    <div className="importFile">
+                    <div className="import">
                       <img src={folder_icon} alt="" />
                       <p>
                         Drop your files here or a
                         <input
                           type="file"
                           id="chFile"
-                          onChange={(event) => setFile(event.target.files[0])}
+                          ref={inputEl1}
+                          onChange={(event) => handleFileChange(event)}
                         />
                         <label htmlFor="chFile">choose file</label>
                       </p>
@@ -369,15 +390,16 @@ const SidebarUniverstitet = () => {
                     <label>Название университета</label>
                     <input
                       value={name}
+                      name="name"
                       type="text"
-                      onChange={(e) => setName(e.target.value)}
+                      onChange={(e) => handleInputChange(e)}
                     />
                   </div>
                   <div>
                     <label>Страна</label>
                     <select
                       value={location}
-                      onChange={(e) => setLocation(e.target.value)}
+                      // onChange={(e) => handleInputChange(e)}
                     >
                       <option>Выбрать страну</option>
                       <option>страну</option>
@@ -396,12 +418,12 @@ const SidebarUniverstitet = () => {
                   <div>
                     <label>Описание</label>
                     <textarea
-                      name=""
+                      name="description"
                       id=""
                       cols="30"
                       rows="5"
                       value={description}
-                      onChange={(e) => setDescription(e.target.value)}
+                      onChange={(e) => handleInputChange(e)}
                     ></textarea>
                   </div>
                   <div className="modalDataPick">
@@ -421,15 +443,14 @@ const SidebarUniverstitet = () => {
                         <input
                           type="file"
                           id="chFile"
-                          onChange={(event) => setFile(event.target.files[0])}
+                          ref={inputEl1}
+                          onChange={(event) => handleFileChange(event)}
                         />
                         <label htmlFor="chFile">choose file</label>
                       </p>
                     </div>
                   </div>
-                  <button onClick={(event) => setEdit(event, id + 1)}>
-                    Добавить
-                  </button>
+                  <button onClick={() => setEdit(id)}>Добавить</button>
                   <button onClick={handleClose_change} className="back_btn">
                     <img src={arrow1} alt="" /> Вернуться
                   </button>

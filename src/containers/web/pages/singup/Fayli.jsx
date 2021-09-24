@@ -79,7 +79,7 @@ function Fayli() {
         Swal.fire({
           icon: 'success',
           text: 'Файлы загружены успешно',
-        }).then(() => history.push('/payment-transaction'));
+        }).then(() => history.push('/home/ducuments'));
       }
       setLoading(false);
     } catch (error) {
