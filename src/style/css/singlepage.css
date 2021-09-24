@@ -150,6 +150,15 @@ html {
   border-collapse: collapse;
 }
 
+.sp_main .sp_table table tr th {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+  text-align: left;
+}
+
 .sp_main .sp_table table tr td:nth-child(1) {
   font-style: normal;
   font-weight: 500;
@@ -168,11 +177,28 @@ html {
   text-align: left;
 }
 
+.sp_main .sp_table table tr td {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 28px;
+  color: #000000;
+  text-align: left;
+}
+
 .sp_main .sp_table table td {
   border-style: solid;
-  border-width: 0 1px 1px 0;
+  border-width: 2px;
   border-color: #94ADB8;
   background: white;
+  padding: 20px;
+}
+
+.sp_main .sp_table table th {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #94ADB8;
+  background: #94adb880;
   padding: 20px;
 }
 
@@ -189,7 +215,23 @@ html {
   font-weight: 600;
 }
 
-.sp_main .sp_main2_right h1 {
+.sp_main .sp_main2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.sp_main .sp_main2 h1 {
   font-style: normal;
   font-weight: 600;
   font-size: 30px;
@@ -266,6 +308,12 @@ html {
   .sp_main .sp_main1_right h1 {
     font-size: 22px;
   }
+  .sp_main .sp_table table tr th {
+    font-size: 21px;
+  }
+  .sp_main .sp_table table tr td {
+    font-size: 20px;
+  }
   .sp_main .sp_table table tr td:nth-child(2) {
     font-size: 20px;
   }
@@ -300,6 +348,12 @@ html {
   }
   .sp_main .sp_table table td {
     padding: 10px;
+  }
+  .sp_main .sp_table table tr th {
+    font-size: 19px;
+  }
+  .sp_main .sp_table table tr td {
+    font-size: 18px;
   }
   .sp_main .sp_table table tr td:nth-child(1) {
     font-size: 18px;
@@ -355,6 +409,14 @@ html {
     font-size: 15px;
     padding: 8px;
   }
+  .sp_main .sp_table table tr th {
+    font-size: 16px;
+    padding: 8px;
+  }
+  .sp_main .sp_table table tr td {
+    font-size: 15px;
+    padding: 8px;
+  }
   .sp_main .sp_table table tr td:nth-child(2) {
     font-size: 15px;
     padding: 8px;
@@ -379,6 +441,17 @@ html {
   }
   .sp_main .sp_main_left p {
     font-size: 15px;
+  }
+}
+
+@media (max-width: 706px) {
+  .sp2_table {
+    width: 95%;
+    overflow: hidden;
+    overflow-x: scroll;
+  }
+  .sp2_table table {
+    width: 100%;
   }
 }
 
@@ -449,6 +522,12 @@ html {
   .sp_main .sp_table table tr td:nth-child(2) {
     font-size: 18px;
   }
+  .sp_main .sp_table table tr th {
+    font-size: 19px;
+  }
+  .sp_main .sp_table table tr td {
+    font-size: 18px;
+  }
   .sp_main .sp5 {
     margin: 0 !important;
     grid-gap: 0;
@@ -497,6 +576,12 @@ html {
 @media (max-width: 320px) {
   .sp_main .sp1 .sp_main_left .sp_map {
     width: 275px;
+  }
+  .sp_main .sp_table table tr th {
+    font-size: 17px;
+  }
+  .sp_main .sp_table table tr td {
+    font-size: 16px;
   }
   .sp_main .sp_table table tr td:nth-child(1) {
     font-size: 16px;

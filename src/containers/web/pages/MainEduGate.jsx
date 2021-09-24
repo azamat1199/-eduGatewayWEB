@@ -11,6 +11,7 @@ import '../../../style/css/MainEduGate.css';
 import chat_icon from '../../../assets/icon/chat.svg';
 import univer_icon from '../../../assets/icon/univer.svg';
 import country_icon from '../../../assets/icon/country.svg';
+import univer_pic from "../../../assets/images/univer.jpg"
 import icon1 from '../../../assets/icon/icon1.svg';
 import icon2 from '../../../assets/icon/icon2.svg';
 import icon3 from '../../../assets/icon/icon3.svg';
@@ -33,7 +34,7 @@ const dataSwipper = require('../json/swipper.json');
 const MainEduGate = () => {
   const selector = useSelector((state) => state);
   const [userId, setUserId] = useState();
-  console.log(selector);
+  //console.log(selector);
 
   const history = useHistory();
   const [change1, setChange1] = useState('');
@@ -47,7 +48,7 @@ const MainEduGate = () => {
     try {
       const data = await Axios.get('/university/university/');
       const { results } = data.data;
-      console.log(results);
+      //console.log(results);
       if (data.status === 200) {
         setUniversities(results);
       }
@@ -75,13 +76,13 @@ const MainEduGate = () => {
           enrollee_user: userId,
         }
       );
-      console.log(data);
+      //console.log(data);
     } catch (error) {
       console.log(error);
     }
   };
   const handler = (univerId) => {
-    console.log(univerId);
+    //console.log(univerId);
     setFavourite(univerId).then(() => history.push(`/university/${univerId}`));
   };
 
@@ -91,10 +92,10 @@ const MainEduGate = () => {
       const { payload } = selector?.payload;
       const { id } = payload?.data;
       setUserId(id);
-      console.log(id);
+      //console.log(id);
     }
   }, []);
-  console.log(universities);
+  // console.log(universities);
   return (
     <>
       <div className="n1">
@@ -319,14 +320,14 @@ const MainEduGate = () => {
                 name,
                 location,
                 description,
-                founding_year,
+                education_quality,
                 rating,
                 living_price,
                 city,
               } = item;
               return (
                 <div onClick={() => handler(id)} className="card">
-                  <img src={item.images[0].image.toString()} alt="" />
+                  <img src={item.images.length === 0 ? univer_pic : item.images[0].image.toString() } alt="" />
                   <svg
                     width="20"
                     height="20"
@@ -359,7 +360,7 @@ const MainEduGate = () => {
                       {rating} место {city.name}
                     </span>
                   </h2>
-                  <h3>Качество обучения:</h3>
+                  <h3>Качество обучения: {education_quality}</h3>
                   <h4>
                     Цена за один год: <span>${living_price}</span>
                   </h4>

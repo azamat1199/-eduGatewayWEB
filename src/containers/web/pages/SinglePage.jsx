@@ -5,13 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination } from "swiper/core";
 import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css";
-
-
-import img1 from "../../../assets/images/img1.svg" 
-import img2 from  "../../../assets/images/img2.svg"
 import Universitet_pic from  "../../../assets/images/universitet_pic.svg"
-import img3 from  "../../../assets/images/img3.svg" 
-
 import "../../../style/css/singlepage.css"
 import { useHistory, useParams } from 'react-router';
 import Axios from '../../../utils/axios';
@@ -26,7 +20,7 @@ const dataT = require("../json/data_univer.json")
 
 function SinglePage (props){
 	const selector = useSelector(state => state)
-	console.log(selector);
+	//console.log(selector);
 	// const {payload} = selector.payload
 	// const {id} = payload.data
 	// console.log(id);
@@ -101,7 +95,6 @@ function SinglePage (props){
 	useEffect(()=>{
 		fetchUniversityById()
 	},[])
-	console.log(params);
 		return ( 
 			<React.Fragment>
 				<div className="single_page">
@@ -175,38 +168,43 @@ function SinglePage (props){
 							</div>
 						</div>
 						
-						<div className="sp_main1 sp2">
-							<div className="sp_main_left">
-								<div className="sp_table">
-									<table>
+						<div className="sp_main2 sp2">
+							<h1>Факультеты</h1>
+							<div className="sp_table sp2_table">
+								<table>
+									<thead>
 										<tr>
-											<td>Рейтинг</td>
-											<td>235</td>
+											<th>Факультет</th>
+											<th>Квоты</th>
+											<th>Бюджет</th>
+											<th>Тип обучения</th>
+											<th>Стоимость услуги</th>
+											<th>Принятие</th>
 										</tr>
-										<tr>
-											<td>Страна</td>
-											<td>Италия</td>
-										</tr>
-										<tr>
-											<td>Город</td>
-											<td>Милан</td>
-										</tr>
-										<tr>
-											<td>Бакалавриат</td>
-											<td>$2,875/год</td>
-										</tr>
-										<tr>
-											<td>Магистратура</td>
-											<td>$2,875/год</td>
-										</tr>
-										<tr>
-											<td>Цена прожив -ния</td>
-											<td>$2,875/год</td>
-										</tr>
-									</table>
-								</div>
+									</thead>
+									<tbody>
+										{faculties.map((f)=>{
+											return(
+												<tr>
+													<td>{f.name}</td>
+													<td>{f.quota} </td>
+													<td>{f.education_fee}</td>
+													<td>
+														{f.education_type === "full_time" ? "Полный занятость" : null}
+														{f.education_type === "part_time" ? "Неполная занятость" : null}
+													</td>
+													<td>{f.service_price} $</td>
+													<td>
+														{f.status === "open" ? "Открыть" : null}
+														{f.status === "close" ? "Закрыто" : null}
+													</td>
+												</tr>
+											)
+										})}
+									</tbody>
+								</table>
 							</div>
-							<div className="sp_main2_right">
+							{/* <div className="sp_main2_right">
 								<h1>Факультеты</h1>
 								<ul>
 									{faculties.map((f)=>{
@@ -215,7 +213,7 @@ function SinglePage (props){
 										)
 									})}
 								</ul>
-							</div>
+							</div> */}
 						</div>
 						
 						<div className="sp_main1 sp3">
@@ -353,7 +351,7 @@ function SinglePage (props){
 							<SwiperSlide><img src={img2} alt="" /></SwiperSlide> */}
 							{images.map((i)=>{
 								return(
-									<SwiperSlide><img src={i.image} alt="" width="400px" /></SwiperSlide>
+									<SwiperSlide><img src={i.image} alt="" width="100%" /></SwiperSlide>
 								)
 							})}
 						</Swiper>
