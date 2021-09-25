@@ -7,9 +7,53 @@ html {
 	// position: relative;
 	// top: -80px;
 }
-.sp_up{
-	// position: relative;
-	// top: 80px;
+.u_img{
+	height: 700px;
+}
+.konsultant_modal{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	.k_modal{
+		display: grid;
+		grid-template-columns: 1fr;
+		background: white;
+		border-radius: 14px;
+		padding: 15px 30px 30px 30px;
+		width: 300px;
+		height: 280px;
+		img{
+			position: relative;
+			transform: translateX(220px);
+			cursor: pointer;
+		}
+		button{
+			margin: 0 15px;
+			border-radius: 10px;
+			border: 1.5px solid #00587F;
+			outline: none;
+			background: #00587F;
+			font-style: normal;
+			font-weight: 600;
+			font-size: 20px;
+			line-height: 23px;
+			color: #fff;
+		}
+		.MuiOutlinedInput-notchedOutline {
+			border: 1.5px solid #00587F;
+			border-radius: 10px;
+		}
+		.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline{
+			border-color: #00587F;
+		}
+		.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+			border-width: 1px;
+			border-color: #00587F;
+		}
+		.MuiFormLabel-root {
+			color: #00587F;
+		}
+	}
 }
 .sp_title{
 	display: flex;
@@ -66,9 +110,6 @@ html {
 		grid-template-columns: 1fr 2fr;
 		margin: 25px 0;
 		column-gap: 30px;
-	}
-	.sp4{
-		grid-template-columns: 1fr;
 	}
 	.sp_main_left{
 		display: flex;
@@ -167,9 +208,8 @@ html {
 	}
 	.sp_main2{
 		display: flex;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
-		flex-direction: column;
 		h1{
 			font-style: normal;
 			font-weight: 600;
@@ -203,8 +243,14 @@ html {
 		}
 	}
 	.sp_main3_right{
-		a:nth-child(1){
-			padding: 20px 30px;
+		display: flex;
+		align-items: center;
+		button{
+			width: 250px;
+			height: 60px;
+		}
+		button:nth-child(1){
+			//padding: 20px 30px;
 			margin: 0 15px;
 			border-radius: 10px;
 			background: #00587F;
@@ -215,11 +261,13 @@ html {
 			color: #FFFFFF;
 			border: 1.5px solid #00587F;
 		}
-		a:nth-child(2){
+		button:nth-child(2){
 			margin: 0 15px;
-			padding: 20px 55px;
+			//padding: 20px 55px;
 			border-radius: 10px;
 			border: 1.5px solid #00587F;
+			outline: none;
+			background: none;
 			font-style: normal;
 			font-weight: 600;
 			font-size: 20px;
@@ -345,6 +393,9 @@ html {
 	.sp_navbar a{
 		font-size: 20px;
 	}
+	.u_img{
+		height: 500px;
+	}
 }
 
 
@@ -352,6 +403,9 @@ html {
 
 
 @media (max-width:768px) {
+	.u_img{
+		height: 400px;
+	}
 	.sp_main{
 		padding-left: 20px;
 		padding-right: 20px;
@@ -374,6 +428,23 @@ html {
 	}
 	.sp_main .sp_main1{
 		column-gap: 10px;
+		grid-template-columns: 1fr;
+	}
+	.sp_main .sp_main2{
+		flex-direction: column;
+	}
+	.sp_main .sp_main_left {
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+	}
+	.sp3{
+		.sp_main_left{
+			flex-direction: column;
+		}
+	}
+	.sp_main .sp_main3_right {
+		justify-content: center;
 	}
 	.sp_main .sp_main1_right h1{
 		font-size: 16px;
@@ -422,6 +493,14 @@ html {
 	// 	}
 	// }
 }
+@media (max-width: 580px) {
+	.sp_main3_right{
+		flex-wrap: wrap;
+		button{
+			margin: 10px 0 !important;
+		}
+	}
+}
 @media (max-width: 706px) {
 	.sp2_table{
 		width: 95%;
@@ -431,8 +510,21 @@ html {
 			width: 100%;
 		}
 	}
+	.sp2{
+		div{
+			width: 100%;
+		}
+	}
+}
+@media (max-width: 500px) {
+	.sp_main .sp_main_left {
+		flex-direction: column;
+	}
 }
 @media (max-width:425px) {
+	.u_img{
+		height: 260px;
+	}
 	.sp_main .sp_main1{
 		grid-template-columns: 1fr;
 	}

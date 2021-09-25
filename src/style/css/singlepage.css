@@ -12,6 +12,72 @@ html {
           flex-direction: column;
 }
 
+.u_img {
+  height: 700px;
+}
+
+.konsultant_modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.konsultant_modal .k_modal {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  background: white;
+  border-radius: 14px;
+  padding: 15px 30px 30px 30px;
+  width: 300px;
+  height: 280px;
+}
+
+.konsultant_modal .k_modal img {
+  position: relative;
+  -webkit-transform: translateX(220px);
+          transform: translateX(220px);
+  cursor: pointer;
+}
+
+.konsultant_modal .k_modal button {
+  margin: 0 15px;
+  border-radius: 10px;
+  border: 1.5px solid #00587F;
+  outline: none;
+  background: #00587F;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 23px;
+  color: #fff;
+}
+
+.konsultant_modal .k_modal .MuiOutlinedInput-notchedOutline {
+  border: 1.5px solid #00587F;
+  border-radius: 10px;
+}
+
+.konsultant_modal .k_modal .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #00587F;
+}
+
+.konsultant_modal .k_modal .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-width: 1px;
+  border-color: #00587F;
+}
+
+.konsultant_modal .k_modal .MuiFormLabel-root {
+  color: #00587F;
+}
+
 .sp_title {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -98,11 +164,6 @@ html {
   margin: 25px 0;
   -webkit-column-gap: 30px;
           column-gap: 30px;
-}
-
-.sp_main .sp4 {
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
 }
 
 .sp_main .sp_main_left {
@@ -219,16 +280,12 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 
 .sp_main .sp_main2 h1 {
@@ -263,8 +320,21 @@ html {
   margin: 15px 0;
 }
 
-.sp_main .sp_main3_right a:nth-child(1) {
-  padding: 20px 30px;
+.sp_main .sp_main3_right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sp_main .sp_main3_right button {
+  width: 250px;
+  height: 60px;
+}
+
+.sp_main .sp_main3_right button:nth-child(1) {
   margin: 0 15px;
   border-radius: 10px;
   background: #00587F;
@@ -276,11 +346,12 @@ html {
   border: 1.5px solid #00587F;
 }
 
-.sp_main .sp_main3_right a:nth-child(2) {
+.sp_main .sp_main3_right button:nth-child(2) {
   margin: 0 15px;
-  padding: 20px 55px;
   border-radius: 10px;
   border: 1.5px solid #00587F;
+  outline: none;
+  background: none;
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -398,9 +469,15 @@ html {
   .sp_navbar a {
     font-size: 20px;
   }
+  .u_img {
+    height: 500px;
+  }
 }
 
 @media (max-width: 768px) {
+  .u_img {
+    height: 400px;
+  }
   .sp_main {
     padding-left: 20px;
     padding-right: 20px;
@@ -424,6 +501,36 @@ html {
   .sp_main .sp_main1 {
     -webkit-column-gap: 10px;
             column-gap: 10px;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .sp_main .sp_main2 {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .sp_main .sp_main_left {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .sp3 .sp_main_left {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .sp_main .sp_main3_right {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .sp_main .sp_main1_right h1 {
     font-size: 16px;
@@ -444,6 +551,16 @@ html {
   }
 }
 
+@media (max-width: 580px) {
+  .sp_main3_right {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .sp_main3_right button {
+    margin: 10px 0 !important;
+  }
+}
+
 @media (max-width: 706px) {
   .sp2_table {
     width: 95%;
@@ -453,9 +570,24 @@ html {
   .sp2_table table {
     width: 100%;
   }
+  .sp2 div {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .sp_main .sp_main_left {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 @media (max-width: 425px) {
+  .u_img {
+    height: 260px;
+  }
   .sp_main .sp_main1 {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
