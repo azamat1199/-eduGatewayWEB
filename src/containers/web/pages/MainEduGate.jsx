@@ -43,6 +43,9 @@ const MainEduGate = () => {
   const [serach, setSearch] = useState(false);
   const [universities, setUniversities] = useState([]);
   const [dataFilter, setdataFilter] = useState([]);
+  const [filterMajors, setFilterMajors] = useState([]);
+  const [filterCountry, setFilterCountry] = useState([]);
+  const [filterDegree, setFilterDegree] = useState([]);
 
   const fetchUniversities = async () => {
     try {
@@ -57,16 +60,54 @@ const MainEduGate = () => {
     }
   };
 
-  const fun1 = () => {
-    let letFilter = cardData.filter(
-      (filter) =>
-        filter.country === change1 &&
-        filter.stepen === change2 &&
-        filter.facultet === change3
-    );
-    setdataFilter(letFilter);
-    setSearch(true);
+  const univerMajor = async () => {
+    try{
+      const data1 = await Axios.get('/university/major/');
+      const majors = data1.data.results;
+      if (data1.status === 200) {
+        setFilterMajors(majors)
+      }
+    } catch(err){
+      console.log(err)
+    }
+  }
+  const univerCountry = async () => {
+    try{
+      const data2 = await Axios.get('/common/country/');
+      const countrys = data2.data.results;
+      if (data2.status === 200) {
+        setFilterCountry(countrys)
+      }
+    } catch(err){
+      console.log(err)
+    }
+  }
+  const univerDegree = async () => {
+    try{
+      const data3 = await Axios.get('/university/degree/');
+      const degrees = data3.data.results;
+      if (data3.status === 200) {
+        setFilterDegree(degrees)
+      }
+    } catch(err){
+      console.log(err)
+    }
+  }
+  
+  const filterUniver = async () => {
+    try {
+      const data = await Axios.get(`/university/university/?country_id=${change1}&degree_id=${change2}&major_id=${change3}`);
+      const { results } = data.data;
+      if (data.status === 200) {
+        setdataFilter(results);
+        setSearch(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+
   const setFavourite = async (univerId) => {
     try {
       const data = await Axios.post(
@@ -95,7 +136,13 @@ const MainEduGate = () => {
       //console.log(id);
     }
   }, []);
-  // console.log(universities);
+
+  useEffect(()=>{
+    univerMajor();
+    univerDegree();
+    univerCountry();
+  }, [])
+
   return (
     <>
       <div className="n1">
@@ -132,28 +179,35 @@ const MainEduGate = () => {
             <div className="dropDwn">
               <select onChange={(event) => setChange1(event.target.value)}>
                 <option value="">Страна</option>
-                <option value="russia">russia</option>
-                <option value="usa">usa</option>
-                <option value="uk">uk</option>
+                {filterCountry.map((m) =>{
+                  return(
+                    <option value={m.id}>{m.name}</option>
+                  )
+                })}
               </select>
             </div>
             <div className="dropDwn">
               <select onChange={(event) => setChange2(event.target.value)}>
-                <option value="">Степень</option>
-                <option value="bakalavr">bakalavr</option>
-                <option value="magister">magister</option>
+              <option value="">Степень</option>
+                {filterDegree.map((m) =>{
+                  return(
+                    <option value={m.id}>{m.title}</option>
+                  )
+                })}
               </select>
             </div>
             <div className="dropDwn">
               <select onChange={(event) => setChange3(event.target.value)}>
-                <option value="it">Направления</option>
-                <option value="it">IT</option>
-                <option value="fizika">Fizika</option>
-                <option value="matematika">Matematika</option>
+                <option value="">Направления</option>
+                {filterMajors.map((m) =>{
+                  return(
+                    <option value={m.id}>{m.name}</option>
+                  )
+                })}
               </select>
             </div>
 
-            <div className="dropSearch" onClick={fun1}>
+            <div className="dropSearch" onClick={filterUniver}>
               <svg
                 width="28"
                 height="29"
@@ -186,20 +240,20 @@ const MainEduGate = () => {
         {/* end header */}
 
         {/* resultBlock */}
-        {/* stepen bakalavr
-            "facultet":"fizika",
-            "country":"russia" 
-            .slice(0, 8)*/}
-        {serach === true ? (
+        {serach === true ? dataFilter.length === 0 
+          ? 
           <div className="resultBlock">
-            <h5>Результаты поиска</h5>
+            <h5>Результаты поиска 0</h5>
+          </div> 
+          :
+          <div className="resultBlock">
+            <h5>Результаты поиска {dataFilter.length}</h5>
             <div className="result">
               {/* card */}
-              {dataFilter.slice(0, 8).map((x) => {
-                if (x.country === change1) {
+              {dataFilter.map((x) => {
                   return (
                     <div className="card">
-                      <img src={x.img} alt="" />
+                      <img src={x.images.length === 0 ? univer_pic : x.images[0].image.toString() } alt="" />
                       <svg
                         width="20"
                         height="20"
@@ -217,34 +271,33 @@ const MainEduGate = () => {
                           stroke-linejoin="round"
                         />
                       </svg>
-                      <h1>{x.title1}</h1>
-                      <p>{x.title2}</p>
+                      <h1>{x.name}</h1>
+                      {
+                        x.description.length > 100 ?
+                            <p>{x.description.substring(0, 100)}...</p>
+                          :
+                            <p>{x.description}</p>
+                      }
                       <h2>
                         Рейтинг:{' '}
                         <span>
-                          {x.rating} место {x.ratingCountry}
+                          {x.rating} место {/* // ! {x.ratingCountry} */}
                         </span>
                       </h2>
-                      <h3>Качество обучения:</h3>
+                      <h3>Качество обучения: {x.education_quality}</h3>
                       <h4>
-                        Цена за один год: <span>${x.price}</span>
+                        Цена за один год: <span>${x.education_fee_per_annum}</span>
                       </h4>
-                      <p>{x.country}</p>
-                      <p>{x.stepen}</p>
-                      <p>{x.facultet}</p>
                     </div>
                   );
-                } else {
-                  return '';
-                }
               })}
               {/* end card */}
             </div>
             {/* end result */}
           </div>
-        ) : (
+         : 
           ''
-        )}
+        }
         {/* end resultBlock */}
 
         {/* workBlock */}

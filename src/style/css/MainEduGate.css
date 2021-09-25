@@ -4,7 +4,7 @@
   background-size: cover;
   background-position: bottom;
   padding-top: 170px;
-  padding: 170px 40px 0 40px;
+  padding: 170px 40px 100px 40px;
 }
 
 .mainEduGate .header h2 {
@@ -173,6 +173,10 @@
   background: none;
   border: none;
   outline: none;
+}
+
+.mainEduGate .header .filter .dropDwn select option:nth-child(1) {
+  display: none;
 }
 
 .mainEduGate .header .filter .dropDwn svg {
