@@ -11,6 +11,12 @@ import { useHistory, useParams } from 'react-router';
 import Axios from '../../../utils/axios';
 import { useSelector } from 'react-redux';
 
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+import TextField from '@material-ui/core/TextField';
+import close_img from "../../../assets/icon/close_modal.svg"
+
 
 SwiperCore.use([Pagination]);
 
@@ -91,6 +97,18 @@ function SinglePage (props){
 		  
 	// 	}
 	//   }
+	const refreshPage = () => {
+		window.location.reload();
+	}
+	const [open, setOpen] = React.useState(false);
+
+	const handleOpen = () => {
+	  setOpen(true);
+	};
+  
+	const handleClose = () => {
+	  setOpen(false);
+	};
 
 	useEffect(()=>{
 		fetchUniversityById()
@@ -100,8 +118,7 @@ function SinglePage (props){
 				<div className="single_page">
 					<div className="sp_up">
 						<div className="sp_img">
-							{/* <img src={images[0].image} alt="" height="700px" width="100%"/> */}
-							<img src={Universitet_pic} alt="" width="100%"/>
+							<img src={images.length === 0 ? Universitet_pic : images[0].image.toString() } alt="" className={images.length === 0 ? "" : "u_img"} width="100%"/>
 						</div>
 						<div className="sp_title">
 							<div><h1>{name}</h1></div>
@@ -129,7 +146,7 @@ function SinglePage (props){
 										</tr>
 										<tr>
 											<td>Город</td>
-											<td>{city.name}</td>
+											<td>{city.country}</td>
 										</tr>
 										<tr>
 											<td>Бакалавриат</td>
@@ -168,7 +185,56 @@ function SinglePage (props){
 							</div>
 						</div>
 						
+						
+						<div className="sp_main1 sp3">
+							<div className="sp_main_left">
+								<p>Мировой рейтинг</p>
+							<ResponsiveContainer width="80%" height={300}>
+								<AreaChart data={data}
+								margin={{ top: 30, right: 0, left: 0, bottom: 0 }} >
+								<defs>
+								<linearGradient id="kirish" x1="0" y1="0" x2="0" y2="1">
+									<stop offset="5%" stopColor="#00587F" stopOpacity={0.4} />
+									<stop offset="95%" stopColor="#00587F" stopOpacity={0} />
+								</linearGradient>
+								</defs>
+								<XAxis dataKey="name" />
+								<Tooltip />
+								<CartesianGrid vertical="" strokeDasharray="10 10"/>
+								<Area type="monotone" dataKey="value"
+								stroke="#00587F" strokeWidth="3" fillOpacity={1} fill="url(#kirish)"
+								/>
+								</AreaChart>
+							</ResponsiveContainer>
+							</div>
+							<div className="sp_main2_right" id="postupleniya">
+								<h1>Процесс поступления</h1>
+								<h2>
+									Полное курирование поступления — от 789 USD
+									Поступление в университет – важный и ответственный шаг в жизни каждого. Позвольте профессионалам быть рядом на каждом этапе поступления.
+								</h2>
+							</div>
+						</div>
+						
+						<div className="sp_main1 sp4">
+							<div></div>
+							<div className="sp_main2_right">
+								<h1>Специалисты образовательного агентства Gateway Education:</h1>
+								<ul>
+									<li>Проконсультируют вас по вопросам образования за рубежом;</li>
+									<li>Подберут университеты под ваш профайл и бюджет;</li>
+									<li>Подготовят необходимый комплект документов;</li>
+									<li>Отправят заявки в учебные заведения;</li>
+									<li>Подадут документы на внутренние стипендии вузов;</li>
+									<li>Помогут оформить студенческую визу.</li>
+									<li>Мы организуем Ваше поступление за границу: для этого заполните заявку, и мы свяжемся с Вами в ближайшее время.</li>
+								</ul>
+							</div>
+						</div>
+
 						<div className="sp_main2 sp2">
+							<div></div>
+							<div>
 							<h1>Факультеты</h1>
 							<div className="sp_table sp2_table">
 								<table>
@@ -204,98 +270,35 @@ function SinglePage (props){
 									</tbody>
 								</table>
 							</div>
-							{/* <div className="sp_main2_right">
-								<h1>Факультеты</h1>
-								<ul>
-									{faculties.map((f)=>{
-										return(
-											<li>{f.name}</li>
-										)
-									})}
-								</ul>
-							</div> */}
-						</div>
-						
-						<div className="sp_main1 sp3">
-							<div className="sp_main_left">
-								<p>Мировой рейтинг</p>
-							<ResponsiveContainer width="80%" height={300}>
-								<AreaChart data={data}
-								margin={{ top: 30, right: 0, left: 0, bottom: 0 }} >
-								<defs>
-								<linearGradient id="kirish" x1="0" y1="0" x2="0" y2="1">
-									<stop offset="5%" stopColor="#00587F" stopOpacity={0.4} />
-									<stop offset="95%" stopColor="#00587F" stopOpacity={0} />
-								</linearGradient>
-								</defs>
-								<XAxis dataKey="name" />
-								<Tooltip />
-								<CartesianGrid vertical="" strokeDasharray="10 10"/>
-								<Area type="monotone" dataKey="value"
-								stroke="#00587F" strokeWidth="3" fillOpacity={1} fill="url(#kirish)"
-								/>
-								</AreaChart>
-							</ResponsiveContainer>
-							</div>
-							<div className="sp_main2_right" id="postupleniya">
-								<h1>Процесс поступления</h1>
-								<h2>
-									Полное курирование поступления — от 789 USD
-									Поступление в университет – важный и ответственный шаг в жизни каждого. Позвольте профессионалам быть рядом на каждом этапе поступления.
-								</h2>
-							</div>
-						</div>
-						
-						<div className="sp_main1 sp4">
-							<div className="sp_main_left">
-								<div className="sp_table">
-									{/* <table>
-										<tr>
-											<td>Рейтинг</td>
-											<td>235</td>
-										</tr>
-										<tr>
-											<td>Страна</td>
-											<td>Италия</td>
-										</tr>
-										<tr>
-											<td>Город</td>
-											<td>Милан</td>
-										</tr>
-										<tr>
-											<td>Бакалавриат</td>
-											<td>$2,875/год</td>
-										</tr>
-										<tr>
-											<td>Магистратура</td>
-											<td>$2,875/год</td>
-										</tr>
-										<tr>
-											<td>Цена прожив -ния</td>
-											<td>$2,875/год</td>
-										</tr>
-									</table> */}
-								</div>
-							</div>
-							<div className="sp_main2_right">
-								<h1>Специалисты образовательного агентства Gateway Education:</h1>
-								<ul>
-									<li>Проконсультируют вас по вопросам образования за рубежом;</li>
-									<li>Подберут университеты под ваш профайл и бюджет;</li>
-									<li>Подготовят необходимый комплект документов;</li>
-									<li>Отправят заявки в учебные заведения;</li>
-									<li>Подадут документы на внутренние стипендии вузов;</li>
-									<li>Помогут оформить студенческую визу.</li>
-									<li>Мы организуем Ваше поступление за границу: для этого заполните заявку, и мы свяжемся с Вами в ближайшее время.</li>
-								</ul>
 							</div>
 						</div>
 						
 						<div className="sp_main1 sp5">
 							<div className="sp_main_left"></div>
 							<div className="sp_main3_right">
-								<a onClick={()=> selector.payload.payload ?  history.push('/requisition'): history.push('/login')}>Подать документы</a>
-								<a href="#">Консультация</a>
+								<button onClick={()=> selector.payload.payload ?  history.push('/requisition'): history.push('/login')}>Подать документы</button>
+								<button onClick={handleOpen}>Консультация</button>
+								<Modal
+									aria-labelledby="transition-modal-title"
+									aria-describedby="transition-modal-description"
+									className="konsultant_modal"
+									open={open}
+									onClose={handleClose}
+									closeAfterTransition
+									BackdropComponent={Backdrop}
+									BackdropProps={{
+									timeout: 500,
+									}}
+								>
+									<Fade in={open}>
+										<div className="k_modal">
+											<img onClick={handleClose} src={close_img} alt="" />
+											<TextField id="outlined-basic" label="Ваша имя" variant="outlined" />
+											<TextField id="outlined-basic" label="Номера или Почта" variant="outlined" />
+											<button>Отправитъ</button>
+										</div>
+									</Fade>
+								</Modal>
 							</div>
 						</div>
 					
@@ -338,17 +341,6 @@ function SinglePage (props){
 							 }}
 							className="mySwiper"
 						>
-							{/* <SwiperSlide><img src={img1} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img2} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img3} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img2} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img1} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img3} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img1} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img2} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img3} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img1} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img2} alt="" /></SwiperSlide> */}
 							{images.map((i)=>{
 								return(
 									<SwiperSlide><img src={i.image} alt="" width="100%" /></SwiperSlide>
