@@ -329,12 +329,12 @@ html {
           align-items: center;
 }
 
-.sp_main .sp_main3_right button {
+.sp_main .sp_main3_right button, .sp_main .sp_main3_right a {
   width: 250px;
   height: 60px;
 }
 
-.sp_main .sp_main3_right button:nth-child(1) {
+.sp_main .sp_main3_right button {
   margin: 0 15px;
   border-radius: 10px;
   background: #00587F;
@@ -346,7 +346,7 @@ html {
   border: 1.5px solid #00587F;
 }
 
-.sp_main .sp_main3_right button:nth-child(2) {
+.sp_main .sp_main3_right a {
   margin: 0 15px;
   border-radius: 10px;
   border: 1.5px solid #00587F;
@@ -357,6 +357,15 @@ html {
   font-size: 20px;
   line-height: 23px;
   color: #00587F;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .sp_main .sp_swiper {
@@ -451,14 +460,6 @@ html {
   }
   .sp_main .sp_main2_right h2 {
     font-size: 18px;
-  }
-  .sp_main .sp_main3_right a:nth-child(1) {
-    font-size: 16px;
-    padding: 15px 20px;
-  }
-  .sp_main .sp_main3_right a:nth-child(2) {
-    font-size: 16px;
-    padding: 15px 20px;
   }
   .sp_title h1 {
     font-size: 32px;

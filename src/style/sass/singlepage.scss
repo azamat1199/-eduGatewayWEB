@@ -245,11 +245,11 @@ html {
 	.sp_main3_right{
 		display: flex;
 		align-items: center;
-		button{
+		button, a{
 			width: 250px;
 			height: 60px;
 		}
-		button:nth-child(1){
+		button{
 			//padding: 20px 30px;
 			margin: 0 15px;
 			border-radius: 10px;
@@ -261,7 +261,7 @@ html {
 			color: #FFFFFF;
 			border: 1.5px solid #00587F;
 		}
-		button:nth-child(2){
+		a{
 			margin: 0 15px;
 			//padding: 20px 55px;
 			border-radius: 10px;
@@ -273,6 +273,9 @@ html {
 			font-size: 20px;
 			line-height: 23px;
 			color: #00587F;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 	}
 	.sp_swiper{
@@ -375,14 +378,6 @@ html {
 	}
 	.sp_main .sp_main2_right h2{
 		font-size: 18px;
-	}
-	.sp_main .sp_main3_right a:nth-child(1){
-		font-size: 16px;
-		padding: 15px 20px;
-	}
-	.sp_main .sp_main3_right a:nth-child(2){
-		font-size: 16px;
-		padding: 15px 20px;
 	}
 	.sp_title h1{
 		font-size: 32px;

@@ -10,12 +10,8 @@ import "../../../style/css/singlepage.css"
 import { useHistory, useParams } from 'react-router';
 import Axios from '../../../utils/axios';
 import { useSelector } from 'react-redux';
-
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
-import TextField from '@material-ui/core/TextField';
-import close_img from "../../../assets/icon/close_modal.svg"
+import Navbar from "../pages/Navbar"
+import { Link } from "react-router-dom"
 
 
 SwiperCore.use([Pagination]);
@@ -40,9 +36,12 @@ function SinglePage (props){
 		description:'',
 		founding_year:'',
 		city:{
-           id:'',
-		   name:'',
-		   country:''
+			id:'',
+			name:'',
+			country:{
+			   id:"",
+			   name:""
+			}
 		},
 		motto:'',
 		rating:'',
@@ -115,6 +114,7 @@ function SinglePage (props){
 	},[])
 		return ( 
 			<React.Fragment>
+				<Navbar/>
 				<div className="single_page">
 					<div className="sp_up">
 						<div className="sp_img">
@@ -142,11 +142,11 @@ function SinglePage (props){
 										</tr>
 										<tr>
 											<td>Страна</td>
-											<td>{city.name}</td>
+											<td>{city.country.name}</td>
 										</tr>
 										<tr>
 											<td>Город</td>
-											<td>{city.country}</td>
+											<td>{city.name}</td>
 										</tr>
 										<tr>
 											<td>Бакалавриат</td>
@@ -277,28 +277,7 @@ function SinglePage (props){
 							<div className="sp_main_left"></div>
 							<div className="sp_main3_right">
 								<button onClick={()=> selector.payload.payload ?  history.push('/requisition'): history.push('/login')}>Подать документы</button>
-								<button onClick={handleOpen}>Консультация</button>
-								<Modal
-									aria-labelledby="transition-modal-title"
-									aria-describedby="transition-modal-description"
-									className="konsultant_modal"
-									open={open}
-									onClose={handleClose}
-									closeAfterTransition
-									BackdropComponent={Backdrop}
-									BackdropProps={{
-									timeout: 500,
-									}}
-								>
-									<Fade in={open}>
-										<div className="k_modal">
-											<img onClick={handleClose} src={close_img} alt="" />
-											<TextField id="outlined-basic" label="Ваша имя" variant="outlined" />
-											<TextField id="outlined-basic" label="Номера или Почта" variant="outlined" />
-											<button>Отправитъ</button>
-										</div>
-									</Fade>
-								</Modal>
+								<Link to="/konsultatsya">Консультация</Link>
 							</div>
 						</div>
 					

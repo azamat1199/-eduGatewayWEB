@@ -41,6 +41,7 @@
 			display: grid;
 			grid-template-columns: 1fr 1fr;
 			width: 360px;
+			margin-bottom: 40px;
 			p{
 				@include textheader();
 				list-style: inside;
@@ -63,7 +64,6 @@
 		}
 		.freeConsult{
 			@include textheader();
-			margin-top: 38px;
 			padding: 20px 40px;
 			background: #E5F7FF;
 			border-radius: 10px;
