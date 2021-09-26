@@ -4,7 +4,7 @@
   background-size: cover;
   background-position: bottom;
   padding-top: 170px;
-  padding: 170px 40px 140px 40px;
+  padding: 170px 40px 100px 40px;
 }
 
 .mainEduGate .header h2 {
@@ -42,6 +42,7 @@
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
   width: 360px;
+  margin-bottom: 40px;
 }
 
 .mainEduGate .header .listLvl p {
@@ -87,7 +88,6 @@
   color: #FFFFFF;
   text-decoration: none;
   margin: 0;
-  margin-top: 38px;
   padding: 20px 40px;
   background: #E5F7FF;
   border-radius: 10px;
@@ -175,6 +175,10 @@
   outline: none;
 }
 
+.mainEduGate .header .filter .dropDwn select option:nth-child(1) {
+  display: none;
+}
+
 .mainEduGate .header .filter .dropDwn svg {
   z-index: 11;
 }
@@ -190,7 +194,7 @@
 }
 
 .mainEduGate .resultBlock {
-  padding: 70px 40px 28px 40px;
+  padding: 70px 30px 28px 30px;
 }
 
 .mainEduGate .resultBlock h5 {
@@ -214,9 +218,9 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
@@ -228,6 +232,10 @@
   background: #E2F1F8;
   border-radius: 12px;
   margin-bottom: 40px;
+  -webkit-box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
+          box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
+  margin: 15px;
+  cursor: pointer;
 }
 
 .mainEduGate .resultBlock .result .card img {
@@ -274,6 +282,7 @@
   color: #000;
   margin: 0;
   padding: 0 20px;
+  height: 150px;
 }
 
 .mainEduGate .resultBlock .result .card h2 {
@@ -1461,6 +1470,9 @@
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: flex-end;
+  }
+  .mainEduGate .aboutBlock .aboutUs .cardAbout {
+    height: 170px;
   }
 }
 

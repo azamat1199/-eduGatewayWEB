@@ -39,6 +39,7 @@
   position: fixed;
   width: 100%;
   top: 0;
+  left: 0;
   z-index: 4;
 }
 
@@ -65,6 +66,8 @@
   height: 96px;
   -webkit-transition: 0.5s linear;
   transition: 0.5s linear;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 .eduGateMain .NavbarFix .navbar .navLeft {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useEffect, useState}from 'react';
 import StudentSidebar from './SidebarStudent.jsx'
 // import css
 import  "../../../style/css/kabinet.css" 
@@ -9,15 +9,27 @@ import StudentCabinet from '../studentCabinet';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 const Kabinet = () => {
+    const [progress , setProgress] = useState()
+    const univerId = JSON.parse(localStorage.getItem('univerId'))
+    const userId = JSON.parse(localStorage.getItem('userId'))
+    const files = JSON.parse(localStorage.getItem('files'))
     const history = useHistory()
     const selector = useSelector(state=> state)
     console.log(selector);
-    const {lastStep} = selector.payload
+    const {lastStep} = selector.dataSave
     console.log(lastStep);
     const{data} = selector.payload.payload
     console.log(data);
     const{first_name,last_name,id,base_user,sity,email} = data
-    let progress = 25
+    useEffect(()=>{
+       if(files){
+           setProgress(75)
+       }else if(univerId){
+           setProgress(50)
+       }else if(userId){
+           setProgress(25)
+       }
+    })
     return ( 
         <>
                <StudentSidebar/> 

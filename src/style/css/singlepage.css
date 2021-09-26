@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .single_page {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6,6 +10,72 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.u_img {
+  height: 700px;
+}
+
+.konsultant_modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.konsultant_modal .k_modal {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  background: white;
+  border-radius: 14px;
+  padding: 15px 30px 30px 30px;
+  width: 300px;
+  height: 280px;
+}
+
+.konsultant_modal .k_modal img {
+  position: relative;
+  -webkit-transform: translateX(220px);
+          transform: translateX(220px);
+  cursor: pointer;
+}
+
+.konsultant_modal .k_modal button {
+  margin: 0 15px;
+  border-radius: 10px;
+  border: 1.5px solid #00587F;
+  outline: none;
+  background: #00587F;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 23px;
+  color: #fff;
+}
+
+.konsultant_modal .k_modal .MuiOutlinedInput-notchedOutline {
+  border: 1.5px solid #00587F;
+  border-radius: 10px;
+}
+
+.konsultant_modal .k_modal .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #00587F;
+}
+
+.konsultant_modal .k_modal .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-width: 1px;
+  border-color: #00587F;
+}
+
+.konsultant_modal .k_modal .MuiFormLabel-root {
+  color: #00587F;
 }
 
 .sp_title {
@@ -141,6 +211,15 @@
   border-collapse: collapse;
 }
 
+.sp_main .sp_table table tr th {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+  text-align: left;
+}
+
 .sp_main .sp_table table tr td:nth-child(1) {
   font-style: normal;
   font-weight: 500;
@@ -159,11 +238,28 @@
   text-align: left;
 }
 
+.sp_main .sp_table table tr td {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 28px;
+  color: #000000;
+  text-align: left;
+}
+
 .sp_main .sp_table table td {
   border-style: solid;
-  border-width: 0 1px 1px 0;
+  border-width: 2px;
   border-color: #94ADB8;
   background: white;
+  padding: 20px;
+}
+
+.sp_main .sp_table table th {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #94ADB8;
+  background: #94adb880;
   padding: 20px;
 }
 
@@ -180,7 +276,19 @@
   font-weight: 600;
 }
 
-.sp_main .sp_main2_right h1 {
+.sp_main .sp_main2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sp_main .sp_main2 h1 {
   font-style: normal;
   font-weight: 600;
   font-size: 30px;
@@ -212,8 +320,21 @@
   margin: 15px 0;
 }
 
-.sp_main .sp_main3_right a:nth-child(1) {
-  padding: 20px 30px;
+.sp_main .sp_main3_right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sp_main .sp_main3_right button, .sp_main .sp_main3_right a {
+  width: 250px;
+  height: 60px;
+}
+
+.sp_main .sp_main3_right button {
   margin: 0 15px;
   border-radius: 10px;
   background: #00587F;
@@ -225,16 +346,26 @@
   border: 1.5px solid #00587F;
 }
 
-.sp_main .sp_main3_right a:nth-child(2) {
+.sp_main .sp_main3_right a {
   margin: 0 15px;
-  padding: 20px 55px;
   border-radius: 10px;
   border: 1.5px solid #00587F;
+  outline: none;
+  background: none;
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
   line-height: 23px;
   color: #00587F;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .sp_main .sp_swiper {
@@ -256,6 +387,12 @@
 @media (max-width: 1440px) {
   .sp_main .sp_main1_right h1 {
     font-size: 22px;
+  }
+  .sp_main .sp_table table tr th {
+    font-size: 21px;
+  }
+  .sp_main .sp_table table tr td {
+    font-size: 20px;
   }
   .sp_main .sp_table table tr td:nth-child(2) {
     font-size: 20px;
@@ -292,6 +429,12 @@
   .sp_main .sp_table table td {
     padding: 10px;
   }
+  .sp_main .sp_table table tr th {
+    font-size: 19px;
+  }
+  .sp_main .sp_table table tr td {
+    font-size: 18px;
+  }
   .sp_main .sp_table table tr td:nth-child(1) {
     font-size: 18px;
   }
@@ -318,14 +461,6 @@
   .sp_main .sp_main2_right h2 {
     font-size: 18px;
   }
-  .sp_main .sp_main3_right a:nth-child(1) {
-    font-size: 16px;
-    padding: 15px 20px;
-  }
-  .sp_main .sp_main3_right a:nth-child(2) {
-    font-size: 16px;
-    padding: 15px 20px;
-  }
   .sp_title h1 {
     font-size: 32px;
   }
@@ -335,14 +470,28 @@
   .sp_navbar a {
     font-size: 20px;
   }
+  .u_img {
+    height: 500px;
+  }
 }
 
 @media (max-width: 768px) {
+  .u_img {
+    height: 400px;
+  }
   .sp_main {
     padding-left: 20px;
     padding-right: 20px;
   }
   .sp_main .sp_table table tr td:nth-child(1) {
+    font-size: 15px;
+    padding: 8px;
+  }
+  .sp_main .sp_table table tr th {
+    font-size: 16px;
+    padding: 8px;
+  }
+  .sp_main .sp_table table tr td {
     font-size: 15px;
     padding: 8px;
   }
@@ -353,6 +502,36 @@
   .sp_main .sp_main1 {
     -webkit-column-gap: 10px;
             column-gap: 10px;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .sp_main .sp_main2 {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .sp_main .sp_main_left {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .sp3 .sp_main_left {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .sp_main .sp_main3_right {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .sp_main .sp_main1_right h1 {
     font-size: 16px;
@@ -373,7 +552,43 @@
   }
 }
 
+@media (max-width: 580px) {
+  .sp_main3_right {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .sp_main3_right button {
+    margin: 10px 0 !important;
+  }
+}
+
+@media (max-width: 706px) {
+  .sp2_table {
+    width: 95%;
+    overflow: hidden;
+    overflow-x: scroll;
+  }
+  .sp2_table table {
+    width: 100%;
+  }
+  .sp2 div {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .sp_main .sp_main_left {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 @media (max-width: 425px) {
+  .u_img {
+    height: 260px;
+  }
   .sp_main .sp_main1 {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
@@ -440,6 +655,12 @@
   .sp_main .sp_table table tr td:nth-child(2) {
     font-size: 18px;
   }
+  .sp_main .sp_table table tr th {
+    font-size: 19px;
+  }
+  .sp_main .sp_table table tr td {
+    font-size: 18px;
+  }
   .sp_main .sp5 {
     margin: 0 !important;
     grid-gap: 0;
@@ -488,6 +709,12 @@
 @media (max-width: 320px) {
   .sp_main .sp1 .sp_main_left .sp_map {
     width: 275px;
+  }
+  .sp_main .sp_table table tr th {
+    font-size: 17px;
+  }
+  .sp_main .sp_table table tr td {
+    font-size: 16px;
   }
   .sp_main .sp_table table tr td:nth-child(1) {
     font-size: 16px;

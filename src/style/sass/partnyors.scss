@@ -16,6 +16,12 @@
 		margin-bottom: 30px;
 	}
 }
+.konsultantsiya{
+	width: 100vw;
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+}
 .navPart{
 	.eduGateMain .NavbarFix .navAct{
 		background: #00587F;
@@ -29,6 +35,55 @@
 	backdrop-filter: blur(15px);
 	border-radius: 16px;
 	padding: 30px 70px;
+}
+.konsultantsiya_main{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0 auto;
+	background: rgba(255, 255, 255, 0.12);
+	backdrop-filter: blur(15px);
+	border-radius: 16px;
+	padding: 30px 70px;
+	p{
+		font-style: normal;
+		font-weight: 500;
+		font-size: 15px;
+		line-height: 18px;
+		letter-spacing: 0.02em;
+		color: #FFFFFF;
+		margin-bottom: 10px;
+	
+	}
+	input{
+		width: 545px;
+		height: 64px;
+		border: 1.5px solid #FFFFFF;
+		box-sizing: border-box;
+		border-radius: 10px;
+		outline: none;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 23px;
+		letter-spacing: 0.02em;
+		padding-left: 10px;
+		color: #000;
+		background: none;
+		margin: 10px 0 15px 0;
+		color: white;
+	}
+	a{
+		padding: 20px 227px;
+		background: #F0F3F5;
+		border-radius: 10px;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 23px;
+		color: #00587F;
+		margin-top: 40px;
+	}
 }
 .partnyor_left{
 	display: flex;
@@ -95,6 +150,7 @@
 			letter-spacing: 0.02em;
 			padding-left: 10px;
 			color: #000;
+			color: white;
 		}
 		textarea{
 			width: 545px;
@@ -186,6 +242,30 @@
 		}
 		a {
 			padding: 20px 90px;
+		}
+	}
+	.konsultantsiya_main{
+		width: 90%;
+		div{
+			width: 100%;
+		}
+		input{
+			width: 100%;
+		}
+		a{
+			width: 100%;
+		}
+	}
+}
+@media (max-width:560px) {
+	.konsultantsiya_main{
+		padding: 30px;
+		a{
+			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 60px;
 		}
 	}
 }

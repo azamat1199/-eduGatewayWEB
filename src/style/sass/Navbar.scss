@@ -69,12 +69,14 @@
         position: fixed;
         width: 100%;
         top: 0;
+		left: 0;
         z-index: 4;
+
         .navPass{
             background: linear-gradient(180deg, rgba(0, 0, 0, 0.23) 64.58%, rgba(0, 0, 0, 0) 86.46%);
         }
         .navAct{
-            background: #00587F;
+            background: #00587F
             
         }
         .navbar{
@@ -82,7 +84,8 @@
             padding: 0 40px 0 40px;
             height: 96px;
             transition: 0.5s linear;
-            
+            max-width: 1920px;
+			margin: 0 auto;
             
 
             .navLeft{

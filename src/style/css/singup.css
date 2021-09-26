@@ -7,7 +7,7 @@
 }
 
 .container {
-  max-width: 1440px;
+  max-width: 1920px;
   margin: 0 auto;
 }
 
@@ -175,6 +175,17 @@
   width: 625px;
   margin-bottom: 20px;
   padding-left: 25px;
+  position: relative;
+}
+
+.main_singup .form_div .checkIcon {
+  position: absolute;
+  right: -50px;
+  top: 57%;
+}
+
+.main_singup .form_div .checkIcon img {
+  height: 25px;
 }
 
 .main_singup .form_div p {
@@ -671,6 +682,22 @@
 }
 
 .main_singup .importFile p #chFile5 {
+  display: none;
+}
+
+.main_singup .importFile p #chFile6 {
+  display: none;
+}
+
+.main_singup .importFile p #chFile7 {
+  display: none;
+}
+
+.main_singup .importFile p #chFile8 {
+  display: none;
+}
+
+.main_singup .importFile p #chFile9 {
   display: none;
 }
 
@@ -1227,6 +1254,7 @@
   }
   .main_singup .reg_btn {
     padding: 15px 85px;
+    width: 80%;
   }
   .main_singup .reg_link {
     width: 364px;

@@ -118,8 +118,49 @@
 }
 
 .kabinet .sidebarFix .sidebar .bottom .logoutbtn {
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  position: relative;
+  padding-left: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
   margin-top: 50px;
+  background: #0d5372;
+  border: none;
   cursor: pointer;
+  width: 100%;
+}
+
+.kabinet .sidebarFix .sidebar .bottom .logoutbtn:hover {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  background: rgba(250, 253, 255, 0.05);
+}
+
+.kabinet .sidebarFix .sidebar .bottom .logoutbtn img {
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+}
+
+.kabinet .sidebarFix .sidebar .bottom .logoutbtn h5 {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFF;
+  border: none;
+  background: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
 }
 
 @media (max-width: 1024px) {

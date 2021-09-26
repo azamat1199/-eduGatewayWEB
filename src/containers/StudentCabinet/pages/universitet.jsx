@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState,useEffect } from 'react';
 // SWIPPER
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
@@ -13,13 +13,29 @@ import StudentSidebar from './SidebarStudent';
 import { Empty ,Button} from 'antd';
 import EmptyPic from '../../../assets/icon/empty.svg'
 import { useHistory } from 'react-router';
-
+import Axios from '../../../utils/axios'
 SwiperCore.use([Pagination]);
 
 const dataCard = require("../json/card.json")
 
 const Universitet = () => {
+const [universities,setUniversities] = useState([])
 const history = useHistory()    
+const univerId = localStorage.getItem('univerId')
+console.log(univerId);
+
+const fetchSelectedUniver = async ()=>{
+    try {
+        const res = await Axios.get('enrollee/enrollee-user-favorite-university/')
+        console.log(res);
+    } catch (error) {
+        console.log(error.response);     
+    }
+}
+
+useEffect(()=>{
+    fetchSelectedUniver()
+},[])
     return ( 
         <>
         <StudentSidebar/>
