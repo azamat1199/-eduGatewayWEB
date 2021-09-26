@@ -30,7 +30,7 @@ const dataComposed = require("../json/dataComposed.json")
 function  Home () {
 	const selector = useSelector(state=> state)
 	console.log(selector);
-	const {data} = selector.user
+	const {data} = selector.payload
 	const [startDate, setStartDate] = useState(null);
 	return ( 
 			<UniversitetBackoffice>

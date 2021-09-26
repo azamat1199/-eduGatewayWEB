@@ -108,7 +108,7 @@ function SinglePage (props){
 					<div className="sp_up">
 						<div className="sp_img">
 							{/* <img src={images[0].image} alt="" height="700px" width="100%"/> */}
-							<img src={Universitet_pic} alt="" width="100%"/>
+							<img src={images[0]?.image?.toString()} alt="" width="100%"/>
 						</div>
 						<div className="sp_title">
 							<div><h1>{name}</h1></div>

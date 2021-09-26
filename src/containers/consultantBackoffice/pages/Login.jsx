@@ -53,8 +53,8 @@ console.log(dataGo);
         setLoading(true);
         try {
             const res = await Axios.post('/common/token/obtain',dataGo)
+            console.log(res);
             const {access,refresh,role,data} = res.data
-           
             dispatch(signUpAction({access,refresh,role,data:data}))
             if(role.startsWith("u")){
                history.push('/univer-backoffice-page')
@@ -69,11 +69,12 @@ console.log(dataGo);
            console.log(data);
            setLoading(false);
         } catch (error) {
+          console.log(error);
            Swal.fire({
                icon:'error',
                text:'Активная учетная запись с указанными учетными данными не найдена'
            })
-           console.log(error.response);
+         
            setLoading(false);
         }
     }

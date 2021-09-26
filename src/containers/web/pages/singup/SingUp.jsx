@@ -47,18 +47,29 @@ function SingUp() {
     last_name: "",
     middle_name:"",
     password_1: "",
+    passport_number:'',
     password_2: "",
-    phone_number: phone,
+    birthday:'',
+    address:'',
+    ref_code:"",
+    agree_with_agreement:true,
   });
-console.log(phone);
+  console.log(phone);
+console.log(loginData.phone_number);
+
+
   const handleInputChange = useCallback(
     (e) => {
       console.log(e);
       const { name, value } = e.target;
       setLoginData((state) => ({ ...state, [name]: value }));
-      if(name === 'phone_number'){
-        const finalValue = value.slice(1)
-        setPhone(finalValue)
+      if(name === 'phone_number' && value.startsWith('+')){
+          const finalValue = value.slice(1)
+          console.log(finalValue);
+          setPhone(finalValue)
+      }
+      else{
+        setPhone(value)
       }
       if (name === "password_1" && !value.length) {
         setStatus("error");
@@ -107,13 +118,14 @@ console.log(phone);
 
       if (status === 200) {
         setSountry(results);
+        console.log(results);
         const newData = [];
         for (let x = 0; x < results.length; x++) {
           newData.push(results[x].cities[0]);
         }
         setCities(newData);
+        console.log(newData)
       }
-      console.log(data);
     } catch (error) {
       console.log(error.response);
     }
@@ -130,16 +142,21 @@ console.log(phone);
     first_name: loginData.first_name,
     last_name: loginData.last_name,
     middle_name: loginData.middle_name,
+    birthday:loginData.birthday,
+    agree_with_agreement:loginData.agree_with_agreement,
+    address:loginData.address,
     citizenship: id1,
-    phone_number: loginData.phone_number,
+    phone_number: phone,
+    passport_number:loginData.passport_number,
     city: id2,
     password_1: loginData.password_1,
     password_2: loginData.password_2,
+    ref_code:loginData.ref_code
   };
   console.log(finalData);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    localStorage.setItem('enrolle-user', loginData.first_name);
+    localStorage.setItem('enrolle-user', loginData);
     setLoading(true);
     try {
       const res = await Axios.post('/enrollee/enrollee-user/', finalData);
@@ -154,7 +171,17 @@ console.log(phone);
           icon: 'success',
           text: 'Успешно зарегистрирован',
           showCancelButton: false,
-        }).then(() => history.push('/my-account'));
+        }).then(()=>{
+          Axios.post('/common/token/obtain',{
+            username:`enrollee_${finalData.phone_number}`,
+            password:`${finalData.password_1}`
+          })
+          .then((res) => {
+            const {refresh,access} = res.data
+            localStorage.setItem('acces',access)
+            localStorage.setItem('refresh',refresh)
+          }).then(() => history.push('/my-account'))
+        })
       }
       console.log(data);
       setLoading(false);
@@ -171,7 +198,7 @@ console.log(phone);
   };
 
   // console.log(results);
-  console.log(countries);
+  console.log(countriess);
   console.log(citiess);
   console.log(loginData);
   useEffect(() => {
@@ -218,6 +245,28 @@ console.log(phone);
             />
             <InputErrorMsg type="last_name" errorObj={error} />
           </div>
+          <div className="form_div">
+            <p>Пасспорт намбер анд серия</p>
+            <input
+              onChange={handleInputChange}
+              type="text"
+              name="passport_number"
+              placeholder="AA0000"
+              required
+            />
+            <InputErrorMsg type="passport_number" errorObj={error} />
+          </div>
+          <div className="form_div">
+            <p>день рождения</p>
+            <input
+              onChange={handleInputChange}
+              type="date"
+              name="birthday"
+              placeholder="24.06.2002"
+              required
+            />
+            <InputErrorMsg type="last_name" errorObj={error} />
+          </div>
 
           <div className="form_div">
 							<p>Гражданство</p>
@@ -226,7 +275,7 @@ console.log(phone);
 							onChange = {handleCountry}
 							id="profayl_input"
 							options={countriess}
-							getOptionLabel={(option) => option.name}
+							getOptionLabel={(option) => option ? option.name :''}
 							style={{ width: 575 }}
 							renderInput={(params) => <TextField {...params} label="" variant="outlined"/>}
 							/>
@@ -238,11 +287,21 @@ console.log(phone);
               onChange={handleRegion}
               id="profayl_input"
               options={citiess}
-              getOptionLabel={(option) => option.name}
+              getOptionLabel={(option) =>option ? option.name : ''}
               style={{ width: 575 }}
               renderInput={(params) => (
                 <TextField {...params} label="" variant="outlined" />
               )}
+            />
+          </div>
+          <div className="form_div">
+            <p>Адрес</p>
+            <input
+              type="text"
+              onChange={handleInputChange}
+              name="address"
+              placeholder="address"
+              required
             />
           </div>
           <div className="form_div">
@@ -325,7 +384,22 @@ console.log(phone);
               )}
             </div>
           </div>
-
+          <div className="form_div">
+            <p>Реферальный код</p>
+            <input
+              type="text"
+              onChange={handleInputChange}
+              name="ref_code"
+              required
+            />
+          </div>
+          <div className="">
+               <input onChange={handleInputChange} type="checkbox" name="agree_with_agreement" value='true' />
+                                <p>
+                                Соглашаюсь с <NavLink to='text-agreement'> правилами публичной оферты</NavLink> и конфедициальности
+                                </p>
+            </div>
+         
           <p style={{ color: 'red', marginBottom: '8px', fontWeight: '600' }}>
             {' '}
             {error}

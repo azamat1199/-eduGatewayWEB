@@ -65,12 +65,13 @@ const MainEduGate = () => {
     setdataFilter(letFilter);
     setSearch(true);
   };
+  const token = localStorage.getItem('acces')
   const setFavourite = async(univerId)=>{
 		try {
 		  const data = await Axios.post('/enrollee/enrollee-user-favorite-university/',{
-			  university:univerId,
-        enrollee_user:userId
-		  })
+			  university_id:univerId,
+		  }
+      )
      
 		  console.log(data);
 		} catch (error) {
@@ -313,6 +314,7 @@ const MainEduGate = () => {
           <div className="result">
             {/* card */}
             {universities.map((item) => {
+              console.log(item);
               const {
                 id,
                 name,
@@ -325,7 +327,7 @@ const MainEduGate = () => {
               } = item;
               return (
                 <div onClick={() => handler(id)} className="card">
-                  <img src={item.images[0].image.toString()} alt="" />
+                  <img src={item.images[0]?.image?.toString()} alt="univerImage" />
                   <svg
                     width="20"
                     height="20"

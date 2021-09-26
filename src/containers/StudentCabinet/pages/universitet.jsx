@@ -6,6 +6,8 @@ import "swiper/components/pagination/pagination.min.css"
 import SwiperCore, {
     Pagination,Navigation
   } from 'swiper/core';
+  import search_icon from '../../../assets/icon/search.svg';
+  import settings from '../../../assets/icon/settings.svg';
 
 // import css
 import "../../../style/css/universitet.css"  
@@ -22,6 +24,7 @@ const Universitet = () => {
 const [universities,setUniversities] = useState([])
 const history = useHistory()    
 const univerId = localStorage.getItem('univerId')
+const [fixEnd, setFix] = useState(false);
 console.log(univerId);
 
 const fetchSelectedUniver = async ()=>{
@@ -56,11 +59,69 @@ useEffect(()=>{
             <div className="top">
                 <h1>Ваши университеты</h1>
                 <div>
-                    <img src="https://picsum.photos/70" alt="" />
+                    <a src="https://picsum.photos/70" alt="" />
                     <h2>Nargiza Akhmedova <span>IT Specialist</span></h2>
                 </div>
             </div>
-            <div className="bottom">
+         <div className="bottom">
+          <div className="settSearch">
+            <div className="searchUniv">
+              <img src={search_icon} alt="" />
+              <input type="text" placeholder="Поиск университетов" />
+            </div>
+            <button
+              onClick={() => {
+                setFix(!fixEnd);
+              }}
+              className="settingsUniver"
+            >
+              <img src={settings} alt="" />
+            </button>
+          </div>
+          {
+            fixEnd === true ? (
+              <div className="FilterFix">
+                <div
+                  className="fixLeft"
+                  onClick={() => {
+                    setFix(!fixEnd);
+                  }}
+                ></div>
+                <div className="FilterUniver">
+                  <h4>Фильтры</h4>
+                  <p>Выберите страну</p>
+                  <div className="selectCountry">
+                    <select name="" id="">
+                      <option value="">Турция</option>
+                      <option value="">Россия</option>
+                      <option value="">США</option>
+                      <option value="">Узбекистан</option>
+                    </select>
+                  </div>
+                  <p>Выберите степень</p>
+                  <div className="selectCountry">
+                    <select name="" id="">
+                      <option value="">Анталия</option>
+                      <option value="">Анкара</option>
+                      <option value="">Истанбул</option>
+                      <option value="">Измир</option>
+                    </select>
+                  </div>
+                  <p>Выберите направление</p>
+                  <div className="selectCountry">
+                    <select name="" id="">
+                      <option value="">Анталия</option>
+                      <option value="">Анкара</option>
+                      <option value="">Истанбул</option>
+                      <option value="">Измир</option>
+                    </select>
+                  </div>
+                  <button>Применить</button>
+                </div>
+                {/* end FilterUniver */}
+              </div>
+            ) : null
+          }
                 {/* <h1>Избранные </h1> */}
                 <Empty 
                  image={EmptyPic}
@@ -74,7 +135,7 @@ useEffect(()=>{
                   }
                  
                 >
-                <Button  style={{height:"64px",width:"600px",background:"#00587F",color:"#fff",borderRadius:"10px",fontSize:"20px"}} onClick={()=> history.push('/')}>Найти университет</Button>
+                {/* <Button  style={{height:"64px",width:"600px",background:"#00587F",color:"#fff",borderRadius:"10px",fontSize:"20px"}} onClick={()=> history.push('/')}>Найти университет</Button> */}
                 </Empty>
                 <div className="cardSwipperBlock">
                     <Swiper 

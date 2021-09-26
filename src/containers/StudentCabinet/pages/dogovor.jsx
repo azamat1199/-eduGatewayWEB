@@ -1,5 +1,5 @@
 import React from 'react';
-
+import  {useSelector} from 'react-redux'
 
 // import css
 import "../../../style/css/dogovor.css"
@@ -10,6 +10,10 @@ import StudentSidebar from './SidebarStudent';
 
 
 const Dogovor = () => {
+    const selector  = useSelector(state=> state)
+    const {payload} = selector.payload
+    const {agreement_docx} = payload.data
+    console.log(agreement_docx.toString());
     return (
         <>
         <StudentSidebar/>
@@ -25,7 +29,11 @@ const Dogovor = () => {
             </div>
             <div className="bootm">
                 <div className="main">
-                    <h1>ДОГОВОР</h1>
+                    <h4>Dogovor </h4>
+                <embed src={`https://docs.google.com/gview?url=${agreement_docx}%26embedded=true`} style={{width:'100%',height:'80vh'}} type="" />
+                    {/* <embed src="http://backend.edugateway.uz/media/agreements/55/agreement_55_1632465060.docx" width="500" height="375" 
+                       type="application/pdf"/> */}
+                    {/* <h1>ДОГОВОР</h1>
                     <h2>на оказание консультационных и маркетинговых услуг
                     </h2>
                     <p className="titleP1">
@@ -60,7 +68,7 @@ const Dogovor = () => {
                         <span>
                              Помимо перечисленных в настоящем пункте,  могут быть разработаныи другие инвестиционные проекты.
                         </span>
-                    </p>
+                    </p> */}
                 </div>
                
                 <div className="print">
@@ -70,7 +78,8 @@ const Dogovor = () => {
                     </button>
                     <button>
                         <img src={download_icon} alt=""/>
-                        Скачать Word
+                        <a href={agreement_docx} download> Скачать Word</a> 
+                       
                     </button>
                     <button>
                         <img src={print_icon} alt=""/>
