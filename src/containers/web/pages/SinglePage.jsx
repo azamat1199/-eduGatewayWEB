@@ -5,17 +5,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination } from "swiper/core";
 import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css";
-
-
-import img1 from "../../../assets/images/img1.svg" 
-import img2 from  "../../../assets/images/img2.svg"
 import Universitet_pic from  "../../../assets/images/universitet_pic.svg"
-import img3 from  "../../../assets/images/img3.svg" 
-
 import "../../../style/css/singlepage.css"
 import { useHistory, useParams } from 'react-router';
 import Axios from '../../../utils/axios';
 import { useSelector } from 'react-redux';
+import Navbar from "../pages/Navbar"
+import { Link } from "react-router-dom"
 
 
 SwiperCore.use([Pagination]);
@@ -26,7 +22,7 @@ const dataT = require("../json/data_univer.json")
 
 function SinglePage (props){
 	const selector = useSelector(state => state)
-	console.log(selector);
+	//console.log(selector);
 	// const {payload} = selector.payload
 	// const {id} = payload.data
 	// console.log(id);
@@ -40,9 +36,12 @@ function SinglePage (props){
 		description:'',
 		founding_year:'',
 		city:{
-           id:'',
-		   name:'',
-		   country:''
+			id:'',
+			name:'',
+			country:{
+			   id:"",
+			   name:""
+			}
 		},
 		motto:'',
 		rating:'',
@@ -97,18 +96,29 @@ function SinglePage (props){
 		  
 	// 	}
 	//   }
+	const refreshPage = () => {
+		window.location.reload();
+	}
+	const [open, setOpen] = React.useState(false);
+
+	const handleOpen = () => {
+	  setOpen(true);
+	};
+  
+	const handleClose = () => {
+	  setOpen(false);
+	};
 
 	useEffect(()=>{
 		fetchUniversityById()
 	},[])
-	console.log(params);
 		return ( 
 			<React.Fragment>
+				<Navbar/>
 				<div className="single_page">
 					<div className="sp_up">
 						<div className="sp_img">
-							{/* <img src={images[0].image} alt="" height="700px" width="100%"/> */}
-							<img src={images[0]?.image?.toString()} alt="" width="100%"/>
+							<img src={images.length === 0 ? Universitet_pic : images[0].image.toString() } alt="" className={images.length === 0 ? "" : "u_img"} width="100%"/>
 						</div>
 						<div className="sp_title">
 							<div><h1>{name}</h1></div>
@@ -132,7 +142,7 @@ function SinglePage (props){
 										</tr>
 										<tr>
 											<td>Страна</td>
-											<td>{city.name}</td>
+											<td>{city.country.name}</td>
 										</tr>
 										<tr>
 											<td>Город</td>
@@ -175,48 +185,6 @@ function SinglePage (props){
 							</div>
 						</div>
 						
-						<div className="sp_main1 sp2">
-							<div className="sp_main_left">
-								<div className="sp_table">
-									<table>
-										<tr>
-											<td>Рейтинг</td>
-											<td>235</td>
-										</tr>
-										<tr>
-											<td>Страна</td>
-											<td>Италия</td>
-										</tr>
-										<tr>
-											<td>Город</td>
-											<td>Милан</td>
-										</tr>
-										<tr>
-											<td>Бакалавриат</td>
-											<td>$2,875/год</td>
-										</tr>
-										<tr>
-											<td>Магистратура</td>
-											<td>$2,875/год</td>
-										</tr>
-										<tr>
-											<td>Цена прожив -ния</td>
-											<td>$2,875/год</td>
-										</tr>
-									</table>
-								</div>
-							</div>
-							<div className="sp_main2_right">
-								<h1>Факультеты</h1>
-								<ul>
-									{faculties.map((f)=>{
-										return(
-											<li>{f.name}</li>
-										)
-									})}
-								</ul>
-							</div>
-						</div>
 						
 						<div className="sp_main1 sp3">
 							<div className="sp_main_left">
@@ -249,36 +217,7 @@ function SinglePage (props){
 						</div>
 						
 						<div className="sp_main1 sp4">
-							<div className="sp_main_left">
-								<div className="sp_table">
-									{/* <table>
-										<tr>
-											<td>Рейтинг</td>
-											<td>235</td>
-										</tr>
-										<tr>
-											<td>Страна</td>
-											<td>Италия</td>
-										</tr>
-										<tr>
-											<td>Город</td>
-											<td>Милан</td>
-										</tr>
-										<tr>
-											<td>Бакалавриат</td>
-											<td>$2,875/год</td>
-										</tr>
-										<tr>
-											<td>Магистратура</td>
-											<td>$2,875/год</td>
-										</tr>
-										<tr>
-											<td>Цена прожив -ния</td>
-											<td>$2,875/год</td>
-										</tr>
-									</table> */}
-								</div>
-							</div>
+							<div></div>
 							<div className="sp_main2_right">
 								<h1>Специалисты образовательного агентства Gateway Education:</h1>
 								<ul>
@@ -292,12 +231,53 @@ function SinglePage (props){
 								</ul>
 							</div>
 						</div>
+
+						<div className="sp_main2 sp2">
+							<div></div>
+							<div>
+							<h1>Факультеты</h1>
+							<div className="sp_table sp2_table">
+								<table>
+									<thead>
+										<tr>
+											<th>Факультет</th>
+											<th>Квоты</th>
+											<th>Бюджет</th>
+											<th>Тип обучения</th>
+											<th>Стоимость услуги</th>
+											<th>Принятие</th>
+										</tr>
+									</thead>
+									<tbody>
+										{faculties.map((f)=>{
+											return(
+												<tr>
+													<td>{f.name}</td>
+													<td>{f.quota} </td>
+													<td>{f.education_fee}</td>
+													<td>
+														{f.education_type === "full_time" ? "Полный занятость" : null}
+														{f.education_type === "part_time" ? "Неполная занятость" : null}
+													</td>
+													<td>{f.service_price} $</td>
+													<td>
+														{f.status === "open" ? "Открыть" : null}
+														{f.status === "close" ? "Закрыто" : null}
+													</td>
+												</tr>
+											)
+										})}
+									</tbody>
+								</table>
+							</div>
+							</div>
+						</div>
 						
 						<div className="sp_main1 sp5">
 							<div className="sp_main_left"></div>
 							<div className="sp_main3_right">
-								<a onClick={()=> selector.payload.payload ?  history.push('/requisition'): history.push('/login')}>Подать документы</a>
-								<a href="#">Консультация</a>
+								<button onClick={()=> selector.payload.payload ?  history.push('/requisition'): history.push('/login')}>Подать документы</button>
+								<Link to="/konsultatsya">Консультация</Link>
 							</div>
 						</div>
 					
@@ -340,20 +320,9 @@ function SinglePage (props){
 							 }}
 							className="mySwiper"
 						>
-							{/* <SwiperSlide><img src={img1} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img2} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img3} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img2} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img1} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img3} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img1} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img2} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img3} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img1} alt="" /></SwiperSlide>
-							<SwiperSlide><img src={img2} alt="" /></SwiperSlide> */}
 							{images.map((i)=>{
 								return(
-									<SwiperSlide><img src={i.image} alt="" width="400px" /></SwiperSlide>
+									<SwiperSlide><img src={i.image} alt="" width="100%" /></SwiperSlide>
 								)
 							})}
 						</Swiper>

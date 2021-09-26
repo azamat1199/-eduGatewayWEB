@@ -4,7 +4,7 @@
   background-size: cover;
   background-position: bottom;
   padding-top: 170px;
-  padding: 170px 40px 0 40px;
+  padding: 170px 40px 100px 40px;
 }
 .mainEduGate .header h2 {
   font-family: Raleway;
@@ -37,6 +37,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 360px;
+  margin-bottom: 40px;
 }
 .mainEduGate .header .listLvl p {
   font-family: Raleway;
@@ -73,7 +74,6 @@
   color: #FFFFFF;
   text-decoration: none;
   margin: 0;
-  margin-top: 38px;
   padding: 20px 40px;
   background: #E5F7FF;
   border-radius: 10px;
@@ -135,6 +135,11 @@
   border: none;
   outline: none;
 }
+
+.mainEduGate .header .filter .dropDwn select option:nth-child(1) {
+  display: none;
+}
+
 .mainEduGate .header .filter .dropDwn svg {
   z-index: 11;
 }

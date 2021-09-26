@@ -23,7 +23,7 @@
 		background-size: cover;
 		background-position: bottom;
 		padding-top: 170px;
-		padding:170px 40px 0 40px;
+		padding:170px 40px 100px 40px;
 		h2{
 			@include textheader();
 			font-weight: bold;
@@ -41,6 +41,7 @@
 			display: grid;
 			grid-template-columns: 1fr 1fr;
 			width: 360px;
+			margin-bottom: 40px;
 			p{
 				@include textheader();
 				list-style: inside;
@@ -63,7 +64,6 @@
 		}
 		.freeConsult{
 			@include textheader();
-			margin-top: 38px;
 			padding: 20px 40px;
 			background: #E5F7FF;
 			border-radius: 10px;
@@ -111,6 +111,9 @@
 						background: none;
 						border: none;
 						outline: none;
+						option:nth-child(1){
+							display: none;
+						}
 					}
 					svg{
 						z-index: 11;

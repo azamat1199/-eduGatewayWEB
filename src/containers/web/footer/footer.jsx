@@ -1,9 +1,29 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import Axios from '../../../utils/axios';
 
 // import css
 import "../../../style/css/footer.css"
 
 const Footer = () => {
+
+    const [phone, setPhone] = useState('');
+
+    const [write, setWrite] = useState(false);
+
+    const handlecheck = () => {
+        setWrite(!write)
+    }
+    const callMe = async () => {
+        try{
+          const data = await Axios.post('/company/call-me-request/', {
+            phone_number: phone,
+            write_to_telegram: write
+          });
+        } catch(err){
+          console.log(err)
+        }
+    }
+      console.log(write)
     return ( 
         <div className="footer">
             <p>Получите бесплатную консультацию</p>
@@ -11,16 +31,16 @@ const Footer = () => {
                 <h1>Оставьте ваш телефон номер и мы свяжемся с вами</h1>
                 <div>
                     <div>
-                        <input type="text" placeholder="+998 9x xxx xx xx" />
+                        <input type="text" onChange={(e) => setPhone(e.target.value)} placeholder="+998 9x xxx xx xx" />
                     </div>
                     <label className='custom-checkbox'>
-                        <input type="checkbox" name="" id="" />
+                        <input type="checkbox" onClick={handlecheck} name="" id="" />
                         <span></span>
                         <p>
                             Запомнить меня
                         </p>
                     </label>
-                    <button>Заказать бесплатную консультацию</button>
+                    <button onClick={callMe}>Заказать бесплатную консультацию</button>
                 </div>
             </div>
             <div className="down">

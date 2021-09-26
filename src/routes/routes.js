@@ -37,6 +37,7 @@ import Invoys from '../containers/consultantBackoffice/univerBackoffice/pages/in
 import Info from '../containers/consultantBackoffice/univerBackoffice/pages/info';
 import Documents from '../containers/consultantBackoffice/pages/Documents';
 import UserDocument from '../containers/consultantBackoffice/pages/userDocument';
+import Konsultatsya from '../containers/web/pages/Konsultatsya';
 
 const routes = {
   public: [
@@ -50,6 +51,12 @@ const routes = {
       key: 'university',
       path: '/partners',
       component: Partnyors,
+      exact: true,
+    },
+    {
+      key: 'university',
+      path: '/konsultatsya',
+      component: Konsultatsya,
       exact: true,
     },
     {
