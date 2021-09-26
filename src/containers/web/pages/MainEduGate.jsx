@@ -121,7 +121,7 @@ const MainEduGate = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }
   const handler = (univerId) => {
     //console.log(univerId);
     setFavourite(univerId).then(() => history.push(`/university/${univerId}`));
@@ -374,6 +374,7 @@ const MainEduGate = () => {
           <div className="result">
             {/* card */}
             {universities.map((item) => {
+              console.log(item);
               const {
                 id,
                 name,
@@ -565,4 +566,4 @@ const MainEduGate = () => {
   );
 };
 
-export default MainEduGate;
+export default MainEduGate

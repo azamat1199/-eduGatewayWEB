@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
+import {useSelector} from 'react-redux'
 import { withStyles } from '@material-ui/core/styles';
 import { NavLink, useHistory } from 'react-router-dom';
 import arrowright from '../../../../assets/icon/arrowright.svg';
@@ -7,7 +8,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import Slider from '@material-ui/core/Slider';
 import NumberFormat from 'react-number-format';
 import Navbar from '../Navbar';
-
+import Axios from '../../../../utils/axios'
 const data = require('../../json/data.json');
 const marks = [
   {
@@ -71,10 +72,18 @@ const SSlider = withStyles({
 })(Slider);
 
 function Zayavka() {
+  console.log(data);
+  const selector = useSelector(state=> state)
+  console.log(selector)
+  const {payload} = selector?.payload
+  const {id} = payload.data
+  const userId = id
+  console.log(id);
   const history = useHistory();
-  const [faculty, setUniversity] = useState();
+  const [service, setService] = useState();
+  const [fetchedService,setFetchedService] = useState([])
   const [comment, setDiscription] = useState();
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState();
   const [requisiton, setRequisition] = useState({
     budget: 0,
   });
@@ -84,23 +93,37 @@ function Zayavka() {
     setRequisition((state) => ({ ...state, [name]: +value.trim() }));
   };
   const handleChange = (event, newValue) => {
+    setRequisition(state => ({...state,budget:newValue}))
     setValue(newValue);
   };
   const handleUniver = (event, newValue) => {
+    console.log(newValue)
     if(newValue){
       const { id } = newValue;
-      setUniversity(id);
+      setService(id);
     }
   };
-  // const enrollee_user = JSON.parse(localStorage.getItem('data')).id;
-  // console.log(enrollee_user);
   const finalData = {
-    enrollee_user:1,
-    faculty:1,
-    budget: 3000,
+    enrollee_user:userId,
+    service: service, 
+    budget:requisiton.budget,
     comment,
   };
-
+ 
+  console.log(userId);
+  const fetchServiceCompany = async()=>{
+    try {
+      const res = await Axios.get("/company/company-service/")
+      const {status} = res
+      const {results} = res.data
+      if(status === 200){
+           setFetchedService(results)
+      }
+      console.log(res);
+    } catch (error) {
+      console.log(error.response);
+    }
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(finalData);
@@ -108,6 +131,10 @@ function Zayavka() {
   const localStr = () => {
     localStorage.setItem('zayavka', JSON.stringify(finalData));
   };
+  useEffect(()=>{
+    fetchServiceCompany()
+  },[])
+  console.log(fetchedService);
   console.log(finalData);
   return (
     <React.Fragment>
@@ -169,8 +196,8 @@ function Zayavka() {
               aria-required
               onChange={handleUniver}
               id="combo-box-demo"
-              options={data}
-              getOptionLabel={(option) => option.univer}
+              options={fetchedService}
+              getOptionLabel={(option) => option ? option.name:' '}
               style={{ width: 600 }}
               renderInput={(params) => (
                 <TextField
@@ -201,15 +228,14 @@ function Zayavka() {
             required
             name="budget"
             onChange={handleInputChange}
-            //  value={requisiton.budget ? requisiton.budget : value}
             className="input_budjet"
             placeholder="$0"
+            value={requisiton.budget}
           />
-          {/* <input className="input_budjet" type="text" /> */}
           <div className="form_div input_range">
             <SSlider
               defaultValue={0}
-              value={value}
+              value={requisiton.budget}
               max={3000}
               onChange={handleChange}
               step={10}

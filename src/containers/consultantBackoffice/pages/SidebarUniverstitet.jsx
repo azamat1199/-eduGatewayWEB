@@ -203,7 +203,6 @@ const SidebarUniverstitet = () => {
           {/* end univerList */}
           {/* Filter */}
           {
-            // fixEnd ?
             fixEnd === true ? (
               <div className="FilterFix">
                 <div

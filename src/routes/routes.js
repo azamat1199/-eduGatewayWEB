@@ -27,6 +27,7 @@ import Profayl from '../containers/web/pages/singup/Profayl';
 import Profayl2 from '../containers/web/pages/singup/Profayl2';
 import Profayl3 from '../containers/web/pages/singup/Profayl3';
 import SingUp from '../containers/web/pages/singup/SingUp';
+import TextDogovor from '../containers/web/pages/singup/TextDogovor';
 import Zayavka from '../containers/web/pages/singup/Zayavka';
 import Web from '../containers/web/web';
 import MainEduGate from '../containers/web/pages/MainEduGate';
@@ -136,6 +137,13 @@ const routes = {
       component: Oplata3,
       exact: true,
     },
+    {
+      key: 'file',
+      path: '/text-agreement',
+      component: TextDogovor,
+      exact: true,
+    },
+  
   ],
   student: [
     {

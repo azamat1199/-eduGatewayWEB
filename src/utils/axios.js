@@ -10,7 +10,11 @@ const Axios = axios.create({
 http: Axios.interceptors.request.use(
   (configs) => {
     const token = store.getState().payload.access;
-    configs.headers.Authorization = token ? `Berear ${token}` : '';
+    const token2 = localStorage.getItem('acces')
+    console.log(
+      token2
+    );
+    configs.headers.Authorization = token ? `JWT ${token}` : `JWT ${token2}` ?  `JWT ${token2}` : '';
     return configs;
   },
   (err) => {

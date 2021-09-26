@@ -22,7 +22,7 @@ const userReducer = (state=initialState,action)=>{
         //     return {...state,lastStep,form}
         // }
         case AUTH_SIGN_OUT:{
-            return initialState;
+            return initialState
         }
         default:{
             return state;
