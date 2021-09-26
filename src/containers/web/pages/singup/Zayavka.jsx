@@ -80,18 +80,18 @@ function Zayavka()  {
 	const [description,setDiscription] = useState()
 	const [value, setValue] = useState(1);
 	const[requisiton,setRequisition] = useState({
-		budget:'',
+		budget:0,
 	})
 	const handleInputChange = (e)  => {
 		console.log(e.target.value);
             const { name, value} = e.target;
-			setRequisition((state) => ({...state,[name]:value.trim()}));
+			setRequisition((state) => ({...state,[name]:+value.trim()}));
 	}
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
 	  };
 	  const handleUniver = (event,newValue) =>{
-		  setUniversity(newValue)
+		  setUniversity(newValue.id)
 	  }
 	
 	
@@ -105,10 +105,8 @@ function Zayavka()  {
 		e.preventDefault()
         console.log(finalData);
 	}
-	console.log(requisiton);
-	console.log(university);
-	console.log(description);
-	console.log(value);
+
+	console.log(finalData);
 	return ( 
 		<React.Fragment>
 				<div className="navRegist">
@@ -153,13 +151,13 @@ function Zayavka()  {
 					</div>
 					<div className="form_div">
 						<p>Комментарии</p>
-						<textarea  required value={description} onChange={(e)=>setDiscription(e.target.value)} name="" id="" cols="30" rows="10" placeholder="Оставьте комментарии или предложения"></textarea>
+						<textarea  required value={description} onChange={(e)=>setDiscription(+e.target.value)} name="" id="" cols="30" rows="10" placeholder="Оставьте комментарии или предложения"></textarea>
 					</div>
 					<div className="line_dash"></div>
 					<h4>Ваш бюджет</h4>
-					<NumberFormat required name="budget" onChange={handleInputChange}
+					<input required name="budget" onChange={handleInputChange}
 					//  value={requisiton.budget ? requisiton.budget : value} 
-					 className="input_budjet" format="$#######" placeholder="$0" mask=" " />
+					 className="input_budjet"  placeholder="$0" />
 					{/* <input className="input_budjet" type="text" /> */}
 					<div className="form_div input_range">
 						<SSlider
