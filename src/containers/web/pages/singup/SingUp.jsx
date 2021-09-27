@@ -156,7 +156,6 @@ console.log(loginData.phone_number);
   console.log(finalData);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    localStorage.setItem('enrolle-user', loginData);
     setLoading(true);
     try {
       const res = await Axios.post('/enrollee/enrollee-user/', finalData);
@@ -167,6 +166,7 @@ console.log(loginData.phone_number);
       if (status == 201) {
         dispatch(signUpAction({ data: data }));
         localStorage.setItem('profile', JSON.stringify(data));
+        localStorage.setItem('enrolle_user', data?.id);
         Swal.fire({
           icon: 'success',
           text: 'Успешно зарегистрирован',

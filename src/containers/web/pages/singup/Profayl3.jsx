@@ -5,10 +5,15 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import Navbar from '../Navbar';
 import Axios from '../../../../utils/axios';
 import Swal from 'sweetalert2';
+import { useSelector } from 'react-redux';
 
 const dataT = require('../../json/data.json');
 
 function Profayl3() {
+  const selector = useSelector(state=> state)
+  console.log(selector);
+  const {data} = selector?.payload?.payload
+  const {id} = data
   const history = useHistory();
   const [dataSet, setData] = useState(dataT);
   const [profile, setProfile] = useState(
@@ -21,15 +26,13 @@ function Profayl3() {
   const data1 = JSON.parse(localStorage.getItem('profile'));
   const data2 = JSON.parse(localStorage.getItem('profile2'));
   const data3 = JSON.parse(localStorage.getItem('zayavka'));
-  const id = JSON.parse(localStorage.getItem('data'));
+  // const id = JSON.parse(localStorage.getItem('enrollee_user'));
   const [profileData, setProfileData] = useState({
     sport_achievements: '',
     visas: '',
     education_purpose: '',
   });
   const handleActivity = (event, newValue) => {
-    // const {hobbi} = newValue
-    // console.log(hobbi);
     setActivity(newValue?.hobbi);
   };
   const handleChange = (e) => {
