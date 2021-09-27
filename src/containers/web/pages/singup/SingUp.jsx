@@ -55,7 +55,6 @@ function SingUp() {
     agree_with_agreement:true,
   });
   console.log(phone);
-console.log(loginData.phone_number);
 
 
   const handleInputChange = useCallback(
@@ -63,13 +62,15 @@ console.log(loginData.phone_number);
       console.log(e);
       const { name, value } = e.target;
       setLoginData((state) => ({ ...state, [name]: value }));
-      if(name === 'phone_number' && value.startsWith('+')){
+      if(name === 'phone_number'){
+        if(value.startsWith('+')){
           const finalValue = value.slice(1)
           console.log(finalValue);
           setPhone(finalValue)
-      }
-      else{
-        setPhone(value)
+        }
+        else{
+          setPhone(value)
+        }
       }
       if (name === "password_1" && !value.length) {
         setStatus("error");
@@ -94,7 +95,7 @@ console.log(loginData.phone_number);
         current.style = 'background:red';
         setStatus('error');
         setLength(75);
-      } else if (name === 'password_1' && value.length == 8) {
+      } else if (name === 'password_1' && value.length === 8) {
         setStatus('success');
         setLength(100);
       }
@@ -187,7 +188,7 @@ console.log(loginData.phone_number);
       setLoading(false);
     } catch (err) {
       console.log(err.response);
-      const { error } = err.response?.data;
+      // const { error } = err.response?.data;
       Swal.fire({
         icon: 'error',
         text: 'На этот номер все готовы зарегистрироваться, выберите другой или войдите',

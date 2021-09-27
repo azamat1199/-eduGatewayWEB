@@ -30,8 +30,8 @@ const Dogovor = () => {
             </div>
             <div className="bootm">
                 <div className="main">
-                    <h4>Dogovor </h4>
-                <embed src={agreement_pdf} style={{width:'100%',height:'80vh'}} type="" />
+                    <h4>Договор </h4>
+                <embed  src={agreement_pdf } style={{width:'100%',height:'80vh'}} type="" />
                     {/* <embed src="http://backend.edugateway.uz/media/agreements/55/agreement_55_1632465060.docx" width="500" height="375" 
                        type="application/pdf"/> */}
                     {/* <h1>ДОГОВОР</h1>

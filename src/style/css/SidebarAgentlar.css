@@ -13,42 +13,27 @@
   border: none;
   cursor: pointer;
 }
-
 .SidebarAgentlar .settSearch {
   margin-top: 23px;
   height: 70px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
-
 .SidebarAgentlar .settSearch > button {
   outline: none;
   border: none;
 }
-
 .SidebarAgentlar .settSearch .searchUniv {
   background: #FFFFFF;
-  -webkit-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
-          box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
   border-radius: 14px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   height: 100%;
   width: 100%;
   padding: 0 20px;
 }
-
 .SidebarAgentlar .settSearch .searchUniv input {
   font-family: Raleway;
   font-style: normal;
@@ -61,42 +46,30 @@
   border: none;
   width: 100%;
 }
-
 .SidebarAgentlar .settSearch .searchUniv img {
   padding: 15px;
   margin-right: 10px;
   cursor: pointer;
 }
-
 .SidebarAgentlar .settSearch .settingsUniver {
   height: 100%;
   width: 70px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   background: #FFFFFF;
-  -webkit-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
-          box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   margin-left: 20px;
   cursor: pointer;
 }
-
 .SidebarAgentlar .univerList {
   margin-top: 24px;
-  -webkit-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
-          box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
   border-radius: 14px;
   background: #fff;
   padding: 22px 0px;
 }
-
 .SidebarAgentlar .univerList h5 {
   margin: 0 0 46px 32px;
   font-family: Raleway;
@@ -106,22 +79,18 @@
   letter-spacing: 0.02em;
   color: #00121A;
 }
-
 .SidebarAgentlar .univerList .infoTd {
   text-align: center;
 }
-
 .SidebarAgentlar .univerList .infoTd img {
   width: 28px;
   height: 28px;
 }
-
 .SidebarAgentlar .univerList table {
   border-spacing: 0;
   position: relative;
   width: 100%;
 }
-
 .SidebarAgentlar .univerList table thead::before {
   content: "";
   background: #00587F;
@@ -130,12 +99,10 @@
   height: 1.5px;
   top: 37px;
 }
-
 .SidebarAgentlar .univerList table tr {
   padding-bottom: 16px;
   border-bottom: 1.5px solid #00587F;
 }
-
 .SidebarAgentlar .univerList table tr th {
   text-align: inherit;
   font-family: Raleway;
@@ -145,7 +112,6 @@
   letter-spacing: 0.02em;
   color: #00121A;
 }
-
 .SidebarAgentlar .univerList table tr td {
   padding-top: 27px;
   padding-bottom: 27px;
@@ -156,53 +122,37 @@
   letter-spacing: 0.02em;
   color: #00121A;
 }
-
 .SidebarAgentlar .univerList table tr .priDoc {
   color: #219653;
   font-weight: 500;
 }
-
 .SidebarAgentlar .univerList table tr .priZak {
   color: #E96464;
   font-weight: 500;
 }
-
 .SidebarAgentlar .univerList table tr .firstTD {
   margin-left: 10px;
 }
-
 .SidebarAgentlar .univerList table .firstTD {
   padding-left: 32px;
 }
-
 .SidebarAgentlar .univerList table tbody tr:nth-child(even) {
   background: #F0FAFF;
 }
-
 .SidebarAgentlar .univerList table thead th {
   padding-bottom: 12px;
 }
-
 .SidebarAgentlar .raytingAgentBlock {
   margin-top: 44px;
   padding: 22px 32px;
-  -webkit-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
-          box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
   border-radius: 14px;
 }
-
 .SidebarAgentlar .raytingAgentBlock .raytingAgentTitle {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
-
 .SidebarAgentlar .raytingAgentBlock .raytingAgentTitle p {
   font-family: Raleway;
   font-style: normal;
@@ -211,7 +161,6 @@
   letter-spacing: 0.02em;
   color: #00121A;
 }
-
 .SidebarAgentlar .raytingAgentBlock .raytingAgentTitle select {
   width: 160px;
   border: none;
@@ -224,7 +173,6 @@
   letter-spacing: 0.02em;
   color: #00121A;
 }
-
 .SidebarAgentlar .FilterFix {
   position: fixed;
   right: 0;
@@ -232,18 +180,14 @@
   z-index: 2;
   height: 100vh;
   width: 100%;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 3fr 1fr;
-      grid-template-columns: 3fr 1fr;
+  grid-template-columns: 3fr 1fr;
 }
-
 .SidebarAgentlar .FilterFix .fixLeft {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.35);
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver {
   background: #fff;
   padding: 30px 46px 0 32px;
@@ -252,7 +196,6 @@
   /* стили при наведении курсора на checkbox */
   /* стили для чекбокса, находящегося в состоянии checked */
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver > h4 {
   text-align: center;
   font-family: Raleway;
@@ -262,7 +205,6 @@
   color: #000000;
   margin: 0 0 4px 0;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver > p {
   margin: 24px 0 10px 0;
   font-family: Raleway;
@@ -272,23 +214,14 @@
   letter-spacing: 0.02em;
   color: #000000;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .datapickBlock {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .datapickBlock > div {
   position: relative;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .datapickBlock > div::before {
   content: "";
   width: 24px;
@@ -299,11 +232,9 @@
   left: 10px;
   top: 9px;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .datapickBlock img {
   margin-right: 10px;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .datapickBlock input {
   font-family: Raleway;
   font-style: normal;
@@ -320,13 +251,11 @@
   text-align: right;
   position: relative;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .selectCountry {
   padding: 0 16px;
   border: 1px solid #00587F;
   border-radius: 8px;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .selectCountry select {
   padding: 12px 0;
   width: 100%;
@@ -339,7 +268,6 @@
   border: none;
   outline: none;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver > button {
   padding: 18px 0;
   width: 100%;
@@ -356,16 +284,10 @@
   outline: none;
   border: none;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .custom-checkbox {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .custom-checkbox p {
   margin: 0 0 0 8px;
   font-family: Raleway;
@@ -375,47 +297,32 @@
   letter-spacing: 0.02em;
   color: #000000;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .custom-checkbox input {
   position: absolute;
   z-index: -1;
   opacity: 0;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .custom-checkbox span {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  align-items: center;
+  user-select: none;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .custom-checkbox span::before {
-  content: '';
+  content: "";
   display: inline-block;
   width: 22px;
   height: 22px;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-  -webkit-box-flex: 0;
-      -ms-flex-positive: 0;
-          flex-grow: 0;
+  flex-shrink: 0;
+  flex-grow: 0;
   background: #E0E7EB;
   border-radius: 0.25em;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50% 50%;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .custom-checkbox > input:not(:disabled):not(:checked) + span:hover::before {
   border-color: #b3d7ff;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .custom-checkbox > input:checked + span::before {
   border-color: #006aff00;
   background: #00587F;
@@ -423,28 +330,18 @@
   background-position: center;
   width: 22px;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .checkSt1 {
   margin-top: 24px;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .checkSt2 {
   margin-top: 16px;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .viewConsult {
   margin-top: 24px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .viewConsult p {
   font-family: Raleway;
   font-style: normal;
@@ -453,7 +350,6 @@
   letter-spacing: 0.02em;
   color: #000000;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .viewConsult > div {
   cursor: pointer;
   padding: 7px;
@@ -461,33 +357,21 @@
   height: 40px;
   background: #00587F;
   border-radius: 22px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .viewConsult > div div {
   width: 26px;
   height: 26px;
   background: #FFFFFF;
   border-radius: 50%;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
+  align-self: flex-end;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .viewConsult .passview {
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  justify-content: flex-start;
 }
-
 .SidebarAgentlar .FilterFix .FilterUniver .viewConsult .actview {
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 .addNewUniverModalUniver {
@@ -495,15 +379,10 @@
   height: auto;
   border-radius: 16px;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   padding: 30px 0 30px 0;
 }
-
 .addNewUniverModalUniver > img {
   position: absolute;
   top: 18px;
@@ -511,21 +390,12 @@
   cursor: pointer;
   width: 32px;
 }
-
 .addNewUniverModalUniver .modalContainer {
   width: 80%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
-
 .addNewUniverModalUniver .modalContainer h5 {
   font-family: Raleway;
   font-style: normal;
@@ -535,21 +405,12 @@
   color: #00121A;
   margin: 0 0 30px 0;
 }
-
 .addNewUniverModalUniver .modalContainer > div {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
 }
-
 .addNewUniverModalUniver .modalContainer > div label {
   font-family: Raleway;
   font-style: normal;
@@ -558,13 +419,11 @@
   letter-spacing: 0.02em;
   color: #000000;
 }
-
 .addNewUniverModalUniver .modalContainer > div input, .addNewUniverModalUniver .modalContainer > div select, .addNewUniverModalUniver .modalContainer > div textarea {
   margin-top: 10px;
   margin-bottom: 20px;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border: 1.5px solid #47606B;
   border-radius: 10px;
   outline: none;
@@ -576,20 +435,16 @@
   letter-spacing: 0.02em;
   color: #5C7C8A;
 }
-
 .addNewUniverModalUniver .modalContainer .modalDataPick {
   position: relative;
 }
-
 .addNewUniverModalUniver .modalContainer .modalDataPick > div {
   width: 100%;
 }
-
 .addNewUniverModalUniver .modalContainer .modalDataPick input {
   padding-left: 44px;
   width: 100%;
 }
-
 .addNewUniverModalUniver .modalContainer .modalDataPick::before {
   content: "";
   width: 24px;
@@ -600,25 +455,17 @@
   left: 14px;
   bottom: 34px;
 }
-
 .addNewUniverModalUniver .modalContainer .importFile {
   background: #EAF5FA;
   border: 1px dashed #009FE5;
   border-radius: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   padding: 16px 0;
   width: 100%;
   margin: 10px 0 0 0;
 }
-
 .addNewUniverModalUniver .modalContainer .importFile p {
   margin: 0 0 0 16px;
   font-family: Raleway;
@@ -628,17 +475,14 @@
   letter-spacing: 0.02em;
   color: #5C7C8A;
 }
-
 .addNewUniverModalUniver .modalContainer .importFile p label {
   text-decoration: underline;
   margin-left: 5px;
   cursor: pointer;
 }
-
 .addNewUniverModalUniver .modalContainer .importFile p #chFile {
   display: none;
 }
-
 .addNewUniverModalUniver .modalContainer > button {
   width: 100%;
   margin-top: 40px;
@@ -655,21 +499,14 @@
   border: none;
   cursor: pointer;
 }
-
 .addNewUniverModalUniver .modalContainer .back_btn {
   background: none;
   outline: none;
   border: none;
   color: #00587F;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   margin-top: 20px;
   padding: 0;
 }
@@ -721,8 +558,7 @@
     padding-bottom: 12px;
   }
   .SidebarUniverstitet .FilterFix {
-    -ms-grid-columns: 7fr 3fr;
-        grid-template-columns: 7fr 3fr;
+    grid-template-columns: 7fr 3fr;
   }
   .SidebarUniverstitet .FilterFix .FilterUniver {
     padding: 15px 15px 0 15px;
@@ -738,7 +574,7 @@
   }
   .SidebarUniverstitet .FilterFix .FilterUniver .datapickBlock input {
     font-size: 14px;
-    padding: 10px 10px  10px 18px;
+    padding: 10px 10px 10px 18px;
   }
   .SidebarUniverstitet .FilterFix .FilterUniver .selectCountry {
     padding: 0 14px;
@@ -750,6 +586,7 @@
   .SidebarUniverstitet .FilterFix .FilterUniver > button {
     padding: 10px 0;
   }
+
   .addNewUniverModalUniver {
     width: 90%;
   }
@@ -763,16 +600,9 @@
   }
   .addNewUniverModalUniver .modalContainer > div {
     width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
   }
   .addNewUniverModalUniver .modalContainer > div input, .addNewUniverModalUniver .modalContainer > div select, .addNewUniverModalUniver .modalContainer > div textarea {
     padding: 10px 23px;
@@ -796,19 +626,21 @@
     padding-bottom: 10px;
     padding-top: 12px;
   }
+
   .addNewUniverModalUniver {
     height: 78%;
     padding-bottom: 30px !important;
   }
+
   .ReactModal__Content {
     margin-left: 320px !important;
   }
+
   .modal_2 {
     height: 100% !important;
     padding-bottom: 125px !important;
   }
 }
-
 .ReactModal__Overlay {
   overflow-y: scroll;
 }
@@ -819,17 +651,14 @@
 
 @media (max-width: 1300px) {
   .SidebarAgentlar .FilterFix {
-    -ms-grid-columns: 7fr 3fr;
-        grid-template-columns: 7fr 3fr;
+    grid-template-columns: 7fr 3fr;
   }
 }
-
 @media (max-width: 768px) {
   .SidebarUniverstitet .univerList table thead::before {
     top: 40px;
   }
 }
-
 @media (max-width: 425px) {
   .SidebarAgentlar .block_chart .diag {
     height: 300px !important;
@@ -840,14 +669,17 @@
   .SidebarAgentlar .univerList table {
     width: 200%;
   }
+
   .addNewUniverModalUniver {
     width: 100%;
   }
   .addNewUniverModalUniver .modalContainer .importFile {
     padding-left: 20px;
   }
+
   .SidebarUniverstitet .FilterFix {
-    -ms-grid-columns: 1fr 3fr;
-        grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 3fr;
   }
 }
+
+/*# sourceMappingURL=SidebarAgentlar.css.map */
