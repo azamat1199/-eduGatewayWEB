@@ -32,6 +32,7 @@ const StudentSidebar = () => {
     const signOut = ()=>{
        dispatch(signOutAction())
        history.replace('/')
+       localStorage.clear()
     }
     return (
         <>

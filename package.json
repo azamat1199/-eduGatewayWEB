@@ -39,9 +39,11 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
+    "sass": "^1.42.1",
     "sweetalert2": "^11.1.5",
     "swiper": "^6.8.1",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "yarn": "^1.22.11"
   },
   "scripts": {
     "start": "react-scripts start",

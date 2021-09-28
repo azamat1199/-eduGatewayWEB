@@ -15,32 +15,33 @@ import { signOutAction } from '../../../store/actions/authActions';
 
 function UniversitetBackoffice(props) {
 	const history = useHistory()
-	const [state,setState] = useState({
-		menu:false
-	})
+
+	const [menu , setMenu] = useState(false)
+
     const selector = useSelector(state=> state)
+
     const dispatch = useDispatch()
+
 	const signOut = ()=>{
 		dispatch(signOutAction())
 		history.replace('/')
 	}
+
 	console.log(selector);
+
 	const handlemenu = () =>{
-		setState({
-			menu : !state.menu
-		})
+		setMenu(!menu)
 	}
+
 	const handlemenuclose = () =>{
-		setState({
-			menu : false
-		})
+		setMenu(false)
 	}
 
 	
 		return ( 
 			<>
 						<div className="asos_1">
-							<div className="navfixed" id={state.menu ? "left0" : ""}>
+							<div className="navfixed" id={menu ? "left0" : ""}>
 								<div className="logo">
 									<img src={logo} alt="" />
 									<h1>Education Gateway</h1>

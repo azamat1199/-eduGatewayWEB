@@ -8,10 +8,11 @@ import download_icon from  "../../../assets/icon/download.svg"
 import StudentCabinet from '../studentCabinet';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
+import Axios from '../../../utils/axios.js';
 const Kabinet = () => {
     const [progress , setProgress] = useState()
     const univerId = JSON.parse(localStorage.getItem('univerId'))
-    const userId = JSON.parse(localStorage.getItem('userId'))
+    const userId = JSON.parse(localStorage.getItem('enrolle_user'))
     const files = JSON.parse(localStorage.getItem('files'))
     const history = useHistory()
     const selector = useSelector(state=> state)
@@ -30,6 +31,7 @@ const Kabinet = () => {
            setProgress(25)
        }
     })
+
     return ( 
         <>
                <StudentSidebar/> 

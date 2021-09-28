@@ -1,15 +1,22 @@
+.infoTopBlock{
+	position: relative;
+}
+
 .img_big{
 	position: absolute;
 	z-index: -1;
 	width: 100%;
 	right: 0;
-	top: -120px;
+	top: 0;
+	height: 370px;
 }
+
 .info_h1{
 	padding: 0;
 	align-items: flex-start;
 	flex-direction: column;
 	width: 100%;
+	padding-top: 30px;
 	h1{
 		color: #fff !important;
 		margin-top: 10px;
@@ -19,14 +26,15 @@
 		margin-top: 5px;
 	}
 	.user_info{
-		img{
-			width: 150px;
-			height: 150px;
-		}
+		display: flex;
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
 		width: 100%;
+		img{
+			width: 150px;
+			height: 150px;
+		}
 		div{
 			display: flex;
 			flex-direction: column;
@@ -41,10 +49,12 @@
 	display: flex;
 	flex-direction: column;
 	.info-1{
+		margin-top: 30px;
 		background: #FFFFFF;
 		box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
 		border-radius: 14px;
 		padding: 20px 30px;
+		
 		h1{
 			font-style: normal;
 			font-weight: 600;
