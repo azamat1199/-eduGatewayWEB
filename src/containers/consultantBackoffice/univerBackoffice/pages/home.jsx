@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
 	LineChart, Line, XAxis, YAxis,
 	CartesianGrid, Tooltip, Legend,
@@ -7,7 +7,7 @@ import {
 	PieChart, Pie, Cell
 } from "recharts";
 import { scaleOrdinal } from "d3-scale";
-import { schemeCategory10 } from "d3-scale-chromatic";
+import { interpolateCividis, schemeCategory10 } from "d3-scale-chromatic";
 import DatePicker from "react-datepicker";
 import {useSelector} from 'react-redux'
 //import css
@@ -17,6 +17,7 @@ import "../../../../style/css/home.css"
 //import img
 import userpic from  "../../../../assets/icon/userpic.svg"
 import UniversitetBackoffice from '../universitetBackoffice';
+import Axios from '../../../../utils/axios';
 
 
 const colors = scaleOrdinal(schemeCategory10).range();
@@ -31,7 +32,54 @@ function  Home () {
 	const selector = useSelector(state=> state)
 	console.log(selector);
 	const {data} = selector.payload
+	const dataUniver = selector.payload.payload.data
+	const{university, phone_number} = dataUniver
+	console.log("university", university)
 	const [startDate, setStartDate] = useState(null);
+	const [UniID, setUniID] = useState({
+		id:'',
+		name:'',
+		location:'',
+		description:'',
+		founding_year:'',
+		city:{
+			id:'',
+			name:'',
+			country:{
+			   id:"",
+			   name:""
+			}
+		},
+		motto:'',
+		rating:'',
+		rating_source:'',
+		education_quality:[],
+		bachelor_degree_fee_per_annum:"",
+		masters_degree_fee_per_annum:"",
+		living_price_per_annum:'',
+		faculties:[],
+		images:[]
+	})
+
+
+	const univerID = async () => {
+		try{
+			const data = await Axios.get(`/university/university/${university}`);
+			const uni = data.data;
+			if (data.status === 200) {
+				console.log("===========================")
+			console.log("data: ", data.data)
+			setUniID(uni)
+			}
+		} catch(err){
+			console.log(err)
+		}
+	}
+
+	useEffect(() => {
+		univerID()
+	}, [])
+
 	return ( 
 			<UniversitetBackoffice>
 			<div className="up_nav">
@@ -39,10 +87,10 @@ function  Home () {
 					<h1 className="link_h1">Главное</h1>
 				</div>
 				<div className="user_info">
-					<img src={userpic} alt="" />
+					<img src={UniID.images.length === 0 ? userpic : UniID.images[0].image.toString()} alt="" />
 					<div>
-						<h1>Harvard University</h1>
-						<h2>Boston, USA</h2>
+						<h1>{UniID.name}</h1>
+						<h2>{UniID.city.name}, {UniID.city.country.name}</h2>
 					</div>
 				</div>
 				

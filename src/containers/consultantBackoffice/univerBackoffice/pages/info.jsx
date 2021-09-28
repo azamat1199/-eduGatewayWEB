@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import NumberFormat from 'react-number-format';
@@ -15,7 +15,10 @@ import plus from  "../../../../assets/icon/plus.svg"
 
 //import css
 import "../../../../style/css/info.css"
+import "../../../../style/css/singlepage2.css"
 import UniversitetBackoffice from '../universitetBackoffice';
+import { useSelector } from 'react-redux';
+import Axios from '../../../../utils/axios';
 ///
 
 const foiz = "75"
@@ -92,21 +95,77 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 
 const Info = () => {
+
+	const selector = useSelector(state=> state)
+	const {data} = selector.payload
+	const dataUniver = selector.payload.payload.data
+	const{university, phone_number} = dataUniver
+	console.log("university", university)
+	const [UniID, setUniID] = useState({
+		id:'',
+		name:'',
+		location:'',
+		description:'',
+		founding_year:'',
+		city:{
+			id:'',
+			name:'',
+			country:{
+			   id:"",
+			   name:""
+			}
+		},
+		motto:'',
+		rating:'',
+		rating_source:'',
+		education_quality:[],
+		bachelor_degree_fee_per_annum:"",
+		masters_degree_fee_per_annum:"",
+		living_price_per_annum:'',
+		faculties:[],
+		images:[]
+	})
+
+
+	const univerID = async () => {
+		try{
+			const data = await Axios.get(`/university/university/${university}`);
+			const uni = data.data;
+			if (data.status === 200) {
+				console.log("===========================")
+				console.log("data: ", data.data)
+				setUniID(uni)
+			}
+		} catch(err){
+			console.log(err)
+		}
+	}
+
+	useEffect(() => {
+		univerID()
+	}, [])
+
+
 	return ( 
+		<>
 		<UniversitetBackoffice>
-			<div className="info_h1 up_nav">
-				<div>
-					<h1 className="link_h1 ">Данные</h1>
-				</div>
-				<div className="user_info">
-					<img src={userpic} alt="" />
+			<div className="infoTopBlock">
+				<img className="img_big" src={UniID.images.length === 0 ? image : UniID.images[0].image.toString()} alt="" />
+				<div className="info_h1 up_nav">
 					<div>
-						<h1>Harvard University</h1>
-						<h2>Boston, USA</h2>
+						<h1 className="link_h1 ">Данные</h1>
+					</div>
+					<div className="user_info">
+					<img src={UniID.images.length === 0 ? userpic : UniID.images[0].image.toString()} alt="" />
+						{/* <img src={userpic} alt="" /> */}
+						<div>
+							<h1>{UniID.name}</h1>
+							<h2>{UniID.city.name}, {UniID.city.country.name}</h2>
+						</div>
 					</div>
 				</div>
 			</div>
-			<img className="img_big" src={image} alt="" />
+			
 			<div className="info">
 				<div className="info-1">
 					<h1>Ваш профиль заполнен на {foiz}%</h1>
@@ -117,7 +176,7 @@ const Info = () => {
 						</div>
 						<div className="info_line_list">
 							<div><h3>Заполнить описание</h3></div>
-							<div><h3>Загрузите 10 фото</h3></div>
+							<div><h3>Загрузите {UniID.images.length} фото</h3></div>
 							<div><h3>Укажите квоту</h3></div>
 							<div><h3>Укажите локацию на карте</h3></div>
 						</div>
@@ -131,7 +190,7 @@ const Info = () => {
 					<div className="single_info">
 						<div className="info_1">
 							<div><h1>Название</h1></div>
-							<div><p>Harvard Univeristy</p></div>
+							<div><p>{UniID.name}</p></div>
 						</div>
 						<div className="info_1">
 							<div><h1>Год основание</h1></div>
@@ -139,11 +198,11 @@ const Info = () => {
 						</div>
 						<div className="info_1">
 							<div><h1>Страна</h1></div>
-							<div><p>США</p></div>
+							<div><p>{UniID.city.country.name}</p></div>
 						</div>
 						<div className="info_1">
 							<div><h1>Город</h1></div>
-							<div><p>Cambridge, Massachusets</p></div>
+							<div><p>{UniID.city.name}</p></div>
 						</div>
 						<div className="info_1">
 							<div><h1>Девиз</h1></div>
@@ -173,10 +232,7 @@ const Info = () => {
 						<a href="#">Изменить</a>
 					</div>
 					<div className="info_2_list">
-						<h1>Гарвардский университет (Гарвард) (англ. Harvard University) — один из самых известных университетов США и всего мира, старейший вуз США. Находится в городе Кембридж (входит в состав Бостонской городской агломерации), штат Массачусетс.</h1>
-						<h1>По состоянию на 2010 год в Гарварде работает около 2100 преподавателей и учится около 6700 студентов и 14500 последипломников. 75 лауреатов Нобелевской премии были связаны с университетом как студенты, преподаватели или сотрудники. Гарвардский университет занимает первое место в стране по числу миллиардеров среди выпускников, а его библиотека — крупнейшая академическая в США и третья по величине в стране.</h1>
-						<h1>Гарвард входит в группу элитных американских университетов — Лигу плюща.</h1>
-						<h1>Гарвард имеет самый большой эндаумент (целевой капитал) в мире, который составляет 37,1 млрд долларов.</h1>
+						<h1>{UniID.description}</h1>
 					</div>
 				</div>
 				<div className="info-3">
@@ -184,13 +240,14 @@ const Info = () => {
 						<h1>Фото галерея</h1>
 					</div>
 					<div className="info_3_list">
-						<div><img src={img1} alt="" /></div>
-						<div><img src={img2} alt="" /></div>
-						<div><img src={img3} alt="" /></div>
-						<div><img src={img4} alt="" /></div>
-						<div><img src={img1} alt="" /></div>
-						<div><img src={img2} alt="" /></div>
-						<div><img src={img3} alt="" /></div>
+						{
+							UniID.images.map((x)=> {
+								return(
+									<div><img src={x.image} alt="" /></div>
+								)
+							})
+						}
+
 						<div>
 							<div className="type_file">
 								<label htmlFor="chFile">
@@ -239,6 +296,7 @@ const Info = () => {
 				</div>
 			</div>
 		</UniversitetBackoffice>
+		</>
 	);
 }
  
