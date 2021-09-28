@@ -84,10 +84,10 @@ const N_otchot = () => {
 									<BarChart
 										data={data_doxod}
 										margin={{
-										top: 20,
-										right: 0,
-										left: -20,
-										bottom: 20
+											top: 20,
+											right: 0,
+											left: -20,
+											bottom: 20
 										}}
 									>
 										<CartesianGrid strokeDasharray="10 10" vertical="" />
@@ -124,10 +124,10 @@ const N_otchot = () => {
 									<BarChart
 										data={data_doxod}
 										margin={{
-										top: 20,
-										right: 0,
-										left: -20,
-										bottom: 20
+											top: 20,
+											right: 0,
+											left: -20,
+											bottom: 20
 										}}
 									>
 										<CartesianGrid strokeDasharray="10 10" vertical="" />
@@ -165,10 +165,10 @@ const N_otchot = () => {
 									layout="vertical"
 									data={data_doxod}
 									margin={{
-									top: 0,
-									right: 100,
-									bottom: 50,
-									left: -20
+										top: 0,
+										right: 100,
+										bottom: 50,
+										left: -20
 									}} >
 									<CartesianGrid strokeDasharray="10 10" horizontal="" />
 									<XAxis type="number" />

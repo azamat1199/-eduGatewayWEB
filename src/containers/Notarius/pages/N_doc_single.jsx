@@ -1,13 +1,11 @@
 import React from 'react';
 import NotariusSidebar from '../NotariusStudent';
 
-
 import userpic from  "../../../assets/icon/userpic.svg"
 import pdf from  "../../../assets/icons/pdf.svg"
 import down_doc from  "../../../assets/icons/down_doc.svg"
 import check from  "../../../assets/icons/check.svg"
 import folder from  "../../../assets/icons/folder.svg"
-
 
 const N_doc_single = () => {
     return ( 

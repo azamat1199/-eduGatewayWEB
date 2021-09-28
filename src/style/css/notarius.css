@@ -87,6 +87,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 10px;
 }
 
 .single_h1 h3 {
@@ -96,6 +97,7 @@
   line-height: 26px;
   color: #000000;
   margin-left: 5px;
+  margin-bottom: 0;
 }
 
 .table_excel_btn::after {
@@ -161,6 +163,15 @@
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+}
+
+.doc_perevodi h1 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: 0.02em;
+  color: #00121A;
 }
 
 .doc_1 {
@@ -446,6 +457,22 @@
   .n_strani a {
     margin: 10px 30px;
   }
+  .doc_perevodi {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+  .form_doc {
+    width: 100%;
+  }
+  .form_down {
+    width: 100%;
+  }
+  .n_up .link_h1 {
+    margin: 0;
+  }
 }
 
 @media (max-width: 768px) {
@@ -479,6 +506,24 @@
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .doc_perevodi {
+    margin: 10px;
+    padding: 15px;
+  }
+  .doc_perevodi img {
+    width: 20px;
+    height: 20px;
+  }
+  .doc_perevodi h1 {
+    font-size: 14px;
+  }
+  .doc_perevodi p {
+    font-size: 13px;
   }
 }
 
@@ -486,10 +531,51 @@
   .ab_1 .table {
     max-width: 375px;
   }
+  .single_h1 h1 {
+    font-size: 21px;
+  }
+  .single_h1 h3 {
+    font-size: 20px;
+  }
+  .doc_perevodi {
+    grid-gap: 10px;
+  }
+  .doc_perevodi h1 {
+    height: 50px;
+  }
+  .form_doc {
+    width: 90%;
+    padding: 0 10px;
+  }
+  .form_down {
+    width: 90%;
+    padding: 0 10px;
+  }
+  .form_down p {
+    margin-left: 10px;
+    font-size: 12px;
+  }
+  .n_btn {
+    width: 145px;
+    font-size: 13px;
+  }
 }
 
 @media (max-width: 320px) {
   .ab_1 .table {
     max-width: 320px;
+  }
+  .n_btn {
+    width: 120px;
+    font-size: 10px;
+  }
+  .doc_perevodi {
+    padding: 10px;
+  }
+  .single_h1 h1 {
+    font-size: 18px;
+  }
+  .single_h1 h3 {
+    font-size: 15px;
   }
 }

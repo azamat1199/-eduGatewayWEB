@@ -65,6 +65,7 @@
 .single_h1{
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
     h3{
         font-style: normal;
         font-weight: 600;
@@ -72,6 +73,7 @@
         line-height: 26px;
         color: #000000;
         margin-left: 5px;
+        margin-bottom: 0;
     }
 }
 .table_excel_btn{
@@ -123,6 +125,15 @@
     margin: 30px;
     display: flex;
     justify-content: space-around;
+    h1{
+        font-style: normal;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 26px;
+        letter-spacing: 0.02em;
+        color: #00121A;
+        
+    }
 }
 .doc_1{
     display: flex;
@@ -317,6 +328,22 @@
             margin: 10px 30px;
         }
     }
+    .doc_perevodi{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+    }
+    .form_doc{
+        width: 100%;
+    }
+    .form_down{
+        width: 100%;
+    }
+    .n_up{
+        .link_h1{
+            margin: 0;
+        }
+    }
 }
 @media (max-width:768px) {
     .n_info{
@@ -349,7 +376,23 @@
     .n_up {
         padding: 0;
         justify-content: center;
+        flex-direction: column;
     }
+    .doc_perevodi {
+        margin: 10px;
+        padding: 15px;
+        img{
+            width: 20px;
+            height: 20px;
+        }
+        h1 {
+            font-size: 14px;
+        }
+        p{
+            font-size: 13px;
+        }
+    }
+
 }
 @media (max-width:375px) {
     .ab_1{
@@ -357,11 +400,56 @@
             max-width: 375px;
         }
     }
+    .single_h1{
+        h1{
+            font-size: 21px;
+        }
+        h3{
+            font-size: 20px;
+        }
+    }
+    .doc_perevodi {
+        grid-gap: 10px;
+        h1{
+            height: 50px;
+        }
+    }
+    .form_doc{
+        width: 90%;
+        padding: 0 10px;
+    }
+    .form_down{
+        width: 90%;
+        padding: 0 10px;
+        p{
+            margin-left: 10px;
+            font-size: 12px;
+        }
+    }
+    .n_btn {
+        width: 145px;
+        font-size: 13px;
+    }
 }
 @media (max-width:320px) {
     .ab_1{
         .table{
             max-width: 320px;
+        }
+    }
+    .n_btn {
+        width: 120px;
+        font-size: 10px;
+    }
+    .doc_perevodi {
+        padding: 10px;
+    }
+    .single_h1{
+        h1{
+            font-size: 18px;
+        }
+        h3{
+            font-size: 15px;
         }
     }
 }
