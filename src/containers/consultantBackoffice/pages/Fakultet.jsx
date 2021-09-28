@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -32,40 +32,69 @@ const Fakultet = () => {
   const [status, setStatus] = useState('');
   const [price, setPrice] = useState(null);
   const [fixEnd, setFix] = useState(false);
+  const [data, setData] = useState();
+  const [univerData, setUniverData] = useState();
+  const [facultet, setFacultet] = useState();
 
+  const fetchData = async () => {
+    const data = await Axios.get('university/university/');
+    const datas = data.data.results;
+    setUniverData(datas);
+
+    return data;
+  };
+  const getFacultet = async () => {
+    try {
+      const res = await Axios.get('/university/university-faculty/');
+      setFacultet(res.data.results.reverse());
+    } catch {}
+  };
+  useEffect(() => {
+    fetchData();
+    getFacultet();
+  }, []);
+  console.log(univerData, facultet);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setData((state) => ({ ...state, [name]: value }));
+  };
   // modal
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
   };
+
   const handleClose = () => {
     setOpen(false);
   };
+  const formData = new FormData();
+  formData.append('university', data?.university);
+  formData.append('major', data?.university);
+  formData.append('name', data?.name);
+  formData.append('status', data?.status);
+  formData.append('education_type', data?.education_type);
+  formData.append('quota', data?.quota);
+  formData.append('education_fee', 10);
+  formData.append('service_price', data?.service_price);
+
   const submitFaculty = async (e) => {
     try {
-      const res = await Axios.post('/university/university-faculty/', {
-        name: name,
-        universtitetName: universtitetName,
-        kvota: kvota,
-        description: description,
-        nowDate: nowDate,
-        status: status,
-        price: price,
-      });
+      const res = await Axios.post(
+        '/university/university-faculty/',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
     } catch (error) {
       console.log(error);
     }
-    console.log({
-      name: name,
-      universtitetName: universtitetName,
-      kvota: kvota,
-      description: description,
-      nowDate: nowDate,
-      status: status,
-      price: price,
-    });
     handleClose();
+    getFacultet();
   };
+  console.log(formData);
   return (
     <Sidebar>
       <div className="asos">
@@ -110,6 +139,45 @@ const Fakultet = () => {
                 </tr>
               </thead>
               <tbody>
+                {facultet?.map((iteam) => {
+                  const {
+                    university,
+                    major,
+                    name,
+                    status,
+                    education_fee,
+                    education_type,
+                    quota,
+                    service_price,
+                  } = iteam;
+
+                  return (
+                    <tr>
+                      <td className="firstTD">{name}</td>
+                      <td>
+                        {univerData?.map((univer) => {
+                          if (university == univer?.id) {
+                            return <p>{univer?.name}</p>;
+                          }
+                        })}
+                      </td>
+                      <td>{quota}</td>
+                      <td
+                        className="priDoc"
+                        style={{ color: status == 'close' && 'red' }}
+                      >
+                        {(status == 'open' && '	Прием документов') ||
+                          '	Прием закрыт'}
+                      </td>
+                      <td>${service_price}</td>
+                      <td>
+                        {(education_type == 'full_time' && 'Очный') ||
+                          'Заочный'}
+                      </td>
+                      <td>$450</td>
+                    </tr>
+                  );
+                })}
                 <tr>
                   <td className="firstTD">Экономика и международный бизнес</td>
                   <td>
@@ -121,6 +189,7 @@ const Fakultet = () => {
                   <td>Очный</td>
                   <td>$450</td>
                 </tr>
+
                 <tr>
                   <td className="firstTD">
                     Business Management and Hotel Management
@@ -227,60 +296,89 @@ const Fakultet = () => {
                 <div className="modalContainer">
                   <h5>Добавить новый университет</h5>
                   <div>
+                    <label>Университет</label>
+                    <select name="type" onChange={(e) => handleInputChange(e)}>
+                      <option>Бакалави</option>
+                      <option>магистр</option>
+                      <option>Докторантура </option>
+                    </select>
+                  </div>
+                  <div>
                     <label>Название факультет</label>
                     <input
                       type="text"
-                      onChange={(e) => setName(e.target.value)}
+                      name="name"
+                      onChange={(e) => handleInputChange(e)}
                     />
                   </div>
                   <div>
                     <label>Университет</label>
                     <select
-                      onChange={(e) => setUniverstitetName(e.target.value)}
+                      name="university"
+                      onChange={(e) => handleInputChange(e)}
                     >
-                      <option>Выбрать страну</option>
-                      <option>страну</option>
-                      <option>страну</option>
+                      {univerData?.map((value) => {
+                        return (
+                          <option value={value.id} key={value.id}>
+                            {value.name}
+                          </option>
+                        );
+                      })}
                     </select>
                   </div>
                   <div>
                     <label>Квота</label>
                     <input
+                      name="quota"
                       type="text"
-                      onChange={(e) => setKvota(e.target.value)}
+                      onChange={(e) => handleInputChange(e)}
                     />
                   </div>
                   <div>
                     <label>Описание</label>
                     <textarea
-                      name=""
+                      name="description"
                       id=""
                       cols="30"
                       rows="5"
-                      onChange={(e) => setDescription(e.target.value)}
+                      onChange={(e) => handleInputChange(e)}
                     ></textarea>
                   </div>
-                  <div className="modalDataPick">
+                  {/* <div className="modalDataPick">
                     <label>Прием документов заканчивается</label>
                     <DatePicker
                       selected={nowDate}
+                      name=""
                       onChange={(e) => setNowDate(e)}
                       placeholderText="sana"
                     />
+                  </div> */}
+                  <div>
+                    <label>Тип учёбы</label>
+                    <select
+                      name="education_type"
+                      onChange={(e) => handleInputChange(e)}
+                    >
+                      <option value="full_time"> Очный</option>
+                      <option value="part_time">Заочный</option>
+                    </select>
                   </div>
                   <div>
                     <label>Статус</label>
-                    <select onChange={(e) => setStatus(e.target.value)}>
-                      <option>Выбрать страну</option>
-                      <option>страну</option>
-                      <option>страну</option>
+                    <select
+                      name="status"
+                      onChange={(e) => handleInputChange(e)}
+                    >
+                      <option value="open">Прием документов</option>
+                      <option value="close">Прием закрыт</option>
                     </select>
                   </div>
                   <div>
                     <label>Цена</label>
                     <input
+                      name="service_price"
                       type="text"
-                      onChange={(e) => setPrice(e.target.value)}
+                      onChange={(e) => handleInputChange(e)}
                     />
                   </div>
 

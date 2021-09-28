@@ -51,8 +51,6 @@ const Document = () => {
 
       const { status, data } = res;
       const { results } = data;
-      // console.log(results[0].id);
-      // console.log(results);
 
       if (status === 200) {
         setStudents(results);
@@ -163,22 +161,23 @@ const Document = () => {
                     phone_number,
                     documents_filled,
                   } = item;
-                  return (
-                    <tr
-                      key={id}
-                      onClick={() => getDoc(id)}
-                      style={{ cursor: 'pointer' }}
-                    >
-                      <td className="px-3">{i + 1}</td>
-                      <td className="firstTD">
-                        {first_name} - {last_name}
-                      </td>
-                      <td>8</td>
-                      {(documents_filled && (
-                        <td style={{ color: '#37ed52' }}> потверждён</td>
-                      )) || <td style={{ color: 'red' }}>Не потверждён</td>}
-                    </tr>
-                  );
+                  if (documents_filled)
+                    return (
+                      <tr
+                        key={id}
+                        onClick={() => getDoc(id)}
+                        style={{ cursor: 'pointer' }}
+                      >
+                        <td className="px-3">{i + 1}</td>
+                        <td className="firstTD">
+                          {first_name} - {last_name}
+                        </td>
+                        <td>8</td>
+                        {(documents_filled && (
+                          <td style={{ color: '#37ed52' }}> потверждён</td>
+                        )) || <td style={{ color: 'red' }}>Не потверждён</td>}
+                      </tr>
+                    );
                 })}
               </tbody>
             </table>

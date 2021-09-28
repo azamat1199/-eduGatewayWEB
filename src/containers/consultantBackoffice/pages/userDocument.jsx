@@ -35,6 +35,18 @@ const Document = () => {
   const [students, setStudents] = useState([]);
   const [open, setOpen] = React.useState(false);
   const [dataUser, setDataUser] = useState();
+  const [doc1, setDoc1] = useState(false);
+  const [doc2, setDoc2] = useState(false);
+  const [doc3, setDoc3] = useState(false);
+  const [doc4, setDoc4] = useState(false);
+  const [doc5, setDoc5] = useState(false);
+  const [doc6, setDoc6] = useState(false);
+  const [doc7, setDoc7] = useState(false);
+  const [doc8, setDoc8] = useState(false);
+  const [doc9, setDoc9] = useState(false);
+  const [doc10, setDoc10] = useState(false);
+  const [fulLName, setFulLName] = useState();
+
   // modal
   const [open_change, setOpen_change] = React.useState(false);
   const [fixEnd, setFix] = useState(false);
@@ -55,7 +67,7 @@ const Document = () => {
         setStudents(results);
         {
           results.map((v, i) => {
-            if (v.enrollee_user == id) {
+            if (id == v.enrollee_user) {
               setDataUser(v);
               // console.log(v);
               return v;
@@ -67,17 +79,30 @@ const Document = () => {
       console.log(error.response);
     }
   };
+  const getFullName = async () => {
+    try {
+      const res = await Axios.get(`enrollee/enrollee-user/${id}`);
+      console.log(res);
+      const { status, data } = res;
+      // console.log(data.last_name + data.middle_name);
+      setFulLName(() => data.last_name + '    ' + data.middle_name);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
 
   useEffect(() => {
     fethcStudents();
+    getFullName();
   }, []);
-  console.log(dataUser);
+  console.log(doc1, doc2, doc3, doc4, doc5, doc6, doc7, doc8, doc9, doc10);
+
   // modal
   return (
     <Sidebar>
       <div className="asos">
         <div className="Up_navbar">
-          <h4>Документы</h4>
+          <h4>Документы/{fulLName}</h4>
           <div>
             <img src="https://picsum.photos/70" alt="" />
             <div>
@@ -95,7 +120,6 @@ const Document = () => {
               </div>
 
               <div className="col-5 mt-4">
-                {' '}
                 <div className="fw-bold fs-3">Оригинал документов:</div>
               </div>
               <div className="col-5 mt-4">
@@ -103,7 +127,6 @@ const Document = () => {
                   className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
                   style={{ backgroundColor: '#EAF5FA' }}
                 >
-                  {' '}
                   <img src={pdf} alt="" />
                   Паспорт
                   <a href={`${dataUser?.scan_passport_self}`} target="_blank">
@@ -116,7 +139,10 @@ const Document = () => {
                   <button className="btn btn-outline-success fw-bold">
                     Передать нотариусу
                   </button>
-                  <button className="btn btn-outline-success fw-bold">
+                  <button
+                    onClick={() => setDoc1((doc1) => !doc1)}
+                    className="btn btn-success fw-bold"
+                  >
                     Потвердить оригинал
                   </button>
                 </div>
@@ -127,7 +153,6 @@ const Document = () => {
                   className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
                   style={{ backgroundColor: '#EAF5FA' }}
                 >
-                  {' '}
                   <img src={pdf} alt="" />
                   Диплом/Аттестат
                   <a href={`${dataUser?.scan_diploma}`} target="_blank">
@@ -140,7 +165,10 @@ const Document = () => {
                   <button className="btn btn-outline-success fw-bold">
                     Передать нотариусу
                   </button>
-                  <button className="btn btn-outline-success fw-bold">
+                  <button
+                    onClick={() => setDoc2((doc2) => !doc2)}
+                    className="btn btn-success fw-bold"
+                  >
                     Потвердить оригинал
                   </button>
                 </div>
@@ -151,7 +179,6 @@ const Document = () => {
                   className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
                   style={{ backgroundColor: '#EAF5FA' }}
                 >
-                  {' '}
                   <img src={pdf} alt="" />
                   Свидет. о рождении
                   <a href={`${dataUser?.cert_birth}`} target="_blank">
@@ -164,7 +191,10 @@ const Document = () => {
                   <button className="btn btn-outline-success fw-bold">
                     Передать нотариусу
                   </button>
-                  <button className="btn btn-outline-success fw-bold">
+                  <button
+                    onClick={() => setDoc3((doc3) => !doc3)}
+                    className="btn btn-success fw-bold"
+                  >
                     Потвердить оригинал
                   </button>
                 </div>
@@ -175,7 +205,6 @@ const Document = () => {
                   className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
                   style={{ backgroundColor: '#EAF5FA' }}
                 >
-                  {' '}
                   <img src={pdf} alt="" />
                   3х4 фото 8шт.
                   <a href={`${dataUser?.scan_photo}`} target="_blank">
@@ -188,7 +217,10 @@ const Document = () => {
                   <button className="btn btn-outline-success fw-bold">
                     Передать нотариусу
                   </button>
-                  <button className="btn btn-outline-success fw-bold">
+                  <button
+                    onClick={() => setDoc4((doc4) => !doc4)}
+                    className="btn btn-success fw-bold"
+                  >
                     Потвердить оригинал
                   </button>
                 </div>
@@ -199,7 +231,6 @@ const Document = () => {
                   className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
                   style={{ backgroundColor: '#EAF5FA' }}
                 >
-                  {' '}
                   <img src={pdf} alt="" />
                   Паспорт матери
                   <a
@@ -215,7 +246,10 @@ const Document = () => {
                   <button className="btn btn-outline-success fw-bold">
                     Передать нотариусу
                   </button>
-                  <button className="btn btn-outline-success fw-bold">
+                  <button
+                    onClick={() => setDoc5((doc5) => !doc5)}
+                    className="btn btn-success fw-bold"
+                  >
                     Потвердить оригинал
                   </button>
                 </div>
@@ -226,7 +260,6 @@ const Document = () => {
                   className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
                   style={{ backgroundColor: '#EAF5FA' }}
                 >
-                  {' '}
                   <img src={pdf} alt="" />
                   Свид. о браке
                   <a href={`${dataUser?.cert_marriage}`} target="_blank">
@@ -239,7 +272,10 @@ const Document = () => {
                   <button className="btn btn-outline-success fw-bold">
                     Передать нотариусу
                   </button>
-                  <button className="btn btn-outline-success fw-bold">
+                  <button
+                    onClick={() => setDoc6((doc6) => !doc6)}
+                    className="btn btn-success fw-bold"
+                  >
                     Потвердить оригинал
                   </button>
                 </div>
@@ -250,7 +286,6 @@ const Document = () => {
                   className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
                   style={{ backgroundColor: '#EAF5FA' }}
                 >
-                  {' '}
                   <img src={pdf} alt="" />
                   Договор с компанией
                   <a href={`${dataUser?.cert_063}`} target="_blank">
@@ -263,7 +298,10 @@ const Document = () => {
                   <button className="btn btn-outline-success fw-bold">
                     Передать нотариусу
                   </button>
-                  <button className="btn btn-outline-success fw-bold">
+                  <button
+                    onClick={() => setDoc7((doc7) => !doc7)}
+                    className="btn btn-success fw-bold"
+                  >
                     Потвердить оригинал
                   </button>
                 </div>
@@ -274,7 +312,6 @@ const Document = () => {
                   className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
                   style={{ backgroundColor: '#EAF5FA' }}
                 >
-                  {' '}
                   <img src={pdf} alt="" />
                   063 мед. справка
                   <a href={`${dataUser?.cert_063}`} target="_blank">
@@ -287,7 +324,10 @@ const Document = () => {
                   <button className="btn btn-outline-success fw-bold">
                     Передать нотариусу
                   </button>
-                  <button className="btn btn-outline-success fw-bold">
+                  <button
+                    onClick={() => setDoc8((doc8) => !doc8)}
+                    className="btn btn-success fw-bold"
+                  >
                     Потвердить оригинал
                   </button>
                 </div>
@@ -298,7 +338,6 @@ const Document = () => {
                   className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
                   style={{ backgroundColor: '#EAF5FA' }}
                 >
-                  {' '}
                   <img src={pdf} alt="" />
                   086 мед. справка
                   <a href={`${dataUser?.cert_086}`} target="_blank">
@@ -311,7 +350,10 @@ const Document = () => {
                   <button className="btn btn-outline-success fw-bold">
                     Передать нотариусу
                   </button>
-                  <button className="btn btn-outline-success fw-bold">
+                  <button
+                    onClick={() => setDoc9((doc9) => !doc9)}
+                    className="btn btn-success fw-bold"
+                  >
                     Потвердить оригинал
                   </button>
                 </div>
@@ -322,7 +364,6 @@ const Document = () => {
                   className="w-100 fw-bold fs-5  rounded d-flex justify-content-between  p-3"
                   style={{ backgroundColor: '#EAF5FA' }}
                 >
-                  {' '}
                   <img src={pdf} alt="" />
                   Справка о ВИЧ
                   <a href={`${dataUser?.cert_hivs}`} target="_blank">
@@ -335,7 +376,10 @@ const Document = () => {
                   <button className="btn btn-outline-success fw-bold">
                     Передать нотариусу
                   </button>
-                  <button className="btn btn-outline-success fw-bold">
+                  <button
+                    onClick={() => setDoc10((doc10) => !doc10)}
+                    className="btn btn-success fw-bold"
+                  >
                     Потвердить оригинал
                   </button>
                 </div>

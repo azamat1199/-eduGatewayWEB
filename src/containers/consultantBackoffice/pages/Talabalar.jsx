@@ -28,6 +28,8 @@ const Talabalar = () => {
   const [students, setStudents] = useState([]);
   const [studentGetById, setStudentGetById] = useState({});
   const [studentPostById, setStudentPostById] = useState({});
+  const [chek, setChek] = useState(false);
+  const [univerData, setUniverData] = useState();
   const [open, setOpen] = React.useState(false);
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -40,10 +42,42 @@ const Talabalar = () => {
   const [file, setFile] = useState('');
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const [data, setData] = useState(null);
+  const [country, setContry] = useState();
+  const [facultetId, setFacultetId] = useState();
+  const [univerId, setUniverId] = useState();
+  const [founding_year, setFoundingYear] = useState();
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setData((state) => ({ ...state, [name]: value }));
+    // const idCountry = data?.country;
+    // console.log(idCountry, country[idCountry - 1]);
+    // setCity(country[idCountry - 1]);
+  };
   // modal
   const [open_change, setOpen_change] = React.useState(false);
   const [fixEnd, setFix] = useState(false);
   const history = useHistory();
+  const year = founding_year?.getFullYear();
+  const month = founding_year?.getMonth();
+  const day = founding_year?.getDate();
+  const date = year + '-' + month + '-' + day;
+  console.log();
+  const formData = new FormData();
+  formData.append('first_name', data?.first_name);
+  formData.append('middle_name', data?.middle_name);
+  formData.append('last_name', data?.last_name);
+  formData.append('phone_number', data?.phone_number);
+  formData.append('birthday', date);
+  formData.append('passport_number', data?.passport_number);
+  formData.append('citizenship', data?.country);
+  formData.append('city', data?.country);
+  formData.append('address', '65465465446');
+  formData.append('ref_code', 5555);
+  formData.append('agree_with_agreement', chek);
+  formData.append('password_1', data?.password_1);
+  formData.append('password_2', data?.password_1);
+  console.log(founding_year?.toLocaleDateString('en-US'));
   const fethcStudents = async () => {
     try {
       const res = await Axios.get('enrollee/enrollee-user/');
@@ -56,6 +90,27 @@ const Talabalar = () => {
     } catch (error) {
       console.log(error.response);
     }
+  };
+  const fetchUniverData = async () => {
+    try {
+      const data = await Axios.get('university/university/');
+
+      setUniverData(data.data.results);
+    } catch (error) {}
+
+    return data;
+  };
+  const getUniverId = (e) => {
+    const { value, name } = e.target;
+    setUniverId((state) => ({ ...state, [name]: value }));
+  };
+  const getContry = async () => {
+    try {
+      const res = await Axios.get('common/country/');
+      const { results } = res.data;
+      setContry(results);
+      return res;
+    } catch (error) {}
   };
   const handleOpen = () => {
     setOpen(true);
@@ -71,7 +126,10 @@ const Talabalar = () => {
   };
   useEffect(() => {
     fethcStudents();
+    fetchUniverData();
+    getContry();
   }, []);
+  console.log(univerData, univerId?.university, 'salom');
   const edit = async (id) => {
     handleOpen_change();
     try {
@@ -121,16 +179,10 @@ const Talabalar = () => {
   const setStudent = async (e) => {
     e.preventDefault();
     try {
-      const res = await Axios.post('enrollee/enrollee-user/', {
-        first_name: name,
-        last_name: lastName,
-        middle_name: middleName,
-        phone_number: parseInt(phone),
-        email: null,
-        city: null,
-        password_1: password,
-        password_2: password,
-        registration_ref: null,
+      const res = await Axios.post('enrollee/enrollee-user/', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
 
       Swal.fire({
@@ -213,13 +265,22 @@ const Talabalar = () => {
                   <th>Дата контракта</th>
                   <th>Оплата за услуги</th>
                   <th>Филиал</th>
+                  <th>Реферал</th>
+                  <th>Статус</th>
                   <th>Менеджер</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-                {students.reverse().map((item, i) => {
-                  const { id, first_name, last_name, phone_number } = item;
+                {students?.reverse().map((item, i) => {
+                  const {
+                    id,
+                    first_name,
+                    last_name,
+                    phone_number,
+                    documents_filled,
+                  } = item;
+                  console.log(documents_filled);
                   return (
                     <tr key={id}>
                       <td className="px-3">{i + 1}</td>
@@ -233,6 +294,10 @@ const Talabalar = () => {
                       <td>07/15/2021 </td>
                       <td>$12,000</td>
                       <td>Ташкент</td>
+                      <td>1895</td>
+                      {(documents_filled && (
+                        <td className="text-success">Принят</td>
+                      )) || <td className="text-danger">Принят</td>}
                       <td>Sabina Sabirova</td>
                       <td>
                         <button onClick={() => edit(id)}>
@@ -257,9 +322,6 @@ const Talabalar = () => {
                   );
                 })}
               </tbody>
-              {/* <Stack spacing={2}>
-                <Pagination count={10} color="secondary" />
-              </Stack> */}
             </table>
           </div>
           {/* end univerList */}
@@ -348,8 +410,9 @@ const Talabalar = () => {
                     <label>Ваша имя</label>
                     <input
                       type="text"
+                      name="first_name"
                       onChange={(e) => {
-                        setName(e.target.value);
+                        handleInputChange(e);
                       }}
                     />
                   </div>
@@ -357,8 +420,9 @@ const Talabalar = () => {
                     <label>Ваша фамилия</label>
                     <input
                       type="text"
+                      name="middle_name"
                       onChange={(e) => {
-                        setLastName(e.target.value);
+                        handleInputChange(e);
                       }}
                     />
                   </div>
@@ -366,17 +430,84 @@ const Talabalar = () => {
                     <label>Отчество</label>
                     <input
                       type="text"
+                      name="last_name"
                       onChange={(e) => {
-                        setMiddleName(e.target.value);
+                        handleInputChange(e);
                       }}
+                    />
+                  </div>
+
+                  <div>
+                    <label>Страна</label>
+                    <select
+                      name="country"
+                      onChange={(e) => handleInputChange(e)}
+                    >
+                      {country?.map((value) => {
+                        const { name, id } = value;
+                        return (
+                          <option key={id} value={id}>
+                            {name}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                  <div>
+                    <label>Университет</label>
+                    <select name="university" onChange={(e) => getUniverId(e)}>
+                      {univerData?.map((value, i) => {
+                        return (
+                          <option value={value.id} key={value.id}>
+                            {value.name}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                  <div>
+                    <label>Название факультет</label>
+                    <select name="university" onChange={(e) => getUniverId(e)}>
+                      {univerData?.map((value, i) => {
+                        if (univerId?.university == value.id) {
+                          console.log(value, 'alik');
+                          return value?.faculties?.map((v) => {
+                            return (
+                              <option value={v.name} key={v.id}>
+                                {v.name}
+                              </option>
+                            );
+                          });
+                        }
+                      })}
+                    </select>
+                  </div>
+                  <div>
+                    <label>номер и серия паспорта</label>
+                    <input
+                      type="text"
+                      name="passport_number"
+                      placeholder="AA0000000"
+                      onChange={(e) => {
+                        handleInputChange(e);
+                      }}
+                    />
+                  </div>
+                  <div className="modalDataPick">
+                    <label>день рождения</label>
+                    <DatePicker
+                      selected={founding_year}
+                      onChange={(e) => setFoundingYear(e)}
+                      placeholderText="sana"
                     />
                   </div>
                   <div>
                     <label>Номер телефона</label>
                     <input
                       type="text"
+                      name="phone_number"
                       onChange={(e) => {
-                        setPhone(e.target.value);
+                        handleInputChange(e);
                       }}
                     />
                   </div>
@@ -384,12 +515,27 @@ const Talabalar = () => {
                     <label>Пароль</label>
                     <input
                       type="password"
-                      value={password}
+                      name="password_1"
                       onChange={(e) => {
-                        setPassword(e.target.value);
+                        handleInputChange(e);
                       }}
                     />
                   </div>
+
+                  <div className="d-flex justify-content-start">
+                    <input
+                      type="checkbox"
+                      className="d-block"
+                      name="vehicle1"
+                      name="agree_with_agreement"
+                      className="d-block"
+                      onChange={() => {
+                        setChek((chek) => !chek);
+                      }}
+                    />
+                    <label className="d-block">согласен с соглашением</label>
+                  </div>
+
                   <button
                     onClick={(e) => {
                       setStudent(e);
@@ -430,6 +576,7 @@ const Talabalar = () => {
                     <label>Ваша имя</label>
                     <input
                       type="text"
+                      name="first_name"
                       value={name}
                       onChange={(e) => {
                         setName(e.target.value);
@@ -441,6 +588,7 @@ const Talabalar = () => {
                     <label>Ваша фамилия</label>
                     <input
                       value={lastName}
+                      name="last_name"
                       type="text"
                       onChange={(e) => {
                         setLastName(e.target.value);
@@ -452,6 +600,7 @@ const Talabalar = () => {
                     <label>Отчество</label>
                     <input
                       type="text"
+                      name="middle_name"
                       value={middleName}
                       onChange={(e) => {
                         setMiddleName(e.target.value);

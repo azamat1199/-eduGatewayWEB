@@ -20,8 +20,8 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -30,21 +30,21 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   border: none;
   outline: none;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 23px;
-  color: #FFFFFF;
+  color: #ffffff;
   width: 290px;
   height: 60px;
-  background: #00587F;
+  background: #00587f;
   border-radius: 10px;
 }
 
@@ -57,8 +57,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 100%;
   height: 70px;
   margin-top: 25px;
@@ -69,13 +69,14 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 100%;
   height: 70px;
-  background: #FFFFFF;
-  -webkit-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
-          box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  -webkit-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09),
+    2px 4px 9px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
   border-radius: 14px;
 }
 
@@ -90,7 +91,7 @@
   font-size: 20px;
   line-height: 23px;
   letter-spacing: 0.02em;
-  color: #7595A3;
+  color: #7595a3;
 }
 
 .ab_1 .input button {
@@ -105,9 +106,10 @@
 }
 
 .ab_1 .filtr_btn button {
-  background: #FFFFFF;
-  -webkit-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
-          box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  -webkit-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09),
+    2px 4px 9px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   border: none;
   outline: none;
@@ -116,9 +118,10 @@
 }
 
 .ab_1 .table {
-  background: #FFFFFF;
-  -webkit-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
-          box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  -webkit-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09),
+    2px 4px 9px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
   border-radius: 14px;
   margin-top: 30px;
   width: 98%;
@@ -129,11 +132,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   margin-right: 30px;
 }
 
@@ -146,7 +149,7 @@
   font-size: 18px;
   line-height: 21px;
   letter-spacing: 0.02em;
-  color: #00121A;
+  color: #00121a;
 }
 
 .ab_1 .table h1 {
@@ -155,17 +158,17 @@
   font-size: 22px;
   line-height: 26px;
   letter-spacing: 0.02em;
-  color: #00121A;
+  color: #00121a;
   padding: 20px 30px;
 }
 
 .ab_1 .table table {
-  width: 100%;
+  width: 200%;
   border-spacing: 0;
 }
 
 .ab_1 .table table thead th {
-  border-bottom: 2px solid #00587F;
+  border-bottom: 2px solid #00587f;
 }
 
 .ab_1 .table table th {
@@ -174,7 +177,7 @@
   font-size: 20px;
   line-height: 23px;
   letter-spacing: 0.02em;
-  color: #00121A;
+  color: #00121a;
   text-align: left;
   padding: 20px 0 20px 50px;
 }
@@ -185,7 +188,7 @@
   font-size: 20px;
   line-height: 23px;
   letter-spacing: 0.02em;
-  color: #00121A;
+  color: #00121a;
 }
 
 .ab_1 .table table tbody {
@@ -194,7 +197,7 @@
 }
 
 .ab_1 .table table tbody tr:nth-child(even) {
-  background: #F0FAFF;
+  background: #f0faff;
 }
 
 .ab_1 .table table tbody tr:nth-child(odd) {
@@ -215,12 +218,12 @@
 }
 
 .ab_1 .table table tbody button:nth-child(1) {
-  background: #00587F;
+  background: #00587f;
   border-radius: 8px;
 }
 
 .ab_1 .table table tbody button:nth-child(2) {
-  background: #E96464;
+  background: #e96464;
   border-radius: 8px;
 }
 
@@ -237,40 +240,40 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .class_modal .modal {
   width: 678px;
   height: 511px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 16px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   padding: 0px 30px 50px 30px;
 }
 
 .class_modal .modal input {
   width: 600px;
   height: 64px;
-  border: 1.5px solid #47606B;
+  border: 1.5px solid #47606b;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border-radius: 10px;
   outline: none;
   background: none;
@@ -280,7 +283,7 @@
   font-size: 16px;
   line-height: 19px;
   letter-spacing: 0.02em;
-  color: #5C7C8A;
+  color: #5c7c8a;
   margin-top: 15px;
 }
 
@@ -291,12 +294,12 @@
   line-height: 31px;
   text-align: center;
   letter-spacing: 0.02em;
-  color: #00121A;
+  color: #00121a;
   margin-top: 35px;
 }
 
 .class_modal .modal h1 span {
-  color: #00587F;
+  color: #00587f;
 }
 
 .class_modal .modal .modal_btn {
@@ -312,24 +315,24 @@
 }
 
 .class_modal .modal button:nth-child(1) {
-  background: #F3F5F7;
+  background: #f3f5f7;
   border-radius: 10px;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 23px;
-  color: #00587F;
+  color: #00587f;
   margin-right: 10px;
 }
 
 .class_modal .modal button:nth-child(2) {
-  background: #00587F;
+  background: #00587f;
   border-radius: 10px;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 23px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-left: 10px;
 }
 
@@ -338,11 +341,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
   -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
   width: 100%;
 }
 
@@ -359,9 +362,10 @@
 }
 
 .ab_2 {
-  background: #FFFFFF;
-  -webkit-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
-          box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  -webkit-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09),
+    2px 4px 9px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
   width: 345px;
   height: 100vh;
   display: -webkit-box;
@@ -369,11 +373,11 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding: 50px 40px 0px 40px;
   position: fixed;
   top: 0;
@@ -417,8 +421,8 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   width: 100%;
   margin: 0 30px;
 }
@@ -429,8 +433,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .ab_2 .form_ab .form_div .react-datepicker-wrapper:nth-child(1) {
@@ -438,9 +442,9 @@
 }
 
 .ab_2 .form_ab .form_div input {
-  border: 1px solid #00587F;
+  border: 1px solid #00587f;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border-radius: 8px;
   width: 161px;
   height: 44px;
@@ -451,11 +455,11 @@
   font-size: 18px;
   line-height: 21px;
   letter-spacing: 0.02em;
-  color: #7595A3;
+  color: #7595a3;
 }
 
 .ab_2 .form_ab .form_div .react-datepicker__input-container::before {
-  content: "";
+  content: '';
   background: url(../../assets/icon/calendar2.svg);
   position: absolute;
   background-position: center;
@@ -467,9 +471,9 @@
 }
 
 .ab_2 .form_ab .form_div select {
-  border: 1px solid #00587F;
+  border: 1px solid #00587f;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border-radius: 8px;
   width: 341px;
   height: 44px;
@@ -478,7 +482,7 @@
   font-size: 16px;
   line-height: 19px;
   letter-spacing: 0.02em;
-  color: #00121A;
+  color: #00121a;
   text-align: left;
 }
 
@@ -497,12 +501,12 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .ab_2 .form_ab .ab_check .MuiCheckbox-colorPrimary.Mui-checked {
-  color: #00587F;
+  color: #00587f;
 }
 
 .ab_2 .form_ab .ab_switch {
@@ -513,7 +517,7 @@
   width: 85px;
   height: 55px;
   -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .ab_2 .form_ab .ab_switch .MuiSwitch-switchBase {
@@ -528,7 +532,7 @@
 
 .ab_2 .form_ab .ab_switch .MuiSwitch-switchBase.Mui-checked {
   -webkit-transform: translateX(29px);
-          transform: translateX(29px);
+  transform: translateX(29px);
 }
 
 .ab_2 .form_ab .ab_switch .MuiSwitch-track {
@@ -539,8 +543,12 @@
   color: #fff;
 }
 
-.ab_2 .form_ab .ab_switch .MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
-  background-color: #00587F;
+.ab_2
+  .form_ab
+  .ab_switch
+  .MuiSwitch-colorPrimary.Mui-checked
+  + .MuiSwitch-track {
+  background-color: #00587f;
 }
 
 .ab_2 .form_ab .ab_switch .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
@@ -552,8 +560,8 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 23px;
-  color: #FFFFFF;
-  background: #00587F;
+  color: #ffffff;
+  background: #00587f;
   border-radius: 10px;
   width: 341px;
   height: 60px;
@@ -618,7 +626,7 @@
   }
   .abiturient .ab_2 .form_ab .form_div {
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
   }
   .abiturient .ab_2 .form_ab .form_div .react-datepicker-wrapper {
     margin: 10px 0;
