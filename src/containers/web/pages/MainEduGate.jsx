@@ -18,6 +18,11 @@ import icon3 from '../../../assets/icon/icon3.svg';
 import icon4 from '../../../assets/icon/icon4.svg';
 import icon5 from '../../../assets/icon/icon5.svg';
 import icon6 from '../../../assets/icon/icon6.svg';
+import star1 from '../../../assets/icons/star1.svg';
+import star2 from '../../../assets/icons/star2.svg';
+import star3 from '../../../assets/icons/star3.svg';
+import star4 from '../../../assets/icons/star4.svg';
+import star5 from '../../../assets/icons/star5.svg';
 import Axios from '../../../utils/axios';
 import SwiperCore, { Pagination, Navigation } from 'swiper/core';
 import Navbar from './Navbar';
@@ -290,9 +295,17 @@ const MainEduGate = () => {
                           {x.rating} место {/* // ! {x.ratingCountry} */}
                         </span>
                       </h2>
-                      <h3 onClick={() => handler(x.id)}>Качество обучения: {x.education_quality}</h3>
+                      <h3 onClick={() => handler(x.id)}>Качество обучения: 
+                        <img src={
+                            x.education_quality === 1 ? star1 
+                            : x.education_quality === 2 ? star2 
+                            : x.education_quality === 3 ? star3
+                            : x.education_quality === 4 ? star4
+                            : star5 
+                        } alt="" />
+                      </h3>
                       <h4 onClick={() => handler(x.id)}>
-                        Цена за один год: <span>${x.education_fee_per_annum}</span>
+                        Цена за один год: <span>${x.living_price_per_annum}</span>
                       </h4>
                     </div>
                   );
@@ -378,11 +391,10 @@ const MainEduGate = () => {
               const {
                 id,
                 name,
-                location,
                 description,
                 education_quality,
                 rating,
-                living_price,
+                living_price_per_annum,
                 city,
               } = item;
               return (
@@ -422,9 +434,17 @@ const MainEduGate = () => {
                       {rating} место {city.name}
                     </span>
                   </h2>
-                  <h3 onClick={() => handler(id)}>Качество обучения: {education_quality}</h3>
+                  <h3 onClick={() => handler(id)}>Качество обучения: 
+                    <img className="star_image" src={
+                        education_quality === 1 ? star1 
+                        : education_quality === 2 ? star2 
+                        : education_quality === 3 ? star3
+                        : education_quality === 4 ? star4
+                        : star5 
+                    } alt="" />
+                  </h3>
                   <h4 onClick={() => handler(id)}>
-                    Цена за один год: <span>${living_price}</span>
+                    Цена за один год: <span>${living_price_per_annum}</span>
                   </h4>
                 </div>
               );

@@ -14,8 +14,8 @@ function App() {
   // const {access} = selector.user;
   // const {user} = selector.user;
    return (  
-     <div className="container">
-<Switch>
+    <div className="container">
+      <Switch>
         {routes.public.map((item) => {
           return <Route {...item} />;
         })}
@@ -42,6 +42,18 @@ function App() {
       <Switch>
         {
           routes.student.map(item=>{
+            return(
+              <Route {...item}/>
+            )
+          })
+        }
+      
+      </Switch>
+    </div>
+      <div className="kabinet">
+      <Switch>
+        {
+          routes.notarius.map(item=>{
             return(
               <Route {...item}/>
             )
