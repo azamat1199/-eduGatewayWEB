@@ -14,6 +14,7 @@ import Navbar from "../pages/Navbar"
 import { Link } from "react-router-dom"
 
 
+
 SwiperCore.use([Pagination]);
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
@@ -28,7 +29,7 @@ function SinglePage (props){
 	const [univer,setUniver] = useState({
 		id:'',
 		name:'',
-		location:'',
+		location:"",
 		description:'',
 		founding_year:'',
 		city:{
@@ -50,21 +51,24 @@ function SinglePage (props){
 		images:[]
 	})
 
-
-
 	const { 
 		name,city,rating,living_price_per_annum,images,
 		location,description,faculties,masters_degree_fee_per_annum,
 		bachelor_degree_fee_per_annum
 	} = univer
 
-	const lat = location.split(",")[0]
-	const lng = location.split(",")[1]
+	const lat = 41.31082388091818
+	const lng = 69.796142578125
+	// const lat = location.split(",")[0]
+	// const lng = location.split(",")[1]
 
+	console.log(location.split(",")[1])
 	props = {
 		center: {
-			lat: 45.46016,
-			lng: 9.19457
+			lat: location.split(",")[0],
+			lng: location.split(",")[1]
+			// lat: 41.31082388091818,
+			// lng: 69.796142578125
 		},
 		zoom: 11
 	};
@@ -74,6 +78,7 @@ function SinglePage (props){
 			const {data} =  await Axios.get(`/university/university/${params.id}`)
 			localStorage.setItem('univerId',params.id)
 			setUniver(data)
+			// console.log(data, "sdfsdfsdfsdfsdfsdf");
 		} catch (error) {
 			console.log(error);
 		}
@@ -90,18 +95,6 @@ function SinglePage (props){
 		  
 	// 	}
 	//   }
-	const refreshPage = () => {
-		window.location.reload();
-	}
-	const [open, setOpen] = React.useState(false);
-
-	const handleOpen = () => {
-	  setOpen(true);
-	};
-  
-	const handleClose = () => {
-	  setOpen(false);
-	};
 
 	useEffect(()=>{
 		fetchUniversityById()
@@ -157,7 +150,7 @@ function SinglePage (props){
 									</table>
 								</div>
 								<div className="sp_map" id="lokatsya">
-								<GoogleMapReact
+								{/* <GoogleMapReact
 									// bootstrapURLKeys={{ key: "AIzaSyCIuhJElVEhGVPYptJbkrWxEy4lKzEoOA8" }}
 									defaultCenter={props.center}
 									defaultZoom={props.zoom}
@@ -165,11 +158,12 @@ function SinglePage (props){
 									<AnyReactComponent
 										// lat={45.46016}
 										// lng={9.19457}
-										lat={45.46016}
-										lng={9.19457}
+										lat={lat}
+										lng={lng}
 										text=""
 									/>
-								</GoogleMapReact>
+								</GoogleMapReact> */}
+
 								</div>
 							</div>
 							<div className="sp_main1_right" id="opisaniya">
@@ -328,3 +322,4 @@ function SinglePage (props){
 }
  
 export default SinglePage;
+

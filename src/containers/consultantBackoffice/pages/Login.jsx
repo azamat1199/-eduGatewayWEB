@@ -55,13 +55,15 @@ function  Login () {
             const {access,refresh,role,data} = res.data
             dispatch(signUpAction({access,refresh,role,data:data}))
             if(role.startsWith("u")){
-               history.push('/univer-backoffice-page')
+              history.push('/univer-backoffice-page')
             }else if(role.startsWith('e')){
-                history.push('/my-account')
+              history.push('/my-account')
+            }else if(role.startsWith('n')){
+              history.push('/n-glavny')
             }else if(role === 'company'){
-                history.push('/home/main')
+              history.push('/home/main')
             }else{
-                history.push('/')
+              history.push('/')
             }
           
            setLoading(false);

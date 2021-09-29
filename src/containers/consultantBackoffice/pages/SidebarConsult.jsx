@@ -4,6 +4,7 @@ import routes from '../../../routes/routes';
 
 // import css
 import '../../../style/css/sidebar.css';
+
 class Sidebar extends Component {
   state = {
     menu: false,

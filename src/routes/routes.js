@@ -39,6 +39,14 @@ import Documents from '../containers/consultantBackoffice/pages/Documents';
 import UserDocument from '../containers/consultantBackoffice/pages/userDocument';
 import Konsultatsya from '../containers/web/pages/Konsultatsya';
 
+import N_glavny from '../containers/Notarius/pages/N_glavny';
+import N_info from '../containers/Notarius/pages/N_info';
+import N_info_id from '../containers/Notarius/pages/N_info_id';
+import N_otchot from '../containers/Notarius/pages/N_otchot';
+import N_perevod from '../containers/Notarius/pages/N_perevod_doc';
+import N_document from '../containers/Notarius/pages/N_docments';
+import N_doc_single from '../containers/Notarius/pages/N_doc_single';
+
 const routes = {
   public: [
     {
@@ -295,6 +303,52 @@ const routes = {
       exact: true,
     },
   ],
+
   authonticated: [],
+
+  notarius: [
+    {
+      key: 'file',
+      path: '/n-glavny',
+      component: N_glavny,
+      exact: true,
+    },
+    {
+      key: 'file',
+      path: '/n-document',
+      component: N_document,
+      exact: true,
+    },
+    {
+      key: 'file',
+      path: '/n-document/:id',
+      component: N_doc_single,
+      exact: true,
+    },
+    {
+      key: 'file',
+      path: '/n-perevod',
+      component: N_perevod,
+      exact: true,
+    },
+    {
+      key: 'file',
+      path: '/n-info',
+      component: N_info,
+      exact: true,
+    },
+    {
+      key: 'file',
+      path: '/n-info/:id',
+      component: N_info_id,
+      exact: true,
+    },
+    {
+      key: 'file',
+      path: '/n-otchot',
+      component: N_otchot,
+      exact: true,
+    },
+  ]
 };
 export default routes;

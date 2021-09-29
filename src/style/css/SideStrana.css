@@ -2,9 +2,11 @@
   width: 100%;
   padding: 20px 32px 32px 32px;
   background: #FFFFFF;
-  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
   border-radius: 14px;
 }
+
 .SideStrana .addNote input {
   font-family: Raleway;
   font-style: normal;
@@ -19,6 +21,7 @@
   padding-bottom: 6px;
   border-bottom: 1px solid #00587F;
 }
+
 .SideStrana > button {
   background: #00587F;
   border-radius: 10px;
@@ -33,12 +36,15 @@
   border: none;
   cursor: pointer;
 }
+
 .SideStrana .blockCountry {
   margin-top: 24px;
-  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.09), 2px 4px 9px rgba(0, 0, 0, 0.1);
   border-radius: 14px;
   padding: 22px 32px;
 }
+
 .SideStrana .blockCountry h4 {
   font-family: Raleway;
   font-style: normal;
@@ -48,21 +54,31 @@
   color: #00121A;
   margin: 0 0 25px 0;
 }
+
 .SideStrana .blockCountry .listCountry {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
 .SideStrana .blockCountry .listCountry div {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-bottom: 36px;
 }
+
 .SideStrana .blockCountry .listCountry div img {
   width: 30px;
   height: 30px;
   margin-right: 12px;
   border-radius: 50%;
 }
+
 .SideStrana .blockCountry .listCountry div p {
   padding: 0;
   font-family: Raleway;
@@ -104,15 +120,18 @@
     font-size: 18px;
   }
   .SideStrana .blockCountry .listCountry {
-    grid-template-columns: 1fr 1fr 1fr;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
   }
 }
+
 @media (max-width: 425px) {
   .SideStrana .blockCountry h4 {
     font-size: 20px;
   }
   .SideStrana .blockCountry .listCountry {
-    grid-template-columns: 1fr;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
   }
   .SideStrana .blockCountry .listCountry div {
     margin-bottom: 20px;
@@ -121,5 +140,3 @@
     font-size: 18px;
   }
 }
-
-/*# sourceMappingURL=SideStrana.css.map */
