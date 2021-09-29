@@ -2,7 +2,6 @@ import React ,{useEffect, useState}from 'react';
 import StudentSidebar from './SidebarStudent.jsx'
 // import css
 import  "../../../style/css/kabinet.css" 
-
 // import icon
 import download_icon from  "../../../assets/icon/download.svg" 
 import StudentCabinet from '../studentCabinet';
@@ -16,11 +15,8 @@ const Kabinet = () => {
     const files = JSON.parse(localStorage.getItem('files'))
     const history = useHistory()
     const selector = useSelector(state=> state)
-    console.log(selector);
     const {lastStep} = selector.dataSave
-    console.log(lastStep);
-    const{data} = selector.payload.payload
-    console.log(data);
+    const {data} = selector?.payload?.payload
     const{first_name,last_name,id,base_user,sity,email} = data
     useEffect(()=>{
        if(files){
@@ -53,6 +49,7 @@ const Kabinet = () => {
                 </div>
                 <div className="person">
                     <img src="https://cdn.pixabay.com/photo/2014/07/09/10/04/man-388104_960_720.jpg" alt="" />
+                    {/* <CameraOutlined /> */}
                     <h4>{first_name}  {last_name}</h4>
                     <h3>IT Specialist</h3>
                 </div>
@@ -113,8 +110,8 @@ const Kabinet = () => {
                 </div>
             </div>
         </div> 
-        </div>
-        </>
+      </div>
+    </>
     );
 }
  

@@ -11,7 +11,6 @@ const dataT = require('../../json/data.json');
 
 function Profayl3() {
   const selector = useSelector(state=> state)
-  console.log(selector);
   const {data} = selector?.payload?.payload
   const {id} = data
   const history = useHistory();
@@ -26,7 +25,6 @@ function Profayl3() {
   const data1 = JSON.parse(localStorage.getItem('profile'));
   const data2 = JSON.parse(localStorage.getItem('profile2'));
   const data3 = JSON.parse(localStorage.getItem('zayavka'));
-  // const id = JSON.parse(localStorage.getItem('enrollee_user'));
   const [profileData, setProfileData] = useState({
     sport_achievements: '',
     visas: '',
@@ -55,11 +53,6 @@ function Profayl3() {
     localStorage.setItem('files', JSON.stringify(finalData));
     history.push('/files');
   };
-  console.log(active_activity);
-  console.log(profile);
-  console.log(profile2);
-  console.log(finalData);
-  console.log(profileData);
   return (
     <React.Fragment>
       <div className="navRegist">

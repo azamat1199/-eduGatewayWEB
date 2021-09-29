@@ -88,7 +88,6 @@ function Zayavka() {
     budget: 0,
   });
   const handleInputChange = (e) => {
-    console.log(e.target.value);
     const { name, value } = e.target;
     setRequisition((state) => ({ ...state, [name]: +value.trim() }));
   };
@@ -97,7 +96,6 @@ function Zayavka() {
     setValue(newValue);
   };
   const handleUniver = (event, newValue) => {
-    console.log(newValue)
     if(newValue){
       const { id } = newValue;
       setService(id);
@@ -110,7 +108,6 @@ function Zayavka() {
     comment,
   };
  
-  console.log(userId);
   const fetchServiceCompany = async()=>{
     try {
       const res = await Axios.get("/company/company-service/")
@@ -119,14 +116,11 @@ function Zayavka() {
       if(status === 200){
            setFetchedService(results)
       }
-      console.log(res);
     } catch (error) {
-      console.log(error.response);
     }
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(finalData);
   };
   const localStr = () => {
     localStorage.setItem('zayavka', JSON.stringify(finalData));
@@ -134,8 +128,6 @@ function Zayavka() {
   useEffect(()=>{
     fetchServiceCompany()
   },[])
-  console.log(fetchedService);
-  console.log(finalData);
   return (
     <React.Fragment>
       <div className="navRegist">

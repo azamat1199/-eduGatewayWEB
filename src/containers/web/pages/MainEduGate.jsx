@@ -137,9 +137,8 @@ const MainEduGate = () => {
     fetchUniversities();
     if (selector.payload.payload) {
       const { payload } = selector?.payload;
-      const { id } = payload?.data;
-      setUserId(id);
-      //console.log(id);
+      const  userId = payload?.data?.id;
+      setUserId(userId);
     }
   }, []);
 

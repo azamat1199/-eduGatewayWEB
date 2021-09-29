@@ -12,8 +12,6 @@ function Fayli() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
   const userID = JSON.parse(localStorage.getItem('userId'));
-  console.log(userID);
-  console.log(userID);
   const [data, setData] = useState({
     scan_passport_self: '',
     scan_diplom: '',
@@ -27,9 +25,7 @@ function Fayli() {
   });
   const [doc, setDoc] = useState();
   const files = JSON.parse(localStorage.getItem('files'));
-  console.log(files);
   const handleInputChange = (e) => {
-    console.log(e);
     const { name, files } = e.target;
     setData((state) => ({ ...state, [name]: files[0] }));
   };
@@ -43,9 +39,6 @@ function Fayli() {
   const inputEl7 = useRef(null);
   const inputEl8 = useRef(null);
   const inputEl9 = useRef(null);
-
-  console.log(data);
-  console.log(doc);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -73,7 +66,6 @@ function Fayli() {
           'Content-Type': 'multipart/form-data',
         },
       });
-      console.log(data);
       const { status } = data;
       if (status === 201) {
         Swal.fire({
@@ -87,7 +79,6 @@ function Fayli() {
         icon: 'error',
         text: 'Что-то пошло не так, пожалуйста, повторно загрузите файлы',
       });
-      console.log(error);
       setLoading(false);
     }
   };

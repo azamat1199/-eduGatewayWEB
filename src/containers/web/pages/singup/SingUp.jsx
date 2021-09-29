@@ -54,8 +54,6 @@ function SingUp() {
     ref_code:"",
     agree_with_agreement:true,
   });
-  console.log(phone);
-
 
   const handleInputChange = useCallback(
     (e) => {
@@ -188,7 +186,6 @@ function SingUp() {
       setLoading(false);
     } catch (err) {
       console.log(err.response);
-      // const { error } = err.response?.data;
       Swal.fire({
         icon: 'error',
         text: 'На этот номер все готовы зарегистрироваться, выберите другой или войдите',
@@ -198,10 +195,6 @@ function SingUp() {
     }
   };
 
-  // console.log(results);
-  console.log(countriess);
-  console.log(citiess);
-  console.log(loginData);
   useEffect(() => {
     fetchCountries();
   }, []);

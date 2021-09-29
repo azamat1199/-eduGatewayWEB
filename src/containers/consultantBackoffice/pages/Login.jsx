@@ -23,7 +23,6 @@ function  Login () {
     const [loginData,setLoginData] = useState({
         password:''
     });
-    console.log(phone);
     const handleChange = useCallback ((e) => { 
         const {name,value} = e.target;
         setState(state=>({...state,[name]:value}))
@@ -47,7 +46,6 @@ function  Login () {
     password:loginData.password
  }
    
-console.log(dataGo);
     const submitData = async (e)=>{
         e.preventDefault()
         setLoading(true);
@@ -66,7 +64,6 @@ console.log(dataGo);
                 history.push('/')
             }
           
-           console.log(data);
            setLoading(false);
         } catch (error) {
           console.log(error);
@@ -79,7 +76,6 @@ console.log(dataGo);
         }
     }
   
-  console.log(loginData);
   return (
     <div className="Login">
       <div className="background_login"></div>

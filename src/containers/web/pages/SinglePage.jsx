@@ -22,10 +22,6 @@ const dataT = require("../json/data_univer.json")
 
 function SinglePage (props){
 	const selector = useSelector(state => state)
-	//console.log(selector);
-	// const {payload} = selector.payload
-	// const {id} = payload.data
-	// console.log(id);
 	const history = useHistory()
 	const [data,setData] = useState(dataT)
 	const params = useParams()
@@ -72,14 +68,12 @@ function SinglePage (props){
 		},
 		zoom: 11
 	};
-	// console.log(lat.toString())
 
 	const fetchUniversityById = async() =>{
 		try {
 			const {data} =  await Axios.get(`/university/university/${params.id}`)
 			localStorage.setItem('univerId',params.id)
 			setUniver(data)
-			// console.log(data);
 		} catch (error) {
 			console.log(error);
 		}
